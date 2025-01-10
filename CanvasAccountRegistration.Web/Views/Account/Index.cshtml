@@ -1,0 +1,95 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using Localization
+@inject LocService SharedLocalizer
+@model IEnumerable<CanvasAccountRegistration.Web.ViewModel.AccountViewModel>
+
+@{
+    ViewData["Title"] = @$"{SharedLocalizer.GetLocalizedHtmlString("List")} {SharedLocalizer.GetLocalizedHtmlString("Account")}";
+}
+
+<h1>@SharedLocalizer.GetLocalizedHtmlString("Account")</h1>
+
+<a asp-controller="Account" asp-action="Create">
+    <button type="button" class="btn btn-info btn-lg"><span class="bi bi-plus-circle"></span>@SharedLocalizer.GetLocalizedHtmlString("Create New")</button>
+</a>
+<hr />
+<table class="table data-table">
+    <thead>
+        <tr>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("login_attribute")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("given_name")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("surname")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("display_name")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("email")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("assurance_level")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("mail_verified")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("create_date_time")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("verification_date_time")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("integration_date_time")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.login_attribute">
+                @item.login_attribute
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.given_name">
+                @item.given_name
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.surname">
+                @item.surname
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.display_name">
+                @item.display_name
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.email">
+                @item.email
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.assurance_level">
+                @item.assurance_level
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.mail_verified">
+                @item.mail_verified
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.create_date_time">
+                @item.create_date_time
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.verification_date_time">
+                @item.verification_date_time
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.integration_date_time">
+                @item.integration_date_time
+            </td>
+  
+            <td>
+                <a asp-controller="Account" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> | 
+                <a asp-controller="Account" asp-action="Remove" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
