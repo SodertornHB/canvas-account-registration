@@ -234,4 +234,7 @@
   <data name="Information" xml:space="preserve">
     <value>Information about Canvas Account Registration</value>
   </data>
+  <data name="Toggle language" xml:space="preserve">
+    <value>På svenska</value>
+  </data>
 </root>

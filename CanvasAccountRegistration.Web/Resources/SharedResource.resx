@@ -117,19 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TableLang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Create New" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value />
+  </data>
+  <data name="List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Are you sure you want to delete this?" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value />
+  </data>
+  <data name="login_attribute" xml:space="preserve">
+    <value />
+  </data>
+  <data name="given_name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value />
+  </data>
+  <data name="display_name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="email" xml:space="preserve">
+    <value />
+  </data>
+  <data name="assurance_level" xml:space="preserve">
+    <value />
+  </data>
+  <data name="mail_verified" xml:space="preserve">
+    <value />
+  </data>
+  <data name="create_date_time" xml:space="preserve">
+    <value />
+  </data>
+  <data name="verification_date_time" xml:space="preserve">
+    <value />
+  </data>
+  <data name="integration_date_time" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LogLevel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Exception" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Trace" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Migration" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ClientVersion" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DatabaseVersion" xml:space="preserve">
+    <value />
+  </data>
   <data name="Canvas Account Registration info" xml:space="preserve">
-    <value>&lt;p&gt; Canvas kontoregistrering är en tjänst riktad till personal anställd på myndigheter i Sverige som ska läsa en uppdragsutbildning på Södertörns högskola.&lt;/p&gt;&lt;p&gt;Canvas kontoregistrering används för att registrera ett EduId-konto för användning i Studiewebben Canvas. När registrerat konto är granskat och godkänt kommer det att flyttas till Studiewebben Canvas och användaren kan logga in där med sitt EduId.&lt;/p&gt;</value>
+    <value />
   </data>
   <data name="Privacy info" xml:space="preserve">
-    <value>&lt;h2&gt;Hantering av personuppgifter&lt;/h2&gt;&lt;h3&gt;Överföring av personuppgifter&lt;/h3&gt;&lt;p&gt;Personuppgifter överförs från identitetsutfärdaren (din inloggningstjänst) till Canvas kontoregistrering för att Södertörns högskola ska kunna säkerställa användarens identitet, så att användaren i förlängningen kan genomföra sin utbildning.&lt;/p&gt;&lt;p&gt;I samband med inloggning i denna tjänst begärs följande personuppgifter från den identitetsutfärdare du använder:&lt;/p&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Personuppgift&lt;/th&gt;&lt;th&gt;Syfte&lt;/th&gt;&lt;th&gt;Teknisk representation&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Unik identifierare&lt;/td&gt;&lt;td&gt;Att ge dig tillgång till utbildningsmaterial i Studiewebben Canvas&lt;/td&gt;&lt;td&gt;eduPersonPrincipalName&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Namn&lt;/td&gt;&lt;td&gt;Namnet används i listor och andra gränssnitt&lt;/td&gt;&lt;td&gt;displayName&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Förnamn&lt;/td&gt;&lt;td&gt;Förnamnet används i listor och andra gränssnitt&lt;/td&gt;&lt;td&gt;givenName&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Efternamn&lt;/td&gt;&lt;td&gt;Efternamnet används i listor och andra gränssnitt&lt;/td&gt;&lt;td&gt;sn&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E-postadress&lt;/td&gt;&lt;td&gt;Används för att kunna kontakta dig&lt;/td&gt;&lt;td&gt;email&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Unik användar-ID&lt;/td&gt;&lt;td&gt;Används för att unikt identifiera dig i tjänsten&lt;/td&gt;&lt;td&gt;eduPersonUniqueId&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Roll och organisationstillhörighet&lt;/td&gt;&lt;td&gt;Beskriver din roll och relation till organisationen&lt;/td&gt;&lt;td&gt;eduPersonScopedAffiliation&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Personnummer&lt;/td&gt;&lt;td&gt;Används för att identifiera dig nationellt&lt;/td&gt;&lt;td&gt;personalIdentityNumber&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;Förutom direkta personuppgifter överförs även indirekta personuppgifter såsom vilken organisation användaren tillhöroch vilken identitetsutfärdare som har använts vid inloggningen. I kombination med ovanstående personuppgifter kandessa användas för att unikt identifiera en person.&lt;/p&gt;&lt;h3&gt;Överföring av personuppgifter till tredje part&lt;/h3&gt;&lt;p&gt;Personuppgifter som behandlas inom Canvas kontoregistrering kan komma att delas med tredje part om det är nödvändigt för atttillhandahålla tjänsten eller om det krävs enligt lag. Vid sådan överföring säkerställer högskolan att mottagarenhanterar uppgifterna i enlighet med gällande dataskyddsregler.&lt;/p&gt;&lt;h3&gt;Rättslig grund&lt;/h3&gt;&lt;p&gt;Behandlingen av personuppgifter i tjänsten Canvas kontoregistrering är ett led i Södertörns högskolas myndighetsutövning. Ävenfullgörande av rättslig förpliktelse kan i vissa fall vara en rättslig grund för tjänsten.&lt;/p&gt;&lt;h3&gt;Rätt till registerutdrag, rättelse och radering av personuppgifter&lt;/h3&gt;&lt;p&gt;För registerutdrag, rättelse och radering av dina personuppgifter, kontakta personuppgiftsansvarig.&lt;/p&gt;&lt;p&gt;Rättelse av personuppgifter som överförts i samband med inloggning gör du i den identitetsutfärdare som du använderför att logga in. Dessa uppgifter rättas i tjänsten vid första inloggningen efter att personuppgifterna är rättade iidentitetsutfärdaren.&lt;/p&gt;&lt;h3&gt;Rensning av personuppgifter&lt;/h3&gt;&lt;p&gt;Personuppgifter som behandlas inom Canvas kontoregistrering sparas endast så länge de är nödvändiga för att uppfylla tjänstensändamål. När du inte längre använder tjänsten kommer dina personuppgifter att raderas i enlighet med högskolansrutiner för datalagring och rensning.&lt;/p&gt;&lt;h3&gt;Personuppgiftsansvarig&lt;/h3&gt;&lt;p&gt;Personuppgiftsansvarig för behandlingen av personuppgifter är Södertörns högskola, Sverige. Har du frågor om hurpersonuppgifter hanteras inom tjänsten, kontakta dataskydd@sh.se.&lt;/p&gt;&lt;p&gt;Kontaktuppgifter till Södertörns högskolas dataskyddsombud finns på &lt;ahref="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;denna sida&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;&lt;p&gt;Denna tjänst följer det internationella ramverket GÉANT Data Protection Code of Conduct för överföring avpersonuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES somanvänds inom forskning och högre utbildning.&lt;/p&gt;</value>
+    <value />
   </data>
   <data name="Privacy" xml:space="preserve">
-    <value>Överföring av personuppgifter till tjänsten i samband med federerad inloggning (Privacy Policy)</value>
+    <value />
   </data>
   <data name="Information" xml:space="preserve">
-    <value>Beskrivning av tjänsten Canvas kontoregistrering</value>
+    <value />
   </data>
   <data name="Toggle language" xml:space="preserve">
-    <value>In english</value>
+    <value />
   </data>
 </root>

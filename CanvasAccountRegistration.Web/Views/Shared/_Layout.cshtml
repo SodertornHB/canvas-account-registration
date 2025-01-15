@@ -45,7 +45,10 @@
                 <div>
                     <form id="changeLanguageFormId" asp-controller="Home" asp-action="ToggleCulture" method="post">
                         <input type="hidden" name="returnUrl" value="@currentUrl">
-                        <span id="iconLanguageId" class="bi bi-globe icon-language" title="@SharedLocalizer.GetLocalizedHtmlString("Toggle language")"  ></span>
+                        <div class="icon-with-text">
+                            <span id="iconLanguageId" class="bi bi-globe icon-language" title="@SharedLocalizer.GetLocalizedHtmlString("Toggle language")"></span>
+                            <span class="text">@SharedLocalizer.GetLocalizedHtmlString("Toggle language")</span>
+                        </div>
                     </form>
                 </div>
             </div>

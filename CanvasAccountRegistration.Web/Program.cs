@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Web;
 using System;
 using System.IO;
+using Web;
 
 namespace CanvasAccountRegistration.Web
 {
@@ -20,7 +21,7 @@ namespace CanvasAccountRegistration.Web
              Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.UseStartup<Startup>();
+                webBuilder.UseStartup<StartupExtended>();
                 webBuilder.ConfigureKestrel(options =>
                 {
                 });

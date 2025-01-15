@@ -21,7 +21,7 @@ function getPathName(url) {
 $(document).ready(function () {
     $('.tooltip-r').tooltip();   
 
-    $('#iconLanguageId').on('click', function () {
+    $('.icon-with-text').on('click', function () {
         $('#changeLanguageFormId').submit();
     })
     let url = getBaseUrl();
