@@ -94,66 +94,6 @@ namespace CanvasAccountRegistration.Web
             CustomServiceConfiguration(services);
             services.AddControllersWithViews()
                 .AddViewLocalization();
-            if (Environment.IsProduction())
-            {
-                services.AddAuthentication(options =>
-                {
-                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = "Saml2";
-                })
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddSaml2(options =>
-                {
-                    options.SPOptions.EntityId = new EntityId("https://canvas-account-registration.shbiblioteket.se/SAML");
-                    options.SPOptions.ReturnUrl = new Uri("/", UriKind.Relative);
-
-                    // Idp using RelayState as return url.
-                    options.IdentityProviders.Add(new IdentityProvider(
-                        new EntityId("https://login.idp.eduid.se/idp.xml"),
-                        options.SPOptions)
-                    {
-                        MetadataLocation = "https://mds.swamid.se/entities/https%3A%2F%2Flogin.idp.eduid.se%2Fidp.xml",
-                        LoadMetadata = true,
-                        AllowUnsolicitedAuthnResponse = true,
-                        RelayStateUsedAsReturnUrl = true
-                    });
-
-                    //options.SPOptions.EntityId = new EntityId("https://canvas-account-registration.shbiblioteket.se/SAML");
-                    //options.SPOptions.ReturnUrl = new Uri("https://canvas-account-registration.shbiblioteket.se/Saml2/Acs");
-
-                    // Add EduID IdP
-                    //options.IdentityProviders.Add(
-                    //    new IdentityProvider(
-                    //        new EntityId("https://login.idp.eduid.se/idp.xml"),
-                    //        options.SPOptions)
-                    //    {
-                    //        MetadataLocation = "https://mds.swamid.se/entities/https%3A%2F%2Flogin.idp.eduid.se%2Fidp.xml",
-                    //        LoadMetadata = true,
-                    //        AllowUnsolicitedAuthnResponse = true,
-                    //    });
-
-                    // Load the certificate from the Windows Certificate Store
-                    var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-                    try
-                    {
-                        store.Open(OpenFlags.ReadOnly);
-                        var certificates = store.Certificates.Find(
-                        X509FindType.FindBySubjectName, "canvas-account-registration.shbiblioteket.se", false);
-                        if (certificates.Count > 0)
-                        {
-                            options.SPOptions.ServiceCertificates.Add(certificates[0]);
-                        }
-                        else
-                        {
-                            throw new InvalidOperationException("Required certificate not found.");
-                        }
-                    }
-                    finally
-                    {
-                        store.Close();
-                    }
-                });
-            }
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
