@@ -47,6 +47,20 @@ namespace Web.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet("privacy")]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("info")]
+        public IActionResult Info()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
         [HttpGet("error")]
         public IActionResult Error()
         {

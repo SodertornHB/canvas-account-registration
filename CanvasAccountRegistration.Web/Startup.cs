@@ -40,6 +40,7 @@ using Sustainsys.Saml2.Metadata;
 using Sustainsys.Saml2.Configuration;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.CodeAnalysis;
 
 namespace CanvasAccountRegistration.Web
 {
@@ -93,32 +94,66 @@ namespace CanvasAccountRegistration.Web
             CustomServiceConfiguration(services);
             services.AddControllersWithViews()
                 .AddViewLocalization();
-
-            services.AddAuthentication(options =>
+            if (Environment.IsProduction())
             {
-                // Use cookies for local authentication/session management
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = "Saml2";
+                })
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddSaml2(options =>
+                {
+                    options.SPOptions.EntityId = new EntityId("https://canvas-account-registration.shbiblioteket.se/SAML");
+                    options.SPOptions.ReturnUrl = new Uri("/", UriKind.Relative);
 
-                // Use SAML for external authentication challenges
-                options.DefaultChallengeScheme = "Saml2";
-            })
-             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme) // Handles local user sessions
-             .AddSaml2(options =>
-             {
-                 options.SPOptions.EntityId = new EntityId("https://localhost:50083/SAML"); // Your app's Entity ID
-                 options.SPOptions.ReturnUrl = new Uri("https://localhost:50083/SAML/AssertionConsumer");
+                    // Idp using RelayState as return url.
+                    options.IdentityProviders.Add(new IdentityProvider(
+                        new EntityId("https://login.idp.eduid.se/idp.xml"),
+                        options.SPOptions)
+                    {
+                        MetadataLocation = "https://mds.swamid.se/entities/https%3A%2F%2Flogin.idp.eduid.se%2Fidp.xml",
+                        LoadMetadata = true,
+                        AllowUnsolicitedAuthnResponse = true,
+                        RelayStateUsedAsReturnUrl = true
+                    });
 
-                 // Add EduID IdP
-                 options.IdentityProviders.Add(
-                     new IdentityProvider(
-                         new EntityId("https://login.idp.eduid.se/idp.xml"), // EduID metadata URL
-                         options.SPOptions)
-                     {
-                         MetadataLocation = "https://mds.swamid.se/entities/https%3A%2F%2Flogin.idp.eduid.se%2Fidp.xml", // Proxy Metadata URL
-                         LoadMetadata = true,
-                         AllowUnsolicitedAuthnResponse = true, // Allow IdP-initiated login
-                     });
-             });
+                    //options.SPOptions.EntityId = new EntityId("https://canvas-account-registration.shbiblioteket.se/SAML");
+                    //options.SPOptions.ReturnUrl = new Uri("https://canvas-account-registration.shbiblioteket.se/Saml2/Acs");
+
+                    // Add EduID IdP
+                    //options.IdentityProviders.Add(
+                    //    new IdentityProvider(
+                    //        new EntityId("https://login.idp.eduid.se/idp.xml"),
+                    //        options.SPOptions)
+                    //    {
+                    //        MetadataLocation = "https://mds.swamid.se/entities/https%3A%2F%2Flogin.idp.eduid.se%2Fidp.xml",
+                    //        LoadMetadata = true,
+                    //        AllowUnsolicitedAuthnResponse = true,
+                    //    });
+
+                    // Load the certificate from the Windows Certificate Store
+                    var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+                    try
+                    {
+                        store.Open(OpenFlags.ReadOnly);
+                        var certificates = store.Certificates.Find(
+                        X509FindType.FindBySubjectName, "canvas-account-registration.shbiblioteket.se", false);
+                        if (certificates.Count > 0)
+                        {
+                            options.SPOptions.ServiceCertificates.Add(certificates[0]);
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("Required certificate not found.");
+                        }
+                    }
+                    finally
+                    {
+                        store.Close();
+                    }
+                });
+            }
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -135,11 +170,22 @@ namespace CanvasAccountRegistration.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            //app.Map("/Saml2/Metadata", appBuilder =>
+            //{
+            //    appBuilder.Run(async context =>
+            //    {
+            //        var metadata = new Sustainsys.Saml2.Metadata.MetadataBase(options.SPOptions).CreateMetadata();
+            //        context.Response.ContentType = "application/xml";
+            //        await context.Response.WriteAsync(metadata.ToXmlString());
+            //    });
+            //});
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapSaml2();
             });
         }
 
