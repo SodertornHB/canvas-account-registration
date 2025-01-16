@@ -14,6 +14,13 @@ namespace CanvasAccountRegistration.Logic.Model
             { "urn:oid:2.5.4.4", "sn" },
             { "urn:oid:1.3.6.1.4.1.5923.1.1.1.11", "eduPersonAssurance" }
         };
+        public RequestedAttributeModel(string identifier, string value)
+        { 
+            Identifier = identifier;
+            Value = value;
+            Name = NameIdentifierMappings[Identifier];
+        }
+
         public RequestedAttributeModel(Claim claim)
         {
             Name = claim.Type;

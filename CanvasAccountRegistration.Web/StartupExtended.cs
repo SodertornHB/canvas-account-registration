@@ -25,6 +25,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Sustainsys.Saml2.AspNetCore2;
+using Logic.Service;
 
 namespace Web
 {
@@ -49,7 +50,11 @@ namespace Web
         protected override void CustomServiceConfiguration(IServiceCollection services)
         {
             services.Configure<CanvasApiSettings>(Configuration.GetSection("CanvasApiSettings"));
-
+#if RELEASE
+            services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
+#else 
+            services.AddTransient<IRequestedAttributeService, FakeRequestedAttributeService>();
+#endif
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
