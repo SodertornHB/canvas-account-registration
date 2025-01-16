@@ -39,7 +39,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Update="Migration\Migrations.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

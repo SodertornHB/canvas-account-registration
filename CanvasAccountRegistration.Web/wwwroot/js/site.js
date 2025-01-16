@@ -20,7 +20,6 @@ function getPathName(url) {
 
 $(document).ready(function () {
     $('.tooltip-r').tooltip();   
-
     $('.icon-with-text').on('click', function () {
         $('#changeLanguageFormId').submit();
     })

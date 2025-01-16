@@ -18,64 +18,58 @@
     <dl class="row">
 
         <dt class = "col-sm-2">
-            <label asp-for="login_attribute" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("login_attribute")</label>
+            <label asp-for="UserId" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("UserId")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.login_attribute
+            @Model.UserId
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="given_name" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("given_name")</label>
+            <label asp-for="DisplayName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("DisplayName")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.given_name
+            @Model.DisplayName
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="surname" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("surname")</label>
+            <label asp-for="GivenName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("GivenName")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.surname
+            @Model.GivenName
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="display_name" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("display_name")</label>
+            <label asp-for="Surname" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("Surname")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.display_name
+            @Model.Surname
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="email" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("email")</label>
+            <label asp-for="Email" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("Email")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.email
+            @Model.Email
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="assurance_level" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("assurance_level")</label>
+            <label asp-for="AssuranceLevel" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevel")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.assurance_level
+            @Model.AssuranceLevel
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="mail_verified" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("mail_verified")</label>
+            <label asp-for="CreatedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.mail_verified
+            @Model.CreatedOn
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="create_date_time" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("create_date_time")</label>
+            <label asp-for="VerifiedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("VerifiedOn")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.create_date_time
+            @Model.VerifiedOn
         </dd>
         <dt class = "col-sm-2">
-            <label asp-for="verification_date_time" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("verification_date_time")</label>
+            <label asp-for="IntegratedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("IntegratedOn")</label>
         </dt>
         <dd class = "col-sm-10">
-            @Model.verification_date_time
-        </dd>
-        <dt class = "col-sm-2">
-            <label asp-for="integration_date_time" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("integration_date_time")</label>
-        </dt>
-        <dd class = "col-sm-10">
-            @Model.integration_date_time
+            @Model.IntegratedOn
         </dd>
     </dl>
     <form method="post"  enctype="multipart/form-data" asp-controller="Account" asp-action="Remove">    

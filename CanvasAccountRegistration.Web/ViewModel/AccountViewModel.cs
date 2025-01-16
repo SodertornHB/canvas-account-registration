@@ -11,19 +11,18 @@ namespace CanvasAccountRegistration.Web.ViewModel
 {
     public partial class AccountViewModel : ViewModelBase
     {
-        public virtual string login_attribute {get;set;}  = ""; 
-        public virtual string given_name {get;set;}  = ""; 
-        public virtual string surname {get;set;}  = ""; 
-        public virtual string display_name {get;set;}  = ""; 
-        public virtual string email {get;set;}  = ""; 
-        public virtual string assurance_level {get;set;}  = ""; 
-        public virtual bool mail_verified {get;set;} 
+        public virtual string UserId {get;set;}  = ""; 
+        public virtual string DisplayName {get;set;}  = ""; 
+        public virtual string GivenName {get;set;}  = ""; 
+        public virtual string Surname {get;set;}  = ""; 
+        public virtual string Email {get;set;}  = ""; 
+        public virtual string AssuranceLevel {get;set;}  = ""; 
         [DataType(DataType.Text)]
-        public virtual DateTime? create_date_time {get;set;} 
+        public virtual DateTime? CreatedOn {get;set;} 
         [DataType(DataType.Text)]
-        public virtual DateTime? verification_date_time {get;set;} 
+        public virtual DateTime? VerifiedOn {get;set;} 
         [DataType(DataType.Text)]
-        public virtual DateTime? integration_date_time {get;set;} 
+        public virtual DateTime? IntegratedOn {get;set;} 
         public virtual string GetBackToListLink(string applicationName) => $"/{applicationName}/{GetType().Name.Replace("ViewModel","")}";
     }
 } 

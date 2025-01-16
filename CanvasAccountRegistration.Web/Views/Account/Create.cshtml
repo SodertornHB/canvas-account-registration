@@ -18,54 +18,49 @@
         <form method="post"  enctype="multipart/form-data" asp-controller="Account" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="login_attribute" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("login_attribute")</label>
-                <input name="login_attribute" asp-for="login_attribute" class="form-control" />
-                <span asp-validation-for="login_attribute" class="text-danger"></span>
+                <label asp-for="UserId" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("UserId")</label>
+                <input name="UserId" asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="given_name" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("given_name")</label>
-                <input name="given_name" asp-for="given_name" class="form-control" />
-                <span asp-validation-for="given_name" class="text-danger"></span>
+                <label asp-for="DisplayName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("DisplayName")</label>
+                <input name="DisplayName" asp-for="DisplayName" class="form-control" />
+                <span asp-validation-for="DisplayName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="surname" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("surname")</label>
-                <input name="surname" asp-for="surname" class="form-control" />
-                <span asp-validation-for="surname" class="text-danger"></span>
+                <label asp-for="GivenName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("GivenName")</label>
+                <input name="GivenName" asp-for="GivenName" class="form-control" />
+                <span asp-validation-for="GivenName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="display_name" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("display_name")</label>
-                <input name="display_name" asp-for="display_name" class="form-control" />
-                <span asp-validation-for="display_name" class="text-danger"></span>
+                <label asp-for="Surname" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("Surname")</label>
+                <input name="Surname" asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="email" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("email")</label>
-                <input name="email" asp-for="email" class="form-control" />
-                <span asp-validation-for="email" class="text-danger"></span>
+                <label asp-for="Email" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("Email")</label>
+                <input name="Email" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="assurance_level" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("assurance_level")</label>
-                <input name="assurance_level" asp-for="assurance_level" class="form-control" />
-                <span asp-validation-for="assurance_level" class="text-danger"></span>
+                <label asp-for="AssuranceLevel" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevel")</label>
+                <input name="AssuranceLevel" asp-for="AssuranceLevel" class="form-control" />
+                <span asp-validation-for="AssuranceLevel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="mail_verified" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("mail_verified")</label>
-                <input name="mail_verified" asp-for="mail_verified" class="form-control" />
-                <span asp-validation-for="mail_verified" class="text-danger"></span>
+                <label asp-for="CreatedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</label>
+                <input name="CreatedOn" asp-for="CreatedOn" class="form-control" />
+                <span asp-validation-for="CreatedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="create_date_time" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("create_date_time")</label>
-                <input name="create_date_time" asp-for="create_date_time" class="form-control" />
-                <span asp-validation-for="create_date_time" class="text-danger"></span>
+                <label asp-for="VerifiedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("VerifiedOn")</label>
+                <input name="VerifiedOn" asp-for="VerifiedOn" class="form-control" />
+                <span asp-validation-for="VerifiedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="verification_date_time" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("verification_date_time")</label>
-                <input name="verification_date_time" asp-for="verification_date_time" class="form-control" />
-                <span asp-validation-for="verification_date_time" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="integration_date_time" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("integration_date_time")</label>
-                <input name="integration_date_time" asp-for="integration_date_time" class="form-control" />
-                <span asp-validation-for="integration_date_time" class="text-danger"></span>
+                <label asp-for="IntegratedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("IntegratedOn")</label>
+                <input name="IntegratedOn" asp-for="IntegratedOn" class="form-control" />
+                <span asp-validation-for="IntegratedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="@SharedLocalizer.GetLocalizedHtmlString("Create")" class="btn btn-primary" />

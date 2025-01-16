@@ -19,34 +19,31 @@
     <thead>
         <tr>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("login_attribute")
+                @SharedLocalizer.GetLocalizedHtmlString("UserId")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("given_name")
+                @SharedLocalizer.GetLocalizedHtmlString("DisplayName")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("surname")
+                @SharedLocalizer.GetLocalizedHtmlString("GivenName")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("display_name")
+                @SharedLocalizer.GetLocalizedHtmlString("Surname")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("email")
+                @SharedLocalizer.GetLocalizedHtmlString("Email")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("assurance_level")
+                @SharedLocalizer.GetLocalizedHtmlString("AssuranceLevel")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("mail_verified")
+                @SharedLocalizer.GetLocalizedHtmlString("CreatedOn")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("create_date_time")
+                @SharedLocalizer.GetLocalizedHtmlString("VerifiedOn")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("verification_date_time")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("integration_date_time")
+                @SharedLocalizer.GetLocalizedHtmlString("IntegratedOn")
             </th>
             <th></th>
         </tr>
@@ -54,35 +51,32 @@
     <tbody>
     @foreach (var item in Model) {
         <tr>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.login_attribute">
-                @item.login_attribute
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.UserId">
+                @item.UserId
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.given_name">
-                @item.given_name
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.DisplayName">
+                @item.DisplayName
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.surname">
-                @item.surname
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.GivenName">
+                @item.GivenName
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.display_name">
-                @item.display_name
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Surname">
+                @item.Surname
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.email">
-                @item.email
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Email">
+                @item.Email
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.assurance_level">
-                @item.assurance_level
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.AssuranceLevel">
+                @item.AssuranceLevel
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.mail_verified">
-                @item.mail_verified
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.CreatedOn">
+                @item.CreatedOn
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.create_date_time">
-                @item.create_date_time
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.VerifiedOn">
+                @item.VerifiedOn
             </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.verification_date_time">
-                @item.verification_date_time
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.integration_date_time">
-                @item.integration_date_time
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.IntegratedOn">
+                @item.IntegratedOn
             </td>
   
             <td>

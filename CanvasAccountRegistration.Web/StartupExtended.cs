@@ -123,6 +123,8 @@ namespace Web
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
 
         protected override void ConfigureExceptionHandler(IApplicationBuilder app)

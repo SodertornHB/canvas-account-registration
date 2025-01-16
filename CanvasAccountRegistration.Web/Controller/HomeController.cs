@@ -4,6 +4,7 @@
 // Generator version: 0.0.1.0
 //-------------------------------------------------------------------------------------------------------------------- 
 
+using CanvasAccountRegistration.Logic.Extensions;
 using CanvasAccountRegistration.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -36,9 +37,10 @@ namespace Web.Controllers
         [HttpGet("register")]
         public IActionResult Register()
         {
-            var claims = User.Claims.Select(c => new ClaimViewModel
+            var collection = User.Claims.ToRequestedAttributeCollection();
+            var claims = collection.Select(c => new ClaimViewModel
             {
-                Type = c.Type,
+                Type = c.Name,
                 Value = c.Value
             }).ToList();
 
