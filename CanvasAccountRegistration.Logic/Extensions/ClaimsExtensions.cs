@@ -10,7 +10,19 @@ namespace CanvasAccountRegistration.Logic.Extensions
         public static RequestedAttributeCollection ToRequestedAttributeCollection(this IEnumerable<Claim> claims)
         {
             var collection = new RequestedAttributeCollection();
-            collection.AddRange(claims.Select(c => new RequestedAttributeModel(c)));
+            var seenClaimTypes = new HashSet<string>();
+
+            foreach (var claim in claims)
+            {
+                if (!RequestedAttributeModel.NameIdentifierMappings.ContainsKey(claim.Type)) continue;
+
+                var attribute = new RequestedAttributeModel(claim);
+                if (!string.IsNullOrEmpty(attribute.Identifier))
+                {
+                    collection.Add(attribute);
+                }
+            }
+
             return collection;
         }
     }
