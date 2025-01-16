@@ -1,19 +1,33 @@
 if not exists (
     select distinct 1
     from information_schema.columns
+    where table_name = 'AccountLog'
+) begin CREATE TABLE AccountLog (
+    Id INT IDENTITY(1, 1) PRIMARY KEY,
+    displayName NVARCHAR(512) NOT NULL,
+    givenName NVARCHAR(512),
+    sn NVARCHAR(512) NOT NULL,
+    eduPersonPrincipalName NVARCHAR(512),
+    mail NVARCHAR(512),
+    eduPersonAssurance NVARCHAR(512),
+    CreatedOn DATETIME2 NOT NULL
+)
+end 
+if not exists (
+    select distinct 1
+    from information_schema.columns
     where table_name = 'Account'
 ) begin CREATE TABLE Account (
     Id INT IDENTITY(1, 1) PRIMARY KEY,
-    login_attribute NVARCHAR(512) NOT NULL,
-    given_name NVARCHAR(512),
-    surname NVARCHAR(512),
-    display_name NVARCHAR(512),
-    email NVARCHAR(512),
-    assurance_level NVARCHAR(512),
-    mail_verified BIT DEFAULT 0,
-    create_date_time DATETIME2 NOT NULL,
-    verification_date_time DATETIME2 NULL,
-    integration_date_time DATETIME2 NULL
+    UserId NVARCHAR(512) NOT NULL UNIQUE,
+    DisplayName NVARCHAR(512),
+    GivenName NVARCHAR(512),
+    Surname NVARCHAR(512),
+    Email NVARCHAR(512),
+    AssuranceLevel NVARCHAR(512),
+    CreatedOn DATETIME2 NOT NULL,
+    VerifiedOn DATETIME2 NULL,
+    IntegratedOn DATETIME2 NULL
 )
 end if not exists (
     select distinct 1
