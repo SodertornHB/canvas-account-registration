@@ -1,0 +1,34 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using CanvasAccountRegistration.Web.ViewModel
+@using Localization
+@using CanvasAccountRegistration.Logic.Settings
+@using Microsoft.Extensions.Options
+@inject IOptions<ApplicationSettings> settings
+@inject LocService SharedLocalizer
+@model List<ClaimViewModel>
+
+@{
+    ViewData["Title"] = "User Claims";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.Type</td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>

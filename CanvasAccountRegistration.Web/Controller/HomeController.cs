@@ -4,6 +4,7 @@
 // Generator version: 0.0.1.0
 //-------------------------------------------------------------------------------------------------------------------- 
 
+using CanvasAccountRegistration.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -32,9 +33,16 @@ namespace Web.Controllers
         }
 
         [Authorize]
-        public IActionResult Test()
+        [HttpGet("register")]
+        public IActionResult Register()
         {
-            return View();
+            var claims = User.Claims.Select(c => new ClaimViewModel
+            {
+                Type = c.Type,
+                Value = c.Value
+            }).ToList();
+
+            return View(claims);
         }
 
         [HttpPost]
