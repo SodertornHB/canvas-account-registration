@@ -226,7 +226,96 @@
     <value>&lt;p&gt;Canvas account registration is a service aimed at employees of Swedish government agencies who are enrolled in a commissioned education program at Södertörn University.&lt;/p&gt; &lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
   </data>
   <data name="Privacy info" xml:space="preserve">
-    <value>&lt;h2&gt;Processing of Personal Data&lt;/h2&gt;&lt;h3&gt;Transfer of Personal Data&lt;/h3&gt;&lt;p&gt;Personal data is transferred from the identity provider (your login service) to Canvas Account Registration to enable Södertörn University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;&lt;p&gt;When logging into this service, the following personal data is requested from the identity provider you use:&lt;/p&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Personal Data&lt;/th&gt;&lt;th&gt;Purpose&lt;/th&gt;&lt;th&gt;Technical Representation&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Unique Identifier&lt;/td&gt;&lt;td&gt;To grant you access to educational materials in the Canvas LMS&lt;/td&gt;&lt;td&gt;eduPersonPrincipalName&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Name&lt;/td&gt;&lt;td&gt;The name is used in lists and other interfaces&lt;/td&gt;&lt;td&gt;displayName&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;First Name&lt;/td&gt;&lt;td&gt;The first name is used in lists and other interfaces&lt;/td&gt;&lt;td&gt;givenName&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Last Name&lt;/td&gt;&lt;td&gt;The last name is used in lists and other interfaces&lt;/td&gt;&lt;td&gt;sn&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Email Address&lt;/td&gt;&lt;td&gt;Used to contact you&lt;/td&gt;&lt;td&gt;email&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Unique User ID&lt;/td&gt;&lt;td&gt;Used to uniquely identify you within the service&lt;/td&gt;&lt;td&gt;eduPersonUniqueId&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Role and Organizational Affiliation&lt;/td&gt;&lt;td&gt;Describes your role and relationship to the organization&lt;/td&gt;&lt;td&gt;eduPersonScopedAffiliation&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Personal Identity Number&lt;/td&gt;&lt;td&gt;Used to identify you nationally&lt;/td&gt;&lt;td&gt;personalIdentityNumber&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;In addition to direct personal data, indirect personal data such as the organization the user belongs to and the identity provider used during login is also transferred. Combined with the above data, this information can be used to uniquely identify a person.&lt;/p&gt;&lt;h3&gt;Transfer of Personal Data to Third Parties&lt;/h3&gt;&lt;p&gt;Personal data processed within Canvas Account Registration may be shared with third parties if necessary to provide the service or if required by law. In such cases, the university ensures that the recipient handles the data in accordance with applicable data protection regulations.&lt;/p&gt;&lt;h3&gt;Legal Basis&lt;/h3&gt;&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of Södertörn University's exercise of official authority. Fulfilling legal obligations may also, in some cases, serve as the legal basis for the service.&lt;/p&gt;&lt;h3&gt;Right to Access, Rectification, and Erasure of Personal Data&lt;/h3&gt;&lt;p&gt;To request access to, rectification of, or erasure of your personal data, contact the data controller.&lt;/p&gt;&lt;p&gt;To rectify personal data transferred during login, make the correction with the identity provider you use to log in. These changes will be reflected in the service upon your next login after the corrections are made in the identity provider.&lt;/p&gt;&lt;h3&gt;Retention of Personal Data&lt;/h3&gt;&lt;p&gt;Personal data processed within Canvas Account Registration is retained only as long as necessary to fulfill the purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the university's data storage and retention policies.&lt;/p&gt;&lt;h3&gt;Data Controller&lt;/h3&gt;&lt;p&gt;The data controller for the processing of personal data is Södertörn University, Sweden. If you have questions about how personal data is handled within the service, contact dataskydd@sh.se.&lt;/p&gt;&lt;p&gt;Contact details for Södertörn University's Data Protection Officer can be found on &lt;a href="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;this page&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;&lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA used in research and higher education.&lt;/p&gt;</value>
+    <value>&lt;h2&gt;Processing of Personal Data&lt;/h2&gt;
+&lt;h3&gt;Transfer of Personal Data&lt;/h3&gt;
+&lt;p&gt;Personal data is transferred from the identity provider (your login service) to Canvas Account Registration to enable
+    Södertörn University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;
+&lt;p&gt;When logging into this service, the following personal data is requested from the identity provider you use:&lt;/p&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Personal Data&lt;/th&gt;
+            &lt;th&gt;Purpose&lt;/th&gt;
+            &lt;th&gt;Technical Representation&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Unique Identifier&lt;/td&gt;
+            &lt;td&gt;To grant you access to educational materials in the Canvas LMS&lt;/td&gt;
+            &lt;td&gt;eduPersonPrincipalName&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Name&lt;/td&gt;
+            &lt;td&gt;The name is used in lists and other interfaces&lt;/td&gt;
+            &lt;td&gt;displayName&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;First Name&lt;/td&gt;
+            &lt;td&gt;The first name is used in lists and other interfaces&lt;/td&gt;
+            &lt;td&gt;givenName&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Last Name&lt;/td&gt;
+            &lt;td&gt;The last name is used in lists and other interfaces&lt;/td&gt;
+            &lt;td&gt;sn&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Email Address&lt;/td&gt;
+            &lt;td&gt;Used to contact you&lt;/td&gt;
+            &lt;td&gt;email&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Unique User ID&lt;/td&gt;
+            &lt;td&gt;Used to uniquely identify you within the service&lt;/td&gt;
+            &lt;td&gt;eduPersonUniqueId&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Role and Organizational Affiliation&lt;/td&gt;
+            &lt;td&gt;Describes your role and relationship to the organization&lt;/td&gt;
+            &lt;td&gt;eduPersonScopedAffiliation&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Personal Identity Number&lt;/td&gt;
+            &lt;td&gt;Used to identify you nationally&lt;/td&gt;
+            &lt;td&gt;personalIdentityNumber&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Assurance level&lt;/td&gt;
+            &lt;td&gt;Used for assessing the level of assurance (LoA) of a user's identity&lt;/td&gt;
+            &lt;td&gt;eduPersonAssurance&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In addition to direct personal data, indirect personal data such as the organization the user belongs to and the
+    identity provider used during login is also transferred. Combined with the above data, this information can be used
+    to uniquely identify a person.&lt;/p&gt;
+&lt;h3&gt;Transfer of Personal Data to Third Parties&lt;/h3&gt;
+&lt;p&gt;Personal data processed within Canvas Account Registration may be shared with third parties if necessary to provide
+    the service or if required by law. In such cases, the university ensures that the recipient handles the data in
+    accordance with applicable data protection regulations.&lt;/p&gt;
+&lt;h3&gt;Legal Basis&lt;/h3&gt;
+&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of Södertörn University's exercise
+    of official authority. Fulfilling legal obligations may also, in some cases, serve as the legal basis for the
+    service.&lt;/p&gt;
+&lt;h3&gt;Right to Access, Rectification, and Erasure of Personal Data&lt;/h3&gt;
+&lt;p&gt;To request access to, rectification of, or erasure of your personal data, contact the data controller.&lt;/p&gt;
+&lt;p&gt;To rectify personal data transferred during login, make the correction with the identity provider you use to log in.
+    These changes will be reflected in the service upon your next login after the corrections are made in the identity
+    provider.&lt;/p&gt;
+&lt;h3&gt;Retention of Personal Data&lt;/h3&gt;
+&lt;p&gt;Personal data processed within Canvas Account Registration is retained only as long as necessary to fulfill the
+    purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the
+    university's data storage and retention policies.&lt;/p&gt;
+&lt;h3&gt;Data Controller&lt;/h3&gt;
+&lt;p&gt;The data controller for the processing of personal data is Södertörn University, Sweden. If you have questions about
+    how personal data is handled within the service, contact dataskydd@sh.se.&lt;/p&gt;
+&lt;p&gt;Contact details for Södertörn University's Data Protection Officer can be found on &lt;a
+        href="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;this page&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
+&lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal
+    data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA
+    used in research and higher education.&lt;/p&gt;</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Transfer of Personal Data to the Service in Connection with Federated Login (Privacy Policy)</value>
