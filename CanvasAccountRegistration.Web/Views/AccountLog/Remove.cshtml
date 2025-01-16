@@ -1,0 +1,73 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using Localization
+@using Microsoft.Extensions.Options
+@inject LocService SharedLocalizer
+@model CanvasAccountRegistration.Web.ViewModel.AccountLogViewModel
+
+@{
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Delete")} {SharedLocalizer.GetLocalizedHtmlString("AccountLog")}";
+}
+
+<h1>@($"{SharedLocalizer.GetLocalizedHtmlString("Delete")} {@SharedLocalizer.GetLocalizedHtmlString("AccountLog")}")</h1>
+
+<h3>@SharedLocalizer.GetLocalizedHtmlString("Are you sure you want to delete this?")</h3>
+<div>
+    <hr />
+    <dl class="row">
+
+        <dt class = "col-sm-2">
+            <label asp-for="displayName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("displayName")</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.displayName
+        </dd>
+        <dt class = "col-sm-2">
+            <label asp-for="givenName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("givenName")</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.givenName
+        </dd>
+        <dt class = "col-sm-2">
+            <label asp-for="sn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("sn")</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.sn
+        </dd>
+        <dt class = "col-sm-2">
+            <label asp-for="eduPersonPrincipalName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("eduPersonPrincipalName")</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.eduPersonPrincipalName
+        </dd>
+        <dt class = "col-sm-2">
+            <label asp-for="mail" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("mail")</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.mail
+        </dd>
+        <dt class = "col-sm-2">
+            <label asp-for="eduPersonAssurance" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("eduPersonAssurance")</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.eduPersonAssurance
+        </dd>
+        <dt class = "col-sm-2">
+            <label asp-for="CreatedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</label>
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.CreatedOn
+        </dd>
+    </dl>
+    <form method="post"  enctype="multipart/form-data" asp-controller="AccountLog" asp-action="Remove">    
+        @Html.HiddenFor(x => x.Id)
+        <input type="submit" value="@SharedLocalizer.GetLocalizedHtmlString("Delete")" class="btn btn-danger" /> |
+        <a asp-controller="AccountLog" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back to List")</a>
+    </form>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

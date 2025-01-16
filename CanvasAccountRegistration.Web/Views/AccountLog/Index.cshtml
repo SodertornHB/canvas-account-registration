@@ -1,0 +1,77 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using Localization
+@inject LocService SharedLocalizer
+@model IEnumerable<CanvasAccountRegistration.Web.ViewModel.AccountLogViewModel>
+
+@{
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("List")} {SharedLocalizer.GetLocalizedHtmlString("AccountLog")}";
+}
+
+<h1>@SharedLocalizer.GetLocalizedHtmlString("AccountLog")</h1>
+
+<a asp-controller="AccountLog" asp-action="Create">
+    <button type="button" class="btn btn-info btn-lg"><span class="bi bi-plus-circle"></span>@SharedLocalizer.GetLocalizedHtmlString("Create New")</button>
+</a>
+<hr />
+<table class="table data-table">
+    <thead>
+        <tr>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("displayName")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("givenName")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("sn")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("eduPersonPrincipalName")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("mail")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("eduPersonAssurance")
+            </th>
+            <th>
+                @SharedLocalizer.GetLocalizedHtmlString("CreatedOn")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.displayName">
+                @item.displayName
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.givenName">
+                @item.givenName
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.sn">
+                @item.sn
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.eduPersonPrincipalName">
+                @item.eduPersonPrincipalName
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.mail">
+                @item.mail
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.eduPersonAssurance">
+                @item.eduPersonAssurance
+            </td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.CreatedOn">
+                @item.CreatedOn
+            </td>
+  
+            <td>
+                <a asp-controller="AccountLog" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> | 
+                <a asp-controller="AccountLog" asp-action="Remove" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

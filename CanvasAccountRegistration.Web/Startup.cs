@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection; 
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -35,17 +35,11 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.Data;
 using System.Data.SqlClient;
-using Sustainsys.Saml2;
-using Sustainsys.Saml2.Metadata;
-using Sustainsys.Saml2.Configuration;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.CodeAnalysis;
 
 namespace CanvasAccountRegistration.Web
 {
     public class Startup
-    {
+    {       
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
@@ -61,6 +55,12 @@ namespace CanvasAccountRegistration.Web
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IAccountDataAccess, AccountDataAccess>();
             services.AddSingleton<SqlStringBuilder<Account>>();
+            #endregion
+
+            #region register AccountLog
+            services.AddTransient<IAccountLogService, AccountLogService>();
+            services.AddTransient<IAccountLogDataAccess, AccountLogDataAccess>();
+            services.AddSingleton<SqlStringBuilder<AccountLog>>();
             #endregion
 
             #region register Log
@@ -86,7 +86,7 @@ namespace CanvasAccountRegistration.Web
             services.Configure<ApplicationSettings>(Configuration.GetSection("Application"));
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
             services.Configure<IpBlockerSettings>(Configuration.GetSection("IPBlockOptions"));
-
+            
             services.AddHttpClient();
             services.AddSingleton(GetMapper());
             ConfigureLocalization(services);
@@ -102,30 +102,16 @@ namespace CanvasAccountRegistration.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseRequestLocalization();
+            app.UseRequestLocalization();  
             RegisterMiddleware(app);
             ConfigureExceptionHandler(app);
-            CustomConfiguration(app, env);
+            CustomConfiguration(app, env); 
 
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-
-            //app.Map("/Saml2/Metadata", appBuilder =>
-            //{
-            //    appBuilder.Run(async context =>
-            //    {
-            //        var metadata = new Sustainsys.Saml2.Metadata.MetadataBase(options.SPOptions).CreateMetadata();
-            //        context.Response.ContentType = "application/xml";
-            //        await context.Response.WriteAsync(metadata.ToXmlString());
-            //    });
-            //});
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapSaml2();
             });
         }
 
@@ -146,8 +132,8 @@ namespace CanvasAccountRegistration.Web
             app.UseMiddleware<RedirectNotFound>();
             app.UseMiddleware<RedirectTablelang>();
         }
-
-        protected void ConfigureLocalization(IServiceCollection services)
+        
+         protected void ConfigureLocalization(IServiceCollection services)
         {
             var supportedCultures = GetSupportedLanguages();
 
@@ -206,20 +192,24 @@ namespace CanvasAccountRegistration.Web
     {
         public MappingConfiguration()
         {
+        
+                CreateMap<Account, AccountViewModel>();
 
-            CreateMap<Account, AccountViewModel>();
+                CreateMap<AccountViewModel, Account>();
+        
+                CreateMap<AccountLog, AccountLogViewModel>();
 
-            CreateMap<AccountViewModel, Account>();
+                CreateMap<AccountLogViewModel, AccountLog>();
+        
+                CreateMap<Log, LogViewModel>();
 
-            CreateMap<Log, LogViewModel>();
+                CreateMap<LogViewModel, Log>();
+        
+                CreateMap<Migration, MigrationViewModel>();
 
-            CreateMap<LogViewModel, Log>();
-
-            CreateMap<Migration, MigrationViewModel>();
-
-            CreateMap<MigrationViewModel, Migration>();
-
-
+                CreateMap<MigrationViewModel, Migration>();
+        
+    
         }
     }
 
@@ -256,7 +246,7 @@ namespace CanvasAccountRegistration.Web
         public async Task InvokeAsync(HttpContext context)
         {
             await next.Invoke(context);
-
+            
             if (context.Response.StatusCode == 404 && !context.Response.HasStarted && !context.Request.Path.Value.Contains("notfound"))
             {
                 context.Response.Redirect($"/notfound?page={context.Request.Path}");
@@ -293,7 +283,7 @@ namespace CanvasAccountRegistration.Web
         }
     }
 
-
+    
 
     #region clean-up
     public interface ICleanUp
@@ -357,7 +347,7 @@ namespace CanvasAccountRegistration.Web
     }
 
     #endregion
-
+    
     #region version middleware
 
 
@@ -465,7 +455,7 @@ namespace CanvasAccountRegistration.Web
 
     #region ip-blocker middleware
 
-
+    
 
     public class IPBlockMiddleware
     {

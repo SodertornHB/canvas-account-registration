@@ -1,0 +1,71 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using Localization
+@using Microsoft.Extensions.Options
+@using CanvasAccountRegistration.Logic.Settings
+@inject LocService SharedLocalizer
+@inject IOptions<ApplicationSettings> applicationSettingsOptions
+@model CanvasAccountRegistration.Web.ViewModel.AccountLogViewModel
+
+@{
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Edit")} {SharedLocalizer.GetLocalizedHtmlString("AccountLog")}";
+}
+
+<h1>@($"{SharedLocalizer.GetLocalizedHtmlString("Edit")} {@SharedLocalizer.GetLocalizedHtmlString("AccountLog")}")</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md">
+        <form method="post"  enctype="multipart/form-data" asp-controller="AccountLog" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="displayName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("displayName")</label>
+                <input asp-for="displayName" value="@Model.displayName" />
+                <span asp-validation-for="displayName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="givenName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("givenName")</label>
+                <input asp-for="givenName" value="@Model.givenName" />
+                <span asp-validation-for="givenName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("sn")</label>
+                <input asp-for="sn" value="@Model.sn" />
+                <span asp-validation-for="sn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eduPersonPrincipalName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("eduPersonPrincipalName")</label>
+                <input asp-for="eduPersonPrincipalName" value="@Model.eduPersonPrincipalName" />
+                <span asp-validation-for="eduPersonPrincipalName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mail" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("mail")</label>
+                <input asp-for="mail" value="@Model.mail" />
+                <span asp-validation-for="mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eduPersonAssurance" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("eduPersonAssurance")</label>
+                <input asp-for="eduPersonAssurance" value="@Model.eduPersonAssurance" />
+                <span asp-validation-for="eduPersonAssurance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</label>
+                <input asp-for="CreatedOn" value="@Model.CreatedOn" />
+                <span asp-validation-for="CreatedOn" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <div class="form-group">
+                <input type="submit" value="@SharedLocalizer.GetLocalizedHtmlString("Edit")" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+        <a asp-controller="AccountLog" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back to List")</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
