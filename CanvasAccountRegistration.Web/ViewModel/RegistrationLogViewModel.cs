@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CanvasAccountRegistration.Web.ViewModel
 {
-    public partial class AccountLogViewModel : ViewModelBase
+    public partial class RegistrationLogViewModel : ViewModelBase
     {
         public virtual string displayName {get;set;}  = ""; 
         public virtual string givenName {get;set;}  = ""; 

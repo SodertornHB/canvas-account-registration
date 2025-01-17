@@ -9,12 +9,12 @@ using CanvasAccountRegistration.Logic.DataAccess;
 
 namespace CanvasAccountRegistration.Logic.DataAccess
 {
-    public interface IAccountLogDataAccess : IDataAccess<AccountLog>
+    public interface IRegistrationLogDataAccess : IDataAccess<RegistrationLog>
     {    }
 
-    public class AccountLogDataAccess : BaseDataAccess<AccountLog>, IAccountLogDataAccess
+    public class RegistrationLogDataAccess : BaseDataAccess<RegistrationLog>, IRegistrationLogDataAccess
     {
-        public AccountLogDataAccess(ISqlDataAccess db, SqlStringBuilder<AccountLog> sqlStringBuilder)
+        public RegistrationLogDataAccess(ISqlDataAccess db, SqlStringBuilder<RegistrationLog> sqlStringBuilder)
             : base(db, sqlStringBuilder)
         { }
      }

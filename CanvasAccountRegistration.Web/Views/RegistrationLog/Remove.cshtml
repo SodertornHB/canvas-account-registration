@@ -4,13 +4,13 @@
 @using Localization
 @using Microsoft.Extensions.Options
 @inject LocService SharedLocalizer
-@model CanvasAccountRegistration.Web.ViewModel.AccountLogViewModel
+@model CanvasAccountRegistration.Web.ViewModel.RegistrationLogViewModel
 
 @{
-    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Delete")} {SharedLocalizer.GetLocalizedHtmlString("AccountLog")}";
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Delete")} {SharedLocalizer.GetLocalizedHtmlString("RegistrationLog")}";
 }
 
-<h1>@($"{SharedLocalizer.GetLocalizedHtmlString("Delete")} {@SharedLocalizer.GetLocalizedHtmlString("AccountLog")}")</h1>
+<h1>@($"{SharedLocalizer.GetLocalizedHtmlString("Delete")} {@SharedLocalizer.GetLocalizedHtmlString("RegistrationLog")}")</h1>
 
 <h3>@SharedLocalizer.GetLocalizedHtmlString("Are you sure you want to delete this?")</h3>
 <div>
@@ -60,10 +60,10 @@
             @Model.CreatedOn
         </dd>
     </dl>
-    <form method="post"  enctype="multipart/form-data" asp-controller="AccountLog" asp-action="Remove">    
+    <form method="post"  enctype="multipart/form-data" asp-controller="RegistrationLog" asp-action="Remove">    
         @Html.HiddenFor(x => x.Id)
         <input type="submit" value="@SharedLocalizer.GetLocalizedHtmlString("Delete")" class="btn btn-danger" /> |
-        <a asp-controller="AccountLog" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back to List")</a>
+        <a asp-controller="RegistrationLog" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back to List")</a>
     </form>
     </div>
 

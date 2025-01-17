@@ -10,14 +10,14 @@ using Microsoft.Extensions.Logging;
 
 namespace CanvasAccountRegistration.Logic.Services
 {
-    public partial interface IAccountLogService : IService<AccountLog>
+    public partial interface IRegistrationLogService : IService<RegistrationLog>
     {
     }
 
-    public partial class AccountLogService : Service<AccountLog>, IAccountLogService
+    public partial class RegistrationLogService : Service<RegistrationLog>, IRegistrationLogService
     {
-        public AccountLogService(ILogger<AccountLogService> logger,
-           IAccountLogDataAccess dataAccess)
+        public RegistrationLogService(ILogger<RegistrationLogService> logger,
+           IRegistrationLogDataAccess dataAccess)
            : base(logger, dataAccess)
         { }
     }

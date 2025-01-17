@@ -17,17 +17,17 @@ namespace CanvasAccountRegistration.Logic.Model
             return this.FirstOrDefault(attr => attr.Identifier == identifier);
         }
 
-        public AccountLog ToAccountLog()
+        public RegistrationLog ToRegistrationLog()
         {
-            var accountLog = new AccountLog();
+            var registrationLog = new RegistrationLog();
             var mapping = new Dictionary<string, Action<string>>
             {
-                { RequestedAttributeNameConstant.DisplayName, value => accountLog.displayName = value },
-                { RequestedAttributeNameConstant.GivenName, value => accountLog.givenName = value },
-                { RequestedAttributeNameConstant.Sn, value => accountLog.sn = value },
-                { RequestedAttributeNameConstant.Mail, value => accountLog.mail = value },
-                { RequestedAttributeNameConstant.EduPersonPrincipalName, value => accountLog.eduPersonPrincipalName = value },
-                { RequestedAttributeNameConstant.EduPersonAssurance, value => accountLog.eduPersonAssurance = value }
+                { RequestedAttributeNameConstant.DisplayName, value => registrationLog.displayName = value },
+                { RequestedAttributeNameConstant.GivenName, value => registrationLog.givenName = value },
+                { RequestedAttributeNameConstant.Sn, value => registrationLog.sn = value },
+                { RequestedAttributeNameConstant.Mail, value => registrationLog.mail = value },
+                { RequestedAttributeNameConstant.EduPersonPrincipalName, value => registrationLog.eduPersonPrincipalName = value },
+                { RequestedAttributeNameConstant.EduPersonAssurance, value => registrationLog.eduPersonAssurance = value }
             };
 
             foreach (var attr in this)
@@ -38,7 +38,7 @@ namespace CanvasAccountRegistration.Logic.Model
                 }
             }
 
-            return accountLog;
+            return registrationLog;
         }
     }
 }

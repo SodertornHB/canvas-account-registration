@@ -17,32 +17,32 @@ using System;
 
 namespace CanvasAccountRegistration.Test
 {    
-    public class AccountLogServiceTests
+    public class RegistrationLogServiceTests
     {
-        private Mock<ILogger<AccountLogService>> loggerMock;
-        private Mock<IAccountLogDataAccess> dataAccessMock;
+        private Mock<ILogger<RegistrationLogService>> loggerMock;
+        private Mock<IRegistrationLogDataAccess> dataAccessMock;
 
         [SetUp]
         public void Setup()
         {
-            loggerMock = new Mock<ILogger<AccountLogService>>();
-            dataAccessMock = new Mock<IAccountLogDataAccess>();
+            loggerMock = new Mock<ILogger<RegistrationLogService>>();
+            dataAccessMock = new Mock<IRegistrationLogDataAccess>();
         }
 
         [Test]
         public void Initiate_SholdNotBeNull()
         {
-            var sut = new AccountLogService(loggerMock.Object, dataAccessMock.Object);
+            var sut = new RegistrationLogService(loggerMock.Object, dataAccessMock.Object);
             Assert.That(sut,!Is.Null);
         }
         
         [Test]
-        public async Task GetAccountLog_SholdNotBeNull()
+        public async Task GetRegistrationLog_SholdNotBeNull()
         {
              
         var id3 = 3;
-            dataAccessMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Task.FromResult(new AccountLog { Id = id3 }));
-            var sut = new AccountLogService(loggerMock.Object, dataAccessMock.Object);
+            dataAccessMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Task.FromResult(new RegistrationLog { Id = id3 }));
+            var sut = new RegistrationLogService(loggerMock.Object, dataAccessMock.Object);
             var result = await sut.Get(id3);
             Assert.That(sut, !Is.Null);
             Assert.That(id3, Is.EqualTo( result.Id));
@@ -50,20 +50,20 @@ namespace CanvasAccountRegistration.Test
         }
 
         [Test]
-        public async Task GetAllAccountLogs_SholdContainEntities()
+        public async Task GetAllRegistrationLogs_SholdContainEntities()
         {
              
             var id1 = 1;
             var id2 = 2;
             var id3 = 3;
-            var testData = new List<AccountLog>
+            var testData = new List<RegistrationLog>
             {
-                new AccountLog{ Id = id1 },
-                new AccountLog{ Id = id2 },
-                new AccountLog{ Id = id3 }
+                new RegistrationLog{ Id = id1 },
+                new RegistrationLog{ Id = id2 },
+                new RegistrationLog{ Id = id3 }
             };
             dataAccessMock.Setup(x => x.GetAll()).Returns(Task.FromResult(testData.AsEnumerable()));
-            var sut = new AccountLogService(loggerMock.Object, dataAccessMock.Object);
+            var sut = new RegistrationLogService(loggerMock.Object, dataAccessMock.Object);
             var result = await sut.GetAll();
             Assert.That(3, Is.EqualTo( result.Count()));
             Assert.That(id1, Is.EqualTo(result.First().Id));
@@ -72,33 +72,33 @@ namespace CanvasAccountRegistration.Test
         }
 
         [Test]
-        public async Task InsertAccountLog_VerifyInsertIsCalled()
+        public async Task InsertRegistrationLog_VerifyInsertIsCalled()
         {
              
             var id1 = 1;
-                    var sut = new AccountLogService(loggerMock.Object, dataAccessMock.Object);
-            await sut.Insert(new AccountLog { Id = id1 });
-            dataAccessMock.Verify(x => x.Insert(It.Is<AccountLog>(y => y.Id == id1)));
+                    var sut = new RegistrationLogService(loggerMock.Object, dataAccessMock.Object);
+            await sut.Insert(new RegistrationLog { Id = id1 });
+            dataAccessMock.Verify(x => x.Insert(It.Is<RegistrationLog>(y => y.Id == id1)));
             loggerMock.VerifyLoggingContains(LogLevel.Information, "Saving entity");
         }
 
         [Test]
-        public async Task UpdateAccountLog_VerifyUpdateIsCalled()
+        public async Task UpdateRegistrationLog_VerifyUpdateIsCalled()
         {
              
         var id1 = 1;
-            var sut = new AccountLogService(loggerMock.Object, dataAccessMock.Object);
-            await sut.Update(new AccountLog { Id = id1 });
-            dataAccessMock.Verify(x => x.Update(It.Is<AccountLog>(y => y.Id == id1)));
+            var sut = new RegistrationLogService(loggerMock.Object, dataAccessMock.Object);
+            await sut.Update(new RegistrationLog { Id = id1 });
+            dataAccessMock.Verify(x => x.Update(It.Is<RegistrationLog>(y => y.Id == id1)));
             loggerMock.VerifyLoggingContains(LogLevel.Information, "Update entity");
         }
 
         [Test]
-        public async Task DeleteAccountLog_VerifyDeleteIsCalled()
+        public async Task DeleteRegistrationLog_VerifyDeleteIsCalled()
         {
              
             var id1 = 1;
-            var sut = new AccountLogService(loggerMock.Object, dataAccessMock.Object);
+            var sut = new RegistrationLogService(loggerMock.Object, dataAccessMock.Object);
             await sut.Delete(id1);
             dataAccessMock.Verify(x => x.Delete(It.Is<int>(y => y == id1)));
             loggerMock.VerifyLoggingExact(LogLevel.Information, $"Deleting entity with id {id1} from data source.");

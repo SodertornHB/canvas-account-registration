@@ -15,16 +15,16 @@ namespace CanvasAccountRegistration.Logic.Services
 
     public partial class AccountServiceExtended : AccountService, IAccountServiceExtended
     {
-        private readonly IAccountLogServiceExtended accountLogService;
+        private readonly IRegistrationLogServiceExtended registrationLogService;
         private readonly IMapper mapper;
 
         public AccountServiceExtended(ILogger<AccountService> logger,
            IAccountDataAccess dataAccess,
-           IAccountLogServiceExtended accountLogService,
+           IRegistrationLogServiceExtended registrationLogService,
            IMapper mapper)
            : base(logger, dataAccess)
         {
-            this.accountLogService = accountLogService;
+            this.registrationLogService = registrationLogService;
             this.mapper = mapper;
         }
 
@@ -37,10 +37,10 @@ namespace CanvasAccountRegistration.Logic.Services
 
         public async Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection)
         {
-            var accountLog = await accountLogService.NewRegister(requestedAttributeCollection);
-            Account account = await GetByUserId(accountLog.eduPersonPrincipalName);
+            var registrationLog = await registrationLogService.NewRegister(requestedAttributeCollection);
+            Account account = await GetByUserId(registrationLog.eduPersonPrincipalName);
             if (account != null) return account;
-            account = mapper.Map<Account>(accountLog);
+            account = mapper.Map<Account>(registrationLog);
             return await Insert(account);
         }
     }

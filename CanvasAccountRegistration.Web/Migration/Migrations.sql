@@ -1,8 +1,9 @@
+
 if not exists (
     select distinct 1
     from information_schema.columns
-    where table_name = 'AccountLog'
-) begin CREATE TABLE AccountLog (
+    where table_name = 'RegistrationLog'
+) begin CREATE TABLE RegistrationLog (
     Id INT IDENTITY(1, 1) PRIMARY KEY,
     displayName NVARCHAR(512) NOT NULL,
     givenName NVARCHAR(512),
@@ -13,6 +14,7 @@ if not exists (
     CreatedOn DATETIME2 NOT NULL
 )
 end 
+
 if not exists (
     select distinct 1
     from information_schema.columns

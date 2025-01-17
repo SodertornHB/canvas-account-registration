@@ -10,13 +10,13 @@ using NUnit.Framework;
 
 namespace CanvasAccountRegistration.Test
 {    
-    public partial class AccountLogModelTests
+    public partial class RegistrationLogModelTests
     {
          [Test]
         public void Initiate_SholdNotBeNull()
         { 
                 var id = 1;
-                    var sut = new AccountLog { Id = id };            
+                    var sut = new RegistrationLog { Id = id };            
             Assert.That(sut,!Is.Null);
             Assert.That(id, Is.EqualTo(sut.Id));
         }
@@ -26,8 +26,8 @@ namespace CanvasAccountRegistration.Test
         [TestCase(18, 28, false)]
                 public void CompairTwoEntities(int id, int compairId, bool result)
         {
-            var sut = new AccountLog { Id = id };
-            var compair = new AccountLog { Id = compairId };
+            var sut = new RegistrationLog { Id = id };
+            var compair = new RegistrationLog { Id = compairId };
             Assert.That(result, Is.EqualTo(sut.Equals(compair)));
         }
     }

@@ -57,7 +57,7 @@ namespace Web
 #else 
             services.AddTransient<IRequestedAttributeService, FakeRequestedAttributeService>();
 #endif
-            services.AddTransient<IAccountLogServiceExtended, AccountLogServiceExtended>();
+            services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
             services.Configure<RouteOptions>(options =>
             {
@@ -169,8 +169,8 @@ namespace Web
 
         public static MappingConfiguration AddAdditionalMappingConfig(MappingConfiguration profile)
         {
-            profile.CreateMap<RequestedAttributeModel, AccountLog>();
-            profile.CreateMap<AccountLog, Account>()
+            profile.CreateMap<RequestedAttributeModel, RegistrationLog>();
+            profile.CreateMap<RegistrationLog, Account>()
                 .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.eduPersonPrincipalName))
                 .ForMember(x => x.Email, opt => opt.MapFrom(x => x.mail))
                 .ForMember(x => x.Surname, opt => opt.MapFrom(x => x.sn))

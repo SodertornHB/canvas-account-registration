@@ -6,18 +6,18 @@
 @using CanvasAccountRegistration.Logic.Settings
 @inject LocService SharedLocalizer
 @inject IOptions<ApplicationSettings> applicationSettingsOptions
-@model CanvasAccountRegistration.Web.ViewModel.AccountLogViewModel
+@model CanvasAccountRegistration.Web.ViewModel.RegistrationLogViewModel
 
 @{
-    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Edit")} {SharedLocalizer.GetLocalizedHtmlString("AccountLog")}";
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Edit")} {SharedLocalizer.GetLocalizedHtmlString("RegistrationLog")}";
 }
 
-<h1>@($"{SharedLocalizer.GetLocalizedHtmlString("Edit")} {@SharedLocalizer.GetLocalizedHtmlString("AccountLog")}")</h1>
+<h1>@($"{SharedLocalizer.GetLocalizedHtmlString("Edit")} {@SharedLocalizer.GetLocalizedHtmlString("RegistrationLog")}")</h1>
 
 <hr />
 <div class="row">
     <div class="col-md">
-        <form method="post"  enctype="multipart/form-data" asp-controller="AccountLog" asp-action="Edit">
+        <form method="post"  enctype="multipart/form-data" asp-controller="RegistrationLog" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="displayName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("displayName")</label>
@@ -63,7 +63,7 @@
 </div>
 
 <div>
-        <a asp-controller="AccountLog" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back to List")</a>
+        <a asp-controller="RegistrationLog" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back to List")</a>
 </div>
 
 @section Scripts {

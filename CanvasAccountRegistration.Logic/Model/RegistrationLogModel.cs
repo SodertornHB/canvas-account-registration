@@ -8,7 +8,7 @@ using System;
 
 namespace CanvasAccountRegistration.Logic.Model
 {
-    public partial class AccountLog : Entity
+    public partial class RegistrationLog : Entity
     {
         public virtual string displayName {get;set;}
         public virtual string givenName {get;set;}

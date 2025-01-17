@@ -3,15 +3,15 @@
 @* --------------------------------------------------------------------*@
 @using Localization
 @inject LocService SharedLocalizer
-@model IEnumerable<CanvasAccountRegistration.Web.ViewModel.AccountLogViewModel>
+@model IEnumerable<CanvasAccountRegistration.Web.ViewModel.RegistrationLogViewModel>
 
 @{
-    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("List")} {SharedLocalizer.GetLocalizedHtmlString("AccountLog")}";
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("List")} {SharedLocalizer.GetLocalizedHtmlString("RegistrationLog")}";
 }
 
-<h1>@SharedLocalizer.GetLocalizedHtmlString("AccountLog")</h1>
+<h1>@SharedLocalizer.GetLocalizedHtmlString("RegistrationLog")</h1>
 
-<a asp-controller="AccountLog" asp-action="Create">
+<a asp-controller="RegistrationLog" asp-action="Create">
     <button type="button" class="btn btn-info btn-lg"><span class="bi bi-plus-circle"></span>@SharedLocalizer.GetLocalizedHtmlString("Create New")</button>
 </a>
 <hr />
@@ -68,8 +68,8 @@
             </td>
   
             <td>
-                <a asp-controller="AccountLog" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> | 
-                <a asp-controller="AccountLog" asp-action="Remove" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a> 
+                <a asp-controller="RegistrationLog" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> | 
+                <a asp-controller="RegistrationLog" asp-action="Remove" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a> 
             </td>
         </tr>
 }

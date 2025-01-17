@@ -57,10 +57,10 @@ namespace CanvasAccountRegistration.Web
             services.AddSingleton<SqlStringBuilder<Account>>();
             #endregion
 
-            #region register AccountLog
-            services.AddTransient<IAccountLogService, AccountLogService>();
-            services.AddTransient<IAccountLogDataAccess, AccountLogDataAccess>();
-            services.AddSingleton<SqlStringBuilder<AccountLog>>();
+            #region register RegistrationLog
+            services.AddTransient<IRegistrationLogService, RegistrationLogService>();
+            services.AddTransient<IRegistrationLogDataAccess, RegistrationLogDataAccess>();
+            services.AddSingleton<SqlStringBuilder<RegistrationLog>>();
             #endregion
 
             #region register Log
@@ -197,9 +197,9 @@ namespace CanvasAccountRegistration.Web
 
                 CreateMap<AccountViewModel, Account>();
         
-                CreateMap<AccountLog, AccountLogViewModel>();
+                CreateMap<RegistrationLog, RegistrationLogViewModel>();
 
-                CreateMap<AccountLogViewModel, AccountLog>();
+                CreateMap<RegistrationLogViewModel, RegistrationLog>();
         
                 CreateMap<Log, LogViewModel>();
 

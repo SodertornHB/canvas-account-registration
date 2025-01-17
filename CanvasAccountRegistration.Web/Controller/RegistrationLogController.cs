@@ -17,14 +17,14 @@ using System.Linq;
 
 namespace CanvasAccountRegistration.Web.Controllers
 {
-    public partial class AccountLogController : Controller
+    public partial class RegistrationLogController : Controller
     {
-        private readonly ILogger<AccountLogController> logger;
-        private readonly IAccountLogService service;
+        private readonly ILogger<RegistrationLogController> logger;
+        private readonly IRegistrationLogService service;
         private readonly IMapper mapper;
 
-        public AccountLogController(ILogger<AccountLogController> logger, 
-        IAccountLogService service, 
+        public RegistrationLogController(ILogger<RegistrationLogController> logger, 
+        IRegistrationLogService service, 
         IMapper mapper)
         {
             this.logger = logger;
@@ -35,19 +35,19 @@ namespace CanvasAccountRegistration.Web.Controllers
         public virtual async Task<IActionResult> Index()
         {
             var list = await service.GetAll();
-            var viewModels = mapper.Map<IEnumerable<AccountLogViewModel>>(list);
+            var viewModels = mapper.Map<IEnumerable<RegistrationLogViewModel>>(list);
             return View(viewModels.OrderByDescending(x => x.Id));
         }
         
         public ActionResult Create()
         {
-            return View(new AccountLogViewModel());
+            return View(new RegistrationLogViewModel());
         }
 
         [HttpPost]
-        public virtual async Task<ActionResult> Create([FromForm]AccountLogViewModel viewModel)
+        public virtual async Task<ActionResult> Create([FromForm]RegistrationLogViewModel viewModel)
         {
-            var model = mapper.Map<AccountLog>(viewModel);
+            var model = mapper.Map<RegistrationLog>(viewModel);
             await service.Insert(model);
             return RedirectToAction(nameof(Index));
         }
@@ -55,14 +55,14 @@ namespace CanvasAccountRegistration.Web.Controllers
         public virtual async Task<ActionResult> Edit(int id)
         {
             var entity = await service.Get(id);
-            return View(mapper.Map<AccountLogViewModel>(entity));
+            return View(mapper.Map<RegistrationLogViewModel>(entity));
         }
 
 
         [HttpPost]
-        public virtual async Task<ActionResult> Edit([FromForm]AccountLogViewModel viewModel)
+        public virtual async Task<ActionResult> Edit([FromForm]RegistrationLogViewModel viewModel)
         {
-            var model = mapper.Map<AccountLog>(viewModel);
+            var model = mapper.Map<RegistrationLog>(viewModel);
             await service.Update(model);
             return RedirectToAction(nameof(Index));         
         }
@@ -70,13 +70,13 @@ namespace CanvasAccountRegistration.Web.Controllers
         public virtual async Task<ActionResult> Remove(int id)
         {
             var entity = await service.Get(id);
-            return View(mapper.Map<AccountLogViewModel>(entity));        
+            return View(mapper.Map<RegistrationLogViewModel>(entity));        
         }
 
         [HttpPost]
-        public virtual async Task<ActionResult> Remove([FromForm]AccountLogViewModel viewModel)
+        public virtual async Task<ActionResult> Remove([FromForm]RegistrationLogViewModel viewModel)
         {
-            var model = mapper.Map<AccountLog>(viewModel);
+            var model = mapper.Map<RegistrationLog>(viewModel);
             await service.Delete(viewModel.Id);
             return RedirectToAction(nameof(Index));         
         }

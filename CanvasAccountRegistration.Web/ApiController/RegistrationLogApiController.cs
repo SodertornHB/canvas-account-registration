@@ -20,12 +20,12 @@ namespace CanvasAccountRegistration.Web.ApiController
 { 
     [Route("api/v1/[controller]s")]
     [ApiController]
-    public partial class AccountLogController: ControllerBase
+    public partial class RegistrationLogController: ControllerBase
     {
-        protected readonly ILogger<AccountLogController> logger;
-        protected readonly IAccountLogService service;
+        protected readonly ILogger<RegistrationLogController> logger;
+        protected readonly IRegistrationLogService service;
 
-        public AccountLogController(ILogger<AccountLogController> logger, IAccountLogService service)
+        public RegistrationLogController(ILogger<RegistrationLogController> logger, IRegistrationLogService service)
         {
             this.logger = logger;
             this.service = service;
@@ -53,7 +53,7 @@ namespace CanvasAccountRegistration.Web.ApiController
         {
             if (filters == null) throw new ArgumentNullException(nameof(filters));
 
-            var modelType = typeof(AccountLog);
+            var modelType = typeof(RegistrationLog);
             foreach (var key in filters.Keys)
             {
                 var propertyInfo = modelType.GetProperty(key, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
@@ -69,7 +69,7 @@ namespace CanvasAccountRegistration.Web.ApiController
         [HttpPost]
         public virtual async Task<IActionResult> Post([FromBody] dynamic value)
         {
-            var item = JsonConvert.DeserializeObject<AccountLog>(value.ToString());
+            var item = JsonConvert.DeserializeObject<RegistrationLog>(value.ToString());
             var newItem = await service.Insert(item);
             return CreatedAtAction(nameof(Post), new {id = newItem.Id }, newItem);
         }
@@ -78,7 +78,7 @@ namespace CanvasAccountRegistration.Web.ApiController
         public virtual async Task<IActionResult> Put(int id, [FromBody] dynamic value)
         {
             if (!await service.Exists(id)) return NotFound();
-            var item = JsonConvert.DeserializeObject<AccountLog>(value.ToString());
+            var item = JsonConvert.DeserializeObject<RegistrationLog>(value.ToString());
             item.Id = id;
             await service.Update(item);
             return StatusCode(StatusCodes.Status204NoContent);
