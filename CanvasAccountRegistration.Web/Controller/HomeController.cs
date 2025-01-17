@@ -5,6 +5,7 @@
 //-------------------------------------------------------------------------------------------------------------------- 
 
 using CanvasAccountRegistration.Logic.Extensions;
+using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Service;
 using Microsoft.AspNetCore.Authorization;
@@ -16,6 +17,7 @@ using Microsoft.Extensions.Options;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Web.Controllers
 {
@@ -23,12 +25,15 @@ namespace Web.Controllers
     {
         private readonly RequestLocalizationOptions localizationOptions;
         private readonly IRequestedAttributeService requestedAttributeService;
+        private readonly IAccountServiceExtended accountService;
 
         public HomeController(IOptions<RequestLocalizationOptions> localizationOptions,
-            IRequestedAttributeService requestedAttributeService)
+            IRequestedAttributeService requestedAttributeService,
+            IAccountServiceExtended accountService)
         {
             this.localizationOptions = localizationOptions.Value;
             this.requestedAttributeService = requestedAttributeService;
+            this.accountService = accountService;
         }
 
         [AllowAnonymous]
@@ -41,9 +46,10 @@ namespace Web.Controllers
         [Authorize]
 #endif
         [HttpGet("register")]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
             var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();
+            var account = await accountService.NewRegister(collection);
             var claims = collection.Select(c => new ClaimViewModel
             {
                 Type = c.Name,

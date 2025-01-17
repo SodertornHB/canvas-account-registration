@@ -26,6 +26,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Sustainsys.Saml2.AspNetCore2;
 using Logic.Service;
+using CanvasAccountRegistration.Logic.Model;
+using CanvasAccountRegistration.Web.ViewModel;
 
 namespace Web
 {
@@ -55,6 +57,8 @@ namespace Web
 #else 
             services.AddTransient<IRequestedAttributeService, FakeRequestedAttributeService>();
 #endif
+            services.AddTransient<IAccountLogServiceExtended, AccountLogServiceExtended>();
+            services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
@@ -165,6 +169,15 @@ namespace Web
 
         public static MappingConfiguration AddAdditionalMappingConfig(MappingConfiguration profile)
         {
+            profile.CreateMap<RequestedAttributeModel, AccountLog>();
+            profile.CreateMap<AccountLog, Account>()
+                .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.eduPersonPrincipalName))
+                .ForMember(x => x.Email, opt => opt.MapFrom(x => x.mail))
+                .ForMember(x => x.Surname, opt => opt.MapFrom(x => x.sn))
+                .ForMember(x => x.AssuranceLevel, opt => opt.MapFrom(x => x.eduPersonAssurance))
+                .ForMember(x => x.DisplayName, opt => opt.MapFrom(x => x.displayName))
+                .ForMember(x => x.GivenName, opt => opt.MapFrom(x => x.givenName));
+
             return profile;
         }
 
