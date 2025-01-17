@@ -1,0 +1,16 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using Localization
+@inject LocService SharedLocalizer
+
+@{
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Privacy")}";
+}
+
+<h1>@SharedLocalizer.GetLocalizedHtmlString("Privacy")</h1>
+@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Privacy info"))
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

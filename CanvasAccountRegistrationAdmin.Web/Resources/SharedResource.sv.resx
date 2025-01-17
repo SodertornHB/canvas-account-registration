@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Canvas Account Registration info" xml:space="preserve">
+    <value>&lt;p&gt; Canvas kontoregistrering är en tjänst riktad till personal anställd på myndigheter i Sverige som ska läsa en uppdragsutbildning på Södertörns högskola.&lt;/p&gt;&lt;p&gt;Canvas kontoregistrering används för att registrera ett EduId-konto för användning i Studiewebben Canvas. När registrerat konto är granskat och godkänt kommer det att flyttas till Studiewebben Canvas och användaren kan logga in där med sitt EduId.&lt;/p&gt;</value>
+  </data>
+  <data name="Privacy info" xml:space="preserve">
+    <value>&lt;h2&gt;Hantering av personuppgifter&lt;/h2&gt;
+&lt;h3&gt;Överföring av personuppgifter&lt;/h3&gt;
+&lt;p&gt;Personuppgifter överförs från identitetsutfärdaren (din inloggningstjänst) till Canvas kontoregistrering för att
+    Södertörns högskola ska kunna säkerställa användarens identitet, så att användaren i förlängningen kan genomföra sin
+    utbildning.&lt;/p&gt;
+&lt;p&gt;I samband med inloggning i denna tjänst begärs följande personuppgifter från den identitetsutfärdare du använder:&lt;/p&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Personuppgift&lt;/th&gt;
+            &lt;th&gt;Syfte&lt;/th&gt;
+            &lt;th&gt;Teknisk representation&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Unik identifierare&lt;/td&gt;
+            &lt;td&gt;Att ge dig tillgång till utbildningsmaterial i Studiewebben Canvas&lt;/td&gt;
+            &lt;td&gt;eduPersonPrincipalName&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Namn&lt;/td&gt;
+            &lt;td&gt;Namnet används i listor och andra gränssnitt&lt;/td&gt;
+            &lt;td&gt;displayName&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Förnamn&lt;/td&gt;
+            &lt;td&gt;Förnamnet används i listor och andra gränssnitt&lt;/td&gt;
+            &lt;td&gt;givenName&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Efternamn&lt;/td&gt;
+            &lt;td&gt;Efternamnet används i listor och andra gränssnitt&lt;/td&gt;
+            &lt;td&gt;sn&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;E-postadress&lt;/td&gt;
+            &lt;td&gt;Används för att kunna kontakta dig&lt;/td&gt;
+            &lt;td&gt;email&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Unik användar-ID&lt;/td&gt;
+            &lt;td&gt;Används för att unikt identifiera dig i tjänsten&lt;/td&gt;
+            &lt;td&gt;eduPersonUniqueId&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Roll och organisationstillhörighet&lt;/td&gt;
+            &lt;td&gt;Beskriver din roll och relation till organisationen&lt;/td&gt;
+            &lt;td&gt;eduPersonScopedAffiliation&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Personnummer&lt;/td&gt;
+            &lt;td&gt;Används för att identifiera dig nationellt&lt;/td&gt;
+            &lt;td&gt;personalIdentityNumber&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;td&gt;Tillitsnivå&lt;/td&gt;
+        &lt;td&gt;Används för att bedöma tillitsnivån (LoA) för en användares identitet&lt;/td&gt;
+        &lt;td&gt;eduPersonAssurance&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Förutom direkta personuppgifter överförs även indirekta personuppgifter såsom vilken organisation användaren
+    tillhöroch vilken identitetsutfärdare som har använts vid inloggningen. I kombination med ovanstående
+    personuppgifter kandessa användas för att unikt identifiera en person.&lt;/p&gt;
+&lt;h3&gt;Överföring av personuppgifter till tredje part&lt;/h3&gt;
+&lt;p&gt;Personuppgifter som behandlas inom Canvas kontoregistrering kan komma att delas med tredje part om det är nödvändigt
+    för atttillhandahålla tjänsten eller om det krävs enligt lag. Vid sådan överföring säkerställer högskolan att
+    mottagarenhanterar uppgifterna i enlighet med gällande dataskyddsregler.&lt;/p&gt;
+&lt;h3&gt;Rättslig grund&lt;/h3&gt;
+&lt;p&gt;Behandlingen av personuppgifter i tjänsten Canvas kontoregistrering är ett led i Södertörns högskolas
+    myndighetsutövning. Ävenfullgörande av rättslig förpliktelse kan i vissa fall vara en rättslig grund för tjänsten.
+&lt;/p&gt;
+&lt;h3&gt;Rätt till registerutdrag, rättelse och radering av personuppgifter&lt;/h3&gt;
+&lt;p&gt;För registerutdrag, rättelse och radering av dina personuppgifter, kontakta personuppgiftsansvarig.&lt;/p&gt;
+&lt;p&gt;Rättelse av personuppgifter som överförts i samband med inloggning gör du i den identitetsutfärdare som du
+    använderför att logga in. Dessa uppgifter rättas i tjänsten vid första inloggningen efter att personuppgifterna är
+    rättade iidentitetsutfärdaren.&lt;/p&gt;
+&lt;h3&gt;Rensning av personuppgifter&lt;/h3&gt;
+&lt;p&gt;Personuppgifter som behandlas inom Canvas kontoregistrering sparas endast så länge de är nödvändiga för att uppfylla
+    tjänstensändamål. När du inte längre använder tjänsten kommer dina personuppgifter att raderas i enlighet med
+    högskolansrutiner för datalagring och rensning.&lt;/p&gt;
+&lt;h3&gt;Personuppgiftsansvarig&lt;/h3&gt;
+&lt;p&gt;Personuppgiftsansvarig för behandlingen av personuppgifter är Södertörns högskola, Sverige. Har du frågor om
+    hurpersonuppgifter hanteras inom tjänsten, kontakta dataskydd@sh.se.&lt;/p&gt;
+&lt;p&gt;Kontaktuppgifter till Södertörns högskolas dataskyddsombud finns på &lt;ahref="https:
+        //www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;denna sida&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
+&lt;p&gt;Denna tjänst följer det internationella ramverket GÉANT Data Protection Code of Conduct för överföring
+    avpersonuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES
+    somanvänds inom forskning och högre utbildning.&lt;/p&gt;</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Överföring av personuppgifter till tjänsten i samband med federerad inloggning (Privacy Policy)</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Beskrivning av tjänsten Canvas kontoregistrering</value>
+  </data>
+  <data name="Toggle language" xml:space="preserve">
+    <value>In english</value>
+  </data>
+</root>
