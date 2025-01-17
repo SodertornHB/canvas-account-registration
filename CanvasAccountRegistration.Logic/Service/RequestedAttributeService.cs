@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Security.Claims;
 using System.Security.Principal;
+using Microsoft.Extensions.Logging;
 
 namespace Logic.Service
 {
@@ -24,6 +25,10 @@ namespace Logic.Service
         {
             if (principal is ClaimsPrincipal claimsPrincipal)
             {
+                if (!claimsPrincipal.Identity.IsAuthenticated)
+                {
+                    throw new UnauthorizedAccessException();
+                }
                 return claimsPrincipal.Claims.ToRequestedAttributeCollection();
             }
             return [];

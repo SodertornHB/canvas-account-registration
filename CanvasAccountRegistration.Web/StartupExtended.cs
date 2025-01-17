@@ -92,6 +92,10 @@ namespace Web
                     LoadCertificate(options, saml2Options.Certificate);
                 });
             }
+#if RELEASE
+            services.AddScoped<IPrincipal>(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.User);
+            services.AddHttpContextAccessor();
+#endif
         }
 
         private static void ConfigureIdentityProvider(Saml2Options options, IdentityProviderSettings idpSettings)

@@ -32,7 +32,7 @@ namespace CanvasAccountRegistration.Logic.Model
 
             foreach (var attr in this)
             {
-                if (mapping.TryGetValue(attr.Name, out var setter))
+                if (mapping.TryGetValue(attr.Identifier, out var setter))
                 {
                     setter(attr.Value);
                 }
