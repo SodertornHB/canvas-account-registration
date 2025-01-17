@@ -339,13 +339,13 @@
     <value>Namn</value>
   </data>
   <data name="Is verified" xml:space="preserve">
-    <value>Verifierad med bankid?</value>
+    <value>Verifierad med bankid</value>
   </data>
   <data name="Is approved" xml:space="preserve">
-    <value>Godkänd av admin?</value>
+    <value>Godkänd av admin</value>
   </data>
   <data name="Is integrated" xml:space="preserve">
-    <value>Integrerad i Studiewebben?</value>
+    <value>Integrerad i Studiewebben</value>
   </data>
   <data name="Created On" xml:space="preserve">
     <value>Skapat</value>

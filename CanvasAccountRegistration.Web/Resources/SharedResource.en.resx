@@ -339,13 +339,13 @@
     <value>Name</value>
   </data>
   <data name="Is verified" xml:space="preserve">
-    <value>Verified with bankid?</value>
+    <value>Verified with bankid</value>
   </data>
   <data name="Is approved" xml:space="preserve">
-    <value>Approved by admin?</value>
+    <value>Approved by admin</value>
   </data>
   <data name="Is integrated" xml:space="preserve">
-    <value>Integrated in Canvas?</value>
+    <value>Integrated in Canvas</value>
   </data>
   <data name="Created On" xml:space="preserve">
     <value>Created on</value>

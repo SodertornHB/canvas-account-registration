@@ -28,6 +28,8 @@ using Sustainsys.Saml2.AspNetCore2;
 using Logic.Service;
 using CanvasAccountRegistration.Logic.Model;
 using CanvasAccountRegistration.Web.ViewModel;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Http;
 
 namespace Web
 {

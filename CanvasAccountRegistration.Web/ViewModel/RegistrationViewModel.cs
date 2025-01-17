@@ -17,7 +17,9 @@ namespace CanvasAccountRegistration.Web.ViewModel
         public virtual DateTime? VerifiedOn {get;set;} 
         [DataType(DataType.Text)]
         public virtual DateTime? IntegratedOn {get;set; }
-        public bool IsVerifiedWithId => AssuranceLevel.Contains("high", StringComparison.OrdinalIgnoreCase) || AssuranceLevel.Contains("Al2",StringComparison.OrdinalIgnoreCase);
+        public bool IsVerifiedWithId => AssuranceLevel.Contains("high", StringComparison.OrdinalIgnoreCase) ||
+                                        AssuranceLevel.Contains("medium", StringComparison.OrdinalIgnoreCase) ||
+                                        AssuranceLevel.Contains("Al2", StringComparison.OrdinalIgnoreCase);
         public bool IsApproved => VerifiedOn != null;
         public bool IsIntegrated => IntegratedOn != null;
     }
