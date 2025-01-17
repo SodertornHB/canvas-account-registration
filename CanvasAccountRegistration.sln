@@ -8,6 +8,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "CanvasAccountRegis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "CanvasAccountRegistration.Test\Test.csproj", "{C2B4C4D1-586E-450B-A067-30287B612552}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAdmin", "CanvasAccountRegistrationAdmin.Web\WebAdmin.csproj", "{92CBDD52-FE4A-4A0C-923C-B25401FB8601}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{C2B4C4D1-586E-450B-A067-30287B612552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2B4C4D1-586E-450B-A067-30287B612552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2B4C4D1-586E-450B-A067-30287B612552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92CBDD52-FE4A-4A0C-923C-B25401FB8601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92CBDD52-FE4A-4A0C-923C-B25401FB8601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92CBDD52-FE4A-4A0C-923C-B25401FB8601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92CBDD52-FE4A-4A0C-923C-B25401FB8601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
