@@ -9,6 +9,7 @@ namespace CanvasAccountRegistration.Logic.Services
 {
     public partial interface IAccountServiceExtended : IAccountService
     {
+        Task<Account> GetByUserId(string userId);
         Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection);
     }
 
@@ -27,11 +28,17 @@ namespace CanvasAccountRegistration.Logic.Services
             this.mapper = mapper;
         }
 
+        public  async Task<Account> GetByUserId(string userId)
+        {
+            var accounts = await GetAll();
+            var account = accounts.SingleOrDefault(x => x.UserId == userId);
+            return account;
+        }
+
         public async Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection)
         {
             var accountLog = await accountLogService.NewRegister(requestedAttributeCollection);
-            var accounts = await GetAll();
-            var account = accounts.SingleOrDefault(x => x.UserId == accountLog.eduPersonPrincipalName);
+            Account account = await GetByUserId(accountLog.eduPersonPrincipalName);
             if (account != null) return account;
             account = mapper.Map<Account>(accountLog);
             return await Insert(account);

@@ -1,3 +1,4 @@
+using CanvasAccountRegistration.Logic.Constans;
 using System.Collections.Generic;
 using System.Security.Claims;
 
@@ -7,12 +8,12 @@ namespace CanvasAccountRegistration.Logic.Model
     {
         public static readonly Dictionary<string, string> NameIdentifierMappings = new Dictionary<string, string>
         {
-            { "urn:oid:2.16.840.1.113730.3.1.241", "displayName" },
-            { "urn:oid:1.3.6.1.4.1.5923.1.1.1.6", "eduPersonPrincipalName" },
-            { "urn:oid:2.5.4.42", "givenName" },
-            { "urn:oid:0.9.2342.19200300.100.1.3", "mail" },
-            { "urn:oid:2.5.4.4", "sn" },
-            { "urn:oid:1.3.6.1.4.1.5923.1.1.1.11", "eduPersonAssurance" }
+            { RequestedAttributeObjectIdentifierConstant.DisplayName, RequestedAttributeNameConstant.DisplayName },
+            { RequestedAttributeObjectIdentifierConstant.EduPersonPrincipalName, RequestedAttributeNameConstant.EduPersonPrincipalName },
+            { RequestedAttributeObjectIdentifierConstant.GivenName, RequestedAttributeNameConstant.GivenName },
+            { RequestedAttributeObjectIdentifierConstant.Mail, RequestedAttributeNameConstant.Mail },
+            { RequestedAttributeObjectIdentifierConstant.Sn, RequestedAttributeNameConstant.Sn },
+            { RequestedAttributeObjectIdentifierConstant.EduPersonAssurance, RequestedAttributeNameConstant.EduPersonAssurance }
         };
         public RequestedAttributeModel(string identifier, string value)
         { 

@@ -1,3 +1,4 @@
+using CanvasAccountRegistration.Logic.Constans;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,12 @@ namespace CanvasAccountRegistration.Logic.Model
             var accountLog = new AccountLog();
             var mapping = new Dictionary<string, Action<string>>
             {
-                { "displayName", value => accountLog.displayName = value },
-                { "givenName", value => accountLog.givenName = value },
-                { "sn", value => accountLog.sn = value },
-                { "mail", value => accountLog.mail = value },
-                { "eduPersonPrincipalName", value => accountLog.eduPersonPrincipalName = value },
-                { "eduPersonAssurance", value => accountLog.eduPersonAssurance = value }
+                { RequestedAttributeNameConstant.DisplayName, value => accountLog.displayName = value },
+                { RequestedAttributeNameConstant.GivenName, value => accountLog.givenName = value },
+                { RequestedAttributeNameConstant.Sn, value => accountLog.sn = value },
+                { RequestedAttributeNameConstant.Mail, value => accountLog.mail = value },
+                { RequestedAttributeNameConstant.EduPersonPrincipalName, value => accountLog.eduPersonPrincipalName = value },
+                { RequestedAttributeNameConstant.EduPersonAssurance, value => accountLog.eduPersonAssurance = value }
             };
 
             foreach (var attr in this)

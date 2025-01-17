@@ -4,7 +4,6 @@
 // Generator version: 0.0.1.0
 //-------------------------------------------------------------------------------------------------------------------- 
 
-using CanvasAccountRegistration.Logic.Extensions;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Service;

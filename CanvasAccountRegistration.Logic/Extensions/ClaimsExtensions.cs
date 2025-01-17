@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace CanvasAccountRegistration.Logic.Extensions
 {
-    public static class ClaimsExtensions
+    public static class RequestedAttributeNames
     {
         public static RequestedAttributeCollection ToRequestedAttributeCollection(this IEnumerable<Claim> claims)
         {
