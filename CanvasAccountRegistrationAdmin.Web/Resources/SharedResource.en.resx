@@ -144,17 +144,11 @@
   <data name="List" xml:space="preserve">
     <value>List</value>
   </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>Back to List</value>
-  </data>
   <data name="ErrorHeader" xml:space="preserve">
     <value>Error</value>
   </data>
   <data name="ErrorDescription" xml:space="preserve">
     <value>An error occurred. Please contact &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
-  </data>
-  <data name="Are you sure you want to delete this?" xml:space="preserve">
-    <value>Are you sure you want to delete this?</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Account</value>

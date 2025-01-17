@@ -4,6 +4,7 @@
 // Generator version: 0.0.1.0
 //-------------------------------------------------------------------------------------------------------------------- 
 
+using AutoMapper;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Service;
@@ -25,25 +26,32 @@ namespace Web.Controllers
         private readonly RequestLocalizationOptions localizationOptions;
         private readonly IRequestedAttributeService requestedAttributeService;
         private readonly IAccountServiceExtended accountService;
+        private readonly IMapper mapper;
 
         public HomeController(IOptions<RequestLocalizationOptions> localizationOptions,
             IRequestedAttributeService requestedAttributeService,
-            IAccountServiceExtended accountService)
+            IAccountServiceExtended accountService,
+            IMapper mapper)
         {
             this.localizationOptions = localizationOptions.Value;
             this.requestedAttributeService = requestedAttributeService;
             this.accountService = accountService;
+            this.mapper = mapper;
         }
 
-        [AllowAnonymous]
-        public IActionResult Index()
-        {
-            return View();
-        }
 
 #if RELEASE
         [Authorize]
 #endif
+        public async Task<IActionResult> Index()
+        {
+            var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();
+            var account = await accountService.NewRegister(collection);
+            var viewModel = mapper.Map<RegistrationViewModel>(account);
+
+            return View(viewModel);
+        }
+
         [HttpGet("register")]
         public async Task<IActionResult> Register()
         {

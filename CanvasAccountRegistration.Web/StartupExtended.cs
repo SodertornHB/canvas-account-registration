@@ -169,6 +169,7 @@ namespace Web
 
         public static MappingConfiguration AddAdditionalMappingConfig(MappingConfiguration profile)
         {
+            profile.CreateMap<Account, RegistrationViewModel>();
             profile.CreateMap<RequestedAttributeModel, RegistrationLog>();
             profile.CreateMap<RegistrationLog, Account>()
                 .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.eduPersonPrincipalName))

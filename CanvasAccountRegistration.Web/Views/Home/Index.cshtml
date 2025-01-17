@@ -1,12 +1,49 @@
-@* --------------------------------------------------------------------*@
-@* Warning! This is an auto generated file. Changes may be overwritten *@
-@* --------------------------------------------------------------------*@
+@using CanvasAccountRegistration.Web.ViewModel
 @using Localization
 @using CanvasAccountRegistration.Logic.Settings
 @using Microsoft.Extensions.Options
 @inject IOptions<ApplicationSettings> settings
 @inject LocService SharedLocalizer
-<ul>
-    <li><a asp-controller="Home" asp-action="Register">Register</a></li>
-  
-</ul>
+@model RegistrationViewModel
+
+<style>
+   
+</style>
+
+<div class="success-container">
+    <div class="success-icon"><i class="bi bi-check-circle-fill"></i></div>
+    <div class="success-message">
+        @SharedLocalizer.GetLocalizedHtmlString("Successfull registration")
+    </div>
+    <hr />
+    <div class="information">
+        <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
+        @if (!Model.IsVerifiedWithId)
+        {
+            <p>@SharedLocalizer.GetLocalizedHtmlString("Please verify account")</p>
+        }
+        else
+        {
+            <p>@SharedLocalizer.GetLocalizedHtmlString("Registration approved")</p>
+        }
+    </div>
+    <hr />
+    <div class="details">
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Login ID"):</strong> @Model.UserId</p>
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Display Name"):</strong> @Model.DisplayName</p>
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Email"):</strong> @Model.Email</p>
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong> @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
+        <p>
+            <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
+            <i class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
+        </p>
+        <p>
+            <strong>@SharedLocalizer.GetLocalizedHtmlString("Is approved"):</strong>
+            <i class="bi @(Model.IsApproved ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
+        </p>
+        <p>
+            <strong>@SharedLocalizer.GetLocalizedHtmlString("Is integrated"):</strong>
+            <i class="bi @(Model.IsIntegrated ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
+        </p>
+    </div>
+</div>

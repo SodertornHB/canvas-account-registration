@@ -117,6 +117,105 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Studiewebben kontoregistrering</value>
+  </data>
+  <data name="TableLang" xml:space="preserve">
+    <value>//cdn.datatables.net/plug-ins/1.12.1/i18n/sv-SE.json</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Skapa</value>
+  </data>
+  <data name="Create New" xml:space="preserve">
+    <value>Skapa ny</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Hem</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>Lista</value>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>Ett fel inträffade. Vänligen kontakta  &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="login_attribute" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="given_name" xml:space="preserve">
+    <value>Förnamn</value>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Efternamn</value>
+  </data>
+  <data name="display_name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>E-post</value>
+  </data>
+  <data name="assurance_level" xml:space="preserve">
+    <value>Tillitsnivå</value>
+  </data>
+  <data name="mail_verified" xml:space="preserve">
+    <value>E-post verifierad</value>
+  </data>
+  <data name="create_date_time" xml:space="preserve">
+    <value>Skapad</value>
+  </data>
+  <data name="verification_date_time" xml:space="preserve">
+    <value>Verifikationsdatum</value>
+  </data>
+  <data name="integration_date_time" xml:space="preserve">
+    <value>Integrerad vid</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Logg</value>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>Källa</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Meddelande</value>
+  </data>
+  <data name="LogLevel" xml:space="preserve">
+    <value>Loggnivå</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Skapad vid</value>
+  </data>
+  <data name="Exception" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Trace" xml:space="preserve">
+    <value>Spåra</value>
+  </data>
+  <data name="Migration" xml:space="preserve">
+    <value>Migration</value>
+  </data>
+  <data name="ClientVersion" xml:space="preserve">
+    <value>Klientversion</value>
+  </data>
+  <data name="DatabaseVersion" xml:space="preserve">
+    <value>Databasversion</value>
+  </data>
   <data name="Canvas Account Registration info" xml:space="preserve">
     <value>&lt;p&gt; Canvas kontoregistrering är en tjänst riktad till personal anställd på myndigheter i Sverige som ska läsa en uppdragsutbildning på Södertörns högskola.&lt;/p&gt;&lt;p&gt;Canvas kontoregistrering används för att registrera ett EduId-konto för användning i Studiewebben Canvas. När registrerat konto är granskat och godkänt kommer det att flyttas till Studiewebben Canvas och användaren kan logga in där med sitt EduId.&lt;/p&gt;</value>
   </data>
@@ -216,9 +315,39 @@
     <value>Överföring av personuppgifter till tjänsten i samband med federerad inloggning (Privacy Policy)</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>Beskrivning av tjänsten Canvas kontoregistrering</value>
+    <value>Beskrivning av tjänsten Studiewebben kontoregistrering</value>
   </data>
   <data name="Toggle language" xml:space="preserve">
     <value>In english</value>
+  </data>
+  <data name="Successfull registration" xml:space="preserve">
+    <value>Du har registrerad ditt EduId-konto!</value>
+  </data>
+  <data name="What will happen" xml:space="preserve">
+    <value>Vad händer nu?</value>
+  </data>
+  <data name="Please verify account" xml:space="preserve">
+    <value>För att få ett konto i Studiewebben behöver du verifiera ditt EduId-konto med Bankid. Gå till EduId och bekräfta ditt konto!</value>
+  </data>
+  <data name="Registration approved" xml:space="preserve">
+    <value>När din registrering har godkänts kommer ditt konto att skapas i Studiewebben. Du kommer att få ett mejl som berättar hur du ska logga in.</value>
+  </data>
+  <data name="Login ID" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="Display Name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="Is verified" xml:space="preserve">
+    <value>Verifierad med bankid?</value>
+  </data>
+  <data name="Is approved" xml:space="preserve">
+    <value>Godkänd av admin?</value>
+  </data>
+  <data name="Is integrated" xml:space="preserve">
+    <value>Integrerad i Studiewebben?</value>
+  </data>
+  <data name="Created On" xml:space="preserve">
+    <value>Skapat</value>
   </data>
 </root>

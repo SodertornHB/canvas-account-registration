@@ -35,7 +35,6 @@ h1 {
 p {
     font-family: roboto,sans-serif;
     color: #2c2f34;
-    font-size: 21px;
     line-height: 1.62;
 }
 
@@ -48,8 +47,13 @@ input[type="checkbox"] {
     transform: scale(2);
 }
 
+.navbar {
+    font-size:13px;
+    padding: 0 1rem;
+}
+
 a.navbar-brand {
-    font-size: 55px;
+    font-size: 25px;
 }
 
 .nav-item {
@@ -92,9 +96,79 @@ a {
 }
 
 .icon-language {
-    font-size: 25px;
+    font-size: 13px;
     cursor: pointer;
 }
+
+.success-container {
+    text-align: center;
+    padding: 2rem;
+    background-color: #e6ffe6;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.information {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.details {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+    .details p {
+        margin: 0.5rem 0;
+    }
+
+.btn-home {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+}
+
+    .btn-home:hover {
+        background-color: #0056b3;
+    }
+
+.status-icon {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.verified {
+    color: #28a745;
+}
+/* Green checkmark */
+.not-verified {
+    color: #dc3545;
+}
+/* Red cross */
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -112,10 +186,6 @@ html {
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
