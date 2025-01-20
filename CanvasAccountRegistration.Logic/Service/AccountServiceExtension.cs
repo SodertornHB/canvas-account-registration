@@ -45,9 +45,24 @@ namespace CanvasAccountRegistration.Logic.Services
             var registrationLog = await registrationLogService.NewRegister(requestedAttributeCollection);
             logger.LogDebug("registrationLog: " + registrationLog.ToString());
             Account account = await GetByUserId(registrationLog.eduPersonPrincipalName);
-            if (account != null) return account;
+            if (account != null)
+            {
+                await MapValuesAndUpdate(registrationLog, account);
+                return account;
+            }
             account = mapper.Map<Account>(registrationLog);
             return await Insert(account);
+        }
+
+        private async Task MapValuesAndUpdate(RegistrationLog registrationLog, Account account)
+        {
+            account.Surname = registrationLog.sn;
+            account.GivenName = registrationLog.givenName;
+            account.DisplayName = registrationLog.displayName;
+            account.AssuranceLevel = registrationLog.eduPersonAssurance;
+            account.Email = registrationLog.mail;
+            account.UserId = registrationLog.eduPersonPrincipalName;
+            await Update(account);
         }
     }
 }
