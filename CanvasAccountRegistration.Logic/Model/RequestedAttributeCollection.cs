@@ -20,21 +20,32 @@ namespace CanvasAccountRegistration.Logic.Model
         public RegistrationLog ToRegistrationLog()
         {
             var registrationLog = new RegistrationLog();
-            var mapping = new Dictionary<string, Action<string>>
-            {
-                { RequestedAttributeNameConstant.DisplayName, value => registrationLog.displayName = value },
-                { RequestedAttributeNameConstant.GivenName, value => registrationLog.givenName = value },
-                { RequestedAttributeNameConstant.Sn, value => registrationLog.sn = value },
-                { RequestedAttributeNameConstant.Mail, value => registrationLog.mail = value },
-                { RequestedAttributeNameConstant.EduPersonPrincipalName, value => registrationLog.eduPersonPrincipalName = value },
-                { RequestedAttributeNameConstant.EduPersonAssurance, value => registrationLog.eduPersonAssurance = value }
+            var mapping = new Dictionary<string, Action<RequestedAttributeModel>>
+    {
+                { RequestedAttributeNameConstant.DisplayName, attr => registrationLog.displayName = attr.Value },
+                { RequestedAttributeNameConstant.GivenName, attr => registrationLog.givenName = attr.Value },
+                { RequestedAttributeNameConstant.Sn, attr => registrationLog.sn = attr.Value },
+                { RequestedAttributeNameConstant.Mail, attr => registrationLog.mail = attr.Value },
+                { RequestedAttributeNameConstant.EduPersonPrincipalName, attr => registrationLog.eduPersonPrincipalName = attr.Value },
+                { RequestedAttributeNameConstant.EduPersonAssurance, attr =>
+                    {
+                        if (string.IsNullOrEmpty(registrationLog.eduPersonAssurance))
+                        {
+                            registrationLog.eduPersonAssurance = attr.Value;
+                        }
+                        else
+                        {
+                            registrationLog.eduPersonAssurance += ", " + attr.Value;
+                        }
+                    }
+                }
             };
 
             foreach (var attr in this)
             {
                 if (mapping.TryGetValue(attr.Identifier, out var setter))
                 {
-                    setter(attr.Value);
+                    setter(attr);
                 }
             }
 

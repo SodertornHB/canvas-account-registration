@@ -1,6 +1,6 @@
 using CanvasAccountRegistration.Logic.Constans;
 using System.Collections.Generic;
-using System.Security.Claims;
+using System.Linq;
 
 namespace CanvasAccountRegistration.Logic.Model
 {
@@ -15,23 +15,35 @@ namespace CanvasAccountRegistration.Logic.Model
             { RequestedAttributeObjectIdentifierConstant.Sn, RequestedAttributeNameConstant.Sn },
             { RequestedAttributeObjectIdentifierConstant.EduPersonAssurance, RequestedAttributeNameConstant.EduPersonAssurance }
         };
-        public RequestedAttributeModel(string identifier, string value)
-        { 
-            Identifier = identifier;
-            Value = value;
-            Name = NameIdentifierMappings[Identifier];
+        public static readonly Dictionary<string, string> NameToOidMappings = NameIdentifierMappings.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
+
+        public RequestedAttributeModel(string name, string value)
+        {
+            Name = name;
+            Values = new List<string> { value };
+            Identifier = NameIdentifierMappings.TryGetValue(name, out var id) ? id : null;
+        }
+        public RequestedAttributeModel(string name, string value, string identifier)
+        {
+            Name = identifier;
+            Values = new List<string> { value };
+            Identifier = name;
         }
 
-        public RequestedAttributeModel(Claim claim)
-        {
-            Name = claim.Type;
-            Value = claim.Value;
-            //if (claim.Type != "urn:oid:1.3.6.1.4.1.5923.1.1.1.11" || claim.Value.StartsWith("http://www.swamid.se/policy/assurance/")) 
-                Identifier = NameIdentifierMappings.TryGetValue(claim.Type, out var id) ? id : null;
-        }
         public string Name { get; set; }
         public string Identifier { get; set; }
-        public string Value { get; set; }
-       
+        public string Value => Values.Count == 1 ? Values[0] : string.Join(", ", Values);
+
+        public List<string> Values { get; set; }
+
+        public void AddValue(string value)
+        {
+            if (!Values.Contains(value))
+            {
+                Values.Add(value);
+            }
+        }
+
+        public override string ToString() => $"{Name} {Value} ({Identifier})";
     }
 }

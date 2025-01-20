@@ -7,7 +7,7 @@
 @model RegistrationViewModel
 
 <style>
-   
+
 </style>
 
 <div class="success-container">
@@ -19,10 +19,13 @@
     <div class="information">
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
         @if (!Model.IsVerifiedWithId)
+
         {
             <p>@SharedLocalizer.GetLocalizedHtmlString("Please verify account")</p>
         }
+
         else
+
         {
             <p>@SharedLocalizer.GetLocalizedHtmlString("Registration approved")</p>
         }
@@ -45,5 +48,10 @@
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is integrated"):</strong>
             <i class="bi @(Model.IsIntegrated ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
         </p>
+    </div>
+    <hr />
+    <div class="details assurance-details">
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Swamid Assurance Level"):</strong> @Model.SwamidAssuranceLevel</p>
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Identity Assurance Profile"):</strong> @Model.IdentityAssuranceProfile</p>
     </div>
 </div>

@@ -15,10 +15,13 @@ namespace Logic.Service
     public class RequestedAttributeService : IRequestedAttributeService
     {
         private readonly IPrincipal principal;
+        private readonly ILogger<RequestedAttributeService> logger;
 
-        public RequestedAttributeService(IPrincipal principal)
+        public RequestedAttributeService(IPrincipal principal, 
+            ILogger<RequestedAttributeService> logger)
         {
             this.principal = principal;
+            this.logger = logger;
         }
 
         public RequestedAttributeCollection GetRequestedAttributesFromLoggedInUser()
@@ -28,6 +31,11 @@ namespace Logic.Service
                 if (!claimsPrincipal.Identity.IsAuthenticated)
                 {
                     throw new UnauthorizedAccessException();
+                }
+                logger.LogDebug("Claims");
+                foreach (var attribute in claimsPrincipal.Claims)
+                {
+                    logger.LogDebug(attribute.ToString());
                 }
                 return claimsPrincipal.Claims.ToRequestedAttributeCollection();
             }

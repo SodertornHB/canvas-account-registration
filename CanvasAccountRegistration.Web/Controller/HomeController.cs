@@ -52,20 +52,6 @@ namespace Web.Controllers
             return View(viewModel);
         }
 
-        [HttpGet("register")]
-        public async Task<IActionResult> Register()
-        {
-            var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();
-            var account = await accountService.NewRegister(collection);
-            var claims = collection.Select(c => new ClaimViewModel
-            {
-                Type = c.Name,
-                Value = c.Value
-            }).ToList();
-
-            return View(claims);
-        }
-
         [HttpPost]
         public IActionResult ToggleCulture(string returnUrl)
         {

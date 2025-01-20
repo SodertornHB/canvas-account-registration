@@ -37,7 +37,13 @@ namespace CanvasAccountRegistration.Logic.Services
 
         public async Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection)
         {
+            logger.LogDebug("RequestedAttributeCollection");
+            foreach (var attribute in requestedAttributeCollection)
+            {
+                logger.LogDebug(attribute.ToString());
+            }
             var registrationLog = await registrationLogService.NewRegister(requestedAttributeCollection);
+            logger.LogDebug("registrationLog: " + registrationLog.ToString());
             Account account = await GetByUserId(registrationLog.eduPersonPrincipalName);
             if (account != null) return account;
             account = mapper.Map<Account>(registrationLog);
