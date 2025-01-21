@@ -59,5 +59,23 @@ namespace Web.Controllers
             return RedirectToAction("List");
         }
 
+        public async Task<IActionResult> Remove(int id)
+        {
+            if (id == default)
+            {
+                return BadRequest("User ID is required.");
+            }
+
+            var account = await accountService.Get(id);
+            if (account == null)
+            {
+                return NotFound($"Account with ID {id} not found.");
+            }
+            await accountService.Delete(id);
+            TempData["SuccessMessage"] = "User {0} has been deleted.";
+            TempData["AccountDisplayName"] = account.DisplayName;
+            return RedirectToAction("List");
+        }
+
     }
 }

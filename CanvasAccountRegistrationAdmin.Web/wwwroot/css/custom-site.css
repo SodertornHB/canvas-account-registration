@@ -23,3 +23,31 @@
     .data-table tbody tr:hover {
         background-color: #e9ecef;
     }
+
+.btn-action {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 2px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-remove {
+    background-color: #ff3000;
+}
+
+    .btn-action:hover {
+        color: #fff;
+        background-color: #0056b3;
+        text-decoration: none;
+    }
+
+.btn-disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    pointer-events: none;
+}

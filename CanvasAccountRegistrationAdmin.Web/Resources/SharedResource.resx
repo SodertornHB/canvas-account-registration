@@ -273,4 +273,10 @@
   <data name="User {0} has been integrated successfully." xml:space="preserve">
     <value>{0} har lagts in i Studiewebben</value>
   </data>
+  <data name="User {0} has been deleted." xml:space="preserve">
+    <value>{0} har tagits bort. (Notera att användaren fortfarande kan finnas i Studiewebben)</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
 </root>
