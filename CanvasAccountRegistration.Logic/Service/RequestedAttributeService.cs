@@ -90,9 +90,11 @@ namespace Logic.Service
                 new RequestedAttributeModel("urn:oid:0.9.2342.19200300.100.1.3", email),
                 new RequestedAttributeModel("urn:oid:2.5.4.4", GetRandomLastName()),
                 new RequestedAttributeModel("urn:oid:1.3.6.1.4.1.5923.1.1.1.11", GetAssuranceLevel()),
+                new RequestedAttributeModel("urn:oid:1.3.6.1.4.1.5923.1.1.1.11", GetAssuranceLevel()),
                 new RequestedAttributeModel("urn:oid:1.3.6.1.4.1.5923.1.1.1.11", "https://refeds.org/assurance"),
                 new RequestedAttributeModel("urn:oid:1.3.6.1.4.1.5923.1.1.1.11", "https://refeds.org/assurance/ID/unique"),
                 new RequestedAttributeModel("urn:oid:1.3.6.1.4.1.5923.1.1.1.11", "https://refeds.org/assurance/ID/eppn-unique-no-reassign"),
+                new RequestedAttributeModel("urn:oid:1.3.6.1.4.1.5923.1.1.1.11", GetAssuranceIap()),
                 new RequestedAttributeModel("urn:oid:1.3.6.1.4.1.5923.1.1.1.11", GetAssuranceIap())
             ];
         }

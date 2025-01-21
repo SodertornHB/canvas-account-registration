@@ -175,7 +175,13 @@ namespace Web
 
         public static MappingConfiguration AddAdditionalMappingConfig(MappingConfiguration profile)
         {
-            profile.CreateMap<Account, RegistrationViewModel>();
+            profile.CreateMap<Account, RegistrationViewModel>()
+                .ForMember(x => x.IsApproved, opt => opt.MapFrom(x => x.GetIsApproved()))
+                .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsVerifiedWithId()))
+                .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsIntegrated()))
+                .ForMember(x => x.AssuranceLevels, opt => opt.MapFrom(x => x.GetAssuranceLevels()))
+                .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetSwamidAssuranceLevel()))
+                .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetIdentityAssuranceProfile()));
             profile.CreateMap<RequestedAttributeModel, RegistrationLog>();
             profile.CreateMap<RegistrationLog, Account>()
                 .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.eduPersonPrincipalName))

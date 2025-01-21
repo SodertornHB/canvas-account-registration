@@ -12,7 +12,7 @@ namespace CanvasAccountRegistration.Web.ViewModel
         public virtual string Surname {get;set;}  = ""; 
         public virtual string Email {get;set;}  = ""; 
         public virtual string AssuranceLevel {get;set;}  = "";
-
+     
         [DataType(DataType.Text)]
         public virtual DateTime? CreatedOn {get;set;} 
         [DataType(DataType.Text)]
@@ -23,7 +23,8 @@ namespace CanvasAccountRegistration.Web.ViewModel
         public virtual string SwamidAssuranceLevel { get; set; }
         public virtual string IdentityAssuranceProfile { get; set; }
         public bool IsVerifiedWithId { get; set; }
-        public bool IsApproved    { get; set; }
+        public bool IsApproved { get; set; }
         public bool IsIntegrated { get; set; }
+
     }
 } 

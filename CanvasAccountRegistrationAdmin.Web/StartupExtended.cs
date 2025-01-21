@@ -2,7 +2,6 @@
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Logic.Settings;
 using CanvasAccountRegistration.Web;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -15,19 +14,15 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Sustainsys.Saml2.Metadata;
-using Sustainsys.Saml2;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Sustainsys.Saml2.AspNetCore2;
+using Sh.Library.Authentication;
 using Logic.Service;
 using CanvasAccountRegistration.Logic.Model;
-using CanvasAccountRegistration.Web.ViewModel;
 
 namespace Web
 {
@@ -72,68 +67,18 @@ namespace Web
                 },
                 Formatting = Formatting.Indented
             };
+#if RELEASE
+            services.AddLibraryAuthentication(authenticationHost: Configuration["Authentication:Host"]);
+#endif
 
-            if (Environment.IsProduction())
-            {
-                var saml2Options = Configuration.GetSection("Authentication:Saml2").Get<Saml2Settings>();
-
-                services.AddAuthentication(options =>
-                {
-                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = "Saml2";
-                })
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddSaml2(options =>
-                {
-                    options.SPOptions.EntityId = new EntityId(saml2Options.EntityId);
-                    options.SPOptions.ReturnUrl = new Uri(saml2Options.ReturnUrl, UriKind.RelativeOrAbsolute);
-
-                    ConfigureIdentityProvider(options, saml2Options.IdentityProvider);
-                    LoadCertificate(options, saml2Options.Certificate);
-                });
-            }
-        }
-
-        private static void ConfigureIdentityProvider(Saml2Options options, IdentityProviderSettings idpSettings)
-        {
-            options.IdentityProviders.Add(new IdentityProvider(
-                new EntityId(idpSettings.EntityId),
-                options.SPOptions)
-            {
-                MetadataLocation = idpSettings.MetadataLocation,
-                LoadMetadata = true,
-                AllowUnsolicitedAuthnResponse = idpSettings.AllowUnsolicitedAuthnResponse,
-                RelayStateUsedAsReturnUrl = idpSettings.RelayStateUsedAsReturnUrl
-            });
-        }
-
-        private static void LoadCertificate(Saml2Options options, CertificateSettings certSettings)
-        {
-            var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-            try
-            {
-                store.Open(OpenFlags.ReadOnly);
-                var certificates = store.Certificates.Find(
-                    X509FindType.FindBySubjectName, certSettings.SubjectName, false);
-                if (certificates.Count > 0)
-                {
-                    options.SPOptions.ServiceCertificates.Add(certificates[0]);
-                }
-                else
-                {
-                    throw new InvalidOperationException("Required certificate not found.");
-                }
-            }
-            finally
-            {
-                store.Close();
-            }
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseAuthentication();
-            app.UseAuthorization();
+#if RELEASE
+            app.UseLibraryApiAuthentication();
+            app.UseLibraryAuthentication();
+#endif
         }
 
         protected override void ConfigureExceptionHandler(IApplicationBuilder app)
@@ -153,7 +98,6 @@ namespace Web
                 });
             });
         }
-
         public override IMapper GetMapper()
         {
             var mapperConfig = new MapperConfiguration(mc =>
@@ -169,6 +113,13 @@ namespace Web
 
         public static MappingConfiguration AddAdditionalMappingConfig(MappingConfiguration profile)
         {
+            profile.CreateMap<Account, CanvasAccountRegistration.Web.ViewModel.RegistrationViewModel>()
+                .ForMember(x => x.IsApproved, opt => opt.MapFrom(x => x.GetIsApproved()))
+                .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsVerifiedWithId()))
+                .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsIntegrated()))
+                .ForMember(x => x.AssuranceLevels, opt => opt.MapFrom(x => x.GetAssuranceLevels()))
+                .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetSwamidAssuranceLevel()))
+                .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetIdentityAssuranceProfile()));
             profile.CreateMap<RequestedAttributeModel, RegistrationLog>();
             profile.CreateMap<RegistrationLog, Account>()
                 .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.eduPersonPrincipalName))

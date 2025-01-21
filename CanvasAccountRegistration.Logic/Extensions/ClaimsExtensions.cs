@@ -21,7 +21,7 @@ namespace CanvasAccountRegistration.Logic.Extensions
 
                 if (!attributesByIdentifier.TryGetValue(identifier, out var attribute))
                 {
-                    attribute = new RequestedAttributeModel(claim.Type, claim.Value, identifier);
+                    attribute = new RequestedAttributeModel(identifier, claim.Value, claim.Type);
                     attributesByIdentifier[identifier] = attribute;
                 }
                 else

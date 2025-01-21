@@ -5,18 +5,16 @@
 //-------------------------------------------------------------------------------------------------------------------- 
 
 using CanvasAccountRegistration.Logic.Services;
-using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Service;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Sh.Library.Authentication;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Web.Controllers
 {
@@ -35,12 +33,12 @@ namespace Web.Controllers
             this.accountService = accountService;
         }
 
-        [AllowAnonymous]
         public IActionResult Index()
         {
-            return View();
+            return Redirect("list");
         }
 
+        [NoLibraryAuth]
         [HttpPost]
         public IActionResult ToggleCulture(string returnUrl)
         {
@@ -50,27 +48,14 @@ namespace Web.Controllers
             return Redirect(returnUrl);
         }
 
-        [AllowAnonymous]
-        [HttpGet("privacy")]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpGet("info")]
-        public IActionResult Info()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
+        [NoLibraryAuth]
         [HttpGet("error")]
         public IActionResult Error()
         {
             return View();
         }
 
+        [NoLibraryAuth]
         [HttpGet("no-auth")]
         public IActionResult NoAuth()
         {
