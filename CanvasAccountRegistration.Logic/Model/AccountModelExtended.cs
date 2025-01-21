@@ -15,7 +15,10 @@ namespace CanvasAccountRegistration.Logic.Model
                 .Where(x => x.StartsWith("https://refeds.org/assurance/IAP/"))?
                 .Select(x => x.Substring("https://refeds.org/assurance/IAP/".Length)));
 
-        public bool GetIsVerifiedWithId() => GetSwamidAssuranceLevel().Contains("al2") && (GetIdentityAssuranceProfile().Contains("medium") || GetIdentityAssuranceProfile().Contains("high"));
+        public bool GetIsVerifiedWithId()
+        {
+            return GetSwamidAssuranceLevel().Contains("al2") && (GetIdentityAssuranceProfile().Contains("medium") || GetIdentityAssuranceProfile().Contains("high"));
+        }
 
         public bool GetIsApproved() => VerifiedOn != null;
 

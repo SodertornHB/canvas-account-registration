@@ -320,4 +320,29 @@
   <data name="Toggle language" xml:space="preserve">
     <value>På svenska</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="UserId" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="GivenName" xml:space="preserve">
+    <value>Given name</value>
+  </data>
+  <data name="SwamidAssuranceLevel" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IdentityAssuranceProfile" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IsVerifiedWithId" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="IsApproved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="IsIntegrated" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>
