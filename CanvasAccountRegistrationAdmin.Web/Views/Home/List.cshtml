@@ -11,6 +11,14 @@
 
 <h1>@SharedLocalizer.GetLocalizedHtmlString("Registration")</h1>
 
+@if (TempData["SuccessMessage"] != null && TempData["AccountDisplayName"] != null)
+{
+    var formattedMessage = string.Format(SharedLocalizer.GetLocalizedHtmlString(TempData["SuccessMessage"].ToString()), TempData["AccountDisplayName"].ToString());
+
+    <div class="alert alert-success">
+        @formattedMessage
+    </div>
+}
 <hr />
 <table class="table data-table">
     <thead>
@@ -82,27 +90,23 @@
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))">
                     @(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
                 </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@(item.IsApproved ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))">
+                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.VerifiedOn?.ToString()">
                     @(item.IsApproved ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
                 </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@(item.IsIntegrated ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))">
+                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.IntegratedOn?.ToString()">
                     @(item.IsIntegrated ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
                 </td>
 
                 <td>
-                    @if (!item.IsApproved)
-                    {
-                        <a asp-controller="Account" asp-action="Approve" asp-route-id="@item.UserId">
-                            @SharedLocalizer.GetLocalizedHtmlString("Approve")
-                        </a>
-                        <span> | </span>
-                    }
-                    @if (!item.IsIntegrated)
-                    {
-                        <a asp-controller="Account" asp-action="Integrate" asp-route-id="@item.UserId">
-                            @SharedLocalizer.GetLocalizedHtmlString("Integrate")
-                        </a>
-                    }
+                    <a asp-controller="Home" asp-action="Approve" asp-route-id="@item.Id">
+                        @SharedLocalizer.GetLocalizedHtmlString("Approve")
+                    </a>
+                    <span> | </span>
+
+                    <a asp-controller="Account" asp-action="Integrate" asp-route-id="@item.UserId">
+                        @SharedLocalizer.GetLocalizedHtmlString("Integrate")
+                    </a>
+
                 </td>
             </tr>
         }
