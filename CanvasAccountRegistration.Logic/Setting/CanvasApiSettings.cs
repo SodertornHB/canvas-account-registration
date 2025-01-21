@@ -1,8 +1,8 @@
 namespace CanvasAccountRegistration.Logic.Settings
 {
-    public class CanvasApiSettings
+    public class CanvasSettings : AuthenticationSettings
     {
-        public string Name { get; set; }
-        public int KeepLogsInDays { get; set; }
+        public string ApiHost { get; set; }
+        public string Host { get; set; }
     }
 }

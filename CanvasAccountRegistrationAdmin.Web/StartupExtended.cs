@@ -23,6 +23,8 @@ using System.Threading.Tasks;
 using Sh.Library.Authentication;
 using Logic.Service;
 using CanvasAccountRegistration.Logic.Model;
+using Logic.HttpModel;
+using Logic.Http;
 
 namespace Web
 {
@@ -46,14 +48,10 @@ namespace Web
 
         protected override void CustomServiceConfiguration(IServiceCollection services)
         {
-            services.Configure<CanvasApiSettings>(Configuration.GetSection("CanvasApiSettings"));
-#if RELEASE
-            services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
-#else 
-            services.AddTransient<IRequestedAttributeService, FakeRequestedAttributeService>();
-#endif
+            services.Configure<CanvasSettings>(Configuration.GetSection("Canvas"));
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
+            services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
@@ -129,6 +127,15 @@ namespace Web
                 .ForMember(x => x.AssuranceLevel, opt => opt.MapFrom(x => x.eduPersonAssurance))
                 .ForMember(x => x.DisplayName, opt => opt.MapFrom(x => x.displayName))
                 .ForMember(x => x.GivenName, opt => opt.MapFrom(x => x.givenName));
+
+            profile.CreateMap<Account, PostCanvasAccountRequestModel>()
+                .ForPath(x => x.user.Name, opt => opt.MapFrom(x => x.GetFullName()))
+                .ForPath(x => x.user.Short_name, opt => opt.MapFrom(x => x.GetFullNameWithSmobPostfix()))
+                .ForPath(x => x.user.Sortable_name, opt => opt.MapFrom(x => x.GetAsSortableName()))
+                .ForPath(x => x.communication_channel.Address, opt => opt.MapFrom(x => x.Email))
+                .ForPath(x => x.pseudonym.Sis_user_id, opt => opt.MapFrom(x => x.Id))
+                .ForPath(x => x.pseudonym.Integration_id, opt => opt.MapFrom(x => x.Id))
+                .ForPath(x => x.pseudonym.Unique_id, opt => opt.MapFrom(x => x.UserId));
 
             return profile;
         }

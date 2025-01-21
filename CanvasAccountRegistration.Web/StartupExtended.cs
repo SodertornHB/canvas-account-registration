@@ -53,7 +53,7 @@ namespace Web
 
         protected override void CustomServiceConfiguration(IServiceCollection services)
         {
-            services.Configure<CanvasApiSettings>(Configuration.GetSection("CanvasApiSettings"));
+            services.Configure<CanvasSettings>(Configuration.GetSection("CanvasApiSettings"));
 #if RELEASE
             services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
 #else 

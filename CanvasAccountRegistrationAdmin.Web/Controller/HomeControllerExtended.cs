@@ -28,7 +28,7 @@ namespace Web.Controllers
                 return BadRequest("User ID is required.");
             }
 
-            var account = await accountService.Get(id); 
+            var account = await accountService.Get(id);
             if (account == null)
             {
                 return NotFound($"Account with ID {id} not found.");
@@ -38,7 +38,25 @@ namespace Web.Controllers
             await accountService.Update(account);
             TempData["SuccessMessage"] = "User {0} has been approved successfully.";
             TempData["AccountDisplayName"] = account.DisplayName;
-            return RedirectToAction("List"); 
+            return RedirectToAction("List");
+        }
+
+        public async Task<IActionResult> Integrate(int id)
+        {
+            if (id == default)
+            {
+                return BadRequest("User ID is required.");
+            }
+
+            var account = await accountService.Get(id);
+            if (account == null)
+            {
+                return NotFound($"Account with ID {id} not found.");
+            }
+            var response = await accountService.IntegrateIntoCanvas(account);
+            TempData["SuccessMessage"] = "User {0} has been integrated successfully.";
+            TempData["AccountDisplayName"] = account.DisplayName;
+            return RedirectToAction("List");
         }
 
     }

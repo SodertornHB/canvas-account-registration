@@ -21,15 +21,12 @@ namespace Web.Controllers
     public partial class HomeController : Controller
     {
         private readonly RequestLocalizationOptions localizationOptions;
-        private readonly IRequestedAttributeService requestedAttributeService;
         private readonly IAccountServiceExtended accountService;
 
         public HomeController(IOptions<RequestLocalizationOptions> localizationOptions,
-            IRequestedAttributeService requestedAttributeService,
             IAccountServiceExtended accountService)
         {
             this.localizationOptions = localizationOptions.Value;
-            this.requestedAttributeService = requestedAttributeService;
             this.accountService = accountService;
         }
 
