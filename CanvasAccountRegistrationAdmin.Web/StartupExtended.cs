@@ -67,13 +67,12 @@ namespace Web
                 Formatting = Formatting.Indented
             };
             services.AddLibraryAuthentication(authenticationHost: Configuration["Authentication:Host"]);
-
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseLibraryApiAuthentication();
             app.UseLibraryAuthentication();
+            app.UseLibraryApiAuthentication();
         }
 
         protected override void ConfigureExceptionHandler(IApplicationBuilder app)
