@@ -51,3 +51,13 @@
     cursor: not-allowed;
     pointer-events: none;
 }
+
+.warning-row {
+    background-color: #fff3cd !important;
+}
+
+.disabled-row {
+    background-color: #e9ecef !important;
+    color: #9199a0;
+    pointer-events: none;
+}

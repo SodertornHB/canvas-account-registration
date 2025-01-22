@@ -1,8 +1,11 @@
 @* --------------------------------------------------------------------*@
 @* Warning! This is an auto generated file. Changes may be overwritten *@
 @* --------------------------------------------------------------------*@
+@using CanvasAccountRegistration.Logic.Settings
 @using Localization
+@using Microsoft.Extensions.Options
 @inject LocService SharedLocalizer
+@inject IOptions<WhiteListedEmailDomainSettings> WhiteListedEmailDomainSettings
 @model IEnumerable<CanvasAccountRegistration.Web.ViewModel.RegistrationViewModel>
 
 @{
@@ -62,7 +65,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="@(item.IsApproved && item.IsIntegrated ? "disabled-row" : item.HasValidEmailAddress(WhiteListedEmailDomainSettings.Value) ? "" : "warning-row")">
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.UserId">
                     @item.UserId
                 </td>

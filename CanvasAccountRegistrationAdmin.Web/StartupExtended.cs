@@ -48,6 +48,7 @@ namespace Web
 
         protected override void CustomServiceConfiguration(IServiceCollection services)
         {
+            services.Configure<WhiteListedEmailDomainSettings>(Configuration.GetSection("WhiteListedMailDomains"));
             services.Configure<CanvasSettings>(Configuration.GetSection("Canvas"));
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
@@ -65,18 +66,14 @@ namespace Web
                 },
                 Formatting = Formatting.Indented
             };
-#if RELEASE
             services.AddLibraryAuthentication(authenticationHost: Configuration["Authentication:Host"]);
-#endif
 
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
         {
-#if RELEASE
             app.UseLibraryApiAuthentication();
             app.UseLibraryAuthentication();
-#endif
         }
 
         protected override void ConfigureExceptionHandler(IApplicationBuilder app)
