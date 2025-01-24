@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationName" xml:space="preserve">
-    <value>Studiewebben kontoregistrering</value>
+    <value>Canvas kontoregistrering</value>
   </data>
   <data name="TableLang" xml:space="preserve">
     <value>//cdn.datatables.net/plug-ins/1.12.1/i18n/sv-SE.json</value>
@@ -217,7 +217,7 @@
     <value>Databasversion</value>
   </data>
   <data name="Canvas Account Registration info" xml:space="preserve">
-    <value>&lt;p&gt; Canvas kontoregistrering är en tjänst riktad till personal anställd på myndigheter i Sverige som ska läsa en uppdragsutbildning på Södertörns högskola.&lt;/p&gt;&lt;p&gt;Canvas kontoregistrering används för att registrera ett EduId-konto för användning i Studiewebben Canvas. När registrerat konto är granskat och godkänt kommer det att flyttas till Studiewebben Canvas och användaren kan logga in där med sitt EduId.&lt;/p&gt;</value>
+    <value>&lt;p&gt; Canvas kontoregistrering är en tjänst riktad till personal anställd på myndigheter i Sverige som ska läsa en uppdragsutbildning på Södertörns högskola.&lt;/p&gt;&lt;p&gt;Canvas kontoregistrering används för att registrera ett EduId-konto för användning i Canvas. När registrerat konto är granskat och godkänt kommer det att flyttas till Canvas och användaren kan logga in där med sitt EduId.&lt;/p&gt;</value>
   </data>
   <data name="Privacy info" xml:space="preserve">
     <value>&lt;h2&gt;Hantering av personuppgifter&lt;/h2&gt;
@@ -237,7 +237,7 @@
     &lt;tbody&gt;
         &lt;tr&gt;
             &lt;td&gt;Unik identifierare&lt;/td&gt;
-            &lt;td&gt;Att ge dig tillgång till utbildningsmaterial i Studiewebben Canvas&lt;/td&gt;
+            &lt;td&gt;Att ge dig tillgång till utbildningsmaterial i Canvas&lt;/td&gt;
             &lt;td&gt;eduPersonPrincipalName&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
@@ -315,7 +315,7 @@
     <value>Överföring av personuppgifter till tjänsten i samband med federerad inloggning (Privacy Policy)</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>Beskrivning av tjänsten Studiewebben kontoregistrering</value>
+    <value>Beskrivning av tjänsten Canvas kontoregistrering</value>
   </data>
   <data name="Toggle language" xml:space="preserve">
     <value>In english</value>
@@ -327,10 +327,10 @@
     <value>Vad händer nu?</value>
   </data>
   <data name="Please verify account" xml:space="preserve">
-    <value>För att få ett konto i Studiewebben behöver du verifiera ditt EduId-konto med Bankid. Gå till EduId och bekräfta ditt konto!</value>
+    <value>För att få ett konto i Canvas behöver du verifiera ditt EduId-konto med Bankid. Gå till EduId och bekräfta ditt konto!</value>
   </data>
   <data name="Registration approved" xml:space="preserve">
-    <value>När din registrering har godkänts kommer ditt konto att skapas i Studiewebben. Du kommer att få ett mejl som berättar hur du ska logga in.</value>
+    <value>När din registrering har godkänts kommer ditt konto att skapas i Canvas. Du kommer att få ett mejl som berättar hur du ska logga in.</value>
   </data>
   <data name="Login ID" xml:space="preserve">
     <value>Eduid</value>
@@ -345,7 +345,7 @@
     <value>Godkänd av admin</value>
   </data>
   <data name="Is integrated" xml:space="preserve">
-    <value>Konto skapat i Studiewebben</value>
+    <value>Konto skapat i Canvas</value>
   </data>
   <data name="Created On" xml:space="preserve">
     <value>Skapat</value>

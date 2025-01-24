@@ -38,15 +38,17 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.btn-remove {
-    background-color: #ff3000;
-}
-
     .btn-action:hover {
         color: #fff;
         background-color: #0056b3;
         text-decoration: none;
     }
+
+.btn-remove {
+    background-color: #ff3000;
+    cursor: pointer;
+    pointer-events:  all;
+}
 
 .btn-disabled {
     background-color: #6c757d;

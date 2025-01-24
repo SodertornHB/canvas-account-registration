@@ -265,16 +265,16 @@
     <value>Godkänn</value>
   </data>
   <data name="Integrate" xml:space="preserve">
-    <value>Lägg till i Studiewebben</value>
+    <value>Lägg till i Canvas</value>
   </data>
   <data name="User {0} has been approved successfully." xml:space="preserve">
     <value>{0} har godkänts</value>
   </data>
   <data name="User {0} has been integrated successfully." xml:space="preserve">
-    <value>{0} har lagts in i Studiewebben</value>
+    <value>{0} har lagts in i Canvas</value>
   </data>
   <data name="User {0} has been deleted." xml:space="preserve">
-    <value>{0} har tagits bort. (Notera att användaren fortfarande kan finnas i Studiewebben)</value>
+    <value>{0} har tagits bort. (Notera att användaren fortfarande kan finnas i Canvas)</value>
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Ta bort</value>
