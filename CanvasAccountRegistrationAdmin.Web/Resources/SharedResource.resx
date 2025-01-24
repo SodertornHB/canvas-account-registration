@@ -265,7 +265,7 @@
     <value>Godkänn</value>
   </data>
   <data name="Integrate" xml:space="preserve">
-    <value>Integrera</value>
+    <value>Lägg till i Studiewebben</value>
   </data>
   <data name="User {0} has been approved successfully." xml:space="preserve">
     <value>{0} har godkänts</value>
@@ -278,5 +278,8 @@
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Ta bort</value>
+  </data>
+  <data name="AssuranceLevelInfo" xml:space="preserve">
+    <value>Indicates which assurance level the account has which is determind on wheter the account is verified with Bankid or not</value>
   </data>
 </root>

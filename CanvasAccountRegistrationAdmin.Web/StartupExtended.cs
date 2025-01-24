@@ -126,7 +126,7 @@ namespace Web
 
             profile.CreateMap<Account, PostCanvasAccountRequestModel>()
                 .ForPath(x => x.user.Name, opt => opt.MapFrom(x => x.GetFullName()))
-                .ForPath(x => x.user.Short_name, opt => opt.MapFrom(x => x.GetFullNameWithSmobPostfix()))
+                .ForPath(x => x.user.Short_name, opt => opt.MapFrom(x => x.GetFullNameWithVerifiedIdPostfix()))
                 .ForPath(x => x.user.Sortable_name, opt => opt.MapFrom(x => x.GetAsSortableName()))
                 .ForPath(x => x.communication_channel.Address, opt => opt.MapFrom(x => x.Email))
                 .ForPath(x => x.pseudonym.Sis_user_id, opt => opt.MapFrom(x => x.Id))

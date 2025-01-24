@@ -32,17 +32,12 @@
     </div>
     <hr />
     <div class="details">
-        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Login ID"):</strong> @Model.UserId</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Display Name"):</strong> @Model.DisplayName</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Email"):</strong> @Model.Email</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong> @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
         <p>
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
             <i class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
-        </p>
-        <p>
-            <strong>@SharedLocalizer.GetLocalizedHtmlString("Is approved"):</strong>
-            <i class="bi @(Model.IsApproved ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
         </p>
         <p>
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is integrated"):</strong>

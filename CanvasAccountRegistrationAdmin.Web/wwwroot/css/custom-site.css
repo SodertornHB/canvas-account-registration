@@ -1,16 +1,18 @@
 ﻿.container {
     max-width:100%;
 }
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
+.dataTable {
+    border-collapse: collapse !important;
 }
 
     .data-table th, .data-table td {
         padding: 6px 10px;
         border: 1px solid #ddd;
     }
+
+.warning-cell {
+    border: 4px dashed red !important
+}
 
     .data-table thead {
         background-color: #f8f9fa;
@@ -60,4 +62,8 @@
     background-color: #e9ecef !important;
     color: #9199a0;
     pointer-events: none;
+}
+
+.red-border {
+    border: 2px solid red !important;
 }

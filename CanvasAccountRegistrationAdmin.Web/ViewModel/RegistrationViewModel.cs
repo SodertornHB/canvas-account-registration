@@ -27,6 +27,7 @@ namespace CanvasAccountRegistration.Web.ViewModel
         public bool IsApproved { get; set; }
         public bool IsIntegrated { get; set; }
         public bool HasValidEmailAddress(WhiteListedEmailDomainSettings settings) => settings.Addresses.Any(x => Email.EndsWith(x,StringComparison.OrdinalIgnoreCase));
+        public bool IndicateWarning(WhiteListedEmailDomainSettings settings) => !HasValidEmailAddress(settings) || !IsVerifiedWithId;
 
     }
 } 

@@ -17,6 +17,6 @@ namespace CanvasAccountRegistration.Logic.Model
         public bool GetIsIntegrated() => IntegratedOn != null;
         public string GetAsSortableName() => $"{Surname}, {GivenName}";
         public string GetFullName() => $"{GivenName} {Surname}";
-        public string GetFullNameWithSmobPostfix() => $"{DisplayName} (verified-guest-account)";
+        public string GetFullNameWithVerifiedIdPostfix() => $"{DisplayName} (verified-guest-account)";
     }
 } 
