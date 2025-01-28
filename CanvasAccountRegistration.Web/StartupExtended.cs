@@ -28,6 +28,7 @@ using Sustainsys.Saml2.AspNetCore2;
 using Logic.Service;
 using CanvasAccountRegistration.Logic.Model;
 using CanvasAccountRegistration.Web.ViewModel;
+using Logic.Http;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
 
@@ -61,6 +62,7 @@ namespace Web
 #endif
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
+            services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
@@ -178,7 +180,7 @@ namespace Web
             profile.CreateMap<Account, RegistrationViewModel>()
                 .ForMember(x => x.IsApproved, opt => opt.MapFrom(x => x.GetIsApproved()))
                 .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsVerifiedWithId()))
-                .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsIntegrated()))
+                .ForMember(x => x.IsIntegrated, opt => opt.MapFrom(x => x.GetIsIntegrated()))
                 .ForMember(x => x.AssuranceLevels, opt => opt.MapFrom(x => x.GetAssuranceLevels()))
                 .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetSwamidAssuranceLevel()))
                 .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetIdentityAssuranceProfile()));
