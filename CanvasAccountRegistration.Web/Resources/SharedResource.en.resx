@@ -327,7 +327,7 @@
     <value>What will happen next?</value>
   </data>
   <data name="Please verify account" xml:space="preserve">
-    <value>You have not verified your account with bank ID yet. Log into EduId and verify your account, then return here to check that your account is verified.</value>
+    <value>You have not verified your account with bank ID yet. &lt;a href="{0}"&gt;click here to log out from this application&lt;/a&gt;. After that log into EduId to verify your account. Then return here to check that your account is verified.</value>
   </data>
   <data name="Registration approved" xml:space="preserve">
     <value>When your registration is approved, you will be integrated into Canvas. You will receive an email with instructions on how to log in using your EduId account.</value>
@@ -349,5 +349,14 @@
   </data>
   <data name="Created On" xml:space="preserve">
     <value>Created on</value>
+  </data>
+  <data name="Loggedout" xml:space="preserve">
+    <value>Logged out!</value>
+  </data>
+  <data name="LoggedoutDescription" xml:space="preserve">
+    <value>You are logged out.</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
   </data>
 </root>

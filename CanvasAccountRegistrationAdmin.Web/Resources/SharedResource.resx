@@ -282,4 +282,13 @@
   <data name="AssuranceLevelInfo" xml:space="preserve">
     <value>Indicates which assurance level the account has which is determind on wheter the account is verified with Bankid or not</value>
   </data>
+  <data name="HomeUrl" xml:space="preserve">
+    <value>https://www.sh.se/bibliotek</value>
+  </data>
+  <data name="LogoUrl" xml:space="preserve">
+    <value>https://bibl-app.sh.se/img/logo-SH.svg</value>
+  </data>
+  <data name="FooterUrl" xml:space="preserve">
+    <value>https://bibl-app.sh.se/footer</value>
+  </data>
 </root>

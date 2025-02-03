@@ -5,10 +5,11 @@
     border-collapse: collapse !important;
 }
 
-    .data-table th, .data-table td {
-        padding: 6px 10px;
-        border: 1px solid #ddd;
-    }
+.data-table th, .data-table td {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+}
 
 .warning-cell {
     border: 4px dashed red !important
@@ -68,4 +69,11 @@
 
 .red-border {
     border: 2px solid red !important;
+}
+
+footer p {
+    color:#fff;
+}
+.speech-bubble-wrapper p {
+    color: #000;
 }

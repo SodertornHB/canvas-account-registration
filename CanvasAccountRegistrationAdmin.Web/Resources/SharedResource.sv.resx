@@ -174,9 +174,6 @@
   <data name="assurance_level" xml:space="preserve">
     <value>Tillitsnivå</value>
   </data>
-  <data name="mail_verified" xml:space="preserve">
-    <value>E-post verifierad</value>
-  </data>
   <data name="create_date_time" xml:space="preserve">
     <value>Skapad</value>
   </data>
@@ -341,5 +338,29 @@
   </data>
   <data name="IsIntegrated" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="HomeUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="LogoUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="FooterUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="InstructionsBody" xml:space="preserve">
+    <value>&lt;h1&gt;Skapa konto för att läsa kurs inom SMOB&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sverige mot organiserad brottslighet (SMOB)&lt;/strong&gt; är ett excellensinitiativ som syftar till att stärka Sveriges förmåga att bekämpa den organiserade brottsligheten, med särskilt fokus på den kriminella ekonomin. 
+&lt;a href="https://www.sh.se/institutioner--amnen/institutionen-for-polisiart-arbete/smob" target="_blank"&gt;Läs mer om SMOB här&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;För att delta i en kurs inom SMOB behöver du kunna logga in på Södertörns lärplattform, Studiewebben Canvas. Det gör du med ett EduId-konto. Följ dessa instruktioner för att skapa ett konto:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Skapa ett konto på &lt;a href="https://eduid.se/register" target="_blank"&gt;EduId&lt;/a&gt;. &lt;strong&gt;Viktigt!&lt;/strong&gt; Du måste använda den e-postadress som du har i tjänsten.&lt;/li&gt;
+&lt;li&gt;När du har skapat ditt konto på EduId behöver du verifiera det med ditt BankID. Gå till &lt;a href="https://eduid.se/profile/" target="_blank"&gt;EduId:s startsida&lt;/a&gt; och klicka på länken "Identitet" under rubriken "Verifiera din identitet". Följ instruktionerna på sidan för att verifiera ditt konto med BankID.&lt;/li&gt;
+&lt;li&gt;Gå till &lt;a href="https://canvas-account-registration.shbiblioteket.se/" target="_blank"&gt;Canvas kontoregistreringssida&lt;/a&gt;. Du loggar in med ditt EduId-konto, det vill säga den e-postadress och det lösenord du valde när du registrerade dig.&lt;/li&gt;
+&lt;li&gt;Nu ser du en bekräftelse på att ditt EduId-konto är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Studiewebben Canvas. Du kommer att använda ditt EduId-konto för att logga in i Canvas.&lt;/li&gt;
+&lt;/ol&gt;</value>
+  </data>
+  <data name="InstructionsHeader" xml:space="preserve">
+    <value>Skapa konto för att läsa kurs inom SMOB</value>
   </data>
 </root>

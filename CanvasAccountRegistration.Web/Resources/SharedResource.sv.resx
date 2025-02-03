@@ -311,8 +311,9 @@
     avpersonuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES
     somanvänds inom forskning och högre utbildning.&lt;/p&gt;</value>
   </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Överföring av personuppgifter till tjänsten i samband med federerad inloggning (Privacy Policy)</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Privacy" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="Information" xml:space="preserve">
     <value>Beskrivning av tjänsten Canvas kontoregistrering</value>
@@ -327,7 +328,7 @@
     <value>Vad händer nu?</value>
   </data>
   <data name="Please verify account" xml:space="preserve">
-    <value>För att få ett konto i Canvas behöver du verifiera ditt EduId-konto med Bankid. Gå till EduId och bekräfta ditt konto!</value>
+    <value>För att få ett konto i Canvas behöver du verifiera ditt EduId-konto med Bankid. &lt;a href="{0}"&gt;Klicka här för att logga ut.&lt;/a&gt; Gå sedan till EduId och verifiera ditt konto. Efter det kan du registrera ditt EduId-konto här igen.</value>
   </data>
   <data name="Registration approved" xml:space="preserve">
     <value>När din registrering har godkänts kommer ditt konto att skapas i Canvas. Du kommer att få ett mejl som berättar hur du ska logga in.</value>
@@ -349,5 +350,14 @@
   </data>
   <data name="Created On" xml:space="preserve">
     <value>Skapat</value>
+  </data>
+  <data name="Loggedout" xml:space="preserve">
+    <value>Utloggad!</value>
+  </data>
+  <data name="LoggedoutDescription" xml:space="preserve">
+    <value>Du är utloggad.</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logga ut</value>
   </data>
 </root>

@@ -31,6 +31,11 @@ using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Http;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
+using Sustainsys.Saml2.WebSso;
+using Microsoft.IdentityModel.Tokens;
+using Azure.Core;
+using System.Runtime.Intrinsics.X86;
+using System.IO;
 
 namespace Web
 {
@@ -55,6 +60,7 @@ namespace Web
         protected override void CustomServiceConfiguration(IServiceCollection services)
         {
             services.Configure<CanvasSettings>(Configuration.GetSection("CanvasApiSettings"));
+            services.Configure<Saml2Settings>(Configuration.GetSection("Authentication:Saml2"));
 #if RELEASE
             services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
 #else 
@@ -84,16 +90,24 @@ namespace Web
                 services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = "Saml2";
+                    options.DefaultChallengeScheme = Saml2Defaults.Scheme;
                 })
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddSaml2(options =>
                 {
                     options.SPOptions.EntityId = new EntityId(saml2Options.EntityId);
-                    options.SPOptions.ReturnUrl = new Uri(saml2Options.ReturnUrl, UriKind.RelativeOrAbsolute);
-
-                    ConfigureIdentityProvider(options, saml2Options.IdentityProvider);
                     LoadCertificate(options, saml2Options.Certificate);
+                    TestCert(options);
+
+                    options.IdentityProviders.Add(new IdentityProvider(
+                     new EntityId(saml2Options.IdentityProvider.EntityId),
+                     options.SPOptions)
+                    {
+                        MetadataLocation = saml2Options.IdentityProvider.MetadataLocation,
+                        LoadMetadata = true
+                    });
+
+
                 });
             }
 #if RELEASE
@@ -102,40 +116,63 @@ namespace Web
 #endif
         }
 
-        private static void ConfigureIdentityProvider(Saml2Options options, IdentityProviderSettings idpSettings)
+        private static void TestCert(Saml2Options options)
         {
+            if (options.SPOptions.ServiceCertificates.FirstOrDefault()?.Certificate == null)
+            {
+                throw new Exception("Certificate not loaded!");
+            }
+        }
+
+        private static void ConfigureIdentityProvider(Saml2Options options, IdentityProviderSettings idpSettings, string logoutUrl, ILogger logger)
+        {
+            var bindingType = idpSettings.SingleLogoutUrl.EndsWith("post") ? Saml2BindingType.HttpPost : Saml2BindingType.HttpRedirect;
+            
             options.IdentityProviders.Add(new IdentityProvider(
-                new EntityId(idpSettings.EntityId),
-                options.SPOptions)
+             new EntityId(idpSettings.EntityId),
+             options.SPOptions)
             {
                 MetadataLocation = idpSettings.MetadataLocation,
-                LoadMetadata = true,
-                AllowUnsolicitedAuthnResponse = idpSettings.AllowUnsolicitedAuthnResponse,
-                RelayStateUsedAsReturnUrl = idpSettings.RelayStateUsedAsReturnUrl
+                LoadMetadata = false,
+                SingleLogoutServiceUrl = new Uri(idpSettings.SingleLogoutUrl),
+                Binding = bindingType
             });
+            //var identityProvider = new IdentityProvider(
+            //    new EntityId(idpSettings.EntityId),
+            //    options.SPOptions)
+            //{
+            //    MetadataLocation = idpSettings.MetadataLocation,
+            //    LoadMetadata = true,
+            //    AllowUnsolicitedAuthnResponse = idpSettings.AllowUnsolicitedAuthnResponse
+            //    //RelayStateUsedAsReturnUrl = idpSettings.RelayStateUsedAsReturnUrl
+            //};
+
+            //if (!string.IsNullOrEmpty(idpSettings.SingleLogoutUrl))
+            //{
+            //    identityProvider.SingleLogoutServiceUrl = new Uri(idpSettings.SingleLogoutUrl, UriKind.RelativeOrAbsolute);
+            //    identityProvider.SingleLogoutServiceResponseUrl = new Uri(logoutUrl, UriKind.RelativeOrAbsolute);
+            //    identityProvider.SingleLogoutServiceBinding = Saml2BindingType.HttpRedirect;        
+            //}
+            //options.Notifications.AuthenticationRequestCreated = (request,idp,dict) =>
+            //{
+            //    logger.LogInformation("AuthenticationRequestCreated");                
+            //};
+
+            //options.IdentityProviders.Add(identityProvider);
         }
+
 
         private static void LoadCertificate(Saml2Options options, CertificateSettings certSettings)
         {
-            var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-            try
+            var certPath = certSettings.Path;
+            var certPassword = certSettings.Password;
+
+            if (!File.Exists(certPath))
             {
-                store.Open(OpenFlags.ReadOnly);
-                var certificates = store.Certificates.Find(
-                    X509FindType.FindBySubjectName, certSettings.SubjectName, false);
-                if (certificates.Count > 0)
-                {
-                    options.SPOptions.ServiceCertificates.Add(certificates[0]);
-                }
-                else
-                {
-                    throw new InvalidOperationException("Required certificate not found.");
-                }
+                throw new FileNotFoundException($"Certificate file not found at: {certPath}");
             }
-            finally
-            {
-                store.Close();
-            }
+
+            options.SPOptions.ServiceCertificates.Add(new X509Certificate2(certPath, certPassword));
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)

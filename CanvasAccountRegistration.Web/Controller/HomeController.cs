@@ -82,10 +82,26 @@ namespace Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet("no-auth")]
         public IActionResult NoAuth()
         {
             return View();
+        }
+
+
+        [AllowAnonymous]
+        [HttpGet("instructions")]
+        public IActionResult Instructions()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("notfound")]
+        public IActionResult NotFound([FromQuery] string page)
+        {
+            return View("NotFound", page);
         }
 
         #region private

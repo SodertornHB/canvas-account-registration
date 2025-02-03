@@ -1,4 +1,4 @@
-
+﻿
 //--------------------------------------------------------------------------------------------------------------------
 // Warning! This is an auto generated file. Changes may be overwritten. 
 // Generator version: 0.0.1.0
@@ -91,9 +91,9 @@ namespace CanvasAccountRegistration.Web
             services.AddSingleton(GetMapper());
             ConfigureLocalization(services);
             services.AddLocalization(x => x.ResourcesPath = "Resources");
-            CustomServiceConfiguration(services);
             services.AddControllersWithViews()
                 .AddViewLocalization();
+            CustomServiceConfiguration(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -107,12 +107,17 @@ namespace CanvasAccountRegistration.Web
             ConfigureExceptionHandler(app);
             CustomConfiguration(app, env); 
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
 
         protected virtual void CustomServiceConfiguration(IServiceCollection services)

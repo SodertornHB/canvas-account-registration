@@ -56,10 +56,14 @@ a.navbar-brand {
     font-size: 25px;
 }
 
+.navbar-brand img {
+    height: 50px; 
+    width: auto; 
+}
+
 .nav-item {
     font-size: 1.5em;
     font-weight: bold;
-    border-left: 2px solid #aaa;
     padding-left: 10px;
     margin-left: 10px;
 }
@@ -209,10 +213,10 @@ html {
     margin-bottom: 150px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+footer p {
+    color: #fff;
+}
+
+.speech-bubble-wrapper p {
+    color: #000;
 }
