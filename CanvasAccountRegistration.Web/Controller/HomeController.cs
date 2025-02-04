@@ -40,9 +40,8 @@ namespace Web.Controllers
         }
 
 
-#if RELEASE
+
         [Authorize]
-#endif
         public async Task<IActionResult> Index()
         {
             var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();

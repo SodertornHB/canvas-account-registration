@@ -78,12 +78,12 @@ namespace CanvasAccountRegistration.Logic.Services
 
         private async Task MapValuesAndUpdate(RegistrationLog registrationLog, Account account)
         {
-            account.Surname = registrationLog.sn;
-            account.GivenName = registrationLog.givenName;
-            account.DisplayName = registrationLog.displayName;
-            account.AssuranceLevel = registrationLog.eduPersonAssurance;
-            account.Email = registrationLog.mail;
-            account.UserId = registrationLog.eduPersonPrincipalName;
+            account.Surname = registrationLog.sn ?? string.Empty;
+            account.GivenName = registrationLog.givenName ?? string.Empty;
+            account.DisplayName = registrationLog.displayName ?? string.Empty;
+            account.AssuranceLevel = registrationLog.eduPersonAssurance ?? string.Empty;
+            account.Email = registrationLog.mail ?? string.Empty;
+            account.UserId = registrationLog.eduPersonPrincipalName ?? string.Empty;
             await Update(account);
         }
     }

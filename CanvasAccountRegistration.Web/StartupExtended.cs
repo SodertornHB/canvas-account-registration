@@ -31,11 +31,6 @@ using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Http;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
-using Sustainsys.Saml2.WebSso;
-using Microsoft.IdentityModel.Tokens;
-using Azure.Core;
-using System.Runtime.Intrinsics.X86;
-using System.IO;
 
 namespace Web
 {
@@ -61,11 +56,7 @@ namespace Web
         {
             services.Configure<CanvasSettings>(Configuration.GetSection("CanvasApiSettings"));
             services.Configure<Saml2Settings>(Configuration.GetSection("Authentication:Saml2"));
-#if RELEASE
             services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
-#else 
-            services.AddTransient<IRequestedAttributeService, FakeRequestedAttributeService>();
-#endif
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
             services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
@@ -83,96 +74,28 @@ namespace Web
                 Formatting = Formatting.Indented
             };
 
-            if (Environment.IsProduction())
+            var saml2Options = Configuration.GetSection("Authentication:Saml2").Get<Saml2Settings>();
+
+            services.AddAuthentication(options =>
             {
-                var saml2Options = Configuration.GetSection("Authentication:Saml2").Get<Saml2Settings>();
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = Saml2Defaults.Scheme;
+            })
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddSaml2(options =>
+            {
+                options.SPOptions.EntityId = new EntityId(saml2Options.EntityId);
+                options.SPOptions.ServiceCertificates.Add(new X509Certificate2(saml2Options.Certificate.Path));
 
-                services.AddAuthentication(options =>
+                options.IdentityProviders.Add(new IdentityProvider(
+                 new EntityId(saml2Options.IdentityProvider.EntityId),
+                 options.SPOptions)
                 {
-                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = Saml2Defaults.Scheme;
-                })
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddSaml2(options =>
-                {
-                    options.SPOptions.EntityId = new EntityId(saml2Options.EntityId);
-                    LoadCertificate(options, saml2Options.Certificate);
-                    TestCert(options);
-
-                    options.IdentityProviders.Add(new IdentityProvider(
-                     new EntityId(saml2Options.IdentityProvider.EntityId),
-                     options.SPOptions)
-                    {
-                        MetadataLocation = saml2Options.IdentityProvider.MetadataLocation,
-                        LoadMetadata = true
-                    });
-
-
+                    LoadMetadata = true
                 });
-            }
-#if RELEASE
+            });
             services.AddScoped<IPrincipal>(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.User);
             services.AddHttpContextAccessor();
-#endif
-        }
-
-        private static void TestCert(Saml2Options options)
-        {
-            if (options.SPOptions.ServiceCertificates.FirstOrDefault()?.Certificate == null)
-            {
-                throw new Exception("Certificate not loaded!");
-            }
-        }
-
-        private static void ConfigureIdentityProvider(Saml2Options options, IdentityProviderSettings idpSettings, string logoutUrl, ILogger logger)
-        {
-            var bindingType = idpSettings.SingleLogoutUrl.EndsWith("post") ? Saml2BindingType.HttpPost : Saml2BindingType.HttpRedirect;
-            
-            options.IdentityProviders.Add(new IdentityProvider(
-             new EntityId(idpSettings.EntityId),
-             options.SPOptions)
-            {
-                MetadataLocation = idpSettings.MetadataLocation,
-                LoadMetadata = false,
-                SingleLogoutServiceUrl = new Uri(idpSettings.SingleLogoutUrl),
-                Binding = bindingType
-            });
-            //var identityProvider = new IdentityProvider(
-            //    new EntityId(idpSettings.EntityId),
-            //    options.SPOptions)
-            //{
-            //    MetadataLocation = idpSettings.MetadataLocation,
-            //    LoadMetadata = true,
-            //    AllowUnsolicitedAuthnResponse = idpSettings.AllowUnsolicitedAuthnResponse
-            //    //RelayStateUsedAsReturnUrl = idpSettings.RelayStateUsedAsReturnUrl
-            //};
-
-            //if (!string.IsNullOrEmpty(idpSettings.SingleLogoutUrl))
-            //{
-            //    identityProvider.SingleLogoutServiceUrl = new Uri(idpSettings.SingleLogoutUrl, UriKind.RelativeOrAbsolute);
-            //    identityProvider.SingleLogoutServiceResponseUrl = new Uri(logoutUrl, UriKind.RelativeOrAbsolute);
-            //    identityProvider.SingleLogoutServiceBinding = Saml2BindingType.HttpRedirect;        
-            //}
-            //options.Notifications.AuthenticationRequestCreated = (request,idp,dict) =>
-            //{
-            //    logger.LogInformation("AuthenticationRequestCreated");                
-            //};
-
-            //options.IdentityProviders.Add(identityProvider);
-        }
-
-
-        private static void LoadCertificate(Saml2Options options, CertificateSettings certSettings)
-        {
-            var certPath = certSettings.Path;
-            var certPassword = certSettings.Password;
-
-            if (!File.Exists(certPath))
-            {
-                throw new FileNotFoundException($"Certificate file not found at: {certPath}");
-            }
-
-            options.SPOptions.ServiceCertificates.Add(new X509Certificate2(certPath, certPassword));
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)

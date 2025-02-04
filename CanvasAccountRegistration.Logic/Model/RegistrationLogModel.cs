@@ -10,12 +10,12 @@ namespace CanvasAccountRegistration.Logic.Model
 {
     public partial class RegistrationLog : Entity
     {
-        public virtual string displayName {get;set;}
-        public virtual string givenName {get;set;}
-        public virtual string sn {get;set;}
-        public virtual string eduPersonPrincipalName {get;set;}
-        public virtual string mail {get;set;}
-        public virtual string eduPersonAssurance {get;set;}
+        public virtual string displayName { get; set; } = "";
+        public virtual string givenName {get;set; } = "";
+        public virtual string sn {get;set; } = "";
+        public virtual string eduPersonPrincipalName {get;set; } = "";
+        public virtual string mail {get;set; } = "";
+        public virtual string eduPersonAssurance {get;set; } = "";
         public virtual DateTime? CreatedOn {get;set;}
       
     }
