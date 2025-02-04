@@ -381,4 +381,10 @@
 &lt;/ol&gt;
 </value>
   </data>
+  <data name="NotFoundHeader" xml:space="preserve">
+    <value>Sidan kunde inte hittas</value>
+  </data>
+  <data name="NotFoundMessage" xml:space="preserve">
+    <value>Vi ber om ursäkt, men sidan du letade efter verkar inte finnas. Det kan bero på att sidan har flyttats, tagits bort eller att en felaktig länk har använts. Om du fortfarande har problem, vänligen kontakta biblioteket@sh.se.</value>
+  </data>
 </root>

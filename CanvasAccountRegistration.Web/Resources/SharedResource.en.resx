@@ -381,4 +381,10 @@
 &lt;/ol&gt;
 </value>
   </data>
+  <data name="NotFoundHeader" xml:space="preserve">
+    <value>Page Not Found</value>
+  </data>
+  <data name="NotFoundMessage" xml:space="preserve">
+    <value>We apologize, but the page you were looking for does not seem to exist. This may be because the page has been moved, removed, or an incorrect link was used. If you continue to experience issues, please contact biblioteket@sh.se.</value>
+  </data>
 </root>

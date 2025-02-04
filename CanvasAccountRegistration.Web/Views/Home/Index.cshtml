@@ -15,13 +15,11 @@
     <div class="information">
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
         @if (!Model.IsVerifiedWithId)
-
         {
             <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"), Url.Action("LogoutUser", "Saml2")))</p>
         }
 
         else
-
         {
             <p>@SharedLocalizer.GetLocalizedHtmlString("Registration approved")</p>
         }
@@ -39,14 +37,6 @@
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is integrated"):</strong>
             <i class="bi @(Model.IsIntegrated ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
         </p>
-    </div>
-    <div>
-        <a href="https://canvas-account-registration.shbiblioteket.se/Saml2/Logout">@SharedLocalizer.GetLocalizedHtmlString("Logout")</a>
-        <a href="@Url.Action("ExecuteLogout", "Auth")">ExecuteLogout</a>
-
-        <form method="post" action="@Url.Action("ClearCookiesAndLogout", "Auth")">
-            <button type="submit" class="btn btn-danger">Logout</button>
-        </form>
     </div>
     <hr />
     <div class="details assurance-details">

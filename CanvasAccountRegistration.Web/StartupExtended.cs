@@ -85,12 +85,14 @@ namespace Web
             .AddSaml2(options =>
             {
                 options.SPOptions.EntityId = new EntityId(saml2Options.EntityId);
-                options.SPOptions.ServiceCertificates.Add(new X509Certificate2(saml2Options.Certificate.Path));
+                var certificate = string.IsNullOrEmpty(saml2Options.Certificate.Password) ? new X509Certificate2(saml2Options.Certificate.Path) : new X509Certificate2(saml2Options.Certificate.Path, saml2Options.Certificate.Password);
+                options.SPOptions.ServiceCertificates.Add(certificate);
 
                 options.IdentityProviders.Add(new IdentityProvider(
                  new EntityId(saml2Options.IdentityProvider.EntityId),
                  options.SPOptions)
                 {
+                    MetadataLocation = saml2Options.IdentityProvider.MetadataLocation,
                     LoadMetadata = true
                 });
             });

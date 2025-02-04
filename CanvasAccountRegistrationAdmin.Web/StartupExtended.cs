@@ -21,7 +21,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Sh.Library.Authentication;
-using Logic.Service;
 using CanvasAccountRegistration.Logic.Model;
 using Logic.HttpModel;
 using Logic.Http;
