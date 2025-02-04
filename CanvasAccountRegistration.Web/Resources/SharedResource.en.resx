@@ -359,4 +359,26 @@
   <data name="Logout" xml:space="preserve">
     <value>Log out</value>
   </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>&lt;h1&gt;Create an Account to Access the SMOB Course&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sweden Against Organized Crime (SMOB)&lt;/strong&gt; is an excellence initiative aimed at strengthening Sweden's ability to combat organized crime, with a particular focus on the criminal economy. &lt;a href="https://www.sh.se/english/sodertorn-university/meet-sodertorn-university/this-is-sodertorn-university/organisation/police-studies/sweden-against-organised-crime" target="_blank"&gt;Read more about SMOB here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;All courses within SMOB are offered via Södertörn University's learning platform, Studiewebben Canvas.&lt;/p&gt;
+&lt;p&gt;As a participant in a SMOB course, you will use an eduID to log in to Canvas.&lt;/p&gt;
+&lt;p&gt;Follow these instructions to create an eduID:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    Create your eduID. Open a new browser window and go to &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; and create an account. &lt;strong&gt;Important!&lt;/strong&gt; You must use the email address you have in the service as the username for your eduID.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Verify your eduID. Once you have created your account on eduID, you should verify it with your BankID or Freja+. Go to &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduID's homepage&lt;/a&gt; and click on the link "Identity" under the heading "Verify your identity". Follow the instructions on the page to verify your account with BankID or Freja+.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Register your eduID on Södertörn University's Canvas. Click on the link: &lt;a href="https://canvas-account-registration.shbiblioteket.se/" target="_blank"&gt;Canvas account registration page&lt;/a&gt;. Use your eduID, i.e. the email address and password you chose when you registered.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Confirm that your eduID is registered. You will now see a confirmation that your eduID is registered in the Canvas account registration. Once an administrator has reviewed and approved your account, you will gain access to Studiewebben Canvas. You will use your eduID to log in to Canvas going forward.
+  &lt;/li&gt;
+&lt;/ol&gt;
+</value>
+  </data>
 </root>

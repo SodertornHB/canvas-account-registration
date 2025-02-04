@@ -87,6 +87,12 @@ a {
   color: #0366d6;
 }
 
+li {
+    line-height: 1.5rem;
+    font-family: Georgia, serif;
+    margin: 15px 0;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
