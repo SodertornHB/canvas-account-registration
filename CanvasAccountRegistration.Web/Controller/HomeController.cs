@@ -96,6 +96,12 @@ namespace Web.Controllers
             return View();
         }
 
+        [HttpGet("how-to-log-into-canvas")]
+        public IActionResult CanvasInstruction()
+        {
+            return View();
+        }
+
         [AllowAnonymous]
         [HttpGet("notfound")]
         public IActionResult NotFound([FromQuery] string page)

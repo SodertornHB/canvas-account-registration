@@ -1,0 +1,11 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using CanvasAccountRegistration.Logic.Settings
+@using Localization
+@using Microsoft.Extensions.Options
+@inject IOptions<ApplicationSettings> settings
+@inject LocService SharedLocalizer
+
+@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("CanvasInstruction"))
+
