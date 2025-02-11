@@ -387,4 +387,23 @@
   <data name="NotFoundMessage" xml:space="preserve">
     <value>We apologize, but the page you were looking for does not seem to exist. This may be because the page has been moved, removed, or an incorrect link was used. If you continue to experience issues, please contact biblioteket@sh.se.</value>
   </data>
+  <data name="CanvasInstruction" xml:space="preserve">
+    <value>&lt;h3&gt;Instructions for logging into Södertörn University's learning platform Canvas:&lt;/h3&gt;
+&lt;p&gt;You have been given an account in Södertörn University's learning platform Canvas and can log in to access your education.&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;Use the link &lt;a href="https://studiewebben.sh.se" target="_blank"&gt;studiewebben.sh.se&lt;/a&gt; to access the login page for Canvas.&lt;/li&gt;
+    &lt;li&gt;Select the option "Log in as SMOB."&lt;/li&gt;
+    &lt;li&gt;Log in with your EduId.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Review which notifications you want to receive&lt;/h3&gt;
+&lt;p&gt;You control which notifications/alerts you receive from Canvas. Click on &lt;strong&gt;Account &gt; Notifications&lt;/strong&gt; and enable the notifications you want to receive from the system.&lt;/p&gt;
+
+&lt;h3&gt;You will receive an email when you are added to a course&lt;/h3&gt;
+&lt;p&gt;Don't see the course yet? We are working on it and will notify you via email once you are enrolled in the course.&lt;/p&gt;
+
+&lt;h3&gt;Do you have any questions or concerns?&lt;/h3&gt;
+&lt;p&gt;Contact &lt;a href="mailto:ikt-pedagogerna@sh.se"&gt;ikt-pedagogerna@sh.se&lt;/a&gt;&lt;/p&gt;
+</value>
+  </data>
 </root>
