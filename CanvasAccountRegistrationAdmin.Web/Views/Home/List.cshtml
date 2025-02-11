@@ -23,6 +23,13 @@
         @formattedMessage
     </div>
 }
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
 <hr />
 <table class="table data-table">
     <thead>
