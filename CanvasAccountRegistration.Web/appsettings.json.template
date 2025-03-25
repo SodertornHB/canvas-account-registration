@@ -1,0 +1,38 @@
+{
+  "ConnectionStrings": {
+    "Default": "Data Source=SERVER_NAME;Initial Catalog=DATABASE_NAME;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Information",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Application": {
+    "Saml2": {
+      "EntityId": "https://YOUR_HOST/SAML",
+      "IdentityProvider": {
+        "EntityId": "https://login.idp.eduid.se/idp.xml", 
+        "MetadataLocation": "https://metadata.swamid.se/YOUR_METADATA_LOCATION", 
+        "SingleLogoutUrl": "https://login.idp.eduid.se/slo/redirect",
+        "AllowUnsolicitedAuthnResponse": true,
+        "RelayStateUsedAsReturnUrl": true
+      },
+      "ReturnUrl": "/",
+      "LogoutCallbackUrl": "https://YOUR_HOST/Logout"
+    }
+  },
+  "IPBlockOptions": {
+    "BlockedIPs": []
+  },
+  "Canvas": {
+    "ApiHost": "https://YOUR_CANVAS_HOST/api/v1",
+    "Host": "https://YOUR_CANVAS_HOST"
+  },
+  "WhiteListedMailDomains": {
+    "Addresses": [
+      //"example.com"
+    ]
+  }
+}

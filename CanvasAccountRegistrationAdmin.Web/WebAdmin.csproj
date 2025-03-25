@@ -48,13 +48,13 @@
 
   <Target Name="CopyOrgSpecificFiles" BeforeTargets="Build">
     <ItemGroup>
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.css" />
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.js" />
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.cs" />
-      <OrgSpecificFiles Include="..\organizational-specific\*.json" />
-      <OrgSpecificFiles Include="..\organizational-specific\*.csproj" />
-      <OrgSpecificFiles Include="..\organizational-specific\*.resx" />
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.xml" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.css" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.js" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.cs" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.json" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.csproj" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.resx" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.xml" />
     </ItemGroup>
 
     <Message Text="Copying @(OrgSpecificFiles) to $(ProjectDir)%(OrgSpecificFiles.RecursiveDir)%(Filename)%(Extension)" Importance="high" />
