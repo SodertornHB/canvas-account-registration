@@ -20,11 +20,9 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Sh.Library.Authentication;
 using CanvasAccountRegistration.Logic.Model;
 using Logic.HttpModel;
 using Logic.Http;
-using Sh.Library.MailSender;
 
 namespace Web
 {
@@ -66,14 +64,10 @@ namespace Web
                 },
                 Formatting = Formatting.Indented
             };
-            services.AddLibraryAuthentication(authenticationHost: Configuration["Authentication:Host"]);
-            services.AddLibraryMailSender(mailSenderHost: Configuration["MailSender:Host"], bearerToken: Configuration["MailSender:BearerToken"]);
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseLibraryAuthentication();
-            app.UseLibraryApiAuthentication();
         }
 
         protected override void ConfigureExceptionHandler(IApplicationBuilder app)

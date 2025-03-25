@@ -2,7 +2,6 @@ using AutoMapper;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using Sh.Library.MailSender;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +50,7 @@ namespace Web.Controllers
             return RedirectToAction("List");
         }
 
-        public async Task<IActionResult> Integrate([FromServices] IMailService mailer, int id)
+        public async Task<IActionResult> Integrate(int id)
         {
             try
             {
@@ -66,7 +65,6 @@ namespace Web.Controllers
                     return NotFound($"Account with ID {id} not found.");
                 }
                 var response = await accountService.IntegrateIntoCanvas(account);
-                await mailer.Send("biblioteket@sh.se", account.Email, "Välkommen till Södertörns högskolas lärplattform Canvas", "<!DOCTYPE html> <html> <head>     <meta charset='UTF-8'> </head> <body>     <p>Du har nu ett konto i Canvas. <a href='https://canvas-account-registration.shbiblioteket.se/how-to-log-into-canvas'>Klicka här för information om hur du loggar in</a></p> <p>Om länken inte fungerar, kopiera och klistra in följande i din webbläsare:<br /> https://canvas-account-registration.shbiblioteket.se/how-to-log-into-canvas</p> </body> </html>");
                 TempData["SuccessMessage"] = "User {0} has been integrated successfully.";
                 TempData["AccountDisplayName"] = account.DisplayName;
             }
