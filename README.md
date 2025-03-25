@@ -1,5 +1,5 @@
 # Overview / Introduction
-This is an application where users can register their EduId accounts. Adminsitrator can then integrate the account in Canvas LMS.
+This is an application where users can register their EduId accounts. Administrators can then integrate the account in Canvas LMS.
 
 # Getting Started
 To start using this code, follow these steps to clone the repository, set up the database, and configure the project locally.
