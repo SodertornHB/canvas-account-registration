@@ -59,7 +59,10 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root"
+    xmlns=""
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -148,7 +151,7 @@
     <value>Error</value>
   </data>
   <data name="ErrorDescription" xml:space="preserve">
-    <value>Ett fel inträffade. Vänligen kontakta  &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
+    <value>Ett fel inträffade. Vänligen kontakta &lt;a href=&quot;mailto:support@your-organization.example.org&quot;&gt;support@your-organization.example.org&lt;/a&gt;</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Konto</value>
@@ -217,13 +220,13 @@
     <value>Databasversion</value>
   </data>
   <data name="Canvas Account Registration info" xml:space="preserve">
-    <value>&lt;p&gt; Canvas kontoregistrering är en tjänst riktad till personal anställd på myndigheter i Sverige som ska läsa en uppdragsutbildning på Södertörns högskola.&lt;/p&gt;&lt;p&gt;Canvas kontoregistrering används för att registrera ett EduId-konto för användning i Canvas. När registrerat konto är granskat och godkänt kommer det att flyttas till Canvas och användaren kan logga in där med sitt EduId.&lt;/p&gt;</value>
+    <value>&lt;p&gt; Canvas kontoregistrering....&lt;/p&gt;</value>
   </data>
   <data name="Privacy info" xml:space="preserve">
     <value>&lt;h2&gt;Hantering av personuppgifter&lt;/h2&gt;
 &lt;h3&gt;Överföring av personuppgifter&lt;/h3&gt;
 &lt;p&gt;Personuppgifter överförs från identitetsutfärdaren (din inloggningstjänst) till Canvas kontoregistrering för att
-    Södertörns högskola ska kunna säkerställa användarens identitet, så att användaren i förlängningen kan genomföra sin
+    din organisation ska kunna säkerställa användarens identitet, så att användaren i förlängningen kan genomföra sin
     utbildning.&lt;/p&gt;
 &lt;p&gt;I samband med inloggning i denna tjänst begärs följande personuppgifter från den identitetsutfärdare du använder:&lt;/p&gt;
 &lt;table&gt;
@@ -275,41 +278,40 @@
             &lt;td&gt;Används för att identifiera dig nationellt&lt;/td&gt;
             &lt;td&gt;personalIdentityNumber&lt;/td&gt;
         &lt;/tr&gt;
-        &lt;td&gt;Tillitsnivå&lt;/td&gt;
-        &lt;td&gt;Används för att bedöma tillitsnivån (LoA) för en användares identitet&lt;/td&gt;
-        &lt;td&gt;eduPersonAssurance&lt;/td&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Tillitsnivå&lt;/td&gt;
+            &lt;td&gt;Används för att bedöma tillitsnivån (LoA) för en användares identitet&lt;/td&gt;
+            &lt;td&gt;eduPersonAssurance&lt;/td&gt;
         &lt;/tr&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Förutom direkta personuppgifter överförs även indirekta personuppgifter såsom vilken organisation användaren
-    tillhöroch vilken identitetsutfärdare som har använts vid inloggningen. I kombination med ovanstående
-    personuppgifter kandessa användas för att unikt identifiera en person.&lt;/p&gt;
+    tillhör och vilken identitetsutfärdare som har använts vid inloggningen. I kombination med ovanstående
+    personuppgifter kan dessa användas för att unikt identifiera en person.&lt;/p&gt;
 &lt;h3&gt;Överföring av personuppgifter till tredje part&lt;/h3&gt;
 &lt;p&gt;Personuppgifter som behandlas inom Canvas kontoregistrering kan komma att delas med tredje part om det är nödvändigt
-    för atttillhandahålla tjänsten eller om det krävs enligt lag. Vid sådan överföring säkerställer högskolan att
-    mottagarenhanterar uppgifterna i enlighet med gällande dataskyddsregler.&lt;/p&gt;
+    för att tillhandahålla tjänsten eller om det krävs enligt lag. Vid sådan överföring säkerställer organisationen att
+    mottagaren hanterar uppgifterna i enlighet med gällande dataskyddsregler.&lt;/p&gt;
 &lt;h3&gt;Rättslig grund&lt;/h3&gt;
-&lt;p&gt;Behandlingen av personuppgifter i tjänsten Canvas kontoregistrering är ett led i Södertörns högskolas
-    myndighetsutövning. Ävenfullgörande av rättslig förpliktelse kan i vissa fall vara en rättslig grund för tjänsten.
-&lt;/p&gt;
+&lt;p&gt;Behandlingen av personuppgifter i tjänsten Canvas kontoregistrering är ett led i din organisations
+    myndighetsutövning. Även fullgörande av rättslig förpliktelse kan i vissa fall vara en rättslig grund för tjänsten.&lt;/p&gt;
 &lt;h3&gt;Rätt till registerutdrag, rättelse och radering av personuppgifter&lt;/h3&gt;
 &lt;p&gt;För registerutdrag, rättelse och radering av dina personuppgifter, kontakta personuppgiftsansvarig.&lt;/p&gt;
 &lt;p&gt;Rättelse av personuppgifter som överförts i samband med inloggning gör du i den identitetsutfärdare som du
-    använderför att logga in. Dessa uppgifter rättas i tjänsten vid första inloggningen efter att personuppgifterna är
-    rättade iidentitetsutfärdaren.&lt;/p&gt;
+    använder för att logga in. Dessa uppgifter rättas i tjänsten vid första inloggningen efter att de har rättats i
+    identitetsutfärdaren.&lt;/p&gt;
 &lt;h3&gt;Rensning av personuppgifter&lt;/h3&gt;
 &lt;p&gt;Personuppgifter som behandlas inom Canvas kontoregistrering sparas endast så länge de är nödvändiga för att uppfylla
-    tjänstensändamål. När du inte längre använder tjänsten kommer dina personuppgifter att raderas i enlighet med
-    högskolansrutiner för datalagring och rensning.&lt;/p&gt;
+    tjänstens ändamål. När du inte längre använder tjänsten kommer dina personuppgifter att raderas i enlighet med
+    organisationens rutiner för datalagring och rensning.&lt;/p&gt;
 &lt;h3&gt;Personuppgiftsansvarig&lt;/h3&gt;
-&lt;p&gt;Personuppgiftsansvarig för behandlingen av personuppgifter är Södertörns högskola, Sverige. Har du frågor om
-    hurpersonuppgifter hanteras inom tjänsten, kontakta dataskydd@sh.se.&lt;/p&gt;
-&lt;p&gt;Kontaktuppgifter till Södertörns högskolas dataskyddsombud finns på &lt;ahref="https:
-        //www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;denna sida&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Personuppgiftsansvarig för behandlingen av personuppgifter är din organisation. Har du frågor om
+    hur personuppgifter hanteras inom tjänsten, kontakta &lt;a href="mailto:support@your-organization.example.org"&gt;support@your-organization.example.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Kontaktuppgifter till dataskyddsombud finns på organisationens webbplats.&lt;/p&gt;
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;Denna tjänst följer det internationella ramverket GÉANT Data Protection Code of Conduct för överföring
-    avpersonuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES
-    somanvänds inom forskning och högre utbildning.&lt;/p&gt;</value>
+    av personuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES
+    som används inom forskning och högre utbildning.&lt;/p&gt;</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Privacy" type="System.Resources.ResXNullRef, System.Windows.Forms">
@@ -331,7 +333,7 @@
     <value>För att få ett konto i Canvas behöver du verifiera ditt EduId-konto med Bankid. &lt;a href="{0}"&gt;Klicka här för att logga ut.&lt;/a&gt; Gå sedan till EduId och verifiera ditt konto. Efter det kan du registrera ditt EduId-konto här igen.</value>
   </data>
   <data name="Registration approved" xml:space="preserve">
-    <value>När din registrering har godkänts kommer ditt konto att skapas i Canvas. Du kommer att få ett mejl som berättar hur du ska logga in.</value>
+    <value>När din registrering har godkänts kommer ditt konto att skapas i Canvas.</value>
   </data>
   <data name="Login ID" xml:space="preserve">
     <value>Eduid</value>
@@ -359,5 +361,46 @@
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logga ut</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>&lt;h1&gt;Skapa ett konto för att få tillgång till kursen&lt;/h1&gt;
+&lt;p&gt;Kursen ges via din organisations lärplattform Canvas.&lt;/p&gt;
+&lt;p&gt;Som deltagare använder du EduId för att logga in i Canvas.&lt;/p&gt;
+&lt;p&gt;Följ dessa steg för att skapa och registrera ditt EduId:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    Skapa ett EduId-konto. Gå till &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; och skapa ett konto. &lt;strong&gt;Viktigt:&lt;/strong&gt; använd samma e-postadress som du ska använda i tjänsten.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Verifiera ditt EduId. Logga in på &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduid.se&lt;/a&gt; och verifiera dig med BankID eller Freja+ under "Verifiera din identitet".
+  &lt;/li&gt;
+  &lt;li&gt;
+    Registrera ditt EduId i Canvas. Gå till &lt;a href="https://canvas.konto-registrering.example.org/" target="_blank"&gt;Canvas kontoregistrering&lt;/a&gt; och logga in med EduId.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Bekräfta registreringen. Du ser nu en bekräftelse. När en administratör har godkänt kontot får du tillgång till Canvas.
+  &lt;/li&gt;
+&lt;/ol&gt;</value>
+  </data>
+  <data name="NotFoundHeader" xml:space="preserve">
+    <value>Sidan kunde inte hittas</value>
+  </data>
+  <data name="NotFoundMessage" xml:space="preserve">
+    <value>Vi beklagar, men sidan du letade efter verkar inte finnas. Det kan bero på att sidan har flyttats eller tagits bort, eller att länken är felaktig. Om problemet kvarstår, kontakta &lt;a href="mailto:support@your-organization.example.org"&gt;support@your-organization.example.org&lt;/a&gt;.</value>
+  </data>
+  <data name="CanvasInstruction" xml:space="preserve">
+    <value>&lt;h3&gt;Instruktioner för inloggning i din organisations lärplattform Canvas:&lt;/h3&gt;
+&lt;p&gt;Du har fått ett konto i Canvas och kan nu logga in för att ta del av din utbildning.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Använd länken &lt;a href="https://canvas.example.org" target="_blank"&gt;canvas.example.org&lt;/a&gt; för att gå till inloggningssidan.&lt;/li&gt;
+  &lt;li&gt;Välj alternativet "Logga in med EduId".&lt;/li&gt;
+  &lt;li&gt;Logga in med ditt EduId.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Ställ in aviseringar&lt;/h3&gt;
+&lt;p&gt;Du kan själv styra vilka aviseringar du vill få från Canvas. Gå till &lt;strong&gt;Konto &gt; Aviseringar&lt;/strong&gt; och justera inställningarna.&lt;/p&gt;
+&lt;h3&gt;Du får e-post när du har lagts till i en kurs&lt;/h3&gt;
+&lt;p&gt;Om du inte ser kursen direkt – avvakta, du får ett mejl så snart du är inlagd.&lt;/p&gt;
+&lt;h3&gt;Behöver du hjälp?&lt;/h3&gt;
+&lt;p&gt;Kontakta &lt;a href="mailto:support@your-organization.example.org"&gt;support@your-organization.example.org&lt;/a&gt;&lt;/p&gt;</value>
   </data>
 </root>
