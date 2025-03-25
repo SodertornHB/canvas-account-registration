@@ -18,8 +18,9 @@
     "BlockedIPs": []
   },
   "Canvas": {
-    "ApiHost": "https://your-canvas-api-host/api/v1",
-    "Host": "https://your-canvas-host"
+    "ApiHost": "https://YOUR_CANVAS_API_HOST/api/v1",
+    "Host": "https://YOUR_CANVAS_HOST",
+    "BearerToken": "TOKEN"
   },
   "WhiteListedMailDomains": {
     "Addresses": [
