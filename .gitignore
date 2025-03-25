@@ -4,9 +4,13 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 **/appsettings.local.json
+**/appsettings.Development.json
+**/appsettings.production.json
+**/appsettings.json
 **/nlog.local.config
-Canvas.Web/wwwroot/external-js/app.canvas.bundle.js.LICENSE.txt
-Canvas.Web/wwwroot/external-js/index.html
+
+/.gitmodules
+/organizational-specific
 
 # User-specific files
 *.rsuser
@@ -17,7 +21,7 @@ Canvas.Web/wwwroot/external-js/index.html
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+	
 # Mono auto generated files
 mono_crash.*
 
@@ -33,7 +37,7 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-[Ll]og/
+[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -355,6 +359,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-/Common.Web/appsettings.Development.json
-/Common.Web/appsettings.Development.json
-/Common.Web/appsettings.Development.json
