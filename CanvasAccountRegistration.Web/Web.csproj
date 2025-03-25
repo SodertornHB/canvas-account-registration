@@ -58,6 +58,7 @@
       <OrgSpecificFiles Include="..\organizational-specific\web\*.csproj" />
       <OrgSpecificFiles Include="..\organizational-specific\web\*.resx" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.xml" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.cshtml" />
     </ItemGroup>
 
     <Message Text="Copying @(OrgSpecificFiles) to $(ProjectDir)%(OrgSpecificFiles.RecursiveDir)%(Filename)%(Extension)" Importance="high" />
