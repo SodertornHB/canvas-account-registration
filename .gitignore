@@ -11,6 +11,7 @@
 
 /.gitmodules
 /organizational-specific
+/organizational-specific-web
 
 # User-specific files
 *.rsuser
