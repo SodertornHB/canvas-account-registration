@@ -168,6 +168,9 @@
   <data name="assurance_level" xml:space="preserve">
     <value>Tillitsnivå</value>
   </data>
+  <data name="mail_verified" xml:space="preserve">
+    <value>E-post verifierad</value>
+  </data>
   <data name="create_date_time" xml:space="preserve">
     <value>Skapad</value>
   </data>
@@ -317,8 +320,11 @@
   <data name="IsApproved" xml:space="preserve">
     <value>Godkänd</value>
   </data>
+  <data name="AssuranceLevelInfo" xml:space="preserve">
+    <value>Visar vilken tillitsnivå kontot har, vilket avgörs av om kontot är verifierat med BankID eller inte.</value>
+  </data>
   <data name="InstructionsBody" xml:space="preserve">
-    <value>&lt;h1&gt;Skapa konto för att läsa kurs inom SMOB&lt;/h1&gt;
+    <value>&lt;h1&gt;Skapa konto för att läsa kurs i Canvas&lt;/h1&gt;
 &lt;p&gt;Följ dessa instruktioner för att skapa ett eduID:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;
