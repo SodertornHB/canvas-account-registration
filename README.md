@@ -1,5 +1,5 @@
 # Overview / Introduction
-This is an application where users can register their EduId accounts. Administrators can then integrate the account in Canvas LMS.
+This is a dotnet core application where users can register their EduId accounts to be used for logging into Canvas LMS.
 
 # Getting Started
 To start using this code, follow these steps to clone the repository, set up the database, and configure the project locally.
@@ -10,7 +10,7 @@ Open a terminal and run the following command to clone the repository:
 cd group-to-section
 
 ## Create the Database
-This project requires a database to store data. Use the SQL script provided to create the necessary database and tables.
+This project requires a database to store data. Use the SQL script provided to create the necessary tables.
 1. Open your database management tool (such as SQL Server Management Studio).
 1. Create a new database
 1. Locate the SQL create script at ./CanvasAccountRegistration.Web/Migration/Migrations.sql.
@@ -38,10 +38,16 @@ To run this application, you need to configure your `appsettings.json` file with
 
 **KeysFolder**: Specify the folder path where any necessary keys are stored.
 
-#### 3. Canvas Settings
+#### 3. Canvas
 **ApiHost**: Enter the endpoint URL for your Canvas API.
 
 **Host**: Enter Canvas host.
+
+**BearerToken**: Token to authenticate against Canvas API.
+
+#### 4. WhiteListedMailDomains
+
+**Addresses**: Define which email domains that are allowed to be used. 
 
 # Running the Application
 After configuration, you can start the application using the following command:
@@ -52,25 +58,26 @@ To maintain organization-specific files and configurations separate from the mai
 
 ## Setting Up the Organizational-Specific Folder
 1. In the root of the solution, create a folder named `organizational-specific`.
-1. Inside this folder, add any files or configurations specific to your organization. The folder structure should mirror the structure of the web project. The following file types are automatically copied: `.css`, `.js`, `.cs`, `.json`, `.csproj`, `.resx`, `.xml`
+1. Inside folder `organizational-specific` create two folders `web` and `admin-web`, one for each web project in the solution.
+1. Inside these folders, add any files or configurations specific to your organization. The folder structure should mirror the structure of the web projects. The following file types are automatically copied: `.css`, `.js`, `.cs`, `.json`, `.csproj`, `.resx`, `.xml`, but you can change this in respective `.csproj` file. 
 
 #### Example: Custom appsettings.development.json
-If you want to use a custom `appsettings.development.json` file, place it directly in the organizational-specific folder. During the build process, it will be copied to the appropriate location in the web project.
+If you want to use a custom `appsettings.development.json` file, place it directly in the **organizational-specific/web** folder. During the build process, it will be copied to the appropriate location in the web project.
 
 ### Important Note
-Any files in the web project that have the same name and path as files in the organizational-specific folder will be overwritten by the files from organizational-specific during the build process. Be cautious when adding files to avoid unintentional overwrites.
+Any files in the web project that have the same name and path as files in the organizational-specific folders will be overwritten by the files from organizational-specific during the build process. Be cautious when adding files to avoid unintentional overwrites.
 
 ## Configuration in the Project File
 The copying of files is configured in the .csproj file. Below is the configuration that enables this copying process:
 ```xml
   <Target Name="CopyOrgSpecificFiles" BeforeTargets="Build">
     <ItemGroup>
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.css" />
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.js" />
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.cs" />
-      <OrgSpecificFiles Include="..\organizational-specific\**\*.xml" />
-      <OrgSpecificFiles Include="..\organizational-specific\*.json" />
-      <OrgSpecificFiles Include="..\organizational-specific\*.csproj" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.css" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.js" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.cs" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.xml" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\*.json" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\*.csproj" />
     </ItemGroup>
 
     <Message Text="Copying @(OrgSpecificFiles) to $(ProjectDir)%(OrgSpecificFiles.RecursiveDir)%(Filename)%(Extension)" Importance="high" />
