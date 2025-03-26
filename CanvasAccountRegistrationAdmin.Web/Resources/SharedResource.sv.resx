@@ -59,10 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root"
-    xmlns=""
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -120,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ApplicationName" xml:space="preserve">
-    <value>Canvas kontoregistrering</value>
-  </data>
   <data name="TableLang" xml:space="preserve">
     <value>//cdn.datatables.net/plug-ins/1.12.1/i18n/sv-SE.json</value>
   </data>
@@ -149,9 +143,6 @@
   </data>
   <data name="ErrorHeader" xml:space="preserve">
     <value>Error</value>
-  </data>
-  <data name="ErrorDescription" xml:space="preserve">
-    <value>Ett fel inträffade. Vänligen kontakta  &lt;a href="mailto:YOUR_EMAIL@YOUR_DOMAIN"&gt;YOUR_EMAIL@YOUR_DOMAIN&lt;/a&gt;</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Konto</value>
@@ -220,7 +211,7 @@
     <value>&lt;h2&gt;Hantering av personuppgifter&lt;/h2&gt;
 &lt;h3&gt;Överföring av personuppgifter&lt;/h3&gt;
 &lt;p&gt;Personuppgifter överförs från identitetsutfärdaren (din inloggningstjänst) till Canvas kontoregistrering för att
-    systemet ska kunna säkerställa användarens identitet, så att användaren i förlängningen kan genomföra sin
+    lärosätet ska kunna säkerställa användarens identitet, så att användaren i förlängningen kan genomföra sin
     utbildning.&lt;/p&gt;
 &lt;p&gt;I samband med inloggning i denna tjänst begärs följande personuppgifter från den identitetsutfärdare du använder:&lt;/p&gt;
 &lt;table&gt;
@@ -286,7 +277,7 @@
     för atttillhandahålla tjänsten eller om det krävs enligt lag. Vid sådan överföring säkerställer högskolan att
     mottagarenhanterar uppgifterna i enlighet med gällande dataskyddsregler.&lt;/p&gt;
 &lt;h3&gt;Rättslig grund&lt;/h3&gt;
-&lt;p&gt;Behandlingen av personuppgifter i tjänsten Canvas kontoregistrering är ett led i lärosätets
+&lt;p&gt;Behandlingen av personuppgifter i tjänsten Canvas kontoregistrering är ett led i lärosätets 
     myndighetsutövning. Ävenfullgörande av rättslig förpliktelse kan i vissa fall vara en rättslig grund för tjänsten.
 &lt;/p&gt;
 &lt;h3&gt;Rätt till registerutdrag, rättelse och radering av personuppgifter&lt;/h3&gt;
@@ -302,11 +293,11 @@
 &lt;p&gt;Personuppgiftsansvarig för behandlingen av personuppgifter är DITT_LÄROSÄTE, Sverige. Har du frågor om
     hurpersonuppgifter hanteras inom tjänsten, kontakta dataskydd@YOUR_DOMAIN.&lt;/p&gt;
 &lt;p&gt;Kontaktuppgifter till lärosätets dataskyddsombud finns på &lt;ahref="https:
-        //www.YOUR_DOMAIN/..."&gt;denna sida&lt;/a&gt;.&lt;/p&gt;
+        //YOUR_DOMAIN/..."&gt;denna sida&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;Denna tjänst följer det internationella ramverket GÉANT Data Protection Code of Conduct för överföring
     avpersonuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES
-    somanvänds inom forskning och högre utbildning.&lt;/p&gt;</value>
+    som används inom forskning och högre utbildning.&lt;/p&gt;</value>
   </data>
   <data name="Privacy" xml:space="preserve">
     <value>Överföring av personuppgifter till tjänsten i samband med federerad inloggning (Privacy Policy)</value>
@@ -317,42 +308,17 @@
   <data name="Toggle language" xml:space="preserve">
     <value>In english</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="UserId" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="DisplayName" xml:space="preserve">
     <value>Namn</value>
   </data>
   <data name="GivenName" xml:space="preserve">
     <value>Förnamn</value>
   </data>
-  <data name="SwamidAssuranceLevel" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="IdentityAssuranceProfile" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="IsVerifiedWithId" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="IsApproved" xml:space="preserve">
     <value>Godkänd</value>
   </data>
-  <data name="IsIntegrated" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="HomeUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="LogoUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="FooterUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="InstructionsBody" xml:space="preserve">
-    <value>&lt;h1&gt;Skapa konto för att läsa kurs i Canvas&lt;/h1&gt;
+    <value>&lt;h1&gt;Skapa konto för att läsa kurs inom SMOB&lt;/h1&gt;
 &lt;p&gt;Följ dessa instruktioner för att skapa ett eduID:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;
@@ -362,15 +328,17 @@
     Verifiera ditt eduID. När du har skapat ditt konto på eduID ska du verifiera det med ditt BankID eller Freja+. Gå till &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduId:s startsida&lt;/a&gt; och klicka på länken "Identitet" under rubriken "Verifiera din identitet". Följ instruktionerna på sidan för att verifiera ditt konto med BankID eller Freja+.
   &lt;/li&gt;
   &lt;li&gt;
-    Registrera ditt eduID-konto. Klicka på länken: &lt;a href="https:/YOUR_HOST/" target="_blank"&gt;Canvas kontoregistreringssida&lt;/a&gt;. Använd ditt eduID, det vill säga den e-postadress och det lösenord du valde när du registrerade dig.
+    Registrera ditt eduID i Canvas. Klicka på länken: &lt;a href="https://YOUR_HOST/" target="_blank"&gt;Canvas kontoregistreringssida&lt;/a&gt;. Använd ditt eduID, det vill säga den e-postadress och det lösenord du valde när du registrerade dig.
   &lt;/li&gt;
   &lt;li&gt;
-    Bekräfta att ditt eduID är registrerat. Nu ser du en bekräftelse på att ditt eduID är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Canvas. Du kommer att använda ditt eduID för att logga in i Canvas i fortsättningen.
+    Bekräfta att ditt eduID är registrerat. Nu ser du en bekräftelse på att ditt eduID är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Studiewebben Canvas. Du kommer att använda ditt eduID för att logga in i Canvas i fortsättningen.
   &lt;/li&gt;
-&lt;/ol&gt;
-    </value>
+&lt;/ol&gt;</value>
   </data>
   <data name="InstructionsHeader" xml:space="preserve">
-    <value>Skapa konto för att läsa kurs i Canvas</value>
+    <value>Skapa konto för att läsa kurs</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Godkänn</value>
   </data>
 </root>
