@@ -423,7 +423,7 @@ namespace CanvasAccountRegistration.Web
             var referencedAssemblies = assembly.GetReferencedAssemblies();
             foreach (var referencedAssembly in referencedAssemblies)
             {
-                if (referencedAssembly.Name.StartsWith("Sh.Library.") || referencedAssembly.Name.StartsWith("Logic"))
+                if (referencedAssembly.Name.StartsWith("Logic"))
                 {
                     versionInfo.Assemblies.Add(new AssemblyInfo
                     {
