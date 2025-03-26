@@ -53,7 +53,7 @@
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.cs" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.json" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.csproj" />
-      <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.resx" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.resx" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.xml" />
     </ItemGroup>
 

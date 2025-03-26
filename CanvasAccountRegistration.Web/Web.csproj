@@ -56,7 +56,7 @@
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.cs" />
       <OrgSpecificFiles Include="..\organizational-specific\web\*.json" />
       <OrgSpecificFiles Include="..\organizational-specific\web\*.csproj" />
-      <OrgSpecificFiles Include="..\organizational-specific\web\*.resx" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.resx" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.xml" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.cshtml" />
     </ItemGroup>
