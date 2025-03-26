@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="logs\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +55,7 @@
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.css" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.js" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.cs" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.png" />
       <OrgSpecificFiles Include="..\organizational-specific\web\*.json" />
       <OrgSpecificFiles Include="..\organizational-specific\web\*.csproj" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.resx" />
