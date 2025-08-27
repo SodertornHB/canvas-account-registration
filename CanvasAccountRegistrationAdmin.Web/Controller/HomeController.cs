@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Sh.Library.Authentication;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -33,6 +34,7 @@ namespace Web.Controllers
             return Redirect("list");
         }
 
+        [NoLibraryAuth]
         [HttpPost]
         public IActionResult ToggleCulture(string returnUrl)
         {
@@ -42,12 +44,14 @@ namespace Web.Controllers
             return Redirect(returnUrl);
         }
 
+        [NoLibraryAuth]
         [HttpGet("error")]
         public IActionResult Error()
         {
             return View();
         }
 
+        [NoLibraryAuth]
         [HttpGet("no-auth")]
         public IActionResult NoAuth()
         {

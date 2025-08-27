@@ -59,7 +59,10 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root"
+    xmlns=""
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -117,6 +120,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Canvas Account Registration</value>
+  </data>
   <data name="TableLang" xml:space="preserve">
     <value>//cdn.datatables.net/plug-ins/1.12.1/i18n/en-GB.json</value>
   </data>
@@ -143,6 +149,9 @@
   </data>
   <data name="ErrorHeader" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>An error occurred. Please contact &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Account</value>
@@ -211,13 +220,13 @@
     <value>Database Version</value>
   </data>
   <data name="Canvas Account Registration info" xml:space="preserve">
-    <value>&lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Canvas account registration is a service aimed at employees of Swedish government agencies who are enrolled in a commissioned education program at Södertörn University.&lt;/p&gt; &lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
   </data>
   <data name="Privacy info" xml:space="preserve">
     <value>&lt;h2&gt;Processing of Personal Data&lt;/h2&gt;
 &lt;h3&gt;Transfer of Personal Data&lt;/h3&gt;
 &lt;p&gt;Personal data is transferred from the identity provider (your login service) to Canvas Account Registration to enable
-    the University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;
+    Södertörn University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;
 &lt;p&gt;When logging into this service, the following personal data is requested from the identity provider you use:&lt;/p&gt;
 &lt;table&gt;
     &lt;thead&gt;
@@ -283,7 +292,7 @@
     the service or if required by law. In such cases, the university ensures that the recipient handles the data in
     accordance with applicable data protection regulations.&lt;/p&gt;
 &lt;h3&gt;Legal Basis&lt;/h3&gt;
-&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of University's exercise
+&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of Södertörn University's exercise
     of official authority. Fulfilling legal obligations may also, in some cases, serve as the legal basis for the
     service.&lt;/p&gt;
 &lt;h3&gt;Right to Access, Rectification, and Erasure of Personal Data&lt;/h3&gt;
@@ -296,10 +305,9 @@
     purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the
     university's data storage and retention policies.&lt;/p&gt;
 &lt;h3&gt;Data Controller&lt;/h3&gt;
-&lt;p&gt;The data controller for the processing of personal data is YOUR University, Sweden. If you have questions about
-    how personal data is handled within the service, contact dataskydd@YOUR_DOMAIN.&lt;/p&gt;
-&lt;p&gt;Contact details for the University's Data Protection Officer can be found on &lt;a
-        href="https://YOUR_DOMAIN/..."&gt;this page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The data controller for the processing of personal data is Södertörn University, Sweden. If you have questions about
+    how personal data is handled within the service, contact dataskydd@sh.se.&lt;/p&gt;
+&lt;p&gt;Contact details for Södertörn University's Data Protection Officer can be found on &lt;a href="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;this page&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal
     data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA
@@ -350,5 +358,15 @@
   </data>
   <data name="Approve" xml:space="preserve">
     <value>Approve</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="HomeUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="LogoUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="FooterUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
 </root>

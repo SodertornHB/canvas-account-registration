@@ -151,7 +151,7 @@ namespace CanvasAccountRegistration.Logic.DataAccess
 
         public static string CreateUpdateString<T>(this Dictionary<string, string> dictionary, string table)
         {
-            var updateString = $"update [{table}] set ";
+            var updateString = $"update {table} set ";
             foreach (var item in dictionary.Where(x => x.Key.ToLower() != "id"))
             {
                 var value = dictionary[item.Key];
