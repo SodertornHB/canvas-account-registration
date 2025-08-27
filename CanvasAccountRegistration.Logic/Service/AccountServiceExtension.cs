@@ -76,6 +76,12 @@ namespace CanvasAccountRegistration.Logic.Services
             return await Insert(account);
         }
 
+        public override async Task Delete(int id)
+        {
+            var account = await Get(id);
+            await base.Delete(id);
+        }
+
         private async Task MapValuesAndUpdate(RegistrationLog registrationLog, Account account)
         {
             account.Surname = registrationLog.sn ?? string.Empty;
