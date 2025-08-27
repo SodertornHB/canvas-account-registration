@@ -60,3 +60,20 @@ go if not exists (
         CONSTRAINT [PK_Log] PRIMARY KEY CLUSTERED ([Id] ASC)
     ) ON [PRIMARY]
 end
+
+if not exists (
+    select distinct 1
+    from information_schema.columns
+    where table_name = 'ArchivedAccount'
+) begin 
+CREATE TABLE ArchivedAccount (
+    Id INT IDENTITY(1, 1) PRIMARY KEY,
+	InitialId INT NOT NULL UNIQUE,
+    UserId NVARCHAR(512) NOT NULL,
+    EmailDomain NVARCHAR(512),
+    CreatedOn DATETIME2 NOT NULL,
+    VerifiedOn DATETIME2 NULL,
+    IntegratedOn DATETIME2 NULL,
+    DeletedOn DATETIME2 NOT NULL
+)
+end
