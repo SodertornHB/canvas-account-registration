@@ -52,6 +52,7 @@ namespace Web
             services.Configure<CanvasSettings>(Configuration.GetSection("Canvas"));
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
+            services.AddTransient<IArchivedAccountServiceExtended, ArchivedAccountServiceExtended>();
             services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
             services.Configure<RouteOptions>(options =>
             {
