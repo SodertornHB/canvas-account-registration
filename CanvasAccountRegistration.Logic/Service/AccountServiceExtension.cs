@@ -7,7 +7,6 @@ using Logic.Http;
 using Logic.HttpModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +17,7 @@ namespace CanvasAccountRegistration.Logic.Services
     {
         Task<IEnumerable<string>> GetAccountTypes();
         Task<Account> GetByUserId(string userId);
-        Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection);
+        Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection, string accountType, string role);
         Task<PostCanvasAccountResponseModel> IntegrateIntoCanvas(Account account);
     }
 
@@ -66,7 +65,7 @@ namespace CanvasAccountRegistration.Logic.Services
             return response;
         }
 
-        public async Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection)
+        public async Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection, string accountType, string role)
         {
             logger.LogDebug("RequestedAttributeCollection");
             foreach (var attribute in requestedAttributeCollection)
@@ -82,6 +81,8 @@ namespace CanvasAccountRegistration.Logic.Services
                 return account;
             }
             account = mapper.Map<Account>(registrationLog);
+            account.AccountType = accountType;
+            account.AccountRole= role;
             return await Insert(account);
         }
 

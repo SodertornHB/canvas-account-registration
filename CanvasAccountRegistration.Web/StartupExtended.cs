@@ -31,6 +31,7 @@ using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Http;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
+using CanvasAccountRegistration.Logic.DataAccess;
 
 namespace Web
 {
@@ -59,6 +60,8 @@ namespace Web
             services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
+            services.AddTransient<IArchivedAccountServiceExtended, ArchivedAccountServiceExtended>();
+            services.AddTransient<IAccountDataAccessExtended, AccountDataAccessExtended>();
             services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
             services.Configure<RouteOptions>(options =>
             {
