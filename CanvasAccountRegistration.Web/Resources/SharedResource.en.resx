@@ -405,4 +405,10 @@
 &lt;p&gt;Contact &lt;a href="mailto:support@your-organization.example.org"&gt;support@your-organization.example.org&lt;/a&gt;&lt;/p&gt;
     </value>
   </data>
+  <data name="AccountRole" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>Account type</value>
+  </data>
 </root>

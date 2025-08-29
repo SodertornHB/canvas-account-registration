@@ -3,7 +3,7 @@
   <!-- 
     Microsoft ResX Schema 
     
-    Version 2.0
+    Version 2.0 
     
     The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
@@ -387,5 +387,11 @@
   </data>
   <data name="Approve" xml:space="preserve">
     <value>Godkänn</value>
+  </data>
+  <data name="AccountRole" xml:space="preserve">
+    <value>Roll</value>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>Kontotyp</value>
   </data>
 </root>

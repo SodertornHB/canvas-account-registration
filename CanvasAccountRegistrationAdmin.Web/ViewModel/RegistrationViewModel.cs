@@ -21,8 +21,7 @@ namespace CanvasAccountRegistration.Web.ViewModel
         [DataType(DataType.Text)]
         public virtual DateTime? IntegratedOn {get;set; }
         public string[] AssuranceLevels { get; set; }
-        public virtual string SwamidAssuranceLevel { get; set; }
-        public virtual string IdentityAssuranceProfile { get; set; }
+        public virtual string AccountRole { get; set; }
         public bool IsVerifiedWithId { get; set; }
         public bool IsApproved { get; set; }
         public bool IsIntegrated { get; set; }

@@ -53,10 +53,7 @@
                 @SharedLocalizer.GetLocalizedHtmlString("CreatedOn")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("SwamidAssuranceLevel")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("IdentityAssuranceProfile")
+                @SharedLocalizer.GetLocalizedHtmlString("AccountRole")
             </th>
             <th>
                 @SharedLocalizer.GetLocalizedHtmlString("IsVerifiedWithId")
@@ -92,11 +89,8 @@
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.CreatedOn?.ToString()">
                     @item.CreatedOn?.ToString("yyyy-MM-dd")
                 </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevelIinfo")">
-                    @item.SwamidAssuranceLevel
-                </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevelIinfo")">
-                    @item.IdentityAssuranceProfile
+                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer.GetLocalizedHtmlString("AccountRole")">
+                    @item.AccountRole
                 </td>
                 <td class="tooltip-r @(!item.IsVerifiedWithId ?  " warning-cell" : " ")"  data-toggle="tooltip" data-placement="left" title="@(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))">
                     @(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
