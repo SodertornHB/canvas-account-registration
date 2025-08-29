@@ -111,8 +111,6 @@ namespace Web
         {
             profile.CreateMap<Account, CanvasAccountRegistration.Web.ViewModel.RegistrationViewModel>()
                 .ForMember(x => x.AssuranceLevels, opt => opt.MapFrom(x => x.GetAssuranceLevels()))
-                .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetSwamidAssuranceLevel()))
-                .ForMember(x => x.IdentityAssuranceProfile, opt => opt.MapFrom(x => x.GetIdentityAssuranceProfile()))
                 .ForMember(x => x.IsApproved, opt => opt.MapFrom(x => x.GetIsApproved()))
                 .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsVerifiedWithId()))
                 .ForMember(x => x.IsIntegrated, opt => opt.MapFrom(x => x.GetIsIntegrated()));
