@@ -8,6 +8,7 @@ using Logic.HttpModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace CanvasAccountRegistration.Logic.Services
 {
     public partial interface IAccountServiceExtended : IAccountService
     {
+        Task<IEnumerable<string>> GetAccountTypes();
         Task<Account> GetByUserId(string userId);
         Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection);
         Task<PostCanvasAccountResponseModel> IntegrateIntoCanvas(Account account);
@@ -23,13 +25,14 @@ namespace CanvasAccountRegistration.Logic.Services
     public partial class AccountServiceExtended : AccountService, IAccountServiceExtended
     {
         private readonly IArchivedAccountServiceExtended archivedAccountService;
+        private new readonly IAccountDataAccessExtended dataAccess;
         private readonly IRegistrationLogServiceExtended registrationLogService;
         private readonly IMapper mapper;
         private readonly IPostCanvasAccountHttpService postCanvasAccountHttpService;
         private readonly CanvasSettings canvasSettings;
 
         public AccountServiceExtended(ILogger<AccountService> logger,
-           IAccountDataAccess dataAccess,
+           IAccountDataAccessExtended dataAccess,
            IArchivedAccountServiceExtended archivedAccountService,
            IRegistrationLogServiceExtended registrationLogService,
            IMapper mapper,
@@ -37,6 +40,7 @@ namespace CanvasAccountRegistration.Logic.Services
            IOptions<CanvasSettings> options)
            : base(logger, dataAccess)
         {
+            this.dataAccess = dataAccess;
             this.archivedAccountService = archivedAccountService;
             this.registrationLogService = registrationLogService;
             this.mapper = mapper;
@@ -92,6 +96,8 @@ namespace CanvasAccountRegistration.Logic.Services
             }
             await base.Delete(id);
         }
+
+        public async Task<IEnumerable<string>> GetAccountTypes() => await dataAccess.GetAccountTypes();
 
         private async Task ArchiveAccount(Account account)
         {

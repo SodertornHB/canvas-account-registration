@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CanvasAccountRegistration.Logic.Model;
+using CanvasAccountRegistration.Logic.DataAccess;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Logic.Settings;
 using CanvasAccountRegistration.Web;
@@ -21,7 +23,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Sh.Library.Authentication;
-using CanvasAccountRegistration.Logic.Model;
 using Logic.HttpModel;
 using Logic.Http;
 using Sh.Library.MailSender;
@@ -53,6 +54,7 @@ namespace Web
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
             services.AddTransient<IArchivedAccountServiceExtended, ArchivedAccountServiceExtended>();
+            services.AddTransient<IAccountDataAccessExtended, AccountDataAccessExtended>();
             services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
             services.Configure<RouteOptions>(options =>
             {
