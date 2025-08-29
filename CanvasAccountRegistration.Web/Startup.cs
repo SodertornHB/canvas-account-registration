@@ -1,4 +1,4 @@
-﻿
+
 //--------------------------------------------------------------------------------------------------------------------
 // Warning! This is an auto generated file. Changes may be overwritten. 
 // Generator version: 0.0.1.0
@@ -57,10 +57,10 @@ namespace CanvasAccountRegistration.Web
             services.AddSingleton<SqlStringBuilder<Account>>();
             #endregion
 
-            #region register RegistrationLog
-            services.AddTransient<IRegistrationLogService, RegistrationLogService>();
-            services.AddTransient<IRegistrationLogDataAccess, RegistrationLogDataAccess>();
-            services.AddSingleton<SqlStringBuilder<RegistrationLog>>();
+            #region register ArchivedAccount
+            services.AddTransient<IArchivedAccountService, ArchivedAccountService>();
+            services.AddTransient<IArchivedAccountDataAccess, ArchivedAccountDataAccess>();
+            services.AddSingleton<SqlStringBuilder<ArchivedAccount>>();
             #endregion
 
             #region register Log
@@ -75,6 +75,12 @@ namespace CanvasAccountRegistration.Web
             services.AddSingleton<SqlStringBuilder<Migration>>();
             #endregion
 
+            #region register RegistrationLog
+            services.AddTransient<IRegistrationLogService, RegistrationLogService>();
+            services.AddTransient<IRegistrationLogDataAccess, RegistrationLogDataAccess>();
+            services.AddSingleton<SqlStringBuilder<RegistrationLog>>();
+            #endregion
+
             #region register Middleware services
             services.AddTransient<ICleanUpService, CleanUpService>();
             services.AddTransient<IVersionInfoService, VersionInfoService>();
@@ -85,7 +91,6 @@ namespace CanvasAccountRegistration.Web
             services.Configure<AuthenticationSettings>(Configuration.GetSection("Authentication"));
             services.Configure<ApplicationSettings>(Configuration.GetSection("Application"));
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
-            services.Configure<IpBlockerSettings>(Configuration.GetSection("IPBlockOptions"));
             
             services.AddHttpClient();
             services.AddSingleton(GetMapper());
@@ -96,9 +101,9 @@ namespace CanvasAccountRegistration.Web
                 .AddViewLocalization();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<ApplicationSettings> applicationSettingsOptions)
         {
-            app.UseIPBlock();
+            app.UsePathBase(applicationSettingsOptions.Value.Name);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
@@ -106,14 +111,13 @@ namespace CanvasAccountRegistration.Web
             RegisterMiddleware(app);
             ConfigureExceptionHandler(app);
             CustomConfiguration(app, env); 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
-
         }
 
         protected virtual void CustomServiceConfiguration(IServiceCollection services)
@@ -198,10 +202,6 @@ namespace CanvasAccountRegistration.Web
 
                 CreateMap<AccountViewModel, Account>();
         
-                CreateMap<RegistrationLog, RegistrationLogViewModel>();
-
-                CreateMap<RegistrationLogViewModel, RegistrationLog>();
-        
                 CreateMap<Log, LogViewModel>();
 
                 CreateMap<LogViewModel, Log>();
@@ -209,6 +209,10 @@ namespace CanvasAccountRegistration.Web
                 CreateMap<Migration, MigrationViewModel>();
 
                 CreateMap<MigrationViewModel, Migration>();
+        
+                CreateMap<RegistrationLog, RegistrationLogViewModel>();
+
+                CreateMap<RegistrationLogViewModel, RegistrationLog>();
         
     
         }
@@ -424,7 +428,7 @@ namespace CanvasAccountRegistration.Web
             var referencedAssemblies = assembly.GetReferencedAssemblies();
             foreach (var referencedAssembly in referencedAssemblies)
             {
-                if (referencedAssembly.Name.StartsWith("Logic"))
+                if (referencedAssembly.Name.StartsWith("Sh.Library.") || referencedAssembly.Name.StartsWith("Logic"))
                 {
                     versionInfo.Assemblies.Add(new AssemblyInfo
                     {
@@ -453,69 +457,6 @@ namespace CanvasAccountRegistration.Web
     }
 
     #endregion
-
-    #region ip-blocker middleware
-
-    
-
-    public class IPBlockMiddleware
-    {
-        private readonly RequestDelegate next;
-        private readonly ILogger<IPBlockMiddleware> logger;
-        private readonly IpBlockerSettings ipBlockerSettings;
-
-        public IPBlockMiddleware(RequestDelegate next, ILogger<IPBlockMiddleware> logger, IOptions<IpBlockerSettings> ipBlockerSettings)
-        {
-            this.next = next;
-            this.logger = logger;
-            this.ipBlockerSettings = ipBlockerSettings.Value;
-        }
-
-        public async Task InvokeAsync(HttpContext context)
-        {
-            var requestIP = context.Connection.RemoteIpAddress;
-
-            if (requestIP != null && IsIPBlocked(requestIP))
-            {
-                logger.LogWarning($"Blocked request from IP: {requestIP}");
-                context.Response.StatusCode = StatusCodes.Status403Forbidden;
-                return;
-            }
-
-            await next(context);
-        }
-
-        private bool IsIPBlocked(IPAddress requestIP)
-        {
-            if (ipBlockerSettings?.BlockedIPs == null) return false;
-
-            foreach (var blockedIP in ipBlockerSettings.BlockedIPs)
-            {
-                if (blockedIP.EndsWith("*"))
-                {
-                    var prefix = blockedIP.TrimEnd('*');
-                    if (requestIP.ToString().StartsWith(prefix))
-                        return true;
-                }
-                else if (requestIP.Equals(IPAddress.Parse(blockedIP)))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
-
-    public static class IPBlockMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseIPBlock(this IApplicationBuilder builder, params string[] blockedIPs)
-        {
-            return builder.UseMiddleware<IPBlockMiddleware>(blockedIPs);
-        }
-    }
-
-    #endregion 
 
     #endregion
 }

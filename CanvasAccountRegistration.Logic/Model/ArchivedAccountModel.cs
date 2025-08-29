@@ -17,6 +17,8 @@ namespace CanvasAccountRegistration.Logic.Model
         public virtual DateTime? VerifiedOn {get;set;}
         public virtual DateTime? IntegratedOn {get;set;}
         public virtual DateTime? DeletedOn {get;set;}
+        public virtual string ArchivedAccountType {get;set;}
+        public virtual string ArchivedAccountRole {get;set;}
       
     }
 } 

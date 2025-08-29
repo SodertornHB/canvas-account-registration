@@ -20,11 +20,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="shortcut icon" href="https://YOUR_DOMAIN/favicon.ico" />
+    <link rel="shortcut icon" href="https://bibl-app.sh.se/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/custom-site.css" />
-    <link rel="stylesheet" href="https://YOUR_DOMAIN/css/common.css" />
+    <link rel="stylesheet" href="https://bibl-app.sh.se/css/common.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" type="text/css" />
@@ -46,7 +46,9 @@
                        </li>
                     </ul>
                 </div>
-                <a class="navbar-brand" href="https://YOUR_DOMAIN"><img src="https://YOUR_DOMAIN/img/YOUR_LOGO" /></a>
+                <a class="navbar-brand" href="https://www.sh.se/bibliotek"><img src="https://bibl-app.sh.se/img/logo-SH.svg" /></a>
+                <a class="navbar-brand" href="https://www.sh.se/institutioner--amnen/institutionen-for-polisiart-arbete/smob"><img src="~/img/smob-logo.png" /></a>
+                <a class="navbar-brand" href="https://european-union.europa.eu/"><img src="~/img/medfinancierad_av_eu.png" /></a>
                 <div>
                     <form id="changeLanguageFormId" asp-controller="Home" asp-action="ToggleCulture" method="post">
                         <input type="hidden" name="returnUrl" value="@currentUrl">
@@ -65,7 +67,7 @@
         </main>
     </div>    
     <div class="clear"></div>
-    @await Html.GetExternalHtmlAsync("https://YOUR_DOMAIN/footer")
+    @await Html.GetExternalHtmlAsync("https://bibl-app.sh.se/footer")
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
      <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
