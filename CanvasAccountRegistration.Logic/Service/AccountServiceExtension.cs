@@ -1,11 +1,13 @@
 using AutoMapper;
 using CanvasAccountRegistration.Logic.DataAccess;
+using CanvasAccountRegistration.Logic.Extensions;
 using CanvasAccountRegistration.Logic.Model;
 using CanvasAccountRegistration.Logic.Settings;
 using Logic.Http;
 using Logic.HttpModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -84,12 +86,7 @@ namespace CanvasAccountRegistration.Logic.Services
 
         private async Task MapValuesAndUpdate(RegistrationLog registrationLog, Account account)
         {
-            account.Surname = registrationLog.sn ?? string.Empty;
-            account.GivenName = registrationLog.givenName ?? string.Empty;
-            account.DisplayName = registrationLog.displayName ?? string.Empty;
-            account.AssuranceLevel = registrationLog.eduPersonAssurance ?? string.Empty;
-            account.Email = registrationLog.mail ?? string.Empty;
-            account.UserId = registrationLog.eduPersonPrincipalName ?? string.Empty;
+            registrationLog.MapAccount(account); 
             await Update(account);
         }
     }
