@@ -33,7 +33,7 @@ namespace Web.Controllers
         {
             var accountTypes = await accountService.GetAccountTypes();
             if (accountTypes.Count() == 1) return RedirectToAction("List", new { type = accountTypes.First() });
-            return Redirect("list");
+            return View(accountTypes.ToArray());
         }
 
         

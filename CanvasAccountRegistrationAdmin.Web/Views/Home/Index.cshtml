@@ -6,10 +6,14 @@
 @using Microsoft.Extensions.Options
 @inject IOptions<ApplicationSettings> settings
 @inject LocService SharedLocalizer
+@model string[]
 <ul>
-    <li><a asp-controller="Account" asp-action="Index">Account</a></li>
-    <li><a asp-controller="RegistrationLog" asp-action="Index">RegistrationLog</a></li>
-    <li><a asp-controller="Log" asp-action="Index">Log</a></li>
-    <li><a asp-controller="Migration" asp-action="Index">Migration</a></li>
-  
+    @foreach (var accountType in Model)
+    {
+        <li>
+            <a asp-controller="Home" asp-action="List" asp-route-type="@accountType">
+                @accountType
+            </a>
+        </li>
+    }  
 </ul>
