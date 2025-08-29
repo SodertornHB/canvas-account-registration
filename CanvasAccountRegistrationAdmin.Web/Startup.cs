@@ -57,6 +57,12 @@ namespace CanvasAccountRegistration.Web
             services.AddSingleton<SqlStringBuilder<Account>>();
             #endregion
 
+            #region register ArchivedAccount
+            services.AddTransient<IArchivedAccountService, ArchivedAccountService>();
+            services.AddTransient<IArchivedAccountDataAccess, ArchivedAccountDataAccess>();
+            services.AddSingleton<SqlStringBuilder<ArchivedAccount>>();
+            #endregion
+
             #region register RegistrationLog
             services.AddTransient<IRegistrationLogService, RegistrationLogService>();
             services.AddTransient<IRegistrationLogDataAccess, RegistrationLogDataAccess>();

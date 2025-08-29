@@ -22,6 +22,7 @@ namespace CanvasAccountRegistration.Logic.Services
 
     public partial class AccountServiceExtended : AccountService, IAccountServiceExtended
     {
+        private readonly IArchivedAccountServiceExtended archivedAccountService;
         private readonly IRegistrationLogServiceExtended registrationLogService;
         private readonly IMapper mapper;
         private readonly IPostCanvasAccountHttpService postCanvasAccountHttpService;
@@ -29,12 +30,14 @@ namespace CanvasAccountRegistration.Logic.Services
 
         public AccountServiceExtended(ILogger<AccountService> logger,
            IAccountDataAccess dataAccess,
+           IArchivedAccountServiceExtended archivedAccountService,
            IRegistrationLogServiceExtended registrationLogService,
            IMapper mapper,
            IPostCanvasAccountHttpService postCanvasAccountHttpService,
            IOptions<CanvasSettings> options)
            : base(logger, dataAccess)
         {
+            this.archivedAccountService = archivedAccountService;
             this.registrationLogService = registrationLogService;
             this.mapper = mapper;
             this.postCanvasAccountHttpService = postCanvasAccountHttpService;
@@ -81,7 +84,19 @@ namespace CanvasAccountRegistration.Logic.Services
         public override async Task Delete(int id)
         {
             var account = await Get(id);
+            if (account == null) return;
+            var archivedAccount = await archivedAccountService.GetByInitialId(id);
+            if (archivedAccount == null)
+            {
+                await ArchiveAccount(account);
+            }
             await base.Delete(id);
+        }
+
+        private async Task ArchiveAccount(Account account)
+        {
+            var archivedAccount = account.ToArchivedAccount();
+            await archivedAccountService.Insert(archivedAccount);
         }
 
         private async Task MapValuesAndUpdate(RegistrationLog registrationLog, Account account)
