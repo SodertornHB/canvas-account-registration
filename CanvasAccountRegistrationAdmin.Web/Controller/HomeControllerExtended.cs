@@ -52,7 +52,7 @@ namespace Web.Controllers
             return RedirectToAction("List");
         }
 
-        public async Task<IActionResult> Integrate([FromServices] IMailService mailer, int id)
+        public async Task<IActionResult> Integrate( int id)
         {
             try
             {
