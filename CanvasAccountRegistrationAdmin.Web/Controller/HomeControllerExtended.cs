@@ -2,7 +2,6 @@ using AutoMapper;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using Sh.Library.MailSender;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +15,13 @@ namespace Web.Controllers
 
         [HttpGet("list")]
         public async Task<IActionResult> List(
-            [FromServices] IAccountServiceExtended accountService,
-            [FromServices] IMapper mapper)
+     [FromServices] IAccountServiceExtended accountService,
+     [FromServices] IMapper mapper,
+     [FromQuery] string type)
         {
             var accounts = await accountService.GetAll();
-            var viewModels = mapper.Map<IEnumerable<RegistrationViewModel>>(accounts);
+            var filteredAccounts = string.IsNullOrWhiteSpace(type) ? accounts : accounts.Where(x => x.AccountType == type);
+            var viewModels = mapper.Map<IEnumerable<RegistrationViewModel>>(filteredAccounts);
             return View(viewModels.OrderByDescending(x => x.CreatedOn));
         }
 
@@ -66,13 +67,12 @@ namespace Web.Controllers
                     return NotFound($"Account with ID {id} not found.");
                 }
                 var response = await accountService.IntegrateIntoCanvas(account);
-                await mailer.Send("biblioteket@sh.se", account.Email, "Välkommen till Södertörns högskolas lärplattform Canvas", "<!DOCTYPE html> <html> <head>     <meta charset='UTF-8'> </head> <body>     <p>Du har nu ett konto i Canvas. <a href='https://canvas-account-registration.shbiblioteket.se/how-to-log-into-canvas'>Klicka här för information om hur du loggar in</a></p> <p>Om länken inte fungerar, kopiera och klistra in följande i din webbläsare:<br /> https://canvas-account-registration.shbiblioteket.se/how-to-log-into-canvas</p> </body> </html>");
                 TempData["SuccessMessage"] = "User {0} has been integrated successfully.";
                 TempData["AccountDisplayName"] = account.DisplayName;
             }
             catch (HttpRequestException)
             {
-                TempData["ErrorMessage"] = "Kontot kunde inte läggas till. Finns användaren redan i Canvas?";
+                TempData["ErrorMessage"] = "Kontot kunde inte lï¿½ggas till. Finns anvï¿½ndaren redan i Canvas?";
             }
             catch (Exception e)
             {

@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Sh.Library.Authentication;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Web.Controllers
 {
@@ -29,12 +29,14 @@ namespace Web.Controllers
             this.accountService = accountService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var accountTypes = await accountService.GetAccountTypes();
+            if (accountTypes.Count() == 1) return RedirectToAction("List", new { type = accountTypes.First() });
             return Redirect("list");
         }
 
-        [NoLibraryAuth]
+        
         [HttpPost]
         public IActionResult ToggleCulture(string returnUrl)
         {
@@ -44,14 +46,14 @@ namespace Web.Controllers
             return Redirect(returnUrl);
         }
 
-        [NoLibraryAuth]
+        
         [HttpGet("error")]
         public IActionResult Error()
         {
             return View();
         }
 
-        [NoLibraryAuth]
+        
         [HttpGet("no-auth")]
         public IActionResult NoAuth()
         {
