@@ -88,161 +88,39 @@ BEGIN TRY
 
     IF NOT EXISTS (SELECT 1 FROM [Migration] WHERE DatabaseVersion = '1.1.0')
     BEGIN
+        
         IF COL_LENGTH('dbo.Account', 'AccountType') IS NULL
         BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.Account
-                ADD AccountType NVARCHAR(32) NOT NULL
-                    CONSTRAINT DF_Account_AccountType DEFAULT (''smob'')
-                    WITH VALUES;
-            ');
-        END
-        ELSE IF NOT EXISTS (
-            SELECT 1
-            FROM sys.default_constraints dc
-            JOIN sys.columns c
-              ON c.object_id = dc.parent_object_id
-             AND c.column_id  = dc.parent_column_id
-            WHERE dc.name = 'DF_Account_AccountType'
-              AND dc.parent_object_id = OBJECT_ID('dbo.Account')
-              AND c.name = 'AccountType'
-        )
-        BEGIN
-            EXEC(N'ALTER TABLE dbo.Account
-                   ADD CONSTRAINT DF_Account_AccountType DEFAULT (''smob'') FOR AccountType;');
-        END
-
-        IF NOT EXISTS (
-            SELECT 1 FROM sys.check_constraints
-            WHERE name = 'CK_Account_AccountType'
-              AND parent_object_id = OBJECT_ID('dbo.Account')
-        )
-        BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.Account
-                ADD CONSTRAINT CK_Account_AccountType
-                    CHECK (AccountType IN (''smob'', ''guest''));
-                ALTER TABLE dbo.Account WITH CHECK
-                    CHECK CONSTRAINT CK_Account_AccountType;
-            ');
-        END
+            ALTER TABLE dbo.Account
+            ADD AccountType NVARCHAR(32) NOT NULL
+                CONSTRAINT DF_Account_AccountType DEFAULT ('guest')
+                WITH VALUES; 
+        END;        
 
         IF COL_LENGTH('dbo.Account', 'AccountRole') IS NULL
         BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.Account
-                ADD AccountRole NVARCHAR(32) NOT NULL
-                    CONSTRAINT DF_Account_AccountRole DEFAULT (''student'')
-                    WITH VALUES;
-            ');
-        END
-        ELSE IF NOT EXISTS (
-            SELECT 1
-            FROM sys.default_constraints dc
-            JOIN sys.columns c
-              ON c.object_id = dc.parent_object_id
-             AND c.column_id  = dc.parent_column_id
-            WHERE dc.name = 'DF_Account_AccountRole'
-              AND dc.parent_object_id = OBJECT_ID('dbo.Account')
-              AND c.name = 'AccountRole'
-        )
-        BEGIN
-            EXEC(N'ALTER TABLE dbo.Account
-                   ADD CONSTRAINT DF_Account_AccountRole DEFAULT (''student'') FOR AccountRole;');
-        END
+            ALTER TABLE dbo.Account
+            ADD AccountRole NVARCHAR(32) NOT NULL
+                CONSTRAINT DF_Account_AccountRole DEFAULT ('student')
+                WITH VALUES; 
+        END;
+        
 
-        IF NOT EXISTS (
-            SELECT 1 FROM sys.check_constraints
-            WHERE name = 'CK_Account_AccountRole'
-              AND parent_object_id = OBJECT_ID('dbo.Account')
-        )
+		IF COL_LENGTH('dbo.ArchivedAccount', 'ArchivedAccountType') IS NULL
         BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.Account
-                ADD CONSTRAINT CK_Account_AccountRole
-                    CHECK (AccountRole IN (''student'', ''other''));
-                ALTER TABLE dbo.Account WITH CHECK
-                    CHECK CONSTRAINT CK_Account_AccountRole;
-            ');
-        END
-
-        IF COL_LENGTH('dbo.ArchivedAccount', 'ArchivedAccountType') IS NULL
-        BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.ArchivedAccount
-                ADD ArchivedAccountType NVARCHAR(32) NOT NULL
-                    CONSTRAINT DF_ArchivedAccount_ArchivedAccountType DEFAULT (''smob'')
-                    WITH VALUES;
-            ');
-        END
-        ELSE IF NOT EXISTS (
-            SELECT 1
-            FROM sys.default_constraints dc
-            JOIN sys.columns c
-              ON c.object_id = dc.parent_object_id
-             AND c.column_id  = dc.parent_column_id
-            WHERE dc.name = 'DF_ArchivedAccount_ArchivedAccountType'
-              AND dc.parent_object_id = OBJECT_ID('dbo.ArchivedAccount')
-              AND c.name = 'ArchivedAccountType'
-        )
-        BEGIN
-            EXEC(N'ALTER TABLE dbo.ArchivedAccount
-                   ADD CONSTRAINT DF_ArchivedAccount_ArchivedAccountType DEFAULT (''smob'') FOR ArchivedAccountType;');
-        END
-
-        IF NOT EXISTS (
-            SELECT 1 FROM sys.check_constraints
-            WHERE name = 'CK_ArchivedAccount_ArchivedAccountType'
-              AND parent_object_id = OBJECT_ID('dbo.ArchivedAccount')
-        )
-        BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.ArchivedAccount
-                ADD CONSTRAINT CK_ArchivedAccount_ArchivedAccountType
-                    CHECK (ArchivedAccountType IN (''smob'', ''guest''));
-                ALTER TABLE dbo.ArchivedAccount WITH CHECK
-                    CHECK CONSTRAINT CK_ArchivedAccount_ArchivedAccountType;
-            ');
-        END
+            ALTER TABLE dbo.ArchivedAccount
+            ADD ArchivedAccountType NVARCHAR(32) NOT NULL
+                CONSTRAINT DF_ArchivedAccount_ArchivedAccountType DEFAULT ('guest')
+                WITH VALUES; 
+        END;
 
         IF COL_LENGTH('dbo.ArchivedAccount', 'ArchivedAccountRole') IS NULL
         BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.ArchivedAccount
-                ADD ArchivedAccountRole NVARCHAR(32) NOT NULL
-                    CONSTRAINT DF_ArchivedAccount_ArchivedAccountRole DEFAULT (''student'')
-                    WITH VALUES;
-            ');
-        END
-        ELSE IF NOT EXISTS (
-            SELECT 1
-            FROM sys.default_constraints dc
-            JOIN sys.columns c
-              ON c.object_id = dc.parent_object_id
-             AND c.column_id  = dc.parent_column_id
-            WHERE dc.name = 'DF_ArchivedAccount_ArchivedAccountRole'
-              AND dc.parent_object_id = OBJECT_ID('dbo.ArchivedAccount')
-              AND c.name = 'ArchivedAccountRole'
-        )
-        BEGIN
-            EXEC(N'ALTER TABLE dbo.ArchivedAccount
-                   ADD CONSTRAINT DF_ArchivedAccount_ArchivedAccountRole DEFAULT (''student'') FOR ArchivedAccountRole;');
-        END
-
-        IF NOT EXISTS (
-            SELECT 1 FROM sys.check_constraints
-            WHERE name = 'CK_ArchivedAccount_ArchivedAccountRole'
-              AND parent_object_id = OBJECT_ID('dbo.ArchivedAccount')
-        )
-        BEGIN
-            EXEC(N'
-                ALTER TABLE dbo.ArchivedAccount
-                ADD CONSTRAINT CK_ArchivedAccount_ArchivedAccountRole
-                    CHECK (ArchivedAccountRole IN (''student'', ''other''));
-                ALTER TABLE dbo.ArchivedAccount WITH CHECK
-                    CHECK CONSTRAINT CK_ArchivedAccount_ArchivedAccountRole;
-            ');
-        END
+            ALTER TABLE dbo.ArchivedAccount
+            ADD ArchivedAccountRole NVARCHAR(32) NOT NULL
+                CONSTRAINT DF_ArchivedAccount_ArchivedAccountRole DEFAULT ('student')
+                WITH VALUES; 
+        END;
 
         INSERT INTO [Migration] ([ClientVersion], [DatabaseVersion], [CreatedOn])
         VALUES ('1.1.0', '1.1.0', SYSDATETIME());
