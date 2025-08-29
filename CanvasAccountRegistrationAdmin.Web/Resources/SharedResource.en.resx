@@ -151,7 +151,7 @@
     <value>Error</value>
   </data>
   <data name="ErrorDescription" xml:space="preserve">
-    <value>An error occurred. Please contact &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
+    <value>An error occurred.</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Account</value>
@@ -305,9 +305,7 @@
     purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the
     university's data storage and retention policies.&lt;/p&gt;
 &lt;h3&gt;Data Controller&lt;/h3&gt;
-&lt;p&gt;The data controller for the processing of personal data is Södertörn University, Sweden. If you have questions about
-    how personal data is handled within the service, contact dataskydd@sh.se.&lt;/p&gt;
-&lt;p&gt;Contact details for Södertörn University's Data Protection Officer can be found on &lt;a href="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;this page&lt;/a&gt;.&lt;/p&gt;
+
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal
     data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA
