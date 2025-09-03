@@ -124,6 +124,14 @@ namespace Web.Controllers
             return View();
         }
 
+
+        [AllowAnonymous]
+        [HttpGet("instructions-eduid")]
+        public IActionResult EduIdInstruction()
+        {
+            return View();
+        }
+
         [HttpGet("how-to-log-into-canvas")]
         public IActionResult CanvasInstruction()
         {
