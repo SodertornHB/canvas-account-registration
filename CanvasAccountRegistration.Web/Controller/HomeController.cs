@@ -123,6 +123,7 @@ namespace Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet("how-to-log-into-canvas")]
         public IActionResult CanvasInstruction()
         {
