@@ -352,10 +352,7 @@
     <value />
   </data>
   <data name="InstructionsBody" xml:space="preserve">
-    <value>&lt;h1&gt;Skapa konto för att läsa kurs inom SMOB&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;Sverige mot organiserad brottslighet (SMOB)&lt;/strong&gt; är ett excellensinitiativ som syftar till att stärka Sveriges förmåga att bekämpa den organiserade brottsligheten, med särskilt fokus på den kriminella ekonomin. &lt;a href="https://www.sh.se/institutioner--amnen/institutionen-for-polisiart-arbete/smob" target="_blank"&gt;Läs mer om SMOB här&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Alla kurser inom SMOB ges via Södertörns högskolas lärplattform, Studiewebben Canvas.&lt;/p&gt;
-&lt;p&gt;Som deltagare på en kurs inom SMOB kommer du att använda ett eduID för att logga in i Canvas.&lt;/p&gt;
+    <value>&lt;h1&gt;Skapa konto&lt;/h1&gt;
 &lt;p&gt;Följ dessa instruktioner för att skapa ett eduID:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;
@@ -374,7 +371,7 @@
     </value>
   </data>
   <data name="InstructionsHeader" xml:space="preserve">
-    <value>Skapa konto för att läsa kurs inom SMOB</value>
+    <value>Skapa konto</value>
   </data>
   <data name="AccountRole" xml:space="preserve">
     <value>Roll</value>

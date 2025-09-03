@@ -168,8 +168,9 @@
   <data name="display_name" xml:space="preserve">
     <value>Namn</value>
   </data>
-  <data name="email" xml:space="preserve">
-    <value>E-post</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="email" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="assurance_level" xml:space="preserve">
     <value>Tillitsnivå</value>
@@ -361,5 +362,23 @@
   </data>
   <data name="AccountType" xml:space="preserve">
     <value>Kontotyp</value>
+  </data>
+  <data name="EduIdInstruction" xml:space="preserve">
+    <value>&lt;h1&gt;Skapa konto&lt;/h1&gt;
+&lt;p&gt;Följ dessa instruktioner för att skapa ett eduID:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    Skapa ditt eduID. Öppna ett nytt webbfönster och gå till &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; och skapa ett konto. 
+  &lt;/li&gt;
+  &lt;li&gt;
+    Verifiera ditt eduID. När du har skapat ditt konto på eduID ska du verifiera det med ditt BankID eller Freja+. Gå till &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduId:s startsida&lt;/a&gt; och klicka på länken "Identitet" under rubriken "Verifiera din identitet". Följ instruktionerna på sidan för att verifiera ditt konto med BankID eller Freja+.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="/"&gt;Klicka här&lt;/a&gt; för att registrera ditt eduID i denna tjänst. Använd ditt eduID när du loggar in, det vill säga den e-postadress och det lösenord du valde när du registrerade dig för eduId.
+  &lt;/li&gt;
+  &lt;li&gt;
+     Nu ser du en bekräftelse på att ditt eduID är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Canvas. Du kommer att använda ditt eduID för att logga in i Canvas i fortsättningen.&lt;a href="/how-to-log-into-canvas"&gt;Här finns instruktioner hur du loggar in i Canvas.&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</value>
   </data>
 </root>
