@@ -2,7 +2,7 @@
 <root>
   <!-- 
     Microsoft ResX Schema 
-     
+    
     Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
@@ -151,7 +151,7 @@
     <value>Error</value>
   </data>
   <data name="ErrorDescription" xml:space="preserve">
-    <value>An error occurred.</value>
+    <value>An error occurred. Please contact &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Account</value>
@@ -305,7 +305,9 @@
     purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the
     university's data storage and retention policies.&lt;/p&gt;
 &lt;h3&gt;Data Controller&lt;/h3&gt;
-
+&lt;p&gt;The data controller for the processing of personal data is Södertörn University, Sweden. If you have questions about
+    how personal data is handled within the service, contact dataskydd@sh.se.&lt;/p&gt;
+&lt;p&gt;Contact details for Södertörn University's Data Protection Officer can be found on &lt;a href="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;this page&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal
     data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA
@@ -331,31 +333,6 @@
   </data>
   <data name="AssuranceLevelInfo" xml:space="preserve">
     <value>Indicates which assurance level the account has which is determind on wheter the account is verified with Bankid or not</value>
-  </data>
-  <data name="InstructionsBody" xml:space="preserve">
-    <value>&lt;h1&gt;Create an Account to Access Courses in Canvas&lt;/h1&gt;
-&lt;p&gt;Follow these instructions to create an eduID:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    Create your eduID. Open a new browser window and go to &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; to create an account. &lt;strong&gt;Important!&lt;/strong&gt; You must use the same email address you use for the service as your eduID username.
-  &lt;/li&gt;
-  &lt;li&gt;
-    Verify your eduID. Once you have created your account on eduID, you need to verify it using your BankID or Freja+. Go to the &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduID homepage&lt;/a&gt; and click on the "Identity" link under the "Verify your identity" section. Follow the instructions on the page to verify your account with BankID or Freja+.
-  &lt;/li&gt;
-  &lt;li&gt;
-    Register your eduID in Canvas. Click on the link: &lt;a href="https://YOUR_HOST/" target="_blank"&gt;Canvas account registration page&lt;/a&gt;. Use your eduID — that is, the email address and password you chose when you registered.
-  &lt;/li&gt;
-  &lt;li&gt;
-    Confirm that your eduID has been registered. You will now see a confirmation that your eduID has been registered in Canvas. Once an administrator has reviewed and approved your account, you will gain access to the Canvas learning platform. You will use your eduID to log in to Canvas from now on.
-  &lt;/li&gt;
-&lt;/ol&gt;
-</value>
-  </data>
-  <data name="InstructionsHeader" xml:space="preserve">
-    <value>Create account</value>
-  </data>
-  <data name="Approve" xml:space="preserve">
-    <value>Approve</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="HomeUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">

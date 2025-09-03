@@ -3,7 +3,7 @@
   <!-- 
     Microsoft ResX Schema 
     
-    Version 2.0 
+    Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
@@ -177,14 +177,8 @@
   <data name="assurance_level" xml:space="preserve">
     <value>Tillitsnivå</value>
   </data>
-  <data name="mail_verified" xml:space="preserve">
-    <value>E-post verifierad</value>
-  </data>
   <data name="create_date_time" xml:space="preserve">
     <value>Skapad</value>
-  </data>
-  <data name="verification_date_time" xml:space="preserve">
-    <value>Verifieringstidpunkt</value>
   </data>
   <data name="integration_date_time" xml:space="preserve">
     <value>Integrerad vid</value>
@@ -305,6 +299,10 @@
     tjänstensändamål. När du inte längre använder tjänsten kommer dina personuppgifter att raderas i enlighet med
     högskolansrutiner för datalagring och rensning.&lt;/p&gt;
 &lt;h3&gt;Personuppgiftsansvarig&lt;/h3&gt;
+&lt;p&gt;Personuppgiftsansvarig för behandlingen av personuppgifter är Södertörns högskola, Sverige. Har du frågor om
+    hurpersonuppgifter hanteras inom tjänsten, kontakta dataskydd@sh.se.&lt;/p&gt;
+&lt;p&gt;Kontaktuppgifter till Södertörns högskolas dataskyddsombud finns på &lt;ahref="https:
+        //www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;denna sida&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;Denna tjänst följer det internationella ramverket GÉANT Data Protection Code of Conduct för överföring
     avpersonuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES
@@ -341,9 +339,6 @@
   <data name="IsApproved" xml:space="preserve">
     <value>Godkänd</value>
   </data>
-  <data name="AssuranceLevelInfo" xml:space="preserve">
-    <value>Visar vilken tillitsnivå kontot har, vilket avgörs av om kontot är verifierat med BankID eller inte.</value>
-  </data>
   <data name="IsIntegrated" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -357,7 +352,10 @@
     <value />
   </data>
   <data name="InstructionsBody" xml:space="preserve">
-    <value>&lt;h1&gt;Skapa konto&lt;/h1&gt;
+    <value>&lt;h1&gt;Skapa konto för att läsa kurs inom SMOB&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sverige mot organiserad brottslighet (SMOB)&lt;/strong&gt; är ett excellensinitiativ som syftar till att stärka Sveriges förmåga att bekämpa den organiserade brottsligheten, med särskilt fokus på den kriminella ekonomin. &lt;a href="https://www.sh.se/institutioner--amnen/institutionen-for-polisiart-arbete/smob" target="_blank"&gt;Läs mer om SMOB här&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Alla kurser inom SMOB ges via Södertörns högskolas lärplattform, Studiewebben Canvas.&lt;/p&gt;
+&lt;p&gt;Som deltagare på en kurs inom SMOB kommer du att använda ett eduID för att logga in i Canvas.&lt;/p&gt;
 &lt;p&gt;Följ dessa instruktioner för att skapa ett eduID:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;
@@ -367,19 +365,16 @@
     Verifiera ditt eduID. När du har skapat ditt konto på eduID ska du verifiera det med ditt BankID eller Freja+. Gå till &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduId:s startsida&lt;/a&gt; och klicka på länken "Identitet" under rubriken "Verifiera din identitet". Följ instruktionerna på sidan för att verifiera ditt konto med BankID eller Freja+.
   &lt;/li&gt;
   &lt;li&gt;
-    Registrera ditt eduID. Använd ditt eduID, det vill säga den e-postadress och det lösenord du valde när du registrerade dig.
+    Registrera ditt eduID på Södertörns högskolas Canvas. Klicka på länken: &lt;a href="https://canvas-account-registration.shbiblioteket.se/" target="_blank"&gt;Canvas kontoregistreringssida&lt;/a&gt;. Använd ditt eduID, det vill säga den e-postadress och det lösenord du valde när du registrerade dig.
   &lt;/li&gt;
   &lt;li&gt;
-    Bekräfta att ditt eduID är registrerat. Nu ser du en bekräftelse på att ditt eduID är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Canvas. Du kommer att använda ditt eduID för att logga in i Canvas i fortsättningen.
+    Bekräfta att ditt eduID är registrerat. Nu ser du en bekräftelse på att ditt eduID är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Studiewebben Canvas. Du kommer att använda ditt eduID för att logga in i Canvas i fortsättningen.
   &lt;/li&gt;
 &lt;/ol&gt;
     </value>
   </data>
   <data name="InstructionsHeader" xml:space="preserve">
-    <value>Skapa konto</value>
-  </data>
-  <data name="Approve" xml:space="preserve">
-    <value>Godkänn</value>
+    <value>Skapa konto för att läsa kurs inom SMOB</value>
   </data>
   <data name="AccountRole" xml:space="preserve">
     <value>Roll</value>
