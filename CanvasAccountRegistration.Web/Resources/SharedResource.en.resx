@@ -151,7 +151,7 @@
     <value>Error</value>
   </data>
   <data name="ErrorDescription" xml:space="preserve">
-    <value>An error occurred. Please contact &lt;a href="mailto:YOUR_EMAIL@YOUR_DOMAIN"&gt;YOUR_EMAIL@YOUR_DOMAIN&lt;/a&gt;</value>
+    <value>An error occurred. Please contact &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Account</value>
@@ -220,13 +220,13 @@
     <value>Database Version</value>
   </data>
   <data name="Canvas Account Registration info" xml:space="preserve">
-    <value>&lt;p&gt;Canvas account registration is a service aimed at employees of Swedish government agencies who are enrolled in a commissioned education program at YOUR UNIVERSITY.&lt;/p&gt; &lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Canvas account registration is a service aimed at employees of Swedish government agencies who are enrolled in a commissioned education program at Södertörn University.&lt;/p&gt; &lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
   </data>
   <data name="Privacy info" xml:space="preserve">
     <value>&lt;h2&gt;Processing of Personal Data&lt;/h2&gt;
 &lt;h3&gt;Transfer of Personal Data&lt;/h3&gt;
 &lt;p&gt;Personal data is transferred from the identity provider (your login service) to Canvas Account Registration to enable
-    YOUR University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;
+    Södertörn University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;
 &lt;p&gt;When logging into this service, the following personal data is requested from the identity provider you use:&lt;/p&gt;
 &lt;table&gt;
     &lt;thead&gt;
@@ -292,7 +292,7 @@
     the service or if required by law. In such cases, the university ensures that the recipient handles the data in
     accordance with applicable data protection regulations.&lt;/p&gt;
 &lt;h3&gt;Legal Basis&lt;/h3&gt;
-&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of YOUR University's exercise
+&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of Södertörn University's exercise
     of official authority. Fulfilling legal obligations may also, in some cases, serve as the legal basis for the
     service.&lt;/p&gt;
 &lt;h3&gt;Right to Access, Rectification, and Erasure of Personal Data&lt;/h3&gt;
@@ -305,9 +305,9 @@
     purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the
     university's data storage and retention policies.&lt;/p&gt;
 &lt;h3&gt;Data Controller&lt;/h3&gt;
-&lt;p&gt;The data controller for the processing of personal data is YOUR University, Sweden. If you have questions about
-    how personal data is handled within the service, contact dataskydd  .&lt;/p&gt;
-&lt;p&gt;Contact details for YOUR University's Data Protection Officer can be found on &lt;a href="#"&gt;this page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The data controller for the processing of personal data is Södertörn University, Sweden. If you have questions about
+    how personal data is handled within the service, contact dataskydd@sh.se.&lt;/p&gt;
+&lt;p&gt;Contact details for Södertörn University's Data Protection Officer can be found on &lt;a href="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;this page&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal
     data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA
@@ -362,23 +362,23 @@
     <value>Log out</value>
   </data>
   <data name="Instructions" xml:space="preserve">
-    <value>&lt;h1&gt;Create an Account to Access the Course&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;This course&lt;/strong&gt; is part of a national initiative aimed at strengthening the capacity to combat organized crime, with a focus on the criminal economy.&lt;/p&gt;
-&lt;p&gt;All courses in the initiative are offered via your organization's learning platform, Canvas.&lt;/p&gt;
-&lt;p&gt;As a participant, you will use an eduID to log in to Canvas.&lt;/p&gt;
+    <value>&lt;h1&gt;Create an Account to Access the SMOB Course&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sweden Against Organized Crime (SMOB)&lt;/strong&gt; is an excellence initiative aimed at strengthening Sweden's ability to combat organized crime, with a particular focus on the criminal economy. &lt;a href="https://www.sh.se/english/sodertorn-university/meet-sodertorn-university/this-is-sodertorn-university/organisation/police-studies/sweden-against-organised-crime" target="_blank"&gt;Read more about SMOB here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;All courses within SMOB are offered via Södertörn University's learning platform, Studiewebben Canvas.&lt;/p&gt;
+&lt;p&gt;As a participant in a SMOB course, you will use an eduID to log in to Canvas.&lt;/p&gt;
 &lt;p&gt;Follow these instructions to create an eduID:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;
-    Create your eduID. Go to &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; and create an account. &lt;strong&gt;Important!&lt;/strong&gt; Use the same email address you intend to use for this service.
+    Create your eduID. Open a new browser window and go to &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; and create an account. &lt;strong&gt;Important!&lt;/strong&gt; You must use the email address you have in the service as the username for your eduID.
   &lt;/li&gt;
   &lt;li&gt;
-    Verify your eduID. After creating your account, verify it with BankID or Freja+ by following the instructions at &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduid.se&lt;/a&gt; under the "Identity" section.
+    Verify your eduID. Once you have created your account on eduID, you should verify it with your BankID or Freja+. Go to &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduID's homepage&lt;/a&gt; and click on the link "Identity" under the heading "Verify your identity". Follow the instructions on the page to verify your account with BankID or Freja+.
   &lt;/li&gt;
   &lt;li&gt;
-    Register your eduID on your organization’s Canvas platform. Go to &lt;a href="https://canvas.your-organization.example.org/" target="_blank"&gt;Canvas account registration page&lt;/a&gt; and log in with your eduID.
+    Register your eduID on Södertörn University's Canvas. Click on the link: &lt;a href="https://canvas-account-registration.shbiblioteket.se/" target="_blank"&gt;Canvas account registration page&lt;/a&gt;. Use your eduID, i.e. the email address and password you chose when you registered.
   &lt;/li&gt;
   &lt;li&gt;
-    Confirm that your eduID is registered. You will see a confirmation message. Once an administrator has approved your account, you will gain access to Canvas.
+    Confirm that your eduID is registered. You will now see a confirmation that your eduID is registered in the Canvas account registration. Once an administrator has reviewed and approved your account, you will gain access to Studiewebben Canvas. You will use your eduID to log in to Canvas going forward.
   &lt;/li&gt;
 &lt;/ol&gt;
     </value>
@@ -387,24 +387,28 @@
     <value>Page Not Found</value>
   </data>
   <data name="NotFoundMessage" xml:space="preserve">
-    <value>We apologize, but the page you were looking for does not seem to exist. This may be because the page has been moved, removed, or an incorrect link was used. If you continue to experience issues, please contact support@your-organization.example.org.</value>
+    <value>We apologize, but the page you were looking for does not seem to exist. This may be because the page has been moved, removed, or an incorrect link was used. If you continue to experience issues, please contact biblioteket@sh.se.</value>
   </data>
   <data name="CanvasInstruction" xml:space="preserve">
-    <value>&lt;h3&gt;Instructions for logging into your organization’s learning platform Canvas:&lt;/h3&gt;
-&lt;p&gt;You have been given an account in Canvas and can now log in to access your course.&lt;/p&gt;
+    <value>&lt;h3&gt;Instructions for logging into Södertörn University's learning platform Canvas:&lt;/h3&gt;
+&lt;p&gt;You have been given an account in Södertörn University's learning platform Canvas and can log in to access your education.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Use the link &lt;a href="https://canvas.your-organization.example.org" target="_blank"&gt;canvas.your-organization.example.org&lt;/a&gt; to go to the login page.&lt;/li&gt;
-  &lt;li&gt;Select "Log in with EduID."&lt;/li&gt;
-  &lt;li&gt;Log in using your EduID credentials.&lt;/li&gt;
+    &lt;li&gt;Use the link &lt;a href="https://studiewebben.instructure.com" target="_blank"&gt;studiewebben.instructure.com&lt;/a&gt; to access the login page for Canvas.&lt;/li&gt;
+    &lt;li&gt;Select the option "Log in with EduId / SMOB."&lt;/li&gt;
+    &lt;li&gt;Log in with your EduId.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Review notifications&lt;/h3&gt;
-&lt;p&gt;You can control what notifications you receive from Canvas by going to &lt;strong&gt;Account &gt; Notifications&lt;/strong&gt; and adjusting your preferences.&lt;/p&gt;
-&lt;h3&gt;Enrollment notice&lt;/h3&gt;
-&lt;p&gt;You will receive an email when you are enrolled in a course. If you don’t see it right away, please wait or contact support.&lt;/p&gt;
-&lt;h3&gt;Need help?&lt;/h3&gt;
-&lt;p&gt;Contact &lt;a href="mailto:support@your-organization.example.org"&gt;support@your-organization.example.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Review which notifications you want to receive&lt;/h3&gt;
+&lt;p&gt;You control which notifications/alerts you receive from Canvas. Click on &lt;strong&gt;Account &gt; Notifications&lt;/strong&gt; and enable the notifications you want to receive from the system.&lt;/p&gt;
+
+&lt;h3&gt;You will receive an email when you are added to a course&lt;/h3&gt;
+&lt;p&gt;Don't see the course yet? We are working on it and will notify you via email once you are enrolled in the course.&lt;/p&gt;
+
+&lt;h3&gt;Do you have any questions or concerns?&lt;/h3&gt;
+&lt;p&gt;Contact &lt;a href="mailto:smob@sh.se"&gt;smob@sh.se&lt;/a&gt;&lt;/p&gt;
     </value>
   </data>
+
   <data name="AccountRole" xml:space="preserve">
     <value>Role</value>
   </data>
