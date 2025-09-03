@@ -5,6 +5,7 @@
 
 **/appsettings.local.json
 **/appsettings.Development.json
+**/appsettings.staging.json
 **/appsettings.production.json
 **/appsettings.json
 **/nlog.local.config
