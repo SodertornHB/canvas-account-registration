@@ -116,15 +116,6 @@ namespace Web.Controllers
             return View();
         }
 
-
-        [AllowAnonymous]
-        [HttpGet("instructions")]
-        public IActionResult Instructions()
-        {
-            return View();
-        }
-
-
         [AllowAnonymous]
         [HttpGet("instructions-eduid")]
         public IActionResult EduIdInstruction()
