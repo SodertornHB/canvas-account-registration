@@ -1,4 +1,4 @@
-
+﻿
 //--------------------------------------------------------------------------------------------------------------------
 // Warning! This is an auto generated file. Changes may be overwritten. 
 // Generator version: 0.0.1.0
@@ -49,7 +49,10 @@ namespace Web.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index([FromQuery] string type, string role)
+        public async Task<IActionResult> Index(
+
+            [FromQuery] string type,
+            [FromQuery] string role)
         {
             if (!(User?.Identity?.IsAuthenticated ?? false))
             {
