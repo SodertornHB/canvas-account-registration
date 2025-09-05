@@ -25,6 +25,8 @@ namespace CanvasAccountRegistration.Logic.Extensions
                 CreatedOn = account.CreatedOn,
                 VerifiedOn = account.VerifiedOn,
                 IntegratedOn = account.IntegratedOn,
+                ArchivedAccountRole = account.AccountRole,
+                ArchivedAccountType = account.AccountType,
                 DeletedOn = DateTime.UtcNow
             };
         }
