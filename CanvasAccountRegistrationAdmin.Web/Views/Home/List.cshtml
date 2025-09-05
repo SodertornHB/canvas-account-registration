@@ -59,9 +59,6 @@
                 @SharedLocalizer.GetLocalizedHtmlString("IsVerifiedWithId")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("IsApproved")
-            </th>
-            <th>
                 @SharedLocalizer.GetLocalizedHtmlString("IsIntegrated")
             </th>
             <th></th>
@@ -94,9 +91,6 @@
                 </td>
                 <td class="tooltip-r @(!item.IsVerifiedWithId ?  " warning-cell" : " ")"  data-toggle="tooltip" data-placement="left" title="@(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))">
                     @(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
-                </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.VerifiedOn?.ToString()">
-                    @(item.IsApproved ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
                 </td>
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.IntegratedOn?.ToString()">
                     @(item.IsIntegrated ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
