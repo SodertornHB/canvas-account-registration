@@ -58,6 +58,7 @@
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.png" />
       <OrgSpecificFiles Include="..\organizational-specific\web\*.json" />
       <OrgSpecificFiles Include="..\organizational-specific\web\*.csproj" />
+      <OrgSpecificFiles Include="..\organizational-specific\web\*.ps1" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.resx" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.xml" />
       <OrgSpecificFiles Include="..\organizational-specific\web\**\*.cshtml" />
