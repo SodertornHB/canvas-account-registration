@@ -52,7 +52,9 @@ namespace Web.Controllers
             return RedirectToAction("List");
         }
 
-        public async Task<IActionResult> Integrate( int id)
+        public async Task<IActionResult> Integrate(
+            int id, 
+            string type)
         {
             try
             {
@@ -78,10 +80,10 @@ namespace Web.Controllers
             {
                 TempData["ErrorMessage"] = $"An error occurred: {e.Message}";
             }
-            return RedirectToAction("List");
+            return RedirectToAction("List", new { type });
         }
 
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> Remove(int id, string type)
         {
             try
             {
@@ -104,7 +106,7 @@ namespace Web.Controllers
                 TempData["ErrorMessage"] = $"An error occurred: {e.Message}";
             }
             return RedirectToAction("List");
+            return RedirectToAction("List", new { type }); 
         }
-
     }
 }

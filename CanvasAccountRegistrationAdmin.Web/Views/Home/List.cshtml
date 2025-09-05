@@ -102,14 +102,14 @@
                     @(item.IsIntegrated ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
                 </td>
                 <td>
-                    <a asp-controller="Home" asp-action="Integrate" asp-route-id="@item.Id"
+                    <a asp-controller="Home" asp-action="Integrate" asp-route-id="@item.Id" asp-route-type="@Context.Request.Query["type"]"
                        class="btn-action @(item.IsIntegrated ? "btn-disabled" : "")">
                         @SharedLocalizer.GetLocalizedHtmlString("Integrate")
-                    </a>
-                    <a asp-controller="Home" asp-action="Remove" asp-route-id="@item.Id"
-                       class="btn-action btn-remove">
+                    </a><a asp-controller="Home" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="@Context.Request.Query["type"]"
+                           class="btn-action btn-remove">
                         @SharedLocalizer.GetLocalizedHtmlString("Remove")
                     </a>
+
                 </td>
             </tr>
         }
