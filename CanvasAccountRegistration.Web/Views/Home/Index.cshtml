@@ -16,7 +16,8 @@
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
         @if (!Model.IsVerifiedWithId)
         {
-            <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"), Url.Action("LogoutUser", "Saml2")))</p>
+            <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"),
+                            Url.Action("LogoutUser", "Saml2")))</p>
         }
 
         else
@@ -28,19 +29,16 @@
     <div class="details">
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Display Name"):</strong> @Model.DisplayName</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Email"):</strong> @Model.Email</p>
-        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong> @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong>
+            @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
         <p>
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
-            <i class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
+            <i
+                class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
         </p>
         <p>
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is integrated"):</strong>
             <i class="bi @(Model.IsIntegrated ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
         </p>
-    </div>
-    <hr />
-    <div class="details assurance-details">
-        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Swamid Assurance Level"):</strong> @Model.SwamidAssuranceLevel</p>
-        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Identity Assurance Profile"):</strong> @Model.IdentityAssuranceProfile</p>
     </div>
 </div>
