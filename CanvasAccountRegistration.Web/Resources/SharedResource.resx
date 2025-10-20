@@ -255,6 +255,9 @@
     avpersonuppgifter från identitetsutfärdare till tjänsten. Ramverket är avsett för tjänster i Sverige, EU och EES
     somanvänds inom forskning och högre utbildning.&lt;/p&gt;</value>
   </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Överföring av personuppgifter till tjänsten i samband med federerad inloggning (Privacy Policy)</value>
+  </data>
   <data name="Information" xml:space="preserve">
     <value>Beskrivning av tjänsten Canvas kontoregistrering</value>
   </data>
@@ -299,16 +302,62 @@ Har du inte fått något mejl inom två arbetsdagar, kontakta &lt;a href="mailto
     <value>Utloggad!</value>
   </data>
   <data name="LoggedoutDescription" xml:space="preserve">
-    <value>Du är utloggad.</value>
+    <value>Du är utloggad!</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logga ut</value>
   </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>&lt;h1&gt;Skapa konto för att läsa kurs inom SMOB&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sverige mot organiserad brottslighet (SMOB)&lt;/strong&gt; är ett excellensinitiativ som syftar till att stärka Sveriges förmåga att bekämpa den organiserade brottsligheten, med särskilt fokus på den kriminella ekonomin. &lt;a href="https://www.sh.se/institutioner--amnen/institutionen-for-polisiart-arbete/smob" target="_blank"&gt;Läs mer om SMOB här&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Alla kurser inom SMOB ges via Södertörns högskolas lärplattform, Studiewebben Canvas.&lt;/p&gt;
+&lt;p&gt;Som deltagare på en kurs inom SMOB kommer du att använda ett eduID för att logga in i Canvas.&lt;/p&gt;
+&lt;p&gt;Följ dessa instruktioner för att skapa ett eduID:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    Skapa ditt eduID. Öppna ett nytt webbfönster och gå till &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; och skapa ett konto. &lt;strong&gt;Viktigt!&lt;/strong&gt; Du måste använda den e-postadress som du har i tjänsten som användarnamn för ditt edu-ID.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Verifiera ditt eduID. När du har skapat ditt konto på eduID ska du verifiera det med ditt BankID eller Freja+. Gå till &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduId:s startsida&lt;/a&gt; och klicka på länken "Identitet" under rubriken "Verifiera din identitet". Följ instruktionerna på sidan för att verifiera ditt konto med BankID eller Freja+.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Registrera ditt eduID på Södertörns högskolas Canvas. Klicka på länken: &lt;a href="/" target="_blank"&gt;Canvas kontoregistreringssida&lt;/a&gt;. Använd ditt eduID, det vill säga den e-postadress och det lösenord du valde när du registrerade dig.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Bekräfta att ditt eduID är registrerat. Nu ser du en bekräftelse på att ditt eduID är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Studiewebben Canvas. Du kommer att använda ditt eduID för att logga in i Canvas i fortsättningen.
+  &lt;/li&gt;
+&lt;/ol&gt;
+    </value>
+  </data>
+  <data name="NotFoundHeader" xml:space="preserve">
+    <value>Sidan kunde inte hittas</value>
+  </data>
+  <data name="NotFoundMessage" xml:space="preserve">
+    <value>Vi ber om ursäkt, men sidan du letade efter verkar inte finnas. Det kan bero på att sidan har flyttats, tagits bort eller att en felaktig länk har använts. Om du fortfarande har problem, vänligen kontakta biblioteket@sh.se.</value>
+  </data>
+  <data name="CanvasInstruction" xml:space="preserve">
+    <value>&lt;h3&gt;Instruktion för hur du loggar in i Södertörns högskolas lärplattform Canvas:&lt;/h3&gt;
+&lt;p&gt;Du har fått ett konto i Södertörns högskolas lärplattform Canvas och kan logga in för att ta del av din utbildning.&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;Använd länken &lt;a href="https://studiewebben.instructure.com" target="_blank"&gt;studiewebben.instructure.com&lt;/a&gt; för att komma till inloggningssidan för Canvas.&lt;/li&gt;
+    &lt;li&gt;Välj alternativet ”Logga in med EduId”.&lt;/li&gt;
+    &lt;li&gt;Logga in med ditt EduId.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Se över vilka aviseringar du vill ha&lt;/h3&gt;
+&lt;p&gt;Du styr själv över vilka aviseringar/notiser du vill få från Canvas. Klicka på &lt;strong&gt;Konto &gt; Aviseringar&lt;/strong&gt; och slå på de aviseringar du vill få från systemet.&lt;/p&gt;
+
+&lt;h3&gt;Du får ett mejl när du är tillagd i en kurs&lt;/h3&gt;
+&lt;p&gt;Ser du inte kursen ännu? Vi jobbar på det och meddelar dig via mejl när du är inlagd i kursen.&lt;/p&gt;
+
+&lt;h3&gt;Har du frågor eller funderingar?&lt;/h3&gt;
+&lt;p&gt;Kontakta &lt;a href="mailto:ikt-pedagogerna@sh.se"&gt;ikt-pedagogerna@sh.se&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
   <data name="AccountRole" xml:space="preserve">
-    <value>Roll</value>
+    <value />
   </data>
   <data name="AccountType" xml:space="preserve">
-    <value>Kontotyp</value>
+    <value />
   </data>
   <data name="EduIdInstruction" xml:space="preserve">
     <value>

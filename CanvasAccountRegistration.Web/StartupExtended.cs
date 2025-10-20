@@ -32,6 +32,7 @@ using Logic.Http;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
 using CanvasAccountRegistration.Logic.DataAccess;
+using Sh.Library.MailSender;
 
 namespace Web
 {
@@ -101,6 +102,8 @@ namespace Web
             });
             services.AddScoped<IPrincipal>(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.User);
             services.AddHttpContextAccessor();
+
+            services.AddLibraryMailSender(mailSenderHost: Configuration["MailSender:Host"], bearerToken: Configuration["MailSender:BearerToken"]);
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)

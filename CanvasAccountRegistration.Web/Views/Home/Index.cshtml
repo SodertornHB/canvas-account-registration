@@ -1,3 +1,6 @@
+@* --------------------------------------------------------------------*@
+@* This is an organization specific file *@
+@* --------------------------------------------------------------------*@
 @using CanvasAccountRegistration.Web.ViewModel
 @using Localization
 @using CanvasAccountRegistration.Logic.Settings
@@ -5,6 +8,13 @@
 @inject IOptions<ApplicationSettings> settings
 @inject LocService SharedLocalizer
 @model RegistrationViewModel
+
+@{
+    var type = Context.Request.Query["type"].ToString();
+    Layout = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase)
+    ? "_Layout"
+    : "_LayoutSmob";
+}
 
 <div class="success-container">
     <div class="success-icon"><i class="bi bi-check-circle-fill"></i></div>
@@ -14,28 +24,31 @@
     <hr />
     <div class="information">
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
-        @if (!Model.IsVerifiedWithId)
-        {
+@if (Context.Request.Query["type"] != "guest" && !Model.IsVerifiedWithId)
+{
             <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"),
                             Url.Action("LogoutUser", "Saml2")))</p>
         }
 
-        else
-        {
-            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
-        }
-    </div>
+else
+{
+    <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
+}
+</div>
     <hr />
     <div class="details">
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Display Name"):</strong> @Model.DisplayName</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Email"):</strong> @Model.Email</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong>
             @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
-        <p>
-            <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
-            <i
-                class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
-        </p>
+        @if (Context.Request.Query["type"] != "guest")
+        {
+            <p>
+                <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
+                <i
+                    class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
+            </p>
+        }
         <p>
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is integrated"):</strong>
             <i class="bi @(Model.IsIntegrated ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>

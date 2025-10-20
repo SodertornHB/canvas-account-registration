@@ -1,0 +1,13 @@
+@* --------------------------------------------------------------------*@
+@* This is an organization specific file *@
+@* --------------------------------------------------------------------*@
+@using CanvasAccountRegistration.Logic.Settings
+@using Localization
+@using Microsoft.Extensions.Options
+@inject IOptions<ApplicationSettings> settings
+@inject LocService SharedLocalizer
+@model string
+@{
+    Layout = "_LayoutSmob";
+}
+@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Instructions"))
