@@ -1,4 +1,9 @@
-// This is an organization specific file 
+
+//--------------------------------------------------------------------------------------------------------------------
+// Warning! This is an auto generated file. Changes may be overwritten. 
+// Generator version: 0.0.1.0
+//-------------------------------------------------------------------------------------------------------------------- 
+
 using AutoMapper;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.ViewModel;
@@ -19,7 +24,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.WebUtilities;
 using CanvasAccountRegistration.Logic.Settings;
-using Sh.Library.MailSender;
 
 namespace Web.Controllers
 {
@@ -46,7 +50,7 @@ namespace Web.Controllers
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(
-            [FromServices] IMailService mailer,
+
             [FromQuery] string type,
             [FromQuery] string role)
         {
@@ -73,10 +77,6 @@ namespace Web.Controllers
 
             var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();
             var account = await accountService.NewRegister(collection, type, role);
-            if (role.Equals("guest", StringComparison.OrdinalIgnoreCase))
-            {
-                await mailer.Send("ikt-pedagogerna@sh.se", "ikt-pedagogerna@sh.se", "Nytt gästkonto registrerat", "<!DOCTYPE html> <html> <head>     <meta charset='UTF-8'> </head> <body>     <p>Nytt gästkonto: <a href='https://canvas-account-registration-admin.shbiblioteket.se/?type=guest'>https://canvas-account-registration-admin.shbiblioteket.se/?type=guest</a> </body> </html>");
-            }
             var viewModel = mapper.Map<RegistrationViewModel>(account);
 
             return View(viewModel);
