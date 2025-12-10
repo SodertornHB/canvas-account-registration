@@ -132,7 +132,7 @@ namespace Web
                 .ForPath(x => x.user.Short_name, opt => opt.MapFrom(x => x.GetFullNameWithVerifiedIdPostfix()))
                 .ForPath(x => x.user.Sortable_name, opt => opt.MapFrom(x => x.GetAsSortableName()))
                 .ForPath(x => x.communication_channel.Address, opt => opt.MapFrom(x => x.Email))
-                .ForPath(x => x.pseudonym.Sis_user_id, opt => opt.MapFrom(x => x.Email))
+                .ForPath(x => x.pseudonym.Sis_user_id, opt => opt.MapFrom(x => x.Id))
                 .ForPath(x => x.pseudonym.Integration_id, opt => opt.MapFrom(x => x.Id))
                 .ForPath(x => x.pseudonym.Unique_id, opt => opt.MapFrom(x => x.UserId));
 
