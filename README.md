@@ -7,7 +7,7 @@ To start using this code, follow these steps to clone the repository, set up the
 ## Clone the Repository
 Open a terminal and run the following command to clone the repository:
 > git clone https://github.com/SodertornHB/canvas-account-registration.git
-cd group-to-section
+cd canvas-account-registration
 
 ## Create the Database
 This project requires a database to store data. Use the SQL script provided to create the necessary tables.
@@ -109,7 +109,8 @@ git checkout -b feature/your-feature-name
 Use a descriptive name for your branch, like feature/add-payment-option or bugfix/fix-currency-bug.
 ### 4. Make Your Changes
 
-Implement your changes in the codebase. Ensure your code follows the project's coding standards and is properly documented.
+Implement your changes in the codebase. 
+
 ### 5. Test Your Changes
 
 Before submitting your contribution, test your changes thoroughly. If applicable, add or update unit tests to maintain code quality.
