@@ -1,19 +1,39 @@
-@* --------------------------------------------------------------------*@
-@* Warning! This is an auto generated file. Changes may be overwritten *@
-@* --------------------------------------------------------------------*@
 @using Localization
 @using CanvasAccountRegistration.Logic.Settings
 @using Microsoft.Extensions.Options
+@using System.IO
+@using Microsoft.AspNetCore.Hosting
+@inject IWebHostEnvironment Env
 @inject IOptions<ApplicationSettings> settings
 @inject LocService SharedLocalizer
 @model string[]
-<ul>
+@{
+    Layout = "~/Views/Shared/_StrippedLayout.cshtml";
+}
+<ul class="account-type-list">
     @foreach (var accountType in Model)
     {
-        <li>
-            <a asp-controller="Home" asp-action="List" asp-route-type="@accountType">
-                @accountType
+        var imageFile = $"{accountType}.png";
+        var imagePath = System.IO.Path.Combine(Env.WebRootPath, "img", imageFile);
+        var imageExists = System.IO.File.Exists(imagePath);
+
+        <li class="account-type-item">
+            <a class="account-type-link"
+               asp-controller="Home"
+               asp-action="List"
+               asp-route-type="@accountType">
+
+                @if (imageExists)
+                {
+                    <img src="~/img/@imageFile" alt="@accountType" />
+                }
+                else
+                {
+                    <span class="account-type-text">@accountType</span>
+                }
+
             </a>
         </li>
-    }  
+    }
 </ul>
+
