@@ -17,60 +17,84 @@
 <hr />
 <div class="row">
     <div class="col-md">
-        <form method="post"  enctype="multipart/form-data" asp-controller="Account" asp-action="Edit">
+        <form method="post" enctype="multipart/form-data" asp-controller="Account" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="UserId" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("UserId")</label>
                 <input asp-for="UserId" value="@Model.UserId" />
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="DisplayName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("DisplayName")</label>
                 <input asp-for="DisplayName" value="@Model.DisplayName" />
                 <span asp-validation-for="DisplayName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="GivenName" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("GivenName")</label>
                 <input asp-for="GivenName" value="@Model.GivenName" />
                 <span asp-validation-for="GivenName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Surname" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("Surname")</label>
                 <input asp-for="Surname" value="@Model.Surname" />
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Email" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("Email")</label>
                 <input asp-for="Email" value="@Model.Email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="AssuranceLevel" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevel")</label>
                 <input asp-for="AssuranceLevel" value="@Model.AssuranceLevel" />
                 <span asp-validation-for="AssuranceLevel" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="AccountType" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("AccountType")</label>
+                <input asp-for="AccountType" value="@Model.AccountType" />
+                <span asp-validation-for="AccountType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AccountRole" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("AccountRole")</label>
+                <input asp-for="AccountRole" value="@Model.AccountRole" />
+                <span asp-validation-for="AccountRole" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="CreatedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</label>
                 <input asp-for="CreatedOn" value="@Model.CreatedOn" />
                 <span asp-validation-for="CreatedOn" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="VerifiedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("VerifiedOn")</label>
                 <input asp-for="VerifiedOn" value="@Model.VerifiedOn" />
                 <span asp-validation-for="VerifiedOn" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="IntegratedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("IntegratedOn")</label>
                 <input asp-for="IntegratedOn" value="@Model.IntegratedOn" />
                 <span asp-validation-for="IntegratedOn" class="text-danger"></span>
             </div>
+
             <input type="hidden" asp-for="Id" value="@Model.Id" />
+
             <div class="form-group">
                 <input type="submit" value="@SharedLocalizer.GetLocalizedHtmlString("Edit")" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
 
 <div>
         <a asp-controller="Account" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Back to List")</a>

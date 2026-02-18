@@ -22,7 +22,9 @@ namespace CanvasAccountRegistration.Web.ViewModel
         [DataType(DataType.Text)]
         public virtual DateTime? VerifiedOn {get;set;} 
         [DataType(DataType.Text)]
-        public virtual DateTime? IntegratedOn {get;set;} 
+        public virtual DateTime? IntegratedOn {get;set; }
+        public virtual string AccountType { get; set; }
+        public virtual string AccountRole { get; set; }
         public virtual string GetBackToListLink(string applicationName) => $"/{applicationName}/{GetType().Name.Replace("ViewModel","")}";
     }
 } 

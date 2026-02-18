@@ -16,74 +16,45 @@
 </a>
 <hr />
 <table class="table data-table">
-    <thead>
+<thead>
+    <tr>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("UserId")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("DisplayName")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("GivenName")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("Surname")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("Email")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevel")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("AccountType")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("AccountRole")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("VerifiedOn")</th>
+        <th>@SharedLocalizer.GetLocalizedHtmlString("IntegratedOn")</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("UserId")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("DisplayName")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("GivenName")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("Surname")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("Email")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("AssuranceLevel")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("CreatedOn")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("VerifiedOn")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("IntegratedOn")
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model) {
-        <tr>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.UserId">
-                @item.UserId
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.DisplayName">
-                @item.DisplayName
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.GivenName">
-                @item.GivenName
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Surname">
-                @item.Surname
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Email">
-                @item.Email
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.AssuranceLevel">
-                @item.AssuranceLevel
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.CreatedOn">
-                @item.CreatedOn
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.VerifiedOn">
-                @item.VerifiedOn
-            </td>
-            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.IntegratedOn">
-                @item.IntegratedOn
-            </td>
-  
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.UserId">@item.UserId</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.DisplayName">@item.DisplayName</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.GivenName">@item.GivenName</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Surname">@item.Surname</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Email">@item.Email</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.AssuranceLevel">@item.AssuranceLevel</td>
+
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.AccountType">@item.AccountType</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.AccountRole">@item.AccountRole</td>
+
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.CreatedOn">@item.CreatedOn</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.VerifiedOn">@item.VerifiedOn</td>
+            <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.IntegratedOn">@item.IntegratedOn</td>
+
             <td>
-                <a asp-controller="Account" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> | 
-                <a asp-controller="Account" asp-action="Remove" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a> 
+                <a asp-controller="Account" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> |
+                <a asp-controller="Account" asp-action="Remove" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
