@@ -1,4 +1,4 @@
-﻿<!-- This is an organization specific file -->
+<!-- This is an organization specific file -->
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
@@ -52,10 +52,12 @@
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.js" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.cs" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.json" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.cshtml" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.csproj" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\*.ps1" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.resx" />
       <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.xml" />
+      <OrgSpecificFiles Include="..\organizational-specific\admin-web\**\*.png" />
     </ItemGroup>
 
     <Message Text="Copying @(OrgSpecificFiles) to $(ProjectDir)%(OrgSpecificFiles.RecursiveDir)%(Filename)%(Extension)" Importance="high" />
