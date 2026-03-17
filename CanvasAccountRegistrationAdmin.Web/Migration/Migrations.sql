@@ -132,3 +132,75 @@ BEGIN CATCH
     IF XACT_STATE() <> 0 ROLLBACK TRAN;
     THROW;
 END CATCH;
+
+/** ADD WhiteListedEmailDomain */
+
+SET XACT_ABORT ON;
+SET NOCOUNT ON;
+
+BEGIN TRY
+    BEGIN TRAN;
+
+    IF NOT EXISTS (SELECT 1 FROM [Migration] WHERE DatabaseVersion = '1.2.0')
+    BEGIN
+
+        IF NOT EXISTS (
+            SELECT distinct 1
+            FROM information_schema.columns
+            WHERE table_name = 'WhiteListedEmailDomain'
+        )
+        BEGIN
+            CREATE TABLE WhiteListedEmailDomain (
+                Id INT IDENTITY(1, 1) PRIMARY KEY,
+                Domain NVARCHAR(256) NOT NULL,
+                CreatedOn DATETIME2 NOT NULL
+            );
+        END;
+
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'svensktnaringsliv.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('svensktnaringsliv.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'stockholmshandelskammare.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('stockholmshandelskammare.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'lo.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('lo.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'tco.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('tco.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'migrationsverket.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('migrationsverket.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'skatteverket.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('skatteverket.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'ekobrottsmyndigheten.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('ekobrottsmyndigheten.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'arbetsformedlingen.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('arbetsformedlingen.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'kronofogdemyndigheten.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('kronofogdemyndigheten.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'forsakringskassan.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('forsakringskassan.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'tullverket.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('tullverket.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'polisen.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('polisen.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = 'kronofogden.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('kronofogden.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = '@uhmynd.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('@uhmynd.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = '@slv.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('@slv.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = '@av.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('@av.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = '@bolagsverket.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('@bolagsverket.se', SYSDATETIME());
+        IF NOT EXISTS (SELECT 1 FROM WhiteListedEmailDomain WHERE Domain = '@pensionsmyndigheten.se')
+            INSERT INTO WhiteListedEmailDomain (Domain, CreatedOn) VALUES ('@pensionsmyndigheten.se', SYSDATETIME());
+
+        INSERT INTO [Migration] ([ClientVersion], [DatabaseVersion], [CreatedOn])
+        VALUES ('1.2.0', '1.2.0', SYSDATETIME());
+    END;
+
+    COMMIT TRAN;
+END TRY
+BEGIN CATCH
+    IF XACT_STATE() <> 0 ROLLBACK TRAN;
+    THROW;
+END CATCH;

@@ -1,19 +1,20 @@
 @* --------------------------------------------------------------------*@
 @* Warning! This is an auto generated file. Changes may be overwritten *@
 @* --------------------------------------------------------------------*@
-@using CanvasAccountRegistration.Logic.Settings
 @using Localization
-@using Microsoft.Extensions.Options
+@using System.Linq
 @inject LocService SharedLocalizer
-@inject IOptions<WhiteListedEmailDomainSettings> WhiteListedEmailDomainSettings
+@inject CanvasAccountRegistration.Logic.Services.IWhiteListedEmailDomainService WhiteListedEmailDomainService
 @model IEnumerable<CanvasAccountRegistration.Web.ViewModel.RegistrationViewModel>
 
 @{
-    var settings = WhiteListedEmailDomainSettings.Value;
+    var domains = (await WhiteListedEmailDomainService.GetAll()).Select(x => x.Domain).ToList();
     ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("List")} {SharedLocalizer.GetLocalizedHtmlString("Registration")}";
 }
 
 <h1>@SharedLocalizer.GetLocalizedHtmlString("Registration")</h1>
+
+<a asp-controller="WhiteListedEmailDomain" asp-action="Index" class="btn btn-secondary btn-sm mb-2">@SharedLocalizer.GetLocalizedHtmlString("ManageWhitelistedDomains")</a>
 
 @if (TempData["SuccessMessage"] != null && TempData["AccountDisplayName"] != null)
 {
@@ -67,7 +68,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="@(item.IsApproved && item.IsIntegrated ? "disabled-row" : item.IndicateWarning(settings) ? "warning-row": "")">
+            <tr class="@(item.IsApproved && item.IsIntegrated ? "disabled-row" : item.IndicateWarning(domains) ? "warning-row": "")">
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.UserId">
                     @item.UserId
                 </td>
@@ -80,7 +81,7 @@
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Surname">
                     @item.Surname
                 </td>
-                <td class="tooltip-r @(item.HasValidEmailAddress(settings) ? "" : "warning-cell")" data-toggle="tooltip" data-placement="left" title="@item.Email">
+                <td class="tooltip-r @(item.HasValidEmailAddress(domains) ? "" : "warning-cell")" data-toggle="tooltip" data-placement="left" title="@item.Email">
                     @item.Email
                 </td>
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.CreatedOn?.ToString()">

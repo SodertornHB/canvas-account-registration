@@ -291,4 +291,26 @@
   <data name="AccountType" xml:space="preserve">
     <value>Account type</value>
   </data>
+
+  <data name="WhitelistedEmailDomains" xml:space="preserve">
+    <value>Vitlistade e-postdomäner</value>
+  </data>
+  <data name="ManageWhitelistedDomains" xml:space="preserve">
+    <value>Hantera vitlistade domäner</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Domän</value>
+  </data>
+  <data name="AddDomain" xml:space="preserve">
+    <value>Lägg till domän</value>
+  </data>
+  <data name="AddWhitelistedEmailDomain" xml:space="preserve">
+    <value>Lägg till vitlistad e-postdomän</value>
+  </data>
+  <data name="EditWhitelistedEmailDomain" xml:space="preserve">
+    <value>Redigera vitlistad e-postdomän</value>
+  </data>
+  <data name="DeleteWhitelistedEmailDomain" xml:space="preserve">
+    <value>Ta bort vitlistad e-postdomän</value>
+  </data>
 </root>

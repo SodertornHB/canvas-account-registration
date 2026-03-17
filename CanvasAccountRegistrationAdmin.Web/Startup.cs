@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -34,12 +34,11 @@ using System.Reflection;
 using System.Linq;
 using Newtonsoft.Json;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace CanvasAccountRegistration.Web
 {
     public class Startup
-    {       
+    {
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
@@ -81,6 +80,12 @@ namespace CanvasAccountRegistration.Web
             services.AddSingleton<SqlStringBuilder<Migration>>();
             #endregion
 
+            #region register Migration
+            services.AddSingleton<SqlStringBuilder<WhiteListedEmailDomain>>();
+            services.AddTransient<IWhiteListedEmailDomainDataAccess, WhiteListedEmailDomainDataAccess>();
+            services.AddTransient<IWhiteListedEmailDomainService, WhiteListedEmailDomainService>();
+            #endregion
+
             #region register Middleware services
             services.AddTransient<ICleanUpService, CleanUpService>();
             services.AddTransient<IVersionInfoService, VersionInfoService>();
@@ -92,7 +97,7 @@ namespace CanvasAccountRegistration.Web
             services.Configure<ApplicationSettings>(Configuration.GetSection("Application"));
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
             services.Configure<IpBlockerSettings>(Configuration.GetSection("IPBlockOptions"));
-            
+
             services.AddHttpClient();
             services.AddSingleton(GetMapper());
             ConfigureLocalization(services);
@@ -108,10 +113,10 @@ namespace CanvasAccountRegistration.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseRequestLocalization();  
+            app.UseRequestLocalization();
             RegisterMiddleware(app);
             ConfigureExceptionHandler(app);
-            CustomConfiguration(app, env); 
+            CustomConfiguration(app, env);
 
             app.UseEndpoints(endpoints =>
             {
@@ -138,8 +143,8 @@ namespace CanvasAccountRegistration.Web
             app.UseMiddleware<RedirectNotFound>();
             app.UseMiddleware<RedirectTablelang>();
         }
-        
-         protected void ConfigureLocalization(IServiceCollection services)
+
+        protected void ConfigureLocalization(IServiceCollection services)
         {
             var supportedCultures = GetSupportedLanguages();
 
@@ -198,24 +203,27 @@ namespace CanvasAccountRegistration.Web
     {
         public MappingConfiguration()
         {
-        
-                CreateMap<Account, AccountViewModel>();
+            CreateMap<WhiteListedEmailDomain, WhiteListedEmailDomainViewModel>();
+            
+            CreateMap<WhiteListedEmailDomainViewModel, WhiteListedEmailDomain>();
 
-                CreateMap<AccountViewModel, Account>();
-        
-                CreateMap<RegistrationLog, RegistrationLogViewModel>();
+            CreateMap<Account, AccountViewModel>();
 
-                CreateMap<RegistrationLogViewModel, RegistrationLog>();
-        
-                CreateMap<Log, LogViewModel>();
+            CreateMap<AccountViewModel, Account>();
 
-                CreateMap<LogViewModel, Log>();
-        
-                CreateMap<Migration, MigrationViewModel>();
+            CreateMap<RegistrationLog, RegistrationLogViewModel>();
 
-                CreateMap<MigrationViewModel, Migration>();
-        
-    
+            CreateMap<RegistrationLogViewModel, RegistrationLog>();
+
+            CreateMap<Log, LogViewModel>();
+
+            CreateMap<LogViewModel, Log>();
+
+            CreateMap<Migration, MigrationViewModel>();
+
+            CreateMap<MigrationViewModel, Migration>();
+
+
         }
     }
 
@@ -252,7 +260,7 @@ namespace CanvasAccountRegistration.Web
         public async Task InvokeAsync(HttpContext context)
         {
             await next.Invoke(context);
-            
+
             if (context.Response.StatusCode == 404 && !context.Response.HasStarted && !context.Request.Path.Value.Contains("notfound"))
             {
                 context.Response.Redirect($"/notfound?page={context.Request.Path}");
@@ -289,7 +297,7 @@ namespace CanvasAccountRegistration.Web
         }
     }
 
-    
+
 
     #region clean-up
     public interface ICleanUp
@@ -353,7 +361,7 @@ namespace CanvasAccountRegistration.Web
     }
 
     #endregion
-    
+
     #region version middleware
 
 
@@ -461,7 +469,7 @@ namespace CanvasAccountRegistration.Web
 
     #region ip-blocker middleware
 
-    
+
 
     public class IPBlockMiddleware
     {

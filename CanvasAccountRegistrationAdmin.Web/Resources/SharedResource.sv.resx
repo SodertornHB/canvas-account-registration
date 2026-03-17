@@ -323,4 +323,26 @@
   <data name="AccountType" xml:space="preserve">
     <value>Kontotyp</value>
   </data>
+
+  <data name="WhitelistedEmailDomains" xml:space="preserve">
+    <value>Whitelisted Email Domains</value>
+  </data>
+  <data name="ManageWhitelistedDomains" xml:space="preserve">
+    <value>Manage whitelisted domains</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Domain</value>
+  </data>
+  <data name="AddDomain" xml:space="preserve">
+    <value>Add Domain</value>
+  </data>
+  <data name="AddWhitelistedEmailDomain" xml:space="preserve">
+    <value>Add Whitelisted Email Domain</value>
+  </data>
+  <data name="EditWhitelistedEmailDomain" xml:space="preserve">
+    <value>Edit Whitelisted Email Domain</value>
+  </data>
+  <data name="DeleteWhitelistedEmailDomain" xml:space="preserve">
+    <value>Delete Whitelisted Email Domain</value>
+  </data>
 </root>

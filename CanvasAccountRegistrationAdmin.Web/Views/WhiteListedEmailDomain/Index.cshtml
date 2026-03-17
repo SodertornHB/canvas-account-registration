@@ -1,0 +1,36 @@
+@using Localization
+@inject LocService SharedLocalizer
+@model IEnumerable<CanvasAccountRegistration.Web.ViewModel.WhiteListedEmailDomainViewModel>
+
+@{
+    ViewData["Title"] = SharedLocalizer.GetLocalizedHtmlString("WhitelistedEmailDomains");
+}
+
+<h1>@SharedLocalizer.GetLocalizedHtmlString("WhitelistedEmailDomains")</h1>
+
+<a asp-controller="WhiteListedEmailDomain" asp-action="Create">
+    <button type="button" class="btn btn-info btn-lg"><span class="bi bi-plus-circle"></span> @SharedLocalizer.GetLocalizedHtmlString("AddDomain")</button>
+</a>
+<hr />
+<table class="table data-table">
+    <thead>
+        <tr>
+            <th>@SharedLocalizer.GetLocalizedHtmlString("Domain")</th>
+            <th>@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Domain</td>
+                <td>@item.CreatedOn.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-controller="WhiteListedEmailDomain" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> |
+                    <a asp-controller="WhiteListedEmailDomain" asp-action="Remove" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Delete")</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

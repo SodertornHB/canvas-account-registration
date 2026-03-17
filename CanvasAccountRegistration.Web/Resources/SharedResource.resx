@@ -265,7 +265,7 @@
     <value>In english</value>
   </data>
   <data name="Successfull registration" xml:space="preserve">
-    <value>Du har registrerad ditt EduId-konto!</value>
+    <value>Du har registrerat ditt EduId-konto!</value>
   </data>
   <data name="What will happen" xml:space="preserve">
     <value>Vad händer nu?</value>
@@ -378,7 +378,7 @@ Har du inte fått något mejl inom två arbetsdagar, kontakta &lt;a href="mailto
 
 &lt;p&gt;Registrera ditt eduID genom att klicka på &lt;a href="/?type=guest"&gt;Student&lt;/a&gt; eller &lt;a href="/?type=guest&amp;role=other"&gt;Personal&lt;/a&gt;. Använd ditt eduID när du loggar in, det vill säga den e-postadress och det lösenord du valde när du registrerade dig för eduID.&lt;/p&gt;
 
-&lt;p&gt;&gt; &lt;a href="/?type=guest"&gt;Jag är student&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;&gt; &lt;a href="/?type=guest"&gt;Jag är student  eller ska läsa en högskolepedagogisk kurs&lt;/a&gt;&lt;br /&gt;
 &gt; &lt;a href="/?type=guest&amp;role=other"&gt;Jag är personal, lärare, forskare eller har en stödjande roll, tex tolk&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Nu ser du en bekräftelse på att ditt eduID är registrerat i Canvas kontoregistrering. När en administratör har granskat och godkänt ditt konto kommer du att få tillgång till Canvas. Du kommer att använda ditt eduID för att logga in i Canvas i fortsättningen. &lt;a href="/how-to-log-into-canvas"&gt;Här finns instruktioner hur du loggar in i Canvas.&lt;/a&gt;&lt;/p&gt;
