@@ -1,134 +1,183 @@
-# Overview / Introduction
-This is a dotnet core application where users can register their EduId accounts to be used for logging into Canvas LMS.
+# Canvas Account Registration
 
-# Getting Started
-To start using this code, follow these steps to clone the repository, set up the database, and configure the project locally.
+A .NET 8.0 web application that allows users to register their [EduID](https://www.eduid.se/) accounts for use with [Canvas LMS](https://www.instructure.com/canvas). Users authenticate via SAML2/EduID, fill in their registration details, and have their accounts created in Canvas automatically.
 
-## Clone the Repository
-Open a terminal and run the following command to clone the repository:
-> git clone https://github.com/SodertornHB/canvas-account-registration.git
+The solution also includes an **admin web application** for managing accounts, viewing logs, and configuring whitelisted email domains.
+
+---
+
+## Solution Structure
+
+```
+canvas-account-registration/
+├── CanvasAccountRegistration.Web/          # User-facing registration app
+├── CanvasAccountRegistrationAdmin.Web/     # Admin management app
+├── CanvasAccountRegistration.Logic/        # Shared business logic & data access
+├── CanvasAccountRegistration.Test/         # Unit and integration tests
+└── organizational-specific/               # Organization-specific overrides (not in repo)
+```
+
+### Projects at a glance
+
+| Project | Purpose |
+|---|---|
+| `CanvasAccountRegistration.Web` | Public-facing registration flow with SAML2/EduID authentication |
+| `CanvasAccountRegistrationAdmin.Web` | Admin dashboard to manage accounts, logs, migrations, and whitelisted email domains |
+| `CanvasAccountRegistration.Logic` | Shared services, Dapper-based data access, models, and Canvas API integration |
+| `CanvasAccountRegistration.Test` | NUnit tests with Moq for mocking |
+
+---
+
+## Tech Stack
+
+- **.NET 8.0** — ASP.NET Core MVC
+- **SQL Server** — with [Dapper](https://github.com/DapperLib/Dapper) for data access
+- **SAML2** — via [Sustainsys.Saml2](https://github.com/Sustainsys/Saml2) for EduID federation
+- **AutoMapper** — object mapping between models and DTOs
+- **NLog** — logging to database and files
+- **Localization** — Swedish (sv-se) default, English (en-gb) supported
+
+---
+
+## Prerequisites
+
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- SQL Server (or SQL Server Express / LocalDB for local development)
+- Access to a Canvas LMS instance with an API bearer token
+- (Optional) A SAML2 identity provider for full authentication flow
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/SodertornHB/canvas-account-registration.git
 cd canvas-account-registration
-
-## Create the Database
-This project requires a database to store data. Use the SQL script provided to create the necessary tables.
-1. Open your database management tool (such as SQL Server Management Studio).
-1. Create a new database
-1. Locate the SQL create script at ./CanvasAccountRegistration.Web/Migration/Migrations.sql.
-1. Run the script to set up the database schema.
-
-## Install Dependencies
-Ensure that you have .NET Core installed. Run the following command in the project directory to restore all required packages:
-> dotnet restore 
-
-## Configuration
-To run this application, you need to configure your `appsettings.json` file with the correct settings for your environment. A template file, `appsettings.json.template`, is provided in the repository to guide you through this process.
-
-### Create a Configuration File
-- Copy the template file and rename it to appsettings.json.
-
-- Open appsettings.json and update the fields with your specific settings as follows:
-
-#### 1. Database Connection
-- Under ConnectionStrings, replace SERVER_NAME with the name of your database server and DATABASE_NAME with the name of your database.
-
-#### 2. Application Settings
-**Name**: Enter a name for your application.
-
-**KeepLogsInDays**: Define the number of days to retain logs.
-
-**KeysFolder**: Specify the folder path where any necessary keys are stored.
-
-#### 3. Canvas
-**ApiHost**: Enter the endpoint URL for your Canvas API.
-
-**Host**: Enter Canvas host.
-
-**BearerToken**: Token to authenticate against Canvas API.
-
-#### 4. WhiteListedMailDomains
-
-**Addresses**: Define which email domains that are allowed to be used. 
-
-# Running the Application
-After configuration, you can start the application using the following command:
-> dotnet run 
-
-# Organizational-Specific Files and Configuration
-To maintain organization-specific files and configurations separate from the main codebase, this project supports an organizational-specific folder in the root of the solution. Files in this folder will be copied to the corresponding folders in the web project during the build process, allowing for custom settings without modifying the core code. This approach ensures that organization-specific files and configurations are not overwritten when pulling new code from GitHub. It also keeps your customizations separate, making updates and maintenance easier.
-
-## Setting Up the Organizational-Specific Folder
-1. In the root of the solution, create a folder named `organizational-specific`.
-1. Inside folder `organizational-specific` create two folders `web` and `admin-web`, one for each web project in the solution.
-1. Inside these folders, add any files or configurations specific to your organization. The folder structure should mirror the structure of the web projects. The following file types are automatically copied: `.css`, `.js`, `.cs`, `.json`, `.csproj`, `.resx`, `.xml`, but you can change this in respective `.csproj` file. 
-
-#### Example: Custom appsettings.development.json
-If you want to use a custom `appsettings.development.json` file, place it directly in the **organizational-specific/web** folder. During the build process, it will be copied to the appropriate location in the web project.
-
-### Important Note
-Any files in the web project that have the same name and path as files in the organizational-specific folders will be overwritten by the files from organizational-specific during the build process. Be cautious when adding files to avoid unintentional overwrites.
-
-## Configuration in the Project File
-The copying of files is configured in the .csproj file. Below is the configuration that enables this copying process:
-```xml
-  <Target Name="CopyOrgSpecificFiles" BeforeTargets="Build">
-    <ItemGroup>
-      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.css" />
-      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.js" />
-      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.cs" />
-      <OrgSpecificFiles Include="..\organizational-specific\web\**\*.xml" />
-      <OrgSpecificFiles Include="..\organizational-specific\web\*.json" />
-      <OrgSpecificFiles Include="..\organizational-specific\web\*.csproj" />
-    </ItemGroup>
-
-    <Message Text="Copying @(OrgSpecificFiles) to $(ProjectDir)%(OrgSpecificFiles.RecursiveDir)%(Filename)%(Extension)" Importance="high" />
-
-    <Copy SourceFiles="@(OrgSpecificFiles)" DestinationFiles="@(OrgSpecificFiles->'$(ProjectDir)%(RecursiveDir)%(Filename)%(Extension)')" OverwriteReadOnlyFiles="true" />
-  </Target>
 ```
 
-# Contributing to the Project
-We welcome contributions to this open-source project! By contributing, you help improve the functionality, usability, and reliability of this solution for other users. Follow these steps to get started with your contribution.
+### 2. Set up the database
 
-## Contribution Guidelines
-### 1. Fork the Repository
+1. Open your database management tool (e.g. SQL Server Management Studio).
+2. Create a new database.
+3. Run the migration script to create all tables:
+   ```
+   CanvasAccountRegistrationAdmin.Web/Migration/Migrations.sql
+   ```
 
-Start by forking the repository to your own GitHub account. This creates a copy of the project where you can make your changes.
-### 2. Clone Your Forked Repository
+### 3. Configure the application
 
-Clone your forked repository to your local machine using the command:
-```bash
-git clone https://github.com/YOUR_USERNAME/canvas-account-registration.git  
-```
-Replace YOUR_USERNAME with your GitHub username.
-### 3. Create a New Branch
-
-To keep your changes organized, create a new branch for each feature or bug fix you want to work on:
-```bash
-git checkout -b feature/your-feature-name  
-```
-Use a descriptive name for your branch, like feature/add-payment-option or bugfix/fix-currency-bug.
-### 4. Make Your Changes
-
-Implement your changes in the codebase. 
-
-### 5. Test Your Changes
-
-Before submitting your contribution, test your changes thoroughly. If applicable, add or update unit tests to maintain code quality.
-### 6. Commit and Push Your Changes
-
-Stage and commit your changes with a descriptive commit message:
-```bash
-git add .  
-git commit -m Add description of your changes  
-```
-Push your changes to your forked repository:
+A template configuration file is provided. Copy it and fill in your values:
 
 ```bash
-git push origin feature/your-feature-name  
+cp CanvasAccountRegistration.Web/appsettings.json.template CanvasAccountRegistration.Web/appsettings.json
 ```
-### 7. Submit a Pull Request
 
-Go to the original repository on GitHub and submit a pull request from your forked repository. Include a clear description of your changes, why they are necessary, and any relevant context.
-### 8. Respond to Feedback
+Open `appsettings.json` and update the following sections:
 
-Project maintainers may review your pull request and provide feedback or request changes. Please be prepared to make revisions if necessary.
+#### Database connection
+```json
+"ConnectionStrings": {
+  "Default": "Server=SERVER_NAME;Database=DATABASE_NAME;..."
+}
+```
+
+#### Application settings
+| Key | Description |
+|---|---|
+| `Application:Name` | Display name for the application |
+| `Application:KeepLogsInDays` | Number of days to retain log entries |
+| `Application:KeysFolder` | Path to the folder for data protection keys |
+
+#### Canvas LMS
+| Key | Description |
+|---|---|
+| `Canvas:ApiHost` | Base URL of your Canvas API (e.g. `https://yourschool.instructure.com`) |
+| `Canvas:Host` | Canvas host used for login links |
+| `Canvas:BearerToken` | API token for authenticating requests to Canvas |
+
+### 4. Restore dependencies
+
+```bash
+dotnet restore
+```
+
+### 5. Run the application
+
+**Registration web app:**
+```bash
+cd CanvasAccountRegistration.Web
+dotnet run
+```
+
+**Admin web app:**
+```bash
+cd CanvasAccountRegistrationAdmin.Web
+dotnet run
+```
+
+---
+
+## Running Tests
+
+```bash
+dotnet test
+```
+
+---
+
+## Organizational-Specific Folder
+
+This project supports an `organizational-specific/` folder in the solution root for institution-specific files and settings. Files placed here are automatically copied into the web projects during build, so they won't be overwritten when pulling updates from GitHub.
+
+### Structure
+
+```
+organizational-specific/
+├── web/            # Files copied into CanvasAccountRegistration.Web/
+└── admin-web/      # Files copied into CanvasAccountRegistrationAdmin.Web/
+```
+
+The folder structure inside `web/` and `admin-web/` mirrors the structure of the respective web projects.
+
+The following file types are copied automatically: `.css`, `.js`, `.cs`, `.json`, `.csproj`, `.resx`, `.xml`, `.png`, `.cshtml`
+
+### Example: local development settings
+
+Place your `appsettings.Development.json` directly in `organizational-specific/web/`. It will be copied to the web project on build and picked up automatically in the `Development` environment.
+
+> **Important:** Any file in the web project with the same name and path as a file in `organizational-specific/` will be overwritten on build. The `organizational-specific/` folder is not tracked by git — add it to `.gitignore` or manage it separately per institution.
+
+---
+
+## Key Concepts
+
+### Registration flow (user app)
+
+1. User navigates to the registration page.
+1. User authenticates via SAML2/EduID.
+1. The app reads SAML attributes (name, email, assurance level) and pre-fills the form.
+1. The app validates the email domain against the whitelist and creates the account in Canvas via the Canvas API.
+1. A registration log entry is written to the database.
+
+### Admin app
+
+The admin app provides views and a RESTful API (`/api/v1/`) for:
+- **Accounts** — browse, search, and manage registered Canvas accounts
+- **Registration Logs** — view registration attempts and their outcomes
+- **Logs** — view application logs
+- **Migrations** — track database schema versions
+- **Whitelisted Email Domains** — manage which email domains are permitted
+
+---
+
+## Contributing
+
+1. Fork the repository and clone your fork.
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Make your changes and add or update tests where relevant.
+4. Commit with a descriptive message and push to your fork.
+5. Open a pull request against the `main` branch of the original repository.
+
+Please include a clear description of what the change does and why it is needed.
