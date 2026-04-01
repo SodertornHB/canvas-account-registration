@@ -1,0 +1,44 @@
+@using Logic.HttpModel
+@model RepairIntegrationIdsResult
+
+@{
+    ViewData["Title"] = "Repair integration IDs — report";
+}
+
+<h1>Repair integration IDs</h1>
+<p class="text-muted">Only users integrated via Canvas Account Registration were processed. Users already having their email as integration ID were skipped.</p>
+
+<div class="d-flex gap-3 mb-4">
+    <div class="alert alert-success mb-0"><strong>Fixed:</strong> @Model.Fixed</div>
+    <div class="alert alert-secondary mb-0"><strong>Skipped (already correct):</strong> @Model.Skipped</div>
+    @if (Model.Failed > 0)
+    {
+        <div class="alert alert-danger mb-0"><strong>Failed:</strong> @Model.Failed</div>
+    }
+</div>
+
+<table class="table data-table">
+    <thead>
+        <tr>
+            <th>Account ID</th>
+            <th>Display name</th>
+            <th>Email (integration ID set to)</th>
+            <th>Status</th>
+            <th>Error</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in Model.Entries.OrderBy(e => e.Status).ThenBy(e => e.DisplayName))
+        {
+            <tr class="@(entry.Status == "Fixed" ? "table-success" : entry.Status == "Failed" ? "table-danger" : "")">
+                <td>@entry.AccountId</td>
+                <td>@entry.DisplayName</td>
+                <td>@entry.Email</td>
+                <td>@entry.Status</td>
+                <td>@entry.ErrorMessage</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/list" class="btn btn-secondary mt-2">Back to list</a>

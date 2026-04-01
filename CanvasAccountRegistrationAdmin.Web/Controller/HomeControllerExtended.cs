@@ -86,6 +86,13 @@ namespace Web.Controllers
             return RedirectToAction("List", new { type });
         }
 
+        [HttpGet("repair-integration-ids")]
+        public async Task<IActionResult> RepairIntegrationIds([FromServices] IAccountServiceExtended accountService)
+        {
+            var result = await accountService.RepairIntegrationIds();
+            return View(result);
+        }
+
         public async Task<IActionResult> Remove(int id, string type)
         {
             try
