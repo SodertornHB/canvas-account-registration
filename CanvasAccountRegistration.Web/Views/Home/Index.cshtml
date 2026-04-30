@@ -35,6 +35,15 @@ else
     <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
 }
 </div>
+    @if (!string.IsNullOrWhiteSpace(Model.RedirectUrl))
+    {
+        <hr />
+        <div class="redirect-link">
+            <a class="btn btn-primary" href="@Model.RedirectUrl" rel="noopener">
+                @SharedLocalizer.GetLocalizedHtmlString("Continue to course")
+            </a>
+        </div>
+    }
     <hr />
     <div class="details">
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Display Name"):</strong> @Model.DisplayName</p>
