@@ -11,9 +11,8 @@
 
 @{
     var type = Context.Request.Query["type"].ToString();
-    Layout = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase)
-    ? "_Layout"
-    : "_LayoutSmob";
+    var isGuest = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase);
+    Layout = isGuest ? "_Layout" : "_LayoutSmob";
 }
 
 <div class="success-container">
@@ -24,17 +23,24 @@
     <hr />
     <div class="information">
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
-@if (Context.Request.Query["type"] != "guest" && !Model.IsVerifiedWithId)
-{
-            <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"),
-                            Url.Action("LogoutUser", "Saml2")))</p>
+        @if (isGuest)
+        {
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
         }
-
-else
-{
-    <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
-}
-</div>
+        else if (!Model.IsVerifiedWithId)
+        {
+            <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"),
+                Url.Action("LogoutUser", "Saml2")))</p>
+        }
+        else if (!string.IsNullOrWhiteSpace(Model.RedirectUrl))
+        {
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved with redirect"))</p>
+        }
+        else
+        {
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved no redirect"))</p>
+        }
+    </div>
     @if (!string.IsNullOrWhiteSpace(Model.RedirectUrl))
     {
         <hr />
@@ -50,7 +56,7 @@ else
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Email"):</strong> @Model.Email</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong>
             @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
-        @if (Context.Request.Query["type"] != "guest")
+        @if (!isGuest)
         {
             <p>
                 <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
