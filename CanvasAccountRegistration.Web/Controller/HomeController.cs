@@ -1,9 +1,4 @@
-
-//--------------------------------------------------------------------------------------------------------------------
-// Warning! This is an auto generated file. Changes may be overwritten. 
-// Generator version: 0.0.1.0
-//-------------------------------------------------------------------------------------------------------------------- 
-
+// This is an organization specific file 
 using AutoMapper;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.Service;
@@ -25,6 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.WebUtilities;
 using CanvasAccountRegistration.Logic.Settings;
+using Microsoft.Extensions.Logging;
 
 namespace Web.Controllers
 {
@@ -37,6 +33,7 @@ namespace Web.Controllers
         private readonly ApplicationSettings applicationSettings;
         private readonly IRedirectLinkService redirectLinkService;
         private readonly IPartnerEligibilityService partnerCourseEligibilityService;
+        private readonly ILogger<HomeController> logger;
 
         public HomeController(IOptions<RequestLocalizationOptions> localizationOptions,
             IRequestedAttributeService requestedAttributeService,
@@ -44,7 +41,8 @@ namespace Web.Controllers
             IMapper mapper,
             IOptions<ApplicationSettings> applicationSettingsOption,
             IRedirectLinkService redirectLinkService,
-            IPartnerEligibilityService partnerCourseEligibilityService)
+            IPartnerEligibilityService partnerCourseEligibilityService,
+            ILogger<HomeController> logger)
         {
             this.localizationOptions = localizationOptions.Value;
             this.requestedAttributeService = requestedAttributeService;
@@ -53,6 +51,7 @@ namespace Web.Controllers
             this.applicationSettings = applicationSettingsOption.Value;
             this.redirectLinkService = redirectLinkService;
             this.partnerCourseEligibilityService = partnerCourseEligibilityService;
+            this.logger = logger;
         }
 
         [AllowAnonymous]
@@ -87,18 +86,29 @@ namespace Web.Controllers
             role = NormalizeRole(role);
 
             var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();
-            var account = await accountService.NewRegister(collection, type, role);
            
+            Task<bool> partnerTask = null;
+            Task<bool> IsPartner() => partnerTask ??= partnerCourseEligibilityService
+                .IsEligiblePartnerOrganization(account.Email, User.Claims);
+
+            if (account.IntegratedOn == null && account.GetIsVerifiedWithId() && await IsPartner())
+            {
+                try
+                {
+                    await accountService.IntegrateIntoCanvas(account);
+                    logger.LogInformation("Auto-integrated account {AccountId} ({Email}) into Canvas.", account.Id, account.Email);
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, "Auto-integration into Canvas failed for account {AccountId} ({Email}).", account.Id, account.Email);
+                }
+            }
+
             var viewModel = mapper.Map<RegistrationViewModel>(account);
 
-            if (!string.IsNullOrWhiteSpace(safepostRegistrationParam))
+            if (!string.IsNullOrWhiteSpace(safepostRegistrationParam) && await IsPartner())
             {
-                var partner = await partnerCourseEligibilityService
-                    .IsEligiblePartnerOrganization(account.Email, User.Claims);
-                if (partner)
-                {
-                    viewModel.RedirectUrl = redirectLinkService.BuildRedirectUrl(safepostRegistrationParam);
-                }
+                viewModel.RedirectUrl = redirectLinkService.BuildRedirectUrl(safepostRegistrationParam);
             }
 
             return View(viewModel);
