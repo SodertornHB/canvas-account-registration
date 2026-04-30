@@ -32,7 +32,7 @@ using Logic.Http;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
 using CanvasAccountRegistration.Logic.DataAccess;
-using Sh.Library.MailSender;
+using CanvasAccountRegistration.Web.Service;
 
 namespace Web
 {
@@ -58,6 +58,12 @@ namespace Web
         {
             services.Configure<CanvasSettings>(Configuration.GetSection("CanvasApiSettings"));
             services.Configure<Saml2Settings>(Configuration.GetSection("Authentication:Saml2"));
+            services.Configure<PostRegistrationRedirectSettings>(Configuration.GetSection("PostRegistrationRedirect"));
+            services.AddSingleton<SqlStringBuilder<WhiteListedEmailDomain>>();
+            services.AddTransient<IWhiteListedEmailDomainDataAccess, WhiteListedEmailDomainDataAccess>();
+            services.AddTransient<IWhiteListedEmailDomainService, WhiteListedEmailDomainService>();
+            services.AddTransient<Logic.Service.IRedirectLinkService, Logic.Service.RedirectLinkService>();
+            services.AddTransient<IPartnerEligibilityService, PartnerEligibilityService>();
             services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
@@ -102,8 +108,6 @@ namespace Web
             });
             services.AddScoped<IPrincipal>(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.User);
             services.AddHttpContextAccessor();
-
-            services.AddLibraryMailSender(mailSenderHost: Configuration["MailSender:Host"], bearerToken: Configuration["MailSender:BearerToken"]);
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
@@ -163,7 +167,6 @@ namespace Web
 
             return profile;
         }
-
     }
 
     public class CleanUpServiceExtended : CleanUpService

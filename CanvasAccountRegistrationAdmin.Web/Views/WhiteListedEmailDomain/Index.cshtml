@@ -1,4 +1,4 @@
-@using Localization
+﻿@using Localization
 @inject LocService SharedLocalizer
 @model IEnumerable<CanvasAccountRegistration.Web.ViewModel.WhiteListedEmailDomainViewModel>
 
@@ -16,6 +16,7 @@
     <thead>
         <tr>
             <th>@SharedLocalizer.GetLocalizedHtmlString("Domain")</th>
+            <th>@SharedLocalizer.GetLocalizedHtmlString("PartnerOrganization")</th>
             <th>@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</th>
             <th></th>
         </tr>
@@ -25,6 +26,7 @@
         {
             <tr>
                 <td>@item.Domain</td>
+                <td>@(item.PartnerOrganization ? "✅" : "")</td>
                 <td>@item.CreatedOn.ToString("yyyy-MM-dd")</td>
                 <td>
                     <a asp-controller="WhiteListedEmailDomain" asp-action="Edit" asp-route-id="@item.Id">@SharedLocalizer.GetLocalizedHtmlString("Edit")</a> |

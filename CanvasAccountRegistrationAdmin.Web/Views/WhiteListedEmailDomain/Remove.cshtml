@@ -19,6 +19,12 @@
             @Model.Domain
         </dd>
         <dt class="col-sm-2">
+            <label>@SharedLocalizer.GetLocalizedHtmlString("PartnerOrganization")</label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.PartnerOrganization
+        </dd>
+        <dt class="col-sm-2">
             <label asp-for="CreatedOn" class="control-label">@SharedLocalizer.GetLocalizedHtmlString("CreatedOn")</label>
         </dt>
         <dd class="col-sm-10">

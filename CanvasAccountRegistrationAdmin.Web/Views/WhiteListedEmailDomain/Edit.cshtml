@@ -20,6 +20,12 @@
                 <span asp-validation-for="Domain" class="text-danger"></span>
             </div>
 
+            <div class="form-check">
+                <input asp-for="PartnerOrganization" class="form-check-input" />
+                <label asp-for="PartnerOrganization" class="form-check-label">@SharedLocalizer.GetLocalizedHtmlString("PartnerOrganization")</label>
+                <span asp-validation-for="PartnerOrganization" class="text-danger"></span>
+            </div>
+
             <input type="hidden" asp-for="Id" value="@Model.Id" />
             <input type="hidden" asp-for="CreatedOn" value="@Model.CreatedOn" />
 

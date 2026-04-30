@@ -204,3 +204,31 @@ BEGIN CATCH
     IF XACT_STATE() <> 0 ROLLBACK TRAN;
     THROW;
 END CATCH;
+
+/** ADD WhiteListedEmailDomain.PartnerOrganization */
+
+SET XACT_ABORT ON;
+SET NOCOUNT ON;
+
+BEGIN TRY
+    BEGIN TRAN;
+
+    IF NOT EXISTS (SELECT 1 FROM [Migration] WHERE DatabaseVersion = '1.3.0')
+    BEGIN
+
+        IF COL_LENGTH('dbo.WhiteListedEmailDomain', 'PartnerOrganization') IS NULL
+        BEGIN
+            ALTER TABLE dbo.WhiteListedEmailDomain
+            ADD PartnerOrganization bit;
+        END;
+
+        INSERT INTO [Migration] ([ClientVersion], [DatabaseVersion], [CreatedOn])
+        VALUES ('1.3.0', '1.3.0', SYSDATETIME());
+    END;
+
+    COMMIT TRAN;
+END TRY
+BEGIN CATCH
+    IF XACT_STATE() <> 0 ROLLBACK TRAN;
+    THROW;
+END CATCH;

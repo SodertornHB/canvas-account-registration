@@ -6,6 +6,7 @@
 
 using AutoMapper;
 using CanvasAccountRegistration.Logic.Services;
+using CanvasAccountRegistration.Web.Service;
 using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Service;
 using Microsoft.AspNetCore.Authentication;
@@ -34,26 +35,35 @@ namespace Web.Controllers
         private readonly IAccountServiceExtended accountService;
         private readonly IMapper mapper;
         private readonly ApplicationSettings applicationSettings;
+        private readonly IRedirectLinkService redirectLinkService;
+        private readonly IPartnerEligibilityService partnerCourseEligibilityService;
 
         public HomeController(IOptions<RequestLocalizationOptions> localizationOptions,
             IRequestedAttributeService requestedAttributeService,
             IAccountServiceExtended accountService,
             IMapper mapper,
-            IOptions<ApplicationSettings> applicationSettingsOption)
+            IOptions<ApplicationSettings> applicationSettingsOption,
+            IRedirectLinkService redirectLinkService,
+            IPartnerEligibilityService partnerCourseEligibilityService)
         {
             this.localizationOptions = localizationOptions.Value;
             this.requestedAttributeService = requestedAttributeService;
             this.accountService = accountService;
             this.mapper = mapper;
             this.applicationSettings = applicationSettingsOption.Value;
+            this.redirectLinkService = redirectLinkService;
+            this.partnerCourseEligibilityService = partnerCourseEligibilityService;
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(
-
             [FromQuery] string type,
-            [FromQuery] string role)
+            [FromQuery] string role,
+            [FromQuery] string postRegistrationParam)
         {
+
+            var safepostRegistrationParam = redirectLinkService.Sanitize(postRegistrationParam);
+
             if (!(User?.Identity?.IsAuthenticated ?? false))
             {
                 var baseUrl = Url.Action(nameof(Index))!;
@@ -61,6 +71,7 @@ namespace Web.Controllers
                 var qs = new Dictionary<string, string>();
                 if (!string.IsNullOrWhiteSpace(type)) qs["type"] = type!;
                 if (!string.IsNullOrWhiteSpace(role)) qs["role"] = role!;
+                if (!string.IsNullOrWhiteSpace(safepostRegistrationParam)) qs["postRegistrationParam"] = safepostRegistrationParam;
 
                 var redirectUri = qs.Count == 0
                     ? baseUrl
@@ -77,7 +88,18 @@ namespace Web.Controllers
 
             var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();
             var account = await accountService.NewRegister(collection, type, role);
+           
             var viewModel = mapper.Map<RegistrationViewModel>(account);
+
+            if (!string.IsNullOrWhiteSpace(safepostRegistrationParam))
+            {
+                var partner = await partnerCourseEligibilityService
+                    .IsEligiblePartnerOrganization(account.Email, User.Claims);
+                if (partner)
+                {
+                    viewModel.RedirectUrl = redirectLinkService.BuildRedirectUrl(safepostRegistrationParam);
+                }
+            }
 
             return View(viewModel);
         }

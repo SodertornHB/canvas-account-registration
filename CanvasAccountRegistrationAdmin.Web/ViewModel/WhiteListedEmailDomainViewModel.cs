@@ -7,6 +7,7 @@ namespace CanvasAccountRegistration.Web.ViewModel
     {
         [Required]
         public string Domain { get; set; }
+        public bool PartnerOrganization { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }
