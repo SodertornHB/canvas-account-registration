@@ -86,6 +86,7 @@ namespace Web.Controllers
             role = NormalizeRole(role);
 
             var collection = requestedAttributeService.GetRequestedAttributesFromLoggedInUser();
+            var account = await accountService.NewRegister(collection, type, role);
            
             Task<bool> partnerTask = null;
             Task<bool> IsPartner() => partnerTask ??= partnerCourseEligibilityService
