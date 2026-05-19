@@ -30,6 +30,9 @@
     "ApiHost": "https://YOUR_CANVAS_HOST/api/v1",
     "Host": "https://YOUR_CANVAS_HOST"
   },
+  "PostRegistrationRedirect": {
+    "BaseUrl": "https://YOUR_POST_REGISTRATION_REDIRECT_HOST"
+  },
   "WhiteListedMailDomains": {
     "Addresses": [
       //"example.com"

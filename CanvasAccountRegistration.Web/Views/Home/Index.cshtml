@@ -1,3 +1,6 @@
+@* --------------------------------------------------------------------*@
+@* This is an organization specific file *@
+@* --------------------------------------------------------------------*@
 @using CanvasAccountRegistration.Web.ViewModel
 @using Localization
 @using CanvasAccountRegistration.Logic.Settings
@@ -5,6 +8,12 @@
 @inject IOptions<ApplicationSettings> settings
 @inject LocService SharedLocalizer
 @model RegistrationViewModel
+
+@{
+    var type = Context.Request.Query["type"].ToString();
+    var isGuest = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase);
+    Layout = isGuest ? "_Layout" : "_LayoutSmob";
+}
 
 <div class="success-container">
     <div class="success-icon"><i class="bi bi-check-circle-fill"></i></div>
@@ -14,33 +23,50 @@
     <hr />
     <div class="information">
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
-        @if (!Model.IsVerifiedWithId)
+        @if (isGuest)
         {
-            <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"), Url.Action("LogoutUser", "Saml2")))</p>
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
         }
-
+        else if (!Model.IsVerifiedWithId)
+        {
+            <p>@Html.Raw(string.Format(SharedLocalizer.GetLocalizedHtmlString("Please verify account"),
+                Url.Action("LogoutUser", "Saml2")))</p>
+        }
+        else if (!string.IsNullOrWhiteSpace(Model.RedirectUrl))
+        {
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved with redirect"))</p>
+        }
         else
         {
-            <p>@SharedLocalizer.GetLocalizedHtmlString("Registration approved")</p>
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved no redirect"))</p>
         }
     </div>
+    @if (!string.IsNullOrWhiteSpace(Model.RedirectUrl))
+    {
+        <hr />
+        <div class="redirect-link">
+            <a class="btn btn-primary" href="@Model.RedirectUrl" rel="noopener">
+                @SharedLocalizer.GetLocalizedHtmlString("Continue to course")
+            </a>
+        </div>
+    }
     <hr />
     <div class="details">
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Display Name"):</strong> @Model.DisplayName</p>
         <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Email"):</strong> @Model.Email</p>
-        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong> @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
-        <p>
-            <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
-            <i class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
-        </p>
+        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Created On"):</strong>
+            @Model.CreatedOn?.ToString("yyyy-MM-dd HH:mm")</p>
+        @if (!isGuest)
+        {
+            <p>
+                <strong>@SharedLocalizer.GetLocalizedHtmlString("Is verified"):</strong>
+                <i
+                    class="bi @(Model.IsVerifiedWithId ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
+            </p>
+        }
         <p>
             <strong>@SharedLocalizer.GetLocalizedHtmlString("Is integrated"):</strong>
             <i class="bi @(Model.IsIntegrated ? "bi-check-circle-fill verified" : "bi-x-circle-fill not-verified")"></i>
         </p>
-    </div>
-    <hr />
-    <div class="details assurance-details">
-        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Swamid Assurance Level"):</strong> @Model.SwamidAssuranceLevel</p>
-        <p><strong>@SharedLocalizer.GetLocalizedHtmlString("Identity Assurance Profile"):</strong> @Model.IdentityAssuranceProfile</p>
     </div>
 </div>

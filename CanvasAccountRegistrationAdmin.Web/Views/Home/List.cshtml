@@ -1,19 +1,20 @@
 @* --------------------------------------------------------------------*@
 @* Warning! This is an auto generated file. Changes may be overwritten *@
 @* --------------------------------------------------------------------*@
-@using CanvasAccountRegistration.Logic.Settings
 @using Localization
-@using Microsoft.Extensions.Options
+@using System.Linq
 @inject LocService SharedLocalizer
-@inject IOptions<WhiteListedEmailDomainSettings> WhiteListedEmailDomainSettings
+@inject CanvasAccountRegistration.Logic.Services.IWhiteListedEmailDomainService WhiteListedEmailDomainService
 @model IEnumerable<CanvasAccountRegistration.Web.ViewModel.RegistrationViewModel>
 
 @{
-    var settings = WhiteListedEmailDomainSettings.Value;
+    var domains = (await WhiteListedEmailDomainService.GetAll()).Select(x => x.Domain).ToList();
     ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("List")} {SharedLocalizer.GetLocalizedHtmlString("Registration")}";
 }
 
 <h1>@SharedLocalizer.GetLocalizedHtmlString("Registration")</h1>
+
+<a asp-controller="WhiteListedEmailDomain" asp-action="Index" class="btn btn-secondary btn-sm mb-2">@SharedLocalizer.GetLocalizedHtmlString("ManageWhitelistedDomains")</a>
 
 @if (TempData["SuccessMessage"] != null && TempData["AccountDisplayName"] != null)
 {
@@ -53,16 +54,10 @@
                 @SharedLocalizer.GetLocalizedHtmlString("CreatedOn")
             </th>
             <th>
-                @SharedLocalizer.GetLocalizedHtmlString("SwamidAssuranceLevel")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("IdentityAssuranceProfile")
+                @SharedLocalizer.GetLocalizedHtmlString("AccountRole")
             </th>
             <th>
                 @SharedLocalizer.GetLocalizedHtmlString("IsVerifiedWithId")
-            </th>
-            <th>
-                @SharedLocalizer.GetLocalizedHtmlString("IsApproved")
             </th>
             <th>
                 @SharedLocalizer.GetLocalizedHtmlString("IsIntegrated")
@@ -73,7 +68,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="@(item.IsApproved && item.IsIntegrated ? "disabled-row" : item.IndicateWarning(settings) ? "warning-row": "")">
+            <tr class="@(item.IsApproved && item.IsIntegrated ? "disabled-row" : item.IndicateWarning(domains) ? "warning-row": "")">
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.UserId">
                     @item.UserId
                 </td>
@@ -86,36 +81,30 @@
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.Surname">
                     @item.Surname
                 </td>
-                <td class="tooltip-r @(item.HasValidEmailAddress(settings) ? "" : "warning-cell")" data-toggle="tooltip" data-placement="left" title="@item.Email">
+                <td class="tooltip-r @(item.HasValidEmailAddress(domains) ? "" : "warning-cell")" data-toggle="tooltip" data-placement="left" title="@item.Email">
                     @item.Email
                 </td>
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.CreatedOn?.ToString()">
                     @item.CreatedOn?.ToString("yyyy-MM-dd")
                 </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevelIinfo")">
-                    @item.SwamidAssuranceLevel
-                </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer.GetLocalizedHtmlString("AssuranceLevelIinfo")">
-                    @item.IdentityAssuranceProfile
+                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@SharedLocalizer.GetLocalizedHtmlString("AccountRole")">
+                    @item.AccountRole
                 </td>
                 <td class="tooltip-r @(!item.IsVerifiedWithId ?  " warning-cell" : " ")"  data-toggle="tooltip" data-placement="left" title="@(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))">
                     @(item.IsVerifiedWithId ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
-                </td>
-                <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.VerifiedOn?.ToString()">
-                    @(item.IsApproved ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
                 </td>
                 <td class="tooltip-r" data-toggle="tooltip" data-placement="left" title="@item.IntegratedOn?.ToString()">
                     @(item.IsIntegrated ? SharedLocalizer.GetLocalizedHtmlString("Yes") : SharedLocalizer.GetLocalizedHtmlString("No"))
                 </td>
                 <td>
-                    <a asp-controller="Home" asp-action="Integrate" asp-route-id="@item.Id"
+                    <a asp-controller="Home" asp-action="Integrate" asp-route-id="@item.Id" asp-route-type="@Context.Request.Query["type"]"
                        class="btn-action @(item.IsIntegrated ? "btn-disabled" : "")">
                         @SharedLocalizer.GetLocalizedHtmlString("Integrate")
-                    </a>
-                    <a asp-controller="Home" asp-action="Remove" asp-route-id="@item.Id"
-                       class="btn-action btn-remove">
+                    </a><a asp-controller="Home" asp-action="Remove" asp-route-id="@item.Id" asp-route-type="@Context.Request.Query["type"]"
+                           class="btn-action btn-remove">
                         @SharedLocalizer.GetLocalizedHtmlString("Remove")
                     </a>
+
                 </td>
             </tr>
         }

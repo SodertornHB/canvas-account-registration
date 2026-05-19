@@ -8,73 +8,84 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog;
 using NLog.Web;
 using System;
 using System.IO;
 using Web;
 
 namespace CanvasAccountRegistration.Web
-{
+{    
     public class Program
     {
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-             Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<StartupExtended>();
-                webBuilder.ConfigureKestrel(options =>
-                {
-                });
-            })
-            .ConfigureLogging(logging =>
-            {
-                logging.SetMinimumLevel(LogLevel.Trace);
-            })
-            .UseNLog();
-
         public static void Main(string[] args)
         {
-            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
-                logger.Info("init main");
-                var webHost = CreateHostBuilder(args)
-                  .UseContentRoot(Directory.GetCurrentDirectory())
-                  .ConfigureAppConfiguration((hostingContext, config) =>
-                  {
-                      var env = hostingContext.HostingEnvironment;
-                      config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                            .AddJsonFile($"appsettings.{env.EnvironmentName}.json",
-                                optional: true, reloadOnChange: true);
-                      config.AddEnvironmentVariables();
-                      try
-                      {
-                          var logFactory = NLog.LogManager.LoadConfiguration($"nlog.{env.EnvironmentName}.config");
-                          NLog.LogManager.Configuration = logFactory.Configuration;
-                      }
-                      catch (Exception)
-                      {
-                          // No problems here!
-                          // If environment specific log config doesn't exists just continue
-                      }
-                  })
-                  .ConfigureLogging((hostingContext, logging) =>
-                  {
-                      logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-                  })
-                  .Build();
-
-                webHost.Run();
+                var envConfigPath = $"nlog.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.config";
+                if (File.Exists(envConfigPath))
+                {
+                    LogManager.Setup().LoadConfigurationFromFile(envConfigPath);
+                }
+                else
+                {
+                    LogManager.Setup().LoadConfigurationFromFile("nlog.config");
+                }
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                logger.Error(exception, "Stopped program because of exception");
+                Console.WriteLine("Kunde inte ladda NLog-konfiguration: " + ex.Message);
+            }
+
+            var logger = LogManager.GetCurrentClassLogger();
+
+            try
+            {
+                logger.Info("Init main");
+
+                //uncomment this if you want to use SQLite
+                //const string DB_NAME = "<name>.sqlite";
+                //var config = host.Services.GetService(typeof(IConfiguration)) as IConfiguration;
+                //var dbFilePath = Path.Combine(Environment.CurrentDirectory, "App_Data", DB_NAME);
+                //Directory.CreateDirectory(Path.GetDirectoryName(dbFilePath)!);
+                //var resolvedConnectionString = $"Data Source={dbFilePath}";
+                //logger.Info("Resolved connection string: " + resolvedConnectionString);
+
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Stopped program because of exception");
                 throw;
             }
             finally
             {
-                NLog.LogManager.Shutdown();
+                LogManager.Shutdown();
             }
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var env = hostingContext.HostingEnvironment;
+                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                          .AddEnvironmentVariables();
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<StartupExtended>();
+                    //webBuilder.ConfigureKestrel(options =>
+                    //{
+                    //});
+                })
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.ClearProviders(); 
+                    logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                })
+                .UseNLog(); 
     }
 }

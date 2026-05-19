@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿// This is an organization specific file 
+using AutoMapper;
+using CanvasAccountRegistration.Logic.Model;
+using CanvasAccountRegistration.Logic.DataAccess;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Logic.Settings;
 using CanvasAccountRegistration.Web;
@@ -20,9 +23,10 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using CanvasAccountRegistration.Logic.Model;
+using Sh.Library.Authentication;
 using Logic.HttpModel;
 using Logic.Http;
+using Sh.Library.MailSender;
 
 namespace Web
 {
@@ -50,6 +54,8 @@ namespace Web
             services.Configure<CanvasSettings>(Configuration.GetSection("Canvas"));
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
+            services.AddTransient<IArchivedAccountServiceExtended, ArchivedAccountServiceExtended>();
+            services.AddTransient<IAccountDataAccessExtended, AccountDataAccessExtended>();
             services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
             services.Configure<RouteOptions>(options =>
             {
@@ -64,10 +70,14 @@ namespace Web
                 },
                 Formatting = Formatting.Indented
             };
+            services.AddLibraryAuthentication(authenticationHost: Configuration["Authentication:Host"]);
+            services.AddLibraryMailSender(mailSenderHost: Configuration["MailSender:Host"], bearerToken: Configuration["MailSender:BearerToken"]);
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseLibraryAuthentication();
+            app.UseLibraryApiAuthentication();
         }
 
         protected override void ConfigureExceptionHandler(IApplicationBuilder app)
@@ -104,8 +114,6 @@ namespace Web
         {
             profile.CreateMap<Account, CanvasAccountRegistration.Web.ViewModel.RegistrationViewModel>()
                 .ForMember(x => x.AssuranceLevels, opt => opt.MapFrom(x => x.GetAssuranceLevels()))
-                .ForMember(x => x.SwamidAssuranceLevel, opt => opt.MapFrom(x => x.GetSwamidAssuranceLevel()))
-                .ForMember(x => x.IdentityAssuranceProfile, opt => opt.MapFrom(x => x.GetIdentityAssuranceProfile()))
                 .ForMember(x => x.IsApproved, opt => opt.MapFrom(x => x.GetIsApproved()))
                 .ForMember(x => x.IsVerifiedWithId, opt => opt.MapFrom(x => x.GetIsVerifiedWithId()))
                 .ForMember(x => x.IsIntegrated, opt => opt.MapFrom(x => x.GetIsIntegrated()));
@@ -125,7 +133,7 @@ namespace Web
                 .ForPath(x => x.user.Sortable_name, opt => opt.MapFrom(x => x.GetAsSortableName()))
                 .ForPath(x => x.communication_channel.Address, opt => opt.MapFrom(x => x.Email))
                 .ForPath(x => x.pseudonym.Sis_user_id, opt => opt.MapFrom(x => x.Id))
-                .ForPath(x => x.pseudonym.Integration_id, opt => opt.MapFrom(x => x.Id))
+                .ForPath(x => x.pseudonym.Integration_id, opt => opt.MapFrom(x => x.Email))
                 .ForPath(x => x.pseudonym.Unique_id, opt => opt.MapFrom(x => x.UserId));
 
             return profile;

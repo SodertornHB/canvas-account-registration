@@ -47,4 +47,38 @@ namespace Logic.HttpModel
     {
         public string id { get; set; }
     }
+
+    public class CanvasLoginResponseModel
+    {
+        public string Id { get; set; }
+        public string IntegrationId { get; set; }
+        public string UniqueId { get; set; }
+    }
+
+    public class PutCanvasLoginRequestModel
+    {
+        public PutCanvasLoginModel Login { get; set; } = new PutCanvasLoginModel();
+    }
+
+    public class PutCanvasLoginModel
+    {
+        public string IntegrationId { get; set; }
+    }
+
+    public class RepairIntegrationIdsResult
+    {
+        public int Fixed { get; set; }
+        public int Skipped { get; set; }
+        public int Failed { get; set; }
+        public List<RepairIntegrationIdsEntry> Entries { get; set; } = new List<RepairIntegrationIdsEntry>();
+    }
+
+    public class RepairIntegrationIdsEntry
+    {
+        public int AccountId { get; set; }
+        public string DisplayName { get; set; }
+        public string Email { get; set; }
+        public string Status { get; set; } // "Fixed", "Skipped", "Failed"
+        public string ErrorMessage { get; set; }
+    }
 }

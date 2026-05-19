@@ -12,6 +12,7 @@ namespace CanvasAccountRegistration.Web.ViewModel
         public virtual string Surname {get;set;}  = ""; 
         public virtual string Email {get;set;}  = ""; 
         public virtual string AssuranceLevel {get;set;}  = "";
+        public string RedirectUrl { get; set; }
 
         [DataType(DataType.Text)]
         public virtual DateTime? CreatedOn {get;set;} 

@@ -22,24 +22,26 @@ namespace CanvasAccountRegistration.Logic.DataAccess
         Task<List<T>> LoadData<T, U>(string sql, U parameters);
         Task<int> InsertData<T>(string sql, T parameters);
         Task UpdateData<T>(string sql, T parameters);
-        T LoadSingularDataSynchronous<T, U>(string sql, U parameters);
+        T LoadSingularDataSynchronous<T, U>(string sql, U parameters);        
+        string GetConnectionString();
     }
 
     public class SqlDataAccess : ISqlDataAccess
     {
-        private string _connectionString;
+        private string connectionString;
         private readonly ILogger logger;
 
         public SqlDataAccess(IConfiguration iconfiguration,
             ILogger<SqlDataAccess> logger)
         {
-            _connectionString = iconfiguration.GetConnectionString("Default");
+            connectionString = iconfiguration.GetConnectionString("Default");
             this.logger = logger;
         }
+        public string GetConnectionString() => connectionString;
 
         public async Task<T> LoadSingularData<T, U>(string sql, U parameters)
         {
-            using (IDbConnection connection = new SqlConnection(_connectionString))
+            using (IDbConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -56,7 +58,7 @@ namespace CanvasAccountRegistration.Logic.DataAccess
 
         public async Task<List<T>> LoadData<T, U>(string sql, U parameters)
         {
-            using (IDbConnection connection = new SqlConnection(_connectionString))
+            using (IDbConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -74,7 +76,7 @@ namespace CanvasAccountRegistration.Logic.DataAccess
 
         public T LoadSingularDataSynchronous<T, U>(string sql, U parameters)
         {
-            using (IDbConnection connection = new SqlConnection(_connectionString))
+            using (IDbConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -91,7 +93,7 @@ namespace CanvasAccountRegistration.Logic.DataAccess
 
         public async Task<int> InsertData<T>(string sql, T parameters)
         {
-            using (IDbConnection connection = new SqlConnection(_connectionString))
+            using (IDbConnection connection = new SqlConnection(connectionString))
             {
                            
                 int newId = default;
@@ -114,7 +116,7 @@ namespace CanvasAccountRegistration.Logic.DataAccess
 
         public async Task UpdateData<T>(string sql, T parameters)
         {
-            using (IDbConnection connection = new SqlConnection(_connectionString))
+            using (IDbConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {

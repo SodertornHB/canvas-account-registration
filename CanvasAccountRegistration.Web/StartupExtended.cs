@@ -31,6 +31,8 @@ using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Http;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
+using CanvasAccountRegistration.Logic.DataAccess;
+using CanvasAccountRegistration.Web.Service;
 
 namespace Web
 {
@@ -56,9 +58,17 @@ namespace Web
         {
             services.Configure<CanvasSettings>(Configuration.GetSection("CanvasApiSettings"));
             services.Configure<Saml2Settings>(Configuration.GetSection("Authentication:Saml2"));
+            services.Configure<PostRegistrationRedirectSettings>(Configuration.GetSection("PostRegistrationRedirect"));
+            services.AddSingleton<SqlStringBuilder<WhiteListedEmailDomain>>();
+            services.AddTransient<IWhiteListedEmailDomainDataAccess, WhiteListedEmailDomainDataAccess>();
+            services.AddTransient<IWhiteListedEmailDomainService, WhiteListedEmailDomainService>();
+            services.AddTransient<Logic.Service.IRedirectLinkService, Logic.Service.RedirectLinkService>();
+            services.AddTransient<IPartnerEligibilityService, PartnerEligibilityService>();
             services.AddTransient<IRequestedAttributeService, RequestedAttributeService>();
             services.AddTransient<IRegistrationLogServiceExtended, RegistrationLogServiceExtended>();
             services.AddTransient<IAccountServiceExtended, AccountServiceExtended>();
+            services.AddTransient<IArchivedAccountServiceExtended, ArchivedAccountServiceExtended>();
+            services.AddTransient<IAccountDataAccessExtended, AccountDataAccessExtended>();
             services.AddTransient<IPostCanvasAccountHttpService, PostCanvasAccountHttpService>();
             services.Configure<RouteOptions>(options =>
             {
@@ -157,7 +167,6 @@ namespace Web
 
             return profile;
         }
-
     }
 
     public class CleanUpServiceExtended : CleanUpService

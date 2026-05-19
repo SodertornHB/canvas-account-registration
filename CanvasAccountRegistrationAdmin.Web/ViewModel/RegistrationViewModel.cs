@@ -1,5 +1,5 @@
-using CanvasAccountRegistration.Logic.Settings;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
@@ -21,13 +21,12 @@ namespace CanvasAccountRegistration.Web.ViewModel
         [DataType(DataType.Text)]
         public virtual DateTime? IntegratedOn {get;set; }
         public string[] AssuranceLevels { get; set; }
-        public virtual string SwamidAssuranceLevel { get; set; }
-        public virtual string IdentityAssuranceProfile { get; set; }
+        public virtual string AccountRole { get; set; }
         public bool IsVerifiedWithId { get; set; }
         public bool IsApproved { get; set; }
         public bool IsIntegrated { get; set; }
-        public bool HasValidEmailAddress(WhiteListedEmailDomainSettings settings) => settings.Addresses.Any(x => Email.EndsWith(x,StringComparison.OrdinalIgnoreCase));
-        public bool IndicateWarning(WhiteListedEmailDomainSettings settings) => !HasValidEmailAddress(settings) || !IsVerifiedWithId;
+        public bool HasValidEmailAddress(IEnumerable<string> domains) => domains.Any(x => Email.EndsWith(x, StringComparison.OrdinalIgnoreCase));
+        public bool IndicateWarning(IEnumerable<string> domains) => !HasValidEmailAddress(domains) || !IsVerifiedWithId;
 
     }
 } 

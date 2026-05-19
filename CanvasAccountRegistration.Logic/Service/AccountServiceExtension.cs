@@ -1,11 +1,16 @@
 using AutoMapper;
 using CanvasAccountRegistration.Logic.DataAccess;
+using CanvasAccountRegistration.Logic.Extensions;
+using CanvasAccountRegistration.Logic.Http;
 using CanvasAccountRegistration.Logic.Model;
 using CanvasAccountRegistration.Logic.Settings;
 using Logic.Http;
 using Logic.HttpModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,31 +18,42 @@ namespace CanvasAccountRegistration.Logic.Services
 {
     public partial interface IAccountServiceExtended : IAccountService
     {
+        Task<IEnumerable<string>> GetAccountTypes();
         Task<Account> GetByUserId(string userId);
-        Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection);
+        Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection, string accountType, string role);
         Task<PostCanvasAccountResponseModel> IntegrateIntoCanvas(Account account);
+        Task<RepairIntegrationIdsResult> RepairIntegrationIds();
     }
 
     public partial class AccountServiceExtended : AccountService, IAccountServiceExtended
     {
+        private readonly IArchivedAccountServiceExtended archivedAccountService;
+        private new readonly IAccountDataAccessExtended dataAccess;
         private readonly IRegistrationLogServiceExtended registrationLogService;
         private readonly IMapper mapper;
         private readonly IPostCanvasAccountHttpService postCanvasAccountHttpService;
         private readonly CanvasSettings canvasSettings;
+        private readonly IHttpClient httpClient;
 
         public AccountServiceExtended(ILogger<AccountService> logger,
-           IAccountDataAccess dataAccess,
+           IAccountDataAccessExtended dataAccess,
+           IArchivedAccountServiceExtended archivedAccountService,
            IRegistrationLogServiceExtended registrationLogService,
            IMapper mapper,
            IPostCanvasAccountHttpService postCanvasAccountHttpService,
+           IHttpClient httpClient,
            IOptions<CanvasSettings> options)
            : base(logger, dataAccess)
         {
+            this.dataAccess = dataAccess;
+            this.archivedAccountService = archivedAccountService;
             this.registrationLogService = registrationLogService;
             this.mapper = mapper;
             this.postCanvasAccountHttpService = postCanvasAccountHttpService;
+            this.httpClient = httpClient;
             canvasSettings = options.Value;
             postCanvasAccountHttpService.OverrideDefaultBearerToken(canvasSettings.BearerToken);
+            httpClient.SetBearerToken(canvasSettings.BearerToken);
         }
 
         public  async Task<Account> GetByUserId(string userId)
@@ -57,7 +73,7 @@ namespace CanvasAccountRegistration.Logic.Services
             return response;
         }
 
-        public async Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection)
+        public async Task<Account> NewRegister(RequestedAttributeCollection requestedAttributeCollection, string accountType, string role)
         {
             logger.LogDebug("RequestedAttributeCollection");
             foreach (var attribute in requestedAttributeCollection)
@@ -73,17 +89,98 @@ namespace CanvasAccountRegistration.Logic.Services
                 return account;
             }
             account = mapper.Map<Account>(registrationLog);
+            account.AccountType = accountType;
+            account.AccountRole= role;
             return await Insert(account);
+        }
+
+        public override async Task Delete(int id)
+        {
+            var account = await Get(id);
+            if (account == null) return;
+            var archivedAccount = await archivedAccountService.GetByInitialId(id);
+            if (archivedAccount == null)
+            {
+                await ArchiveAccount(account);
+            }
+            await base.Delete(id);
+        }
+
+        public async Task<RepairIntegrationIdsResult> RepairIntegrationIds()
+        {
+            var accounts = await GetAll();
+            var integratedAccounts = accounts.Where(x => x.IntegratedOn != null).ToList();
+
+            var result = new RepairIntegrationIdsResult();
+
+            foreach (var account in integratedAccounts)
+            {
+                try
+                {
+                    var loginsUrl = $"{canvasSettings.ApiHost}/users/sis_user_id:{account.Id}/logins";
+                    var getResponse = await httpClient.Get(new Uri(loginsUrl));
+                    getResponse.CheckStatus();
+                    var logins = JsonConvert.DeserializeObject<IEnumerable<CanvasLoginResponseModel>>(getResponse.Content);
+
+                    foreach (var login in logins)
+                    {
+                        if (login.IntegrationId == account.Email)
+                        {
+                            result.Skipped++;
+                            result.Entries.Add(new RepairIntegrationIdsEntry
+                            {
+                                AccountId = account.Id,
+                                DisplayName = account.DisplayName,
+                                Email = account.Email,
+                                Status = "Skipped"
+                            });
+                            continue;
+                        }
+
+                        var putUrl = $"{canvasSettings.ApiHost}/accounts/self/logins/{login.Id}";
+                        var putModel = new PutCanvasLoginRequestModel { Login = new PutCanvasLoginModel { IntegrationId = account.Email } };
+                        var putContent = JsonConvert.SerializeObject(putModel);
+                        var putResponse = await httpClient.Put(new Uri(putUrl), putContent);
+                        putResponse.CheckStatus();
+                        result.Fixed++;
+                        result.Entries.Add(new RepairIntegrationIdsEntry
+                        {
+                            AccountId = account.Id,
+                            DisplayName = account.DisplayName,
+                            Email = account.Email,
+                            Status = "Fixed"
+                        });
+                    }
+                }
+                catch (Exception e)
+                {
+                    logger.LogError(e, $"RepairIntegrationIds failed for account {account.Id} ({account.Email}): {e.Message}");
+                    result.Failed++;
+                    result.Entries.Add(new RepairIntegrationIdsEntry
+                    {
+                        AccountId = account.Id,
+                        DisplayName = account.DisplayName,
+                        Email = account.Email,
+                        Status = "Failed",
+                        ErrorMessage = e.Message
+                    });
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<IEnumerable<string>> GetAccountTypes() => await dataAccess.GetAccountTypes();
+
+        private async Task ArchiveAccount(Account account)
+        {
+            var archivedAccount = account.ToArchivedAccount();
+            await archivedAccountService.Insert(archivedAccount);
         }
 
         private async Task MapValuesAndUpdate(RegistrationLog registrationLog, Account account)
         {
-            account.Surname = registrationLog.sn ?? string.Empty;
-            account.GivenName = registrationLog.givenName ?? string.Empty;
-            account.DisplayName = registrationLog.displayName ?? string.Empty;
-            account.AssuranceLevel = registrationLog.eduPersonAssurance ?? string.Empty;
-            account.Email = registrationLog.mail ?? string.Empty;
-            account.UserId = registrationLog.eduPersonPrincipalName ?? string.Empty;
+            registrationLog.MapAccount(account); 
             await Update(account);
         }
     }

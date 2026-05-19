@@ -1,5 +1,5 @@
 @* --------------------------------------------------------------------*@
-@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* This is an organization specific file *@
 @* --------------------------------------------------------------------*@
 @using CanvasAccountRegistration.Logic.Settings
 @using Localization
@@ -7,6 +7,7 @@
 @inject IOptions<ApplicationSettings> settings
 @inject LocService SharedLocalizer
 @model string
-
+@{
+    Layout = "_LayoutSmob";
+}
 @Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Instructions"))
-

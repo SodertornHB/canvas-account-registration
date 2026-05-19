@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root"
+    xmlns=""
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApplicationName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TableLang" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Create New" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value />
+  </data>
+  <data name="List" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value />
+  </data>
+  <data name="login_attribute" xml:space="preserve">
+    <value />
+  </data>
+  <data name="given_name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value />
+  </data>
+  <data name="display_name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="email" xml:space="preserve">
+    <value />
+  </data>
+  <data name="assurance_level" xml:space="preserve">
+    <value />
+  </data>
+  <data name="mail_verified" xml:space="preserve">
+    <value />
+  </data>
+  <data name="create_date_time" xml:space="preserve">
+    <value />
+  </data>
+  <data name="verification_date_time" xml:space="preserve">
+    <value />
+  </data>
+  <data name="integration_date_time" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LogLevel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Exception" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Trace" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Migration" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ClientVersion" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DatabaseVersion" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Canvas Account Registration info" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Privacy info" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Toggle language" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="GivenName" xml:space="preserve">
+    <value>Förnamn</value>
+  </data>
+  <data name="SwamidAssuranceLevel" xml:space="preserve">
+    <value>SAL</value>
+  </data>
+  <data name="IdentityAssuranceProfile" xml:space="preserve">
+    <value>IAP</value>
+  </data>
+  <data name="IsVerifiedWithId" xml:space="preserve">
+    <value>Bank-id</value>
+  </data>
+  <data name="IsApproved" xml:space="preserve">
+    <value>Godkänd</value>
+  </data>
+  <data name="IsIntegrated" xml:space="preserve">
+    <value>Tillagd i Canvas</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Godkänn</value>
+  </data>
+  <data name="Integrate" xml:space="preserve">
+    <value>Lägg till i Canvas</value>
+  </data>
+  <data name="User {0} has been approved successfully." xml:space="preserve">
+    <value>{0} har godkänts</value>
+  </data>
+  <data name="User {0} has been integrated successfully." xml:space="preserve">
+    <value>{0} har lagts in i Canvas</value>
+  </data>
+  <data name="User {0} has been deleted." xml:space="preserve">
+    <value>{0} har tagits bort. (Notera att användaren fortfarande kan finnas i Canvas)</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="AssuranceLevelInfo" xml:space="preserve">
+    <value>Indicates which assurance level the account has which is determind on wheter the account is verified with Bankid or not</value>
+  </data>
+  <data name="HomeUrl" xml:space="preserve">
+    <value>https://www.sh.se/bibliotek</value>
+  </data>
+  <data name="LogoUrl" xml:space="preserve">
+    <value>https://bibl-app.sh.se/img/logo-SH.svg</value>
+  </data>
+  <data name="FooterUrl" xml:space="preserve">
+    <value>https://bibl-app.sh.se/footer</value>
+  </data>
+</root>

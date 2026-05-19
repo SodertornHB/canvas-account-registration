@@ -1,7 +1,9 @@
+// This is an organization specific file 
 using AutoMapper;
 using CanvasAccountRegistration.Logic.Services;
 using CanvasAccountRegistration.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Sh.Library.MailSender;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,13 @@ namespace Web.Controllers
 
         [HttpGet("list")]
         public async Task<IActionResult> List(
-            [FromServices] IAccountServiceExtended accountService,
-            [FromServices] IMapper mapper)
+     [FromServices] IAccountServiceExtended accountService,
+     [FromServices] IMapper mapper,
+     [FromQuery] string type)
         {
             var accounts = await accountService.GetAll();
-            var viewModels = mapper.Map<IEnumerable<RegistrationViewModel>>(accounts);
+            var filteredAccounts = string.IsNullOrWhiteSpace(type) ? accounts : accounts.Where(x => x.AccountType == type);
+            var viewModels = mapper.Map<IEnumerable<RegistrationViewModel>>(filteredAccounts);
             return View(viewModels.OrderByDescending(x => x.CreatedOn));
         }
 
@@ -50,7 +54,9 @@ namespace Web.Controllers
             return RedirectToAction("List");
         }
 
-        public async Task<IActionResult> Integrate(int id)
+        public async Task<IActionResult> Integrate([FromServices] IMailService mailer,
+            int id,
+            string type)
         {
             try
             {
@@ -65,21 +71,29 @@ namespace Web.Controllers
                     return NotFound($"Account with ID {id} not found.");
                 }
                 var response = await accountService.IntegrateIntoCanvas(account);
+                await mailer.Send("biblioteket@sh.se", account.Email, "Välkommen till Södertörns högskolas lärplattform Canvas", "<!DOCTYPE html> <html> <head>     <meta charset='UTF-8'> </head> <body>     <p>Du har nu ett konto i Canvas. <a href='https://canvas-account-registration.shbiblioteket.se/how-to-log-into-canvas'>Klicka h&auml;r f&ouml;r information om hur du loggar in</a></p> <p>Om l&auml;nken inte fungerar, kopiera och klistra in f&ouml;ljande i din webbl&auml;sare:<br /> https://canvas-account-registration.shbiblioteket.se/how-to-log-into-canvas</p> </body> </html>");
                 TempData["SuccessMessage"] = "User {0} has been integrated successfully.";
                 TempData["AccountDisplayName"] = account.DisplayName;
             }
             catch (HttpRequestException)
             {
-                TempData["ErrorMessage"] = "Kontot kunde inte l�ggas till. Finns anv�ndaren redan i Canvas?";
+                TempData["ErrorMessage"] = "Kontot kunde inte l�ggas till. Finns anv�ndaren redan i Canvas?";
             }
             catch (Exception e)
             {
                 TempData["ErrorMessage"] = $"An error occurred: {e.Message}";
             }
-            return RedirectToAction("List");
+            return RedirectToAction("List", new { type });
         }
 
-        public async Task<IActionResult> Remove(int id)
+        [HttpGet("repair-integration-ids")]
+        public async Task<IActionResult> RepairIntegrationIds([FromServices] IAccountServiceExtended accountService)
+        {
+            var result = await accountService.RepairIntegrationIds();
+            return View(result);
+        }
+
+        public async Task<IActionResult> Remove(int id, string type)
         {
             try
             {
@@ -101,8 +115,8 @@ namespace Web.Controllers
             {
                 TempData["ErrorMessage"] = $"An error occurred: {e.Message}";
             }
-            return RedirectToAction("List");
-        }
 
+            return RedirectToAction("List", new { type });
+        }
     }
 }

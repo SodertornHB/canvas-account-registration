@@ -1,65 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root"
+    xmlns=""
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -117,6 +61,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Canvas Account Registration</value>
+  </data>
   <data name="TableLang" xml:space="preserve">
     <value>//cdn.datatables.net/plug-ins/1.12.1/i18n/en-GB.json</value>
   </data>
@@ -143,6 +90,9 @@
   </data>
   <data name="ErrorHeader" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>An error occurred. Please contact &lt;a href="mailto:biblioteket@sh.se"&gt;biblioteket@sh.se&lt;/a&gt;</value>
   </data>
   <data name="Account" xml:space="preserve">
     <value>Account</value>
@@ -211,13 +161,13 @@
     <value>Database Version</value>
   </data>
   <data name="Canvas Account Registration info" xml:space="preserve">
-    <value>&lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Canvas account registration is a service aimed at employees of Swedish government agencies who are enrolled in a commissioned education program at Södertörn University.&lt;/p&gt; &lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
   </data>
   <data name="Privacy info" xml:space="preserve">
     <value>&lt;h2&gt;Processing of Personal Data&lt;/h2&gt;
 &lt;h3&gt;Transfer of Personal Data&lt;/h3&gt;
 &lt;p&gt;Personal data is transferred from the identity provider (your login service) to Canvas Account Registration to enable
-    the University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;
+    Södertörn University to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;
 &lt;p&gt;When logging into this service, the following personal data is requested from the identity provider you use:&lt;/p&gt;
 &lt;table&gt;
     &lt;thead&gt;
@@ -283,7 +233,7 @@
     the service or if required by law. In such cases, the university ensures that the recipient handles the data in
     accordance with applicable data protection regulations.&lt;/p&gt;
 &lt;h3&gt;Legal Basis&lt;/h3&gt;
-&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of University's exercise
+&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of Södertörn University's exercise
     of official authority. Fulfilling legal obligations may also, in some cases, serve as the legal basis for the
     service.&lt;/p&gt;
 &lt;h3&gt;Right to Access, Rectification, and Erasure of Personal Data&lt;/h3&gt;
@@ -296,10 +246,9 @@
     purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the
     university's data storage and retention policies.&lt;/p&gt;
 &lt;h3&gt;Data Controller&lt;/h3&gt;
-&lt;p&gt;The data controller for the processing of personal data is YOUR University, Sweden. If you have questions about
-    how personal data is handled within the service, contact dataskydd@YOUR_DOMAIN.&lt;/p&gt;
-&lt;p&gt;Contact details for the University's Data Protection Officer can be found on &lt;a
-        href="https://YOUR_DOMAIN/..."&gt;this page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The data controller for the processing of personal data is Södertörn University, Sweden. If you have questions about
+    how personal data is handled within the service, contact dataskydd@sh.se.&lt;/p&gt;
+&lt;p&gt;Contact details for Södertörn University's Data Protection Officer can be found on &lt;a href="https://www.sh.se/om-oss/strategier-och-ekonomi/behandling-av-personuppgifter"&gt;this page&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;
 &lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal
     data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA
@@ -326,29 +275,42 @@
   <data name="AssuranceLevelInfo" xml:space="preserve">
     <value>Indicates which assurance level the account has which is determind on wheter the account is verified with Bankid or not</value>
   </data>
-  <data name="InstructionsBody" xml:space="preserve">
-    <value>&lt;h1&gt;Create an Account to Access Courses in Canvas&lt;/h1&gt;
-&lt;p&gt;Follow these instructions to create an eduID:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    Create your eduID. Open a new browser window and go to &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; to create an account. &lt;strong&gt;Important!&lt;/strong&gt; You must use the same email address you use for the service as your eduID username.
-  &lt;/li&gt;
-  &lt;li&gt;
-    Verify your eduID. Once you have created your account on eduID, you need to verify it using your BankID or Freja+. Go to the &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduID homepage&lt;/a&gt; and click on the "Identity" link under the "Verify your identity" section. Follow the instructions on the page to verify your account with BankID or Freja+.
-  &lt;/li&gt;
-  &lt;li&gt;
-    Register your eduID in Canvas. Click on the link: &lt;a href="https://YOUR_HOST/" target="_blank"&gt;Canvas account registration page&lt;/a&gt;. Use your eduID — that is, the email address and password you chose when you registered.
-  &lt;/li&gt;
-  &lt;li&gt;
-    Confirm that your eduID has been registered. You will now see a confirmation that your eduID has been registered in Canvas. Once an administrator has reviewed and approved your account, you will gain access to the Canvas learning platform. You will use your eduID to log in to Canvas from now on.
-  &lt;/li&gt;
-&lt;/ol&gt;
-</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="HomeUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="InstructionsHeader" xml:space="preserve">
-    <value>Create account</value>
+  <data name="LogoUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="Approve" xml:space="preserve">
-    <value>Approve</value>
+  <data name="FooterUrl" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="AccountRole" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>Account type</value>
+  </data>
+
+  <data name="WhitelistedEmailDomains" xml:space="preserve">
+    <value>Vitlistade e-postdomäner</value>
+  </data>
+  <data name="ManageWhitelistedDomains" xml:space="preserve">
+    <value>Hantera vitlistade domäner</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Domän</value>
+  </data>
+  <data name="AddDomain" xml:space="preserve">
+    <value>Lägg till domän</value>
+  </data>
+  <data name="AddWhitelistedEmailDomain" xml:space="preserve">
+    <value>Lägg till vitlistad e-postdomän</value>
+  </data>
+  <data name="EditWhitelistedEmailDomain" xml:space="preserve">
+    <value>Redigera vitlistad e-postdomän</value>
+  </data>
+  <data name="DeleteWhitelistedEmailDomain" xml:space="preserve">
+    <value>Ta bort vitlistad e-postdomän</value>
   </data>
 </root>

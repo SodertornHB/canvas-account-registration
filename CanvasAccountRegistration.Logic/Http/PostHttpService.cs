@@ -1,3 +1,9 @@
+
+//--------------------------------------------------------------------------------------------------------------------
+// Warning! This is an auto generated file. Changes may be overwritten. 
+// Generator version: 0.0.1.0
+//-------------------------------------------------------------------------------------------------------------------- 
+
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -6,19 +12,19 @@ using System.Threading.Tasks;
 
 namespace CanvasAccountRegistration.Logic.Http
 {
-    public interface IPostHttpService<TRequestModel, TResonseModel> : IPostHttpServiceBase
+    public interface IPostHttpService<TRequestModel, TResponseModel> : ISingleMethodHttpServiceBase
     {
-        Task<TResonseModel> Post(string url, TRequestModel model);
+        Task<TResponseModel> Post(string url, TRequestModel model);
     }
 
-    public class PostHttpService<TRequestModel, TResonseModel> : PostHttpServiceBase, IPostHttpService<TRequestModel, TResonseModel>
+    public class PostHttpService<TRequestModel, TResponseModel> : SingleMethodHttpServiceBase, IPostHttpService<TRequestModel, TResponseModel>
     {
         public PostHttpService(IHttpClient client,
             ILogger<HttpService<TRequestModel>> logger)
             : base(client, logger)
         { }
 
-        public virtual async Task<TResonseModel> Post(string url, TRequestModel model)
+        public virtual async Task<TResponseModel> Post(string url, TRequestModel model)
         {
             try
             {
@@ -26,7 +32,7 @@ namespace CanvasAccountRegistration.Logic.Http
                 var response = await client.Post(new Uri(url), content);
                 response.CheckStatus();
                 logger.LogDebug($"Post data to {url}: {response.Content}");
-                return JsonConvert.DeserializeObject<TResonseModel>(response.Content);
+                return JsonConvert.DeserializeObject<TResponseModel>(response.Content);
             }
             catch (HttpRequestException e)
             {
