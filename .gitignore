@@ -359,3 +359,13 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Organizational-specific files copied into project during build
+CanvasAccountRegistration.Web/Controller/HomeControllerExtended.cs
+CanvasAccountRegistration.Web/Resources/SharedResource.resx
+CanvasAccountRegistration.Web/Views/Shared/_LayoutSmob.cshtml
+CanvasAccountRegistration.Web/appsettings.Staging.json
+CanvasAccountRegistration.Web/saml_config/
+CanvasAccountRegistration.Web/wwwroot/img/
+CanvasAccountRegistrationAdmin.Web/Resources/SharedResource.resx
+CanvasAccountRegistrationAdmin.Web/saml_config/
