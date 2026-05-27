@@ -11,8 +11,9 @@
 
 @{
     var type = Context.Request.Query["type"].ToString();
-    var isGuest = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase);
-    Layout = isGuest ? "_Layout" : "_LayoutSmob";
+    Layout = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase)
+    ? "_Layout"
+    : "_LayoutSmob";
 }
 
 <div class="success-container">
@@ -23,7 +24,7 @@
     <hr />
     <div class="information">
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
-        @if (isGuest)
+@if (Context.Request.Query["type"] != "guest" && !Model.IsVerifiedWithId)
         {
             <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
         }

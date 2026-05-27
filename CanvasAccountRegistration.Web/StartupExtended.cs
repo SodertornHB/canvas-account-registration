@@ -29,6 +29,7 @@ using Logic.Service;
 using CanvasAccountRegistration.Logic.Model;
 using CanvasAccountRegistration.Web.ViewModel;
 using Logic.Http;
+using Logic.HttpModel;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Http;
 using CanvasAccountRegistration.Logic.DataAccess;
@@ -103,11 +104,19 @@ namespace Web
                  options.SPOptions)
                 {
                     MetadataLocation = saml2Options.IdentityProvider.MetadataLocation,
-                    LoadMetadata = true
+                    LoadMetadata = true,
+                    RelayStateUsedAsReturnUrl = saml2Options.IdentityProvider.RelayStateUsedAsReturnUrl
                 });
             });
             services.AddScoped<IPrincipal>(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.User);
             services.AddHttpContextAccessor();
+
+            services.AddSingleton<SqlStringBuilder<WhiteListedEmailDomain>>();
+            services.AddTransient<IWhiteListedEmailDomainDataAccess, WhiteListedEmailDomainDataAccess>();
+            services.AddTransient<IWhiteListedEmailDomainService, WhiteListedEmailDomainService>();
+            services.AddTransient<IPartnerEligibilityService, PartnerEligibilityService>();
+            services.AddTransient<IRedirectLinkService, RedirectLinkService>();
+            services.Configure<PostRegistrationRedirectSettings>(Configuration.GetSection("PostRegistrationRedirect"));
         }
 
         protected override void CustomConfiguration(IApplicationBuilder app, IWebHostEnvironment env)
@@ -165,8 +174,18 @@ namespace Web
                 .ForMember(x => x.DisplayName, opt => opt.MapFrom(x => x.displayName))
                 .ForMember(x => x.GivenName, opt => opt.MapFrom(x => x.givenName));
 
+            profile.CreateMap<Account, PostCanvasAccountRequestModel>()
+                .ForPath(x => x.user.Name, opt => opt.MapFrom(x => x.GetFullName()))
+                .ForPath(x => x.user.Short_name, opt => opt.MapFrom(x => x.GetFullNameWithVerifiedIdPostfix()))
+                .ForPath(x => x.user.Sortable_name, opt => opt.MapFrom(x => x.GetAsSortableName()))
+                .ForPath(x => x.communication_channel.Address, opt => opt.MapFrom(x => x.Email))
+                .ForPath(x => x.pseudonym.Sis_user_id, opt => opt.MapFrom(x => x.Id))
+                .ForPath(x => x.pseudonym.Integration_id, opt => opt.MapFrom(x => x.Email))
+                .ForPath(x => x.pseudonym.Unique_id, opt => opt.MapFrom(x => x.UserId));
+
             return profile;
         }
+
     }
 
     public class CleanUpServiceExtended : CleanUpService
