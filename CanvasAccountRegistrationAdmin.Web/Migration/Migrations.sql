@@ -232,3 +232,12 @@ BEGIN CATCH
     IF XACT_STATE() <> 0 ROLLBACK TRAN;
     THROW;
 END CATCH;
+
+ALTER TABLE dbo.WhiteListedEmailDomain
+ADD PartnerOrganization bit NOT NULL
+    CONSTRAINT DF_WL_Partner DEFAULT (1)
+    WITH VALUES;
+
+IF NOT EXISTS (SELECT 1 FROM [Migration] WHERE DatabaseVersion = '1.3.0')
+    INSERT INTO [Migration] ([ClientVersion], [DatabaseVersion], [CreatedOn])
+    VALUES ('1.3.0', '1.3.0', SYSDATETIME());

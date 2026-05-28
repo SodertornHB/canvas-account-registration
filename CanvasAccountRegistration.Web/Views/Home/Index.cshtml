@@ -11,9 +11,8 @@
 
 @{
     var type = Context.Request.Query["type"].ToString();
-    Layout = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase)
-    ? "_Layout"
-    : "_LayoutSmob";
+    var isGuest = string.Equals(type, "guest", StringComparison.OrdinalIgnoreCase);
+    Layout = isGuest ? "_Layout" : "_LayoutSmob";
 }
 
 <div class="success-container">
@@ -24,7 +23,7 @@
     <hr />
     <div class="information">
         <h3>@SharedLocalizer.GetLocalizedHtmlString("What will happen")</h3>
-@if (Context.Request.Query["type"] != "guest" && !Model.IsVerifiedWithId)
+        @if (isGuest)
         {
             <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Registration approved"))</p>
         }
@@ -37,9 +36,13 @@
         {
             <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved with redirect"))</p>
         }
-        else
+        else if (Model.IsIntegrated)
         {
             <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved no redirect"))</p>
+        }
+        else
+        {
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Pending approval"))</p>
         }
     </div>
     @if (!string.IsNullOrWhiteSpace(Model.RedirectUrl))
@@ -47,7 +50,7 @@
         <hr />
         <div class="redirect-link">
             <a class="btn btn-primary" href="@Model.RedirectUrl" rel="noopener">
-                @SharedLocalizer.GetLocalizedHtmlString("Continue to course")
+                @SharedLocalizer.GetLocalizedHtmlString("Go to course in Catalog")
             </a>
         </div>
     }
