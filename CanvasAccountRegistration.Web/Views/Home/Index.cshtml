@@ -36,9 +36,13 @@
         {
             <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved with redirect"))</p>
         }
-        else
+        else if (Model.IsIntegrated)
         {
             <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Automatically approved no redirect"))</p>
+        }
+        else
+        {
+            <p>@Html.Raw(SharedLocalizer.GetLocalizedHtmlString("Pending approval"))</p>
         }
     </div>
     @if (!string.IsNullOrWhiteSpace(Model.RedirectUrl))
@@ -46,7 +50,7 @@
         <hr />
         <div class="redirect-link">
             <a class="btn btn-primary" href="@Model.RedirectUrl" rel="noopener">
-                @SharedLocalizer.GetLocalizedHtmlString("Continue to course")
+                @SharedLocalizer.GetLocalizedHtmlString("Go to course in Catalog")
             </a>
         </div>
     }

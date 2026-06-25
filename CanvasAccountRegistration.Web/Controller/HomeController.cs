@@ -60,7 +60,6 @@ namespace Web.Controllers
             [FromQuery] string role,
             [FromQuery] string postRegistrationParam)
         {
-
             var safepostRegistrationParam = redirectLinkService.Sanitize(postRegistrationParam);
 
             if (!(User?.Identity?.IsAuthenticated ?? false))

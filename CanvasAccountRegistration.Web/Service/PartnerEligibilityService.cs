@@ -36,7 +36,7 @@ namespace CanvasAccountRegistration.Web.Service
 
             var matches = await whiteListedEmailDomainService.GetAll();
             var match = matches.FirstOrDefault(x => DomainsEqual(x.Domain, domain));
-            return match.PartnerOrganization;
+            return match?.PartnerOrganization ?? false;
         }
 
         private static bool HasSwamidAl2(IEnumerable<Claim> claims)
