@@ -43,7 +43,8 @@ canvas-account-registration/
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - SQL Server (or SQL Server Express / LocalDB for local development)
 - Access to a Canvas LMS instance with an API bearer token
-- (Optional) A SAML2 identity provider for full authentication flow
+- A SAML2 identity provider (for example eduID through SWAMID) and a service provider certificate (`.pfx`) for the registration app
+- An SMTP server for the welcome e-mail from the admin app
 
 ---
 
@@ -65,36 +66,75 @@ cd canvas-account-registration
    CanvasAccountRegistrationAdmin.Web/Migration/Migrations.sql
    ```
 
-### 3. Configure the application
+### 3. Configure the applications
 
-A template configuration file is provided. Copy it and fill in your values:
+Each web project has a template. Copy it to `appsettings.json` in the same folder and fill in your values:
 
 ```bash
 cp CanvasAccountRegistration.Web/appsettings.json.template CanvasAccountRegistration.Web/appsettings.json
+cp CanvasAccountRegistrationAdmin.Web/appsettings.json.template CanvasAccountRegistrationAdmin.Web/appsettings.json
 ```
 
-Open `appsettings.json` and update the following sections:
+`appsettings.{Environment}.json` (for example `appsettings.Development.json`) overrides `appsettings.json`. Do not commit files that contain secrets.
 
-#### Database connection
-```json
-"ConnectionStrings": {
-  "Default": "Server=SERVER_NAME;Database=DATABASE_NAME;..."
-}
-```
+Both applications use the same database.
 
-#### Application settings
+#### Settings used by both applications
+
 | Key | Description |
 |---|---|
-| `Application:Name` | Display name for the application |
-| `Application:KeepLogsInDays` | Number of days to retain log entries |
-| `Application:KeysFolder` | Path to the folder for data protection keys |
+| `ConnectionStrings:Default` | Connection string to the SQL Server database |
+| `Application:Name` | Display name of the application |
+| `Application:KeepLogsInDays` | Number of days that log files are kept |
+| `Authentication:UserAgent` | `User-Agent` header sent with every request to the Canvas API. Default: `CanvasAccountRegistration/1.0` |
+| `Authentication:BearerToken` | Default bearer token of the HTTP client. The Canvas token below replaces it for calls to Canvas, so it can be empty |
 
-#### Canvas LMS
+#### Registration app (`CanvasAccountRegistration.Web`)
+
 | Key | Description |
 |---|---|
-| `Canvas:ApiHost` | Base URL of your Canvas API (e.g. `https://yourschool.instructure.com`) |
-| `Canvas:Host` | Canvas host used for login links |
-| `Canvas:BearerToken` | API token for authenticating requests to Canvas |
+| `Application:Types` | Account types that are accepted in the `type` query parameter, for example `[ "guest" ]`. Required |
+| `Application:DefaultAccountType` | Account type used when `type` is missing or not in `Types` |
+| `Application:Roles` | Account roles that are accepted in the `role` query parameter. Required |
+| `Application:DefaultAccountRole` | Role used when `role` is missing or not in `Roles` |
+| `CanvasApiSettings:ApiHost` | Base URL of the Canvas API, for example `https://yourschool.instructure.com/api/v1` |
+| `CanvasApiSettings:BearerToken` | Canvas API token. The token must be allowed to create users and to read and update logins |
+| `PostRegistrationRedirect:BaseUrl` | Base URL of the link shown after an automatically approved registration. See [Redirect after registration](#redirect-after-registration). Leave empty to disable |
+| `Authentication:Saml2:EntityId` | Entity ID of this service provider |
+| `Authentication:Saml2:IdentityProvider:EntityId` | Entity ID of the identity provider (eduID in the template) |
+| `Authentication:Saml2:IdentityProvider:MetadataLocation` | URL or path of the identity provider metadata |
+| `Authentication:Saml2:IdentityProvider:RelayStateUsedAsReturnUrl` | Set to `true` so that the user returns to the page that started the login |
+| `Authentication:Saml2:Certificate:Path` | Path to the service provider certificate (`.pfx`). Required |
+| `Authentication:Saml2:Certificate:Password` | Password of the certificate file. Leave empty when the file has no password |
+
+The role is stored with the account and shown in the admin app. It is not sent to Canvas.
+
+#### Admin app (`CanvasAccountRegistrationAdmin.Web`)
+
+| Key | Description |
+|---|---|
+| `Canvas:ApiHost` | Base URL of the Canvas API |
+| `Canvas:Host` | Host of your Canvas instance |
+| `Canvas:BearerToken` | Canvas API token, same requirements as for the registration app |
+| `Smtp:Host` | SMTP server used for the welcome e-mail. The e-mail is sent when an administrator integrates an account into Canvas |
+| `Smtp:Port` | SMTP port. Default: `25` |
+| `Smtp:EnableSsl` | Set to `true` to use TLS |
+| `Smtp:UserName`, `Smtp:Password` | Credentials for the SMTP server. Leave `UserName` empty when the server needs no login |
+| `IPBlockOptions:BlockedIPs` | IP addresses that are refused by the admin app |
+
+Note that the Canvas settings are in the section `CanvasApiSettings` in the registration app and in the section `Canvas` in the admin app.
+
+To send e-mail through something other than SMTP, write your own implementation of `IMailService` (`CanvasAccountRegistration.Logic/Service/MailService.cs`) and register it in `StartupExtended.cs` of the admin app.
+
+#### SAML2 metadata
+
+`CanvasAccountRegistration.Web/saml_config/saml.xml.template` is a template for the service provider metadata that you register with your identity federation (for example SWAMID). Copy it to `saml.xml` and replace the placeholders in uppercase. The application does not read this file. Git ignores the folder `saml_config/`, apart from the templates.
+
+The application reads these attributes from the identity provider: `displayName`, `givenName`, `sn`, `mail`, `eduPersonPrincipalName` and `eduPersonAssurance`.
+
+#### Logging
+
+Logging is configured in `nlog.config` in each web project. `nlog.{Environment}.config` is used instead when it exists. The admin app writes to log files and to the `Log` table in the database. The registration app writes to the console and to log files.
 
 ### 4. Restore dependencies
 
@@ -104,13 +144,13 @@ dotnet restore
 
 ### 5. Run the application
 
-**Registration web app:**
+**Registration web app** (`https://localhost:5002`):
 ```bash
 cd CanvasAccountRegistration.Web
 dotnet run
 ```
 
-**Admin web app:**
+**Admin web app** (`https://localhost:5003`):
 ```bash
 cd CanvasAccountRegistrationAdmin.Web
 dotnet run
@@ -159,11 +199,20 @@ An optional image per account type can be placed in `CanvasAccountRegistrationAd
 
 ### Registration flow (user app)
 
-1. User navigates to the registration page.
-1. User authenticates via SAML2/EduID.
-1. The app reads SAML attributes (name, email, assurance level) and pre-fills the form.
-1. The app validates the email domain against the whitelist and creates the account in Canvas via the Canvas API.
-1. A registration log entry is written to the database.
+1. The user opens the start page of the registration app. The link can have the query parameters `type`, `role` and `postRegistrationParam`.
+1. A user who is not logged in is sent to the identity provider (SAML2, eduID in the template).
+1. The app reads the SAML attributes and writes a registration log entry to the database.
+1. The app creates the account in its own database, or updates it when the user (`eduPersonPrincipalName`) is already registered. A new account gets the account type and the role from the link.
+1. The account is created in Canvas in one of two ways:
+   - **Automatically**, when the user has SWAMID assurance level AL2 (verified identity) and the e-mail domain is on the whitelist and marked as a partner organization.
+   - **By an administrator**, who approves the account and integrates it into Canvas in the admin app. The user then gets a welcome e-mail.
+1. The start page shows the status of the registration.
+
+When Canvas answers that the `integration_id` (the e-mail address) is already taken, the app looks up the existing Canvas user. It links or reactivates that user only when the login is the same `eduPersonPrincipalName`. In all other cases the integration fails with an error that names the existing user.
+
+### Redirect after registration
+
+A link to the registration app can carry a slug in `postRegistrationParam`, for example `https://YOUR_HOST/?postRegistrationParam=my-course`. When the user is from a partner organization, the page shows a link to `{PostRegistrationRedirect:BaseUrl}/my-course`. A slug can contain lowercase letters, digits and hyphens, and can have a maximum of 200 characters. Other slugs are ignored.
 
 ### Admin app
 
@@ -172,7 +221,11 @@ The admin app provides views and a RESTful API (`/api/v1/`) for:
 - **Registration Logs** — view registration attempts and their outcomes
 - **Logs** — view application logs
 - **Migrations** — track database schema versions
-- **Whitelisted Email Domains** — manage which email domains are permitted
+- **Whitelisted Email Domains** — manage the e-mail domains of partner organizations. Accounts from a domain that is marked as partner organization can be created in Canvas automatically
+
+The start page of the admin app lists the registered accounts per account type. An administrator can approve an account, integrate it into Canvas or remove it.
+
+The admin app has no authentication. See [Authentication in the Admin App](#authentication-in-the-admin-app).
 
 ---
 

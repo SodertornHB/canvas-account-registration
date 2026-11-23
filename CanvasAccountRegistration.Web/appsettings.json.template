@@ -10,36 +10,39 @@
     }
   },
   "Application": {
+    "Name": "YOUR_APPLICATION_NAME",
+    "KeepLogsInDays": 30,
+    "DefaultAccountType": "guest",
+    "Types": [ "guest" ],
+    "DefaultAccountRole": "student",
+    "Roles": [ "student" ]
+  },
+  "Authentication": {
+    "BearerToken": "",
+    "UserAgent": "CanvasAccountRegistration/1.0",
     "Saml2": {
       "EntityId": "https://YOUR_HOST/SAML",
       "IdentityProvider": {
-        "EntityId": "https://login.idp.eduid.se/idp.xml", 
-        "MetadataLocation": "https://metadata.swamid.se/YOUR_METADATA_LOCATION", 
+        "EntityId": "https://login.idp.eduid.se/idp.xml",
+        "MetadataLocation": "https://metadata.swamid.se/YOUR_METADATA_LOCATION",
         "SingleLogoutUrl": "https://login.idp.eduid.se/slo/redirect",
         "AllowUnsolicitedAuthnResponse": true,
         "RelayStateUsedAsReturnUrl": true
       },
       "ReturnUrl": "/",
-      "LogoutCallbackUrl": "https://YOUR_HOST/Logout"
+      "LogoutCallbackUrl": "https://YOUR_HOST/Logout",
+      "Certificate": {
+        "Path": "PATH_TO_SERVICE_PROVIDER_CERTIFICATE.pfx",
+        "Password": ""
+      }
     }
   },
-  "IPBlockOptions": {
-    "BlockedIPs": []
-  },
-  "Authentication": {
-    "BearerToken": "",
-    "UserAgent": "CanvasAccountRegistration/1.0"
-  },
-  "Canvas": {
+  "CanvasApiSettings": {
     "ApiHost": "https://YOUR_CANVAS_HOST/api/v1",
-    "Host": "https://YOUR_CANVAS_HOST"
+    "Host": "https://YOUR_CANVAS_HOST",
+    "BearerToken": "TOKEN"
   },
   "PostRegistrationRedirect": {
     "BaseUrl": "https://YOUR_POST_REGISTRATION_REDIRECT_HOST"
-  },
-  "WhiteListedMailDomains": {
-    "Addresses": [
-      //"example.com"
-    ]
   }
 }
