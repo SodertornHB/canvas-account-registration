@@ -84,7 +84,7 @@ Both applications use the same database.
 | Key | Description |
 |---|---|
 | `ConnectionStrings:Default` | Connection string to the SQL Server database |
-| `Application:Name` | Display name of the application |
+| `Application:Name` | Name of the application, shown by `/version`. In the registration app it is also the path base, see below |
 | `Application:KeepLogsInDays` | Number of days that log files are kept |
 | `Authentication:UserAgent` | `User-Agent` header sent with every request to the Canvas API. Default: `CanvasAccountRegistration/1.0` |
 | `Authentication:BearerToken` | Default bearer token of the HTTP client. The Canvas token below replaces it for calls to Canvas, so it can be empty |
@@ -93,6 +93,7 @@ Both applications use the same database.
 
 | Key | Description |
 |---|---|
+| `Application:Name` | Path base of the registration app. Leave it empty when the app is at the root of the site. When the app is in a subfolder, write the path with a leading slash, for example `/registration`. The app does not start when the value has no leading slash |
 | `Application:Types` | Account types that are accepted in the `type` query parameter, for example `[ "guest" ]`. Required |
 | `Application:DefaultAccountType` | Account type used when `type` is missing or not in `Types` |
 | `Application:Roles` | Account roles that are accepted in the `role` query parameter. Required |

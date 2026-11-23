@@ -45,7 +45,8 @@ end if not exists (
 insert [Migration] ([ClientVersion], [DatabaseVersion], [CreatedOn])
 values ('1.0.0', '1.0.0', getdate())
 end
-go if not exists (
+go
+if not exists (
         select distinct 1
         from information_schema.columns
         where table_name = 'Log'

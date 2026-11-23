@@ -10,7 +10,7 @@
     }
   },
   "Application": {
-    "Name": "YOUR_APPLICATION_NAME",
+    "Name": "",
     "KeepLogsInDays": 30,
     "DefaultAccountType": "guest",
     "Types": [ "guest" ],
