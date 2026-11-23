@@ -185,3 +185,9 @@ The admin app provides views and a RESTful API (`/api/v1/`) for:
 5. Open a pull request against the `main` branch of the original repository.
 
 Please include a clear description of what the change does and why it is needed.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
