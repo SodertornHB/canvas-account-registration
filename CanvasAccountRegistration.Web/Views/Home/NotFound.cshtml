@@ -1,0 +1,12 @@
+@* --------------------------------------------------------------------*@
+@* Warning! This is an auto generated file. Changes may be overwritten *@
+@* --------------------------------------------------------------------*@
+@using CanvasAccountRegistration.Logic.Settings
+@using Localization
+@using Microsoft.Extensions.Options
+@inject IOptions<ApplicationSettings> settings
+@inject LocService SharedLocalizer
+@model string
+
+<h1>@SharedLocalizer.GetLocalizedHtmlString("NotFoundHeader")</h1>
+<p>@string.Format(SharedLocalizer.GetLocalizedHtmlString("NotFoundMessage"), Model)</p>

@@ -1,0 +1,124 @@
+﻿.container {
+    max-width:100%;
+}
+
+.account-type-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    list-style: none;
+    padding: 2rem;
+    margin: 0;
+    justify-content: center;
+}
+
+.account-type-item {
+    background-color: #a2a2a2;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 180px;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .account-type-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+
+.account-type-link {
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+    .account-type-link img {
+        max-width: 120px;
+        max-height: 120px;
+        object-fit: contain;
+    }
+
+.account-type-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.dataTable {
+    border-collapse: collapse !important;
+}
+
+.data-table th, .data-table td {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+.warning-cell {
+    border: 4px dashed red !important
+}
+
+    .data-table thead {
+        background-color: #f8f9fa;
+    }
+
+    .data-table tbody tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+    .data-table tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+.btn-action {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 2px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+    .btn-action:hover {
+        color: #fff;
+        background-color: #0056b3;
+        text-decoration: none;
+    }
+
+.btn-remove {
+    background-color: #ff3000;
+    cursor: pointer;
+    pointer-events:  all;
+}
+
+.btn-disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.warning-row {
+    background-color: #fff3cd !important;
+}
+
+.disabled-row {
+    background-color: #e9ecef !important;
+    color: #9199a0;
+    pointer-events: none;
+}
+
+.red-border {
+    border: 2px solid red !important;
+}
+
+footer p {
+    color:#fff;
+}
+.speech-bubble-wrapper p {
+    color: #000;
+}

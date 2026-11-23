@@ -1,0 +1,41 @@
+{
+  "ConnectionStrings": {
+    "Default": "Data Source=SERVER_NAME;Initial Catalog=DATABASE_NAME;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Information",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Application": {
+    "Name": "YOUR_APPLICATION_NAME",
+    "KeepLogsInDays": 30,
+    "KeysFolder": "PATH_TO_KEYS_FOLDER"
+  },
+  "IPBlockOptions": {
+    "BlockedIPs": []
+  },
+  "Authentication": {
+    "BearerToken": "TOKEN",
+    "UserAgent": "CanvasAccountRegistration/1.0"
+  },
+  "Canvas": {
+    "ApiHost": "https://YOUR_CANVAS_API_HOST/api/v1",
+    "Host": "https://YOUR_CANVAS_HOST",
+    "BearerToken": "TOKEN"
+  },
+  "Smtp": {
+    "Host": "YOUR_SMTP_HOST",
+    "Port": 25,
+    "EnableSsl": false,
+    "UserName": "",
+    "Password": ""
+  },
+  "WhiteListedMailDomains": {
+    "Addresses": [
+      //"example.com"
+    ]
+  }
+}

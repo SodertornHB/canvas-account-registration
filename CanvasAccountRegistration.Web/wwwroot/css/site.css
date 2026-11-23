@@ -1,0 +1,224 @@
+﻿/* 
+Warning! This is an auto generated file. Changes may be overwritten 
+*/
+
+/*
+
+    COLORS:
+
+    Orange: #F18825
+    Light Orange: #FCCB8D
+    Red: #940C3B
+    Light Red: #C56480
+    Blue: #28487D
+    Light Blue: #7090B4
+    Purple: #5F2176
+    Light Purple: #9B7DB6
+    Green: #006A52
+    Light Green: #7F9F92
+
+*/
+
+body ul {
+
+}
+
+h1 {
+    color: #2c2f34d9;
+    font-family: Bodoni,sans-serif;
+    font-size: 44px;
+    font-weight: 400;
+    letter-spacing: -.6px;
+    line-height: 1.02;
+}
+
+p {
+    font-family: roboto,sans-serif;
+    color: #2c2f34;
+    line-height: 1.62;
+}
+
+a {
+    color: #333;
+}
+
+input[type="checkbox"] {
+    width: 40px;
+    transform: scale(2);
+}
+
+.navbar {
+    font-size:13px;
+    padding: 0 1rem;
+}
+
+a.navbar-brand {
+    font-size: 25px;
+}
+
+.navbar-brand img {
+    height: 50px; 
+    width: auto; 
+}
+
+.nav-item {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+button span.bi-plus-circle {
+    margin-right: 10px;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.icon-with-text {
+    cursor: pointer;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+li {
+    line-height: 1.5rem;
+    font-family: Georgia, serif;
+    margin: 15px 0;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.icon-language {
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.success-container {
+    text-align: center;
+    padding: 2rem;
+    background-color: #e6ffe6;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.information {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.details {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+    .details p {
+        margin: 0.5rem 0;
+    }
+
+.btn-home {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+}
+
+    .btn-home:hover {
+        background-color: #0056b3;
+    }
+
+.status-icon {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.verified {
+    color: #28a745;
+}
+/* Green checkmark */
+.not-verified {
+    color: #dc3545;
+}
+/* Red cross */
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.clear {
+    clear: both;
+    margin-bottom: 150px;
+}
+
+footer p {
+    color: #fff;
+}
+
+.speech-bubble-wrapper p {
+    color: #000;
+}

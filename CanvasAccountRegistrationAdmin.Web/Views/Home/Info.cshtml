@@ -1,0 +1,13 @@
+@using Localization
+@inject LocService SharedLocalizer
+
+@{
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Information")}";
+}
+
+<h1>@SharedLocalizer.GetLocalizedHtmlString("Information")</h1>
+@Html.Raw(@SharedLocalizer.GetLocalizedHtmlString("Canvas Account Registration info"))
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

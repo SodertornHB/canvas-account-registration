@@ -1,0 +1,1 @@
+Sql migration scripts are in the web folder CanvasAccountRegistrationAdmin.Web

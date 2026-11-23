@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>Canvas Account Registration</value>
+    <comment/>
+  </data>
+  <data name="TableLang" xml:space="preserve">
+    <value>//cdn.datatables.net/plug-ins/1.12.1/i18n/en-GB.json</value>
+    <comment/>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+    <comment/>
+  </data>
+  <data name="Create New" xml:space="preserve">
+    <value>Create New</value>
+    <comment/>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+    <comment/>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+    <comment/>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+    <comment/>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+    <comment/>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+    <comment/>
+  </data>
+  <data name="ErrorHeader" xml:space="preserve">
+    <value>Error</value>
+    <comment/>
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>An error occurred. Please contact &lt;a href="mailto:support@YOUR_DOMAIN"&gt;support@YOUR_DOMAIN&lt;/a&gt;</value>
+    <comment/>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+    <comment/>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+    <comment/>
+  </data>
+  <data name="login_attribute" xml:space="preserve">
+    <value>Login attribute</value>
+    <comment/>
+  </data>
+  <data name="given_name" xml:space="preserve">
+    <value>Given name</value>
+    <comment/>
+  </data>
+  <data name="surname" xml:space="preserve">
+    <value>Surname</value>
+    <comment/>
+  </data>
+  <data name="display_name" xml:space="preserve">
+    <value>Name</value>
+    <comment/>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>E-mail</value>
+    <comment/>
+  </data>
+  <data name="assurance_level" xml:space="preserve">
+    <value>Assurance level</value>
+    <comment/>
+  </data>
+  <data name="mail_verified" xml:space="preserve">
+    <value>Mail verified</value>
+    <comment/>
+  </data>
+  <data name="create_date_time" xml:space="preserve">
+    <value>Created</value>
+    <comment/>
+  </data>
+  <data name="verification_date_time" xml:space="preserve">
+    <value>Verification date time</value>
+    <comment/>
+  </data>
+  <data name="integration_date_time" xml:space="preserve">
+    <value>Integration date time</value>
+    <comment/>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Log</value>
+    <comment/>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>Origin</value>
+    <comment/>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+    <comment/>
+  </data>
+  <data name="LogLevel" xml:space="preserve">
+    <value>Log level</value>
+    <comment/>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Created On</value>
+    <comment/>
+  </data>
+  <data name="Exception" xml:space="preserve">
+    <value>Error</value>
+    <comment/>
+  </data>
+  <data name="Trace" xml:space="preserve">
+    <value>Trace</value>
+    <comment/>
+  </data>
+  <data name="Migration" xml:space="preserve">
+    <value>Migration</value>
+    <comment/>
+  </data>
+  <data name="ClientVersion" xml:space="preserve">
+    <value>Client version</value>
+    <comment/>
+  </data>
+  <data name="DatabaseVersion" xml:space="preserve">
+    <value>Database Version</value>
+    <comment/>
+  </data>
+  <data name="Canvas Account Registration info" xml:space="preserve">
+    <value>&lt;p&gt;Canvas account registration is a service aimed at employees of Swedish government agencies who are enrolled in a commissioned education program at YOUR_ORGANIZATION.&lt;/p&gt; &lt;p&gt;Canvas account registration is used to register an EduId account for use in the Canvas Learning Management System. Once the registered account has been reviewed and approved, it will be transferred to the Canvas Learning Management System, and the user will be able to log in with their EduId.&lt;/p&gt;</value>
+    <comment/>
+  </data>
+  <data name="Privacy info" xml:space="preserve">
+    <value>&lt;h2&gt;Processing of Personal Data&lt;/h2&gt;&lt;h3&gt;Transfer of Personal Data&lt;/h3&gt;&lt;p&gt;Personal data is transferred from the identity provider (your login service) to Canvas Account Registration to enable    YOUR_ORGANIZATION to verify the user's identity, allowing the user to participate in their education.&lt;/p&gt;&lt;p&gt;When logging into this service, the following personal data is requested from the identity provider you use:&lt;/p&gt;&lt;table&gt;    &lt;thead&gt;        &lt;tr&gt;            &lt;th&gt;Personal Data&lt;/th&gt;            &lt;th&gt;Purpose&lt;/th&gt;            &lt;th&gt;Technical Representation&lt;/th&gt;        &lt;/tr&gt;    &lt;/thead&gt;    &lt;tbody&gt;        &lt;tr&gt;            &lt;td&gt;Unique Identifier&lt;/td&gt;            &lt;td&gt;To grant you access to educational materials in the Canvas LMS&lt;/td&gt;            &lt;td&gt;eduPersonPrincipalName&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;Name&lt;/td&gt;            &lt;td&gt;The name is used in lists and other interfaces&lt;/td&gt;            &lt;td&gt;displayName&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;First Name&lt;/td&gt;            &lt;td&gt;The first name is used in lists and other interfaces&lt;/td&gt;            &lt;td&gt;givenName&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;Last Name&lt;/td&gt;            &lt;td&gt;The last name is used in lists and other interfaces&lt;/td&gt;            &lt;td&gt;sn&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;Email Address&lt;/td&gt;            &lt;td&gt;Used to contact you&lt;/td&gt;            &lt;td&gt;email&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;Unique User ID&lt;/td&gt;            &lt;td&gt;Used to uniquely identify you within the service&lt;/td&gt;            &lt;td&gt;eduPersonUniqueId&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;Role and Organizational Affiliation&lt;/td&gt;            &lt;td&gt;Describes your role and relationship to the organization&lt;/td&gt;            &lt;td&gt;eduPersonScopedAffiliation&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;Personal Identity Number&lt;/td&gt;            &lt;td&gt;Used to identify you nationally&lt;/td&gt;            &lt;td&gt;personalIdentityNumber&lt;/td&gt;        &lt;/tr&gt;        &lt;tr&gt;            &lt;td&gt;Assurance level&lt;/td&gt;            &lt;td&gt;Used for assessing the level of assurance (LoA) of a user's identity&lt;/td&gt;            &lt;td&gt;eduPersonAssurance&lt;/td&gt;        &lt;/tr&gt;    &lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;In addition to direct personal data, indirect personal data such as the organization the user belongs to and the    identity provider used during login is also transferred. Combined with the above data, this information can be used    to uniquely identify a person.&lt;/p&gt;&lt;h3&gt;Transfer of Personal Data to Third Parties&lt;/h3&gt;&lt;p&gt;Personal data processed within Canvas Account Registration may be shared with third parties if necessary to provide    the service or if required by law. In such cases, the university ensures that the recipient handles the data in    accordance with applicable data protection regulations.&lt;/p&gt;&lt;h3&gt;Legal Basis&lt;/h3&gt;&lt;p&gt;The processing of personal data in the Canvas Account Registration service is part of YOUR_ORGANIZATION's exercise    of official authority. Fulfilling legal obligations may also, in some cases, serve as the legal basis for the    service.&lt;/p&gt;&lt;h3&gt;Right to Access, Rectification, and Erasure of Personal Data&lt;/h3&gt;&lt;p&gt;To request access to, rectification of, or erasure of your personal data, contact the data controller.&lt;/p&gt;&lt;p&gt;To rectify personal data transferred during login, make the correction with the identity provider you use to log in.    These changes will be reflected in the service upon your next login after the corrections are made in the identity    provider.&lt;/p&gt;&lt;h3&gt;Retention of Personal Data&lt;/h3&gt;&lt;p&gt;Personal data processed within Canvas Account Registration is retained only as long as necessary to fulfill the    purpose of the service. When you no longer use the service, your personal data will be erased in accordance with the    university's data storage and retention policies.&lt;/p&gt;&lt;h3&gt;Data Controller&lt;/h3&gt;&lt;p&gt;The data controller for the processing of personal data is YOUR_ORGANIZATION, Sweden. If you have questions about    how personal data is handled within the service, contact dataprotection@YOUR_DOMAIN.&lt;/p&gt;&lt;p&gt;Contact details for YOUR_ORGANIZATION's Data Protection Officer can be found on &lt;a href="https://YOUR_DOMAIN/data-protection"&gt;this page&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;GÉANT Data Protection Code of Conduct&lt;/h3&gt;&lt;p&gt;This service adheres to the international framework GÉANT Data Protection Code of Conduct for transferring personal    data from identity providers to the service. The framework is intended for services in Sweden, the EU, and the EEA    used in research and higher education.&lt;/p&gt;</value>
+    <comment/>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Transfer of Personal Data to the Service in Connection with Federated Login (Privacy Policy)</value>
+    <comment/>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information about Canvas Account Registration</value>
+    <comment/>
+  </data>
+  <data name="Toggle language" xml:space="preserve">
+    <value>På svenska</value>
+    <comment/>
+  </data>
+  <data name="Successfull registration" xml:space="preserve">
+    <value>You have successfully registered your EduId account!</value>
+    <comment/>
+  </data>
+  <data name="What will happen" xml:space="preserve">
+    <value>What will happen next?</value>
+    <comment/>
+  </data>
+  <data name="Please verify account" xml:space="preserve">
+    <value>You have not verified your account with bank ID yet. &lt;a href="{0}"&gt;click here to log out from this application&lt;/a&gt;. After that log into EduId to verify your account. Then return here to check that your account is verified.</value>
+    <comment/>
+  </data>
+  <data name="Go to course in Catalog" xml:space="preserve">
+    <value>Go to the course in Canvas Catalog</value>
+    <comment/>
+  </data>
+  <data name="Automatically approved with redirect" xml:space="preserve">
+    <value>Your account is now registered and activated in Canvas. Click the button below to go directly to the course.</value>
+    <comment/>
+  </data>
+  <data name="Automatically approved no redirect" xml:space="preserve">
+    <value>Your account is now registered and activated in Canvas. You can now log in.</value>
+    <comment/>
+  </data>
+  <data name="Pending approval" xml:space="preserve">
+    <value>When your registration has been approved, your account will be created in Canvas. You will receive an email with instructions on how to log in.</value>
+    <comment/>
+  </data>
+  <data name="Registration approved" xml:space="preserve">
+    <value>    &lt;p&gt;You don’t need to do anything else. When an administrator has added your account to Canvas, you will receive an email with instructions on how to log in to Canvas.&lt;/p&gt;&lt;p&gt;The email will be sent to the address you have linked to your eduID.&lt;br /&gt;If you have not received an email within two working days, please contact &lt;a href="mailto:support@YOUR_DOMAIN"&gt;support@YOUR_DOMAIN&lt;/a&gt;&lt;/p&gt;    </value>
+    <comment/>
+  </data>
+  <data name="Login ID" xml:space="preserve">
+    <value>User id</value>
+    <comment/>
+  </data>
+  <data name="Display Name" xml:space="preserve">
+    <value>Name</value>
+    <comment/>
+  </data>
+  <data name="Is verified" xml:space="preserve">
+    <value>Verified with bankid</value>
+    <comment/>
+  </data>
+  <data name="Is approved" xml:space="preserve">
+    <value>Approved by admin</value>
+    <comment/>
+  </data>
+  <data name="Is integrated" xml:space="preserve">
+    <value>Account created in Canvas</value>
+    <comment/>
+  </data>
+  <data name="Created On" xml:space="preserve">
+    <value>Created on</value>
+    <comment/>
+  </data>
+  <data name="Loggedout" xml:space="preserve">
+    <value>Logged out!</value>
+    <comment/>
+  </data>
+  <data name="LoggedoutDescription" xml:space="preserve">
+    <value>You are logged out.</value>
+    <comment/>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+    <comment/>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>&lt;h1&gt;Create an Account to Access the YOUR_PROGRAMME Course&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;YOUR_PROGRAMME&lt;/strong&gt; YOUR_PROGRAMME_DESCRIPTION. &lt;a href="https://YOUR_DOMAIN/about-the-programme" target="_blank"&gt;Read more about YOUR_PROGRAMME here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;All courses within YOUR_PROGRAMME are offered via YOUR_ORGANIZATION's learning platform, Canvas.&lt;/p&gt;&lt;p&gt;As a participant in a YOUR_PROGRAMME course, you will use an eduID to log in to Canvas.&lt;/p&gt;&lt;p&gt;Follow these instructions to create an eduID:&lt;/p&gt;&lt;ol&gt;  &lt;li&gt;    Create your eduID. Open a new browser window and go to &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; and create an account. &lt;strong&gt;Important!&lt;/strong&gt; You must use the email address you have in the service as the username for your eduID.  &lt;/li&gt;  &lt;li&gt;    Verify your eduID. Once you have created your account on eduID, you should verify it with your BankID or Freja+. Go to &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduID's homepage&lt;/a&gt; and click on the link "Identity" under the heading "Verify your identity". Follow the instructions on the page to verify your account with BankID or Freja+.  &lt;/li&gt;  &lt;li&gt;    Register your eduID on YOUR_ORGANIZATION's Canvas. Click on the link: &lt;a href="/" target="_blank"&gt;Canvas account registration page&lt;/a&gt;. Use your eduID, i.e. the email address and password you chose when you registered.  &lt;/li&gt;  &lt;li&gt;    Confirm that your eduID is registered. You will now see a confirmation that your eduID is registered in the Canvas account registration. Once an administrator has reviewed and approved your account, you will gain access to Canvas. You will use your eduID to log in to Canvas going forward.  &lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Create a security key (MFA) to be able to log in with your eduID. You need BankID or Freja+ to enable MFA. Go to &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduID's homepage&lt;/a&gt; and click on the "Security" link to create and verify your MFA. &lt;a href="/docs/Guide-skapa-Eduid-MFA-v4.pdf" target="_blank"&gt;This guide will help you get started with MFA.&lt;/a&gt;&lt;/p&gt;    </value>
+    <comment/>
+  </data>
+  <data name="NotFoundHeader" xml:space="preserve">
+    <value>Page Not Found</value>
+    <comment/>
+  </data>
+  <data name="NotFoundMessage" xml:space="preserve">
+    <value>We apologize, but the page you were looking for does not seem to exist. This may be because the page has been moved, removed, or an incorrect link was used. If you continue to experience issues, please contact support@YOUR_DOMAIN.</value>
+    <comment/>
+  </data>
+  <data name="CanvasInstruction" xml:space="preserve">
+    <value>&lt;h3&gt;Instructions for logging into YOUR_ORGANIZATION's learning platform Canvas:&lt;/h3&gt;&lt;p&gt;You have been given an account in YOUR_ORGANIZATION's learning platform Canvas and can log in to access your education.&lt;/p&gt;&lt;ul&gt;    &lt;li&gt;Use the link &lt;a href="https://YOUR_CANVAS_HOST" target="_blank"&gt;YOUR_CANVAS_HOST&lt;/a&gt; to access the login page for Canvas.&lt;/li&gt;    &lt;li&gt;Select the option "Log in with EduId."&lt;/li&gt;    &lt;li&gt;Log in with your EduId.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Review which notifications you want to receive&lt;/h3&gt;&lt;p&gt;You control which notifications/alerts you receive from Canvas. Click on &lt;strong&gt;Account &gt; Notifications&lt;/strong&gt; and enable the notifications you want to receive from the system.&lt;/p&gt;&lt;h3&gt;You will receive an email when you are added to a course&lt;/h3&gt;&lt;p&gt;Don't see the course yet? We are working on it and will notify you via email once you are enrolled in the course.&lt;/p&gt;&lt;h3&gt;Do you have any questions or concerns?&lt;/h3&gt;&lt;p&gt;Contact &lt;a href="mailto:support@YOUR_DOMAIN"&gt;support@YOUR_DOMAIN&lt;/a&gt;&lt;/p&gt;    </value>
+    <comment/>
+  </data>
+  <data name="AccountRole" xml:space="preserve">
+    <value>Role</value>
+    <comment/>
+  </data>
+  <data name="AccountType" xml:space="preserve">
+    <value>Account type</value>
+    <comment/>
+  </data>
+  <data name="EduIdInstruction" xml:space="preserve">
+    <value>    &lt;h1&gt;Create account&lt;/h1&gt;&lt;p&gt;As a guest in Canvas you need an eduID to be able to log in. Follow these instructions to create an eduID:&lt;/p&gt;&lt;ol&gt;  &lt;li&gt;    Create your eduID. Open a new browser window and go to &lt;a href="https://eduid.se/register" target="_blank"&gt;eduid.se&lt;/a&gt; and create an account. Create a security key (MFA) to be able to log in with your eduID. You need BankID or Freja+ to enable MFA. Go to &lt;a href="https://eduid.se/profile/" target="_blank"&gt;eduID's homepage&lt;/a&gt; and click on the "Security" link to create and verify your MFA. &lt;a href="/docs/Guide-skapa-Eduid-MFA-v4.pdf" target="_blank"&gt;This guide will help you get started with MFA.&lt;/a&gt;  &lt;/li&gt;  &lt;li&gt;    Once you have created your eduID, return to this website to continue the process.  &lt;/li&gt;&lt;/ol&gt;&lt;h1&gt;After you have created your eduID&lt;/h1&gt;&lt;p&gt;You need to register your eduID with us to gain access to Canvas.&lt;/p&gt;&lt;p&gt;Register your eduID by clicking on &lt;a href="/?type=guest"&gt;Student&lt;/a&gt; or &lt;a href="/?type=guest&amp;role=other"&gt;Staff&lt;/a&gt;. Use your eduID when logging in, i.e. the email address and password you chose when you registered for eduID.&lt;/p&gt;&lt;p&gt;You will now see a confirmation that your eduID is registered in the Canvas account registration. Once an administrator has reviewed and approved your account, you will get access to Canvas. You will use your eduID to log in to Canvas from now on. &lt;a href="/how-to-log-into-canvas"&gt;Here you can find instructions on how to log in to Canvas.&lt;/a&gt;&lt;/p&gt;    </value>
+    <comment/>
+  </data>
+</root>

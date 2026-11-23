@@ -1,0 +1,14 @@
+@using Localization
+@inject LocService SharedLocalizer
+
+@{
+    ViewData["Title"] = $"{SharedLocalizer.GetLocalizedHtmlString("Loggedout")}";
+}
+
+<h1>@SharedLocalizer.GetLocalizedHtmlString("Loggedout")</h1>
+<p>@SharedLocalizer.GetLocalizedHtmlString("LoggedoutDescription")</p>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
