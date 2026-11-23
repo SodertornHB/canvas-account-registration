@@ -26,7 +26,6 @@
         "EntityId": "https://login.idp.eduid.se/idp.xml",
         "MetadataLocation": "https://metadata.swamid.se/YOUR_METADATA_LOCATION",
         "SingleLogoutUrl": "https://login.idp.eduid.se/slo/redirect",
-        "AllowUnsolicitedAuthnResponse": true,
         "RelayStateUsedAsReturnUrl": true
       },
       "ReturnUrl": "/",

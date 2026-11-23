@@ -52,7 +52,7 @@ namespace CanvasAccountRegistration.Test
         }
 
         [Test]
-        public async Task ReturnsNull_WhenAl2Missing()
+        public async Task ReturnsFalse_WhenAl2Missing()
         {
             var sut = CreateSut(new WhiteListedEmailDomain
             {
@@ -62,11 +62,11 @@ namespace CanvasAccountRegistration.Test
 
             var partner = await sut.IsEligiblePartnerOrganization("user@example.com", ClaimsWithoutAl2());
 
-            Assert.That(partner, Is.Null);
+            Assert.That(partner, Is.False);
         }
 
         [Test]
-        public async Task ReturnsNull_WhenDomainNotInWhitelist()
+        public async Task ReturnsFalse_WhenDomainNotInWhitelist()
         {
             var sut = CreateSut(new WhiteListedEmailDomain
             {
@@ -99,7 +99,7 @@ namespace CanvasAccountRegistration.Test
         [TestCase("   ")]
         [TestCase("not-an-email")]
         [TestCase("trailing@")]
-        public async Task ReturnsNull_ForInvalidEmail(string email)
+        public async Task ReturnsFalse_ForInvalidEmail(string email)
         {
             var sut = CreateSut(new WhiteListedEmailDomain
             {
@@ -109,11 +109,11 @@ namespace CanvasAccountRegistration.Test
 
             var partner = await sut.IsEligiblePartnerOrganization(email, ClaimsWithAl2());
 
-            Assert.That(partner, Is.Null);
+            Assert.That(partner, Is.False);
         }
 
         [Test]
-        public async Task ReturnsNull_WhenClaimsNull()
+        public async Task ReturnsFalse_WhenClaimsNull()
         {
             var sut = CreateSut(new WhiteListedEmailDomain
             {
@@ -123,7 +123,7 @@ namespace CanvasAccountRegistration.Test
 
             var partner = await sut.IsEligiblePartnerOrganization("user@example.com", null);
 
-            Assert.That(partner, Is.Null);
+            Assert.That(partner, Is.False);
         }
     }
 }

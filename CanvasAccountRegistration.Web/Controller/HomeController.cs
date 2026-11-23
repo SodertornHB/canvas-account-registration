@@ -120,7 +120,8 @@ namespace Web.Controllers
             var culture = GetNextCultureFromSupportedCultures();
             SetCookie(culture);
 
-            return Redirect(returnUrl);
+            // Only redirect to pages in this application (prevents open redirect).
+            return Url.IsLocalUrl(returnUrl) ? LocalRedirect(returnUrl) : Redirect("/");
         }
 
         [AllowAnonymous]

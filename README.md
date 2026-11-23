@@ -174,6 +174,19 @@ You must add authentication and authorization before you deploy the admin app, f
 
 ---
 
+## Security Notes
+
+Read this before you deploy the applications.
+
+- **The admin app has no authentication.** See [Authentication in the Admin App](#authentication-in-the-admin-app).
+- **The admin app has no CSRF protection.** The actions that approve, integrate and remove an account are GET requests without an antiforgery token. Add antiforgery validation and change these actions to POST when you add authentication.
+- **The admin API does not validate its input.** The `POST` and `PUT` endpoints under `/api/v1/` accept any JSON object and map it to the database model.
+- **`/clean-up` and `/version` are open on purpose.** Both applications answer on these paths without authentication, because they are called by scheduled jobs and monitoring services that do not log in. `/clean-up` deletes log files that are older than `Application:KeepLogsInDays`. `/version` shows the version of the application and of the database. Limit access to these paths in your network or reverse proxy if you do not want them to be public.
+- **The connection string in the templates has `TrustServerCertificate=True`.** Remove it when the database server has a trusted certificate.
+- **Some dependencies have known vulnerabilities**, for example `AutoMapper` 12.0.1. Check the packages with `dotnet list package --vulnerable` and upgrade them before production use.
+
+---
+
 ## Organization-Specific Values
 
 Values that differ between institutions are written as placeholders. Search the solution for these and replace them with your own values:
